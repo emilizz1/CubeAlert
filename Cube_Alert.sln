@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube_Alert", "Cube_Alert.csproj", "{A05FFC45-16F6-C648-E26B-3A510B79757D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube_Alert.Editor", "Cube_Alert.Editor.csproj", "{62E3D956-029E-853F-6F3A-13F5A1CC57B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A05FFC45-16F6-C648-E26B-3A510B79757D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05FFC45-16F6-C648-E26B-3A510B79757D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05FFC45-16F6-C648-E26B-3A510B79757D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05FFC45-16F6-C648-E26B-3A510B79757D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62E3D956-029E-853F-6F3A-13F5A1CC57B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E3D956-029E-853F-6F3A-13F5A1CC57B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E3D956-029E-853F-6F3A-13F5A1CC57B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E3D956-029E-853F-6F3A-13F5A1CC57B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

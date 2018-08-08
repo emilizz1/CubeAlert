@@ -15,8 +15,9 @@ public class Head : MonoBehaviour
     bool shooting = false;
     bool currentlyInner = false;
     int side = 1;
-    
-	void Start ()
+    Figure target;
+
+    void Start ()
     {
         lifePoints = FindObjectOfType<LifePoints>();
         ammo = FindObjectOfType<Ammo>();
@@ -36,12 +37,51 @@ public class Head : MonoBehaviour
         }
     }
 
+    IEnumerator SeekingShooting()
+    {
+        while (shooting)
+        {
+            if (ammo.IsThereAmmo())
+            {
+                GameObject createdBullet = Instantiate(bullet, spawnLocation.position, Quaternion.identity);
+                foreach(Figure figure in FindObjectsOfType<Figure>())
+                {
+                    if(target == null || Vector3.Distance(figure.transform.position, transform.position) < Vector3.Distance(target.transform.position, transform.position))
+                    {
+                        target = figure;
+                    }
+                }
+                createdBullet.GetComponent<Bullet>().GetTarget(target.transform);
+                Destroy(createdBullet, 12f);
+                Vector3 diff = transform.position - target.transform.position;
+                float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, Quaternion.identity.y, rot_z + 180);
+                if (transform.position.x > 0)
+                {
+                    transform.Rotate(0f, 180f, 180f);
+                }
+                yield return new WaitForSecondsRealtime(fireRate);
+            }
+            if (!currentlyInner)
+            {
+                StartCoroutine(Shooting());
+            }
+        }
+    }
+
     public void StartedShooting()
     {
         if(shooting == false)
         {
             shooting = true;
-            StartCoroutine(Shooting());
+            if (currentlyInner)
+            {
+                StartCoroutine(SeekingShooting());
+            }
+            else
+            {
+                StartCoroutine(Shooting());
+            }
         }
     }
 
@@ -88,6 +128,7 @@ public class Head : MonoBehaviour
 
     void ChangeSide()
     {
+        print("hap[p");
         side = -side;
         transform.Rotate(0f, 180f, 0f);
         var pos = transform.position;

@@ -31,6 +31,12 @@ public class PlayerInput : MonoBehaviour
             {
                 head.CheckForChangedSides(touchPos.x, false);
             }
+            if(touchPos.y > -23)
+            {
+                var headPos = head.transform.position;
+                headPos.y = touchPos.y;
+                head.transform.position = headPos;
+            }
             head.StartedShooting();
         }
         else
@@ -51,5 +57,5 @@ public class PlayerInput : MonoBehaviour
             }
             head.StartedShooting();
         }
-	}
+    }
 }

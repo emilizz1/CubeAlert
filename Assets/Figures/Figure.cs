@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Exploder2D;
 
 public class Figure : MonoBehaviour
 {
@@ -10,17 +9,12 @@ public class Figure : MonoBehaviour
     bool beenHit = false;
     float rotationSpeed;
     int bulletAmount;
-    SpriteRenderer sprite;
     GameObject figureNumber;
-    public Exploder2DObject exploder;
 
     void Start()
     {
-        exploder = Exploder2D.Utils.Exploder2DSingleton.Exploder2DInstance;
         rotationSpeed = Random.Range(-40, 40f);
-        sprite = GetComponent<SpriteRenderer>();
-        sprite.color = new Color(Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f), Random.Range(0.2f, 0.8f), 0.8f);
-        bulletAmount = Random.Range(5, 20);
+        bulletAmount = Random.Range(3, 15);
         figureNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
     }
 
@@ -31,24 +25,43 @@ public class Figure : MonoBehaviour
             transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
             UpdateFigureNumber();
         }
-        else if(bulletAmount <= 0 && !startedExploding)
+        else if (bulletAmount <= 0 && !startedExploding)
         {
-            DestroyFigure();
+            DestroyFigure(true);
         }
-        if (!startedExploding && gameObject!=null)
+        if (!startedExploding && gameObject != null)
         {
             UpdateFigureNumber();
         }
     }
 
-    public void DestroyFigure()
+    public void DestroyFigure(bool quick)
     {
         DestroyFigureNumber();
-        Exploder2DUtils.SetActive(exploder.gameObject, true);
-        exploder.transform.position = Exploder2DUtils.GetCentroid(gameObject);
-        exploder.Radius = 1f;
-        exploder.Explode();
         startedExploding = true;
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+        Destroy(gameObject.GetComponent<CircleCollider2D>());
+        if (quick)
+        {
+            StartCoroutine(ShrinkingStar(0.1f));
+        }
+        else
+        {
+            StartCoroutine(ShrinkingStar(0.01f));
+        }
+    }
+
+    IEnumerator ShrinkingStar(float shrinkingSpeed)
+    {
+        while (startedExploding)
+        {
+            transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(0.01f, 0.01f), shrinkingSpeed);
+            if(transform.localScale.x < 0.05f || transform.localScale.y < 0.05f)
+            {
+                Destroy(gameObject);
+            }
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     void UpdateFigureNumber()

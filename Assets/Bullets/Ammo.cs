@@ -12,9 +12,13 @@ public class Ammo : MonoBehaviour
     [SerializeField] Text neededAmmoText;
 
     float currentAmmo;
+    Portal portal;
+    Level level;
 
     void Start ()
     {
+        portal = FindObjectOfType<Portal>();
+        level = FindObjectOfType<Level>();
         currentAmmo = startingAmmo;
         UpdateAmmo();
         AddColors(currentAmmoText);
@@ -25,6 +29,7 @@ public class Ammo : MonoBehaviour
     {
         currentAmmo += amount;
         UpdateAmmo();
+        CheckForFullAmmo();
     }
 
     void UpdateAmmo()
@@ -75,5 +80,15 @@ public class Ammo : MonoBehaviour
     public float GetAmmoPercantage()
     {
         return currentAmmo / bulletsNeeded;
+    }
+
+    void CheckForFullAmmo()
+    {
+        if(currentAmmo >= bulletsNeeded)
+        {
+            portal.SpawnAtRandomPosition();
+            currentAmmo = startingAmmo;
+            level.NextLevel();
+        }
     }
 }

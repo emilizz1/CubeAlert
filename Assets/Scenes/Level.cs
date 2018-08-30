@@ -13,4 +13,10 @@ public class Level : MonoBehaviour
         text = GetComponent<Text>();
         text.text = " Level " + currenLevel.ToString();
 	}
+
+    public void NextLevel()
+    {
+        currenLevel++;
+        text.text = " Level " + currenLevel.ToString();
+    }
 }

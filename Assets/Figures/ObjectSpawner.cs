@@ -39,7 +39,7 @@ public class ObjectSpawner : MonoBehaviour
             myObject.transform.parent = transform;
             myObject.transform.position = new Vector2(Random.Range(minStartingPosX, maxStartingPosX), Random.Range(minStartingPosY, maxStartingPosY));
             myObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(minThrowForce_x, maxThrowForce_x), Random.Range(minThrowForce_y, maxThrowForce_y)), ForceMode2D.Impulse);
-            yield return new WaitForSecondsRealtime(Random.Range(maxSpawnTime, maxSpawnTime));
+            yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
         }
     }
 

@@ -181,10 +181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2443ceefb30daa4f841eff44aa5c436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullets: []
-  spawnLocation: {fileID: 4479050036261442}
-  fireRate: 0.25
-  throwForce: {x: 1.9, y: 0}
+  explosionForce: 10
+  explosionRadius: 5
 --- !u!212 &212462337761019986
 SpriteRenderer:
   m_ObjectHideFlags: 1

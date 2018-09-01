@@ -887,6 +887,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 724740957}
   m_CullTransparentMesh: 0
+--- !u!1001 &784658477
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4890000535974358, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890000535974358, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890000535974358, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890000535974358, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890000535974358, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890000535974358, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890000535974358, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4890000535974358, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!224 &808800303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1406,6 +1448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1522709649}
+  - component: {fileID: 1522709650}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Untagged
@@ -1429,6 +1472,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1522709650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1522709648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b170632a3fda9442a95cc5258efc65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockets:
+  - {fileID: 1165326566634262, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+  minSpawnTime: 0.3
+  maxSpawnTime: 0.5
 --- !u!43 &1534280171
 Mesh:
   m_ObjectHideFlags: 0

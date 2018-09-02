@@ -8,11 +8,15 @@ public class Portal : MonoBehaviour
 {
     Ammo ammo;
     Vector3 pos;
+    LifePoints lifePoints;
+    ParticleSystem ps;
 
     void Start()
     {
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
         ammo = FindObjectOfType<Ammo>();
+        lifePoints = FindObjectOfType<LifePoints>();
+        ps = GetComponentInChildren<ParticleSystem>();
         CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
         circleCollider.radius = 3.2f;
         SpawnAtRandomPosition();
@@ -31,6 +35,13 @@ public class Portal : MonoBehaviour
             StartCoroutine(AbsorbingFigure(figure));
             ammo.AddAmmo(figure.GetBulletAmount());
             figure.DestroyFigure(false);
+        }
+        else if (collision.gameObject.GetComponent<Rocket>())
+        {
+            lifePoints.RemoveLife();
+            ps.transform.position = collision.contacts[0].point;
+            ps.Play();
+            Destroy(collision.gameObject);
         }
         else
         {
@@ -63,9 +74,9 @@ public class Portal : MonoBehaviour
     public void SpawnAtRandomPosition()
     {
         float minX = pos.x * 0.3f;
-        float maxX = pos.x * 0.7f;
+        float maxX = pos.x * -0.7f;
         float minY = pos.y * 0.3f;
-        float maxY = pos.y * 0.7f;
+        float maxY = pos.y * -0.7f;
         transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
 }

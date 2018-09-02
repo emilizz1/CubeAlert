@@ -8,6 +8,7 @@ public class Rocket : MonoBehaviour
 
     Portal portal;
     Rigidbody2D rb;
+    ParticleSystem ps;
 
     bool working = true;
 
@@ -15,6 +16,7 @@ public class Rocket : MonoBehaviour
     {
         portal = FindObjectOfType<Portal>();
         rb = GetComponent<Rigidbody2D>();
+        ps = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
@@ -30,5 +32,11 @@ public class Rocket : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
             rb.AddForce(targ * flightSpeed, ForceMode2D.Force);
         }
+    }
+
+    public void StopWorking()
+    {
+        working = false;
+        ps.gameObject.SetActive(false);
     }
 }

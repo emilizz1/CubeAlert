@@ -35,8 +35,7 @@ public class HeadShooter : MonoBehaviour
                 Rigidbody2D rb = rocket.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.AddForce((rb.transform.position - transform.position) * explosionForce, ForceMode2D.Impulse);
-                    rocket.StopWorking();
+                    rocket.RocketHit();
                 }
             }
         }

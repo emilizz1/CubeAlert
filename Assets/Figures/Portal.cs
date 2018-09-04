@@ -9,14 +9,12 @@ public class Portal : MonoBehaviour
     Ammo ammo;
     Vector3 pos;
     LifePoints lifePoints;
-    ParticleSystem ps;
 
     void Start()
     {
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
         ammo = FindObjectOfType<Ammo>();
         lifePoints = FindObjectOfType<LifePoints>();
-        ps = GetComponentInChildren<ParticleSystem>();
         CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
         circleCollider.radius = 3.2f;
         SpawnAtRandomPosition();
@@ -39,9 +37,7 @@ public class Portal : MonoBehaviour
         else if (collision.gameObject.GetComponent<Rocket>())
         {
             lifePoints.RemoveLife();
-            ps.transform.position = collision.contacts[0].point;
-            ps.Play();
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Rocket>().RocketHit();
         }
         else
         {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     [SerializeField] float flightSpeed;
+    [SerializeField] GameObject explosion;
 
     Portal portal;
     Rigidbody2D rb;
@@ -34,9 +35,9 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    public void StopWorking()
+    public void RocketHit()
     {
-        working = false;
-        ps.gameObject.SetActive(false);
+        Instantiate(explosion, transform.position, Quaternion.identity, gameObject.transform.parent);
+        Destroy(gameObject);
     }
 }

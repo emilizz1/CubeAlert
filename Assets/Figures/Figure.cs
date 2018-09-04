@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Figure : MonoBehaviour
 {
+    [SerializeField] int minBulletAmount =3;
+    [SerializeField] int maxBulletAmount =12;
+
     bool startedExploding = false;
     bool beenHit = false;
     float rotationSpeed;
@@ -14,7 +17,7 @@ public class Figure : MonoBehaviour
     void Start()
     {
         rotationSpeed = Random.Range(-40, 40f);
-        bulletAmount = Random.Range(3, 15);
+        bulletAmount = Random.Range(minBulletAmount, maxBulletAmount);
         figureNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
     }
 

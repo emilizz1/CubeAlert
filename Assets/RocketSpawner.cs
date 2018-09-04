@@ -7,6 +7,7 @@ public class RocketSpawner : MonoBehaviour
     [SerializeField] GameObject[] rockets;
     [SerializeField] float minSpawnTime;
     [SerializeField] float maxSpawnTime;
+    [SerializeField] float minDistanceToPortal;
 
     Vector2 pos;
     Portal portal;
@@ -27,6 +28,7 @@ public class RocketSpawner : MonoBehaviour
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
             GameObject rocketToSpawn = rockets[Random.Range(0, rockets.Length)];
             GameObject myObject = Instantiate(rocketToSpawn, GetRocketSpawnPos(), Quaternion.identity, transform);
+            CheckIfItsInPortalsBlindSpot(myObject);
         }
     }
 
@@ -41,5 +43,13 @@ public class RocketSpawner : MonoBehaviour
             rocketPos = rocketPos * 1.1f;
         }
         return rocketPos;
+    }
+
+    void CheckIfItsInPortalsBlindSpot(GameObject rocket)
+    {
+        if(Vector2.Distance(rocket.transform.position, portal.transform.position) < minDistanceToPortal)
+        {
+            Destroy(rocket);
+        }
     }
 }

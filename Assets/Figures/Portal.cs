@@ -6,9 +6,13 @@ using DreamStarGen.Algorithms;
 
 public class Portal : MonoBehaviour
 {
+    [SerializeField] float moveSpeed;
+    [SerializeField] float minDistance;
+
     Ammo ammo;
     Vector3 pos;
     LifePoints lifePoints;
+    Vector3 targetPos;
 
     void Start()
     {
@@ -17,11 +21,16 @@ public class Portal : MonoBehaviour
         lifePoints = FindObjectOfType<LifePoints>();
         CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
         circleCollider.radius = 3.2f;
-        SpawnAtRandomPosition();
+        GetNewTargetPos();
     }
 
     void Update()
     {
+        transform.position =  Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
+        if(Vector3.Distance(transform.position, targetPos) < minDistance)
+        {
+            GetNewTargetPos();
+        }
         UpdateSizeFromAmmo();
     }
 
@@ -67,12 +76,12 @@ public class Portal : MonoBehaviour
         transform.localScale = new Vector2(currentSize, currentSize);
     }
 
-    public void SpawnAtRandomPosition()
+    public void GetNewTargetPos()
     {
         float minX = pos.x * 0.3f;
         float maxX = pos.x * -0.7f;
         float minY = pos.y * 0.3f;
         float maxY = pos.y * -0.7f;
-        transform.position = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        targetPos = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
 }

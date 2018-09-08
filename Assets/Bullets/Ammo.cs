@@ -86,9 +86,7 @@ public class Ammo : MonoBehaviour
     {
         if(currentAmmo >= bulletsNeeded)
         {
-            portal.SpawnAtRandomPosition();
-            currentAmmo = startingAmmo;
-            level.NextLevel();
+            print("Full Ammo");
         }
     }
 }

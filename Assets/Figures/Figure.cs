@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DreamStarGen.Algorithms;
 
 public class Figure : MonoBehaviour
 {
     [SerializeField] int minBulletAmount =3;
     [SerializeField] int maxBulletAmount =12;
+    [Range(0.1f, 1f)] [SerializeField] float starRadiusIncrease = 0.3f;
 
     bool startedExploding = false;
     bool beenHit = false;
     float rotationSpeed;
     int bulletAmount;
     GameObject figureNumber;
+    DreamStarGen.DreamStarGenerator star;
 
     void Start()
     {
         rotationSpeed = Random.Range(-40, 40f);
         bulletAmount = Random.Range(minBulletAmount, maxBulletAmount);
         figureNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
+        star=GetComponent<DreamStarGen.DreamStarGenerator>();
     }
 
     void Update()
@@ -26,7 +30,7 @@ public class Figure : MonoBehaviour
         if (!beenHit && gameObject != null)
         {
             transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
-            UpdateFigureNumber();
+            UpdateFigureLifes();
         }
         else if (bulletAmount <= 0 && !startedExploding)
         {
@@ -34,7 +38,7 @@ public class Figure : MonoBehaviour
         }
         if (!startedExploding && gameObject != null)
         {
-            UpdateFigureNumber();
+            UpdateFigureLifes();
         }
     }
 
@@ -67,8 +71,10 @@ public class Figure : MonoBehaviour
         }
     }
 
-    void UpdateFigureNumber()
+    void UpdateFigureLifes()
     {
+            star.Radius = (bulletAmount * starRadiusIncrease) + starRadiusIncrease;
+        star.Width = star.Radius;
         if (figureNumber != null)
         {
             figureNumber.transform.position = transform.position;
@@ -92,4 +98,6 @@ public class Figure : MonoBehaviour
         beenHit = true;
         bulletAmount--;
     }
+
+
 }

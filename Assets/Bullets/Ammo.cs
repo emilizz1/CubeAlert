@@ -8,6 +8,7 @@ public class Ammo : MonoBehaviour
 {
     [SerializeField] float startingAmmo = 50;
     [SerializeField] float bulletsNeeded = 250;
+    [SerializeField] float levelBulletAmount = 350f;
     [SerializeField] Text currentAmmoText;
     [SerializeField] Text neededAmmoText;
 
@@ -87,6 +88,19 @@ public class Ammo : MonoBehaviour
         if(currentAmmo >= bulletsNeeded)
         {
             print("Full Ammo");
+        }
+    }
+
+    public bool IsThereLevelAmmo(int amount)
+    {
+        if(levelBulletAmount - amount >= 0)
+        {
+            levelBulletAmount -= amount;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

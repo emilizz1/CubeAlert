@@ -6,8 +6,6 @@ using DreamStarGen.Algorithms;
 
 public class Figure : MonoBehaviour
 {
-    [SerializeField] int minBulletAmount =3;
-    [SerializeField] int maxBulletAmount =12;
     [Range(0.1f, 1f)] [SerializeField] float starRadiusIncrease = 0.3f;
 
     bool startedExploding = false;
@@ -20,8 +18,6 @@ public class Figure : MonoBehaviour
     void Start()
     {
         rotationSpeed = Random.Range(-40, 40f);
-        bulletAmount = Random.Range(minBulletAmount, maxBulletAmount);
-        figureNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
         star=GetComponent<DreamStarGen.DreamStarGenerator>();
     }
 
@@ -73,7 +69,7 @@ public class Figure : MonoBehaviour
 
     void UpdateFigureLifes()
     {
-            star.Radius = (bulletAmount * starRadiusIncrease) + starRadiusIncrease;
+        star.Radius = (bulletAmount * starRadiusIncrease) + starRadiusIncrease;
         star.Width = star.Radius;
         if (figureNumber != null)
         {
@@ -99,5 +95,9 @@ public class Figure : MonoBehaviour
         bulletAmount--;
     }
 
-
+    public void GiveBulletsAndNumber(int bullets, GameObject number)
+    {
+        bulletAmount = bullets;
+        figureNumber = number;
+    }
 }

@@ -17,29 +17,38 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] float maxStartingPosX;
     [SerializeField] float minStartingPosY;
     [SerializeField] float maxStartingPosY;
-    
+    [SerializeField] int minBulletAmount = 3;
+    [SerializeField] int maxBulletAmount = 12;
+
     bool playing = true;
+    Ammo ammo;
 
 	void Start ()
     {
         StartCoroutine(SpawnObjects());
         var pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
+        ammo = FindObjectOfType<Ammo>();
     }
 
     IEnumerator SpawnObjects()
     {
         while (playing)
         {
-            
-            GameObject myObject = Instantiate(objectToThrow) as GameObject;
-            var shape = GenerateStar( myObject.GetComponent<DreamStarGen.DreamStarGenerator>());
-            myObject.GetComponent<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
-            shape._GenerateStar();
-            myObject.GetComponent<CircleCollider2D>().radius = shape.Radius;
-            myObject.transform.parent = transform;
-            myObject.transform.position = new Vector2(Random.Range(minStartingPosX, maxStartingPosX), Random.Range(minStartingPosY, maxStartingPosY));
-            myObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(minThrowForce_x, maxThrowForce_x), Random.Range(minThrowForce_y, maxThrowForce_y)), ForceMode2D.Impulse);
-            yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
+            int bulletAmount = Random.Range(minBulletAmount, maxBulletAmount);
+            if (ammo.IsThereLevelAmmo(bulletAmount))
+            {
+                GameObject myObject = Instantiate(objectToThrow) as GameObject;
+                var shape = GenerateStar(myObject.GetComponent<DreamStarGen.DreamStarGenerator>());
+                myObject.GetComponent<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
+                shape._GenerateStar();
+                myObject.GetComponent<CircleCollider2D>().radius = shape.Radius;
+                myObject.transform.parent = transform;
+                myObject.transform.position = new Vector2(Random.Range(minStartingPosX, maxStartingPosX), Random.Range(minStartingPosY, maxStartingPosY));
+                myObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(minThrowForce_x, maxThrowForce_x), Random.Range(minThrowForce_y, maxThrowForce_y)), ForceMode2D.Impulse);
+                GameObject figureNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
+                myObject.GetComponent<Figure>().GiveBulletsAndNumber(bulletAmount, figureNumber);
+                yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
+            }
         }
     }
 

@@ -7,28 +7,35 @@ using UnityEngine.SceneManagement;
 public class LifePoints : MonoBehaviour
 {
     [SerializeField] int startingLife = 3;
-    [SerializeField] Image[] hearts;
     
     int currentLife;
     CameraShaker cameraShaker;
+    GameObject lifeNumber;
+    Text lifeNumberText;
 
     void Start()
     {
         cameraShaker = FindObjectOfType<CameraShaker>();
         currentLife = startingLife;
-        UpdateHearts();
+        lifeNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
+        lifeNumberText = lifeNumber.GetComponent<Text>();
+        lifeNumberText.color = Color.white;
+    }
+
+    void Update()
+    {
+        UpdateLife();
     }
 
     public void AddLife()
     {
         currentLife++;
-        UpdateHearts();
     }
 
     public void RemoveLife()
     {
         currentLife--;
-        UpdateHearts();
+        UpdateLife();
         cameraShaker.AddShakeDuration(1f);
         if (currentLife <= 0)
         {
@@ -36,18 +43,9 @@ public class LifePoints : MonoBehaviour
         }
     }
 
-    void UpdateHearts()
+    void UpdateLife()
     {
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if(i < currentLife)
-            {
-                hearts[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                hearts[i].gameObject.SetActive(false);
-            }
-        }
+        lifeNumberText.text = currentLife.ToString();
+        lifeNumber.transform.position = transform.position;
     }
 }

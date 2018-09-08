@@ -25,9 +25,10 @@ public class ObjectSpawner : MonoBehaviour
 
 	void Start ()
     {
-        StartCoroutine(SpawnObjects());
+        
         var pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
         ammo = FindObjectOfType<Ammo>();
+        StartCoroutine(SpawnObjects());
     }
 
     IEnumerator SpawnObjects()

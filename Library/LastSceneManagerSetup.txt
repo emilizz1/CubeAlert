@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ImportedAssets/Hyperbit Arsenal/Demo/Scenes/demo3.unity
+- path: Assets/Scenes/_MainGame.unity
   isLoaded: 1
   isActive: 1

@@ -40,4 +40,12 @@ public class Rocket : MonoBehaviour
         Instantiate(explosion, transform.position, Quaternion.identity, gameObject.transform.parent);
         Destroy(gameObject);
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Figure>())
+        {
+            collision.gameObject.GetComponent<Figure>().RemoveAmmo();
+        }
+    }
 }

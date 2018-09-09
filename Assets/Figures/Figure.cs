@@ -7,6 +7,7 @@ using DreamStarGen.Algorithms;
 public class Figure : MonoBehaviour
 {
     [Range(0.1f, 1f)] [SerializeField] float starRadiusIncrease = 0.3f;
+    [SerializeField] float loopingTimer = 1f;
 
     bool startedExploding = false;
     bool beenHit = false;
@@ -14,6 +15,7 @@ public class Figure : MonoBehaviour
     int bulletAmount;
     GameObject figureNumber;
     DreamStarGen.DreamStarGenerator star;
+    float lastTimeLooped = 0f;
 
     void Start()
     {
@@ -99,5 +101,18 @@ public class Figure : MonoBehaviour
     {
         bulletAmount = bullets;
         figureNumber = number;
+    }
+
+    public bool ShouldItLoop()
+    {
+        if(Time.time - lastTimeLooped >= loopingTimer)
+        {
+            lastTimeLooped = Time.time;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

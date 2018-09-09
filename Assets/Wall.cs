@@ -12,13 +12,16 @@ public class Wall : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
-        else
+        else if(other.gameObject.GetComponent<Figure>())
         {
-            print("happened");
-            var pos = other.gameObject.transform.position;
-            pos = pos * multipliyier;
-            other.gameObject.transform.position = pos;
+            
+            if (other.gameObject.GetComponent<Figure>().ShouldItLoop())
+            {
+                
+                var pos = other.gameObject.transform.position;
+                pos = pos * multipliyier;
+                other.gameObject.transform.position = pos;
+            }
         }
     }
-
 }

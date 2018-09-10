@@ -17,7 +17,6 @@ public class Wall : MonoBehaviour
             
             if (other.gameObject.GetComponent<Figure>().ShouldItLoop())
             {
-                
                 var pos = other.gameObject.transform.position;
                 pos = pos * multipliyier;
                 other.gameObject.transform.position = pos;

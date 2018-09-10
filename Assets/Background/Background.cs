@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    [SerializeField] float scrollSpeed;
-    [SerializeField] float tileSize;
-
-    Vector3 startPosition;
+    [SerializeField] ParticleSystem stars;
+    [SerializeField] Camera mainCamera;
 
 	void Start ()
     {
-        startPosition = transform.position;
+        stars.startColor = GetRandomColor();
+        mainCamera.backgroundColor = new Color(Random.Range(0.17f, 0.33f), Random.Range(0.17f, 0.33f), Random.Range(0.17f, 0.33f));
 	}
-	
 
-	void Update ()
+    Color GetRandomColor()
     {
-        float newPosition = Mathf.Repeat(Time.time * scrollSpeed, tileSize);
-        transform.position = startPosition + Vector3.up * newPosition;
-        
-	}
+        switch (Random.Range(0, 7))
+        {
+            case (0):
+                return Color.blue;
+            case (1):
+                return Color.cyan;
+            case (2):
+                return Color.gray;
+            case (3):
+                return Color.green;
+            case (4):
+                return Color.magenta;
+            case (5):
+                return Color.red;
+            case (6):
+                return Color.white;
+            case (7):
+                return Color.yellow;
+        }
+        return Color.black;
+    }
 }

@@ -40,7 +40,6 @@ public class Portal : MonoBehaviour
         {
             var figure = collision.gameObject.GetComponent<Figure>();
             StartCoroutine(AbsorbingFigure(figure));
-            ammo.AddAmmo(figure.GetBulletAmount());
             figure.DestroyFigure(false);
         }
         else if (collision.gameObject.GetComponent<Rocket>())
@@ -62,6 +61,7 @@ public class Portal : MonoBehaviour
             figure.transform.localPosition = Vector2.MoveTowards(figure.transform.localPosition, transform.position, 0.5f);
             if(absorbedBullets > 0)
             {
+                print(figure);
                 ammo.AddAmmo(1);
                 absorbedBullets--;
             }

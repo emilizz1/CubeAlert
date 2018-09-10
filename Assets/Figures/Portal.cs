@@ -8,6 +8,7 @@ public class Portal : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
+    
 
     Ammo ammo;
     Vector3 pos;
@@ -42,10 +43,10 @@ public class Portal : MonoBehaviour
             StartCoroutine(AbsorbingFigure(figure));
             figure.DestroyFigure(false);
         }
-        else if (collision.gameObject.GetComponent<Rocket>())
+        else if (collision.gameObject.GetComponent<Comet>())
         {
             lifePoints.RemoveLife();
-            collision.gameObject.GetComponent<Rocket>().RocketHit();
+            collision.gameObject.GetComponent<Comet>().RocketHit();
         }
         else
         {
@@ -61,7 +62,6 @@ public class Portal : MonoBehaviour
             figure.transform.localPosition = Vector2.MoveTowards(figure.transform.localPosition, transform.position, 0.5f);
             if(absorbedBullets > 0)
             {
-                print(figure);
                 ammo.AddAmmo(1);
                 absorbedBullets--;
             }

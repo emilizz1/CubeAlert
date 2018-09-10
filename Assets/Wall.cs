@@ -22,5 +22,15 @@ public class Wall : MonoBehaviour
                 other.gameObject.transform.position = pos;
             }
         }
+        else
+        {
+            if (other.gameObject.GetComponent<Comet>().ShouldItLoop() || other.gameObject.GetComponent<Comet>().DidItPass())
+            {
+                var pos = other.gameObject.transform.position;
+                pos = pos * multipliyier;
+                other.gameObject.transform.position = pos;
+
+            }
+        }
     }
 }

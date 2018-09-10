@@ -165,12 +165,12 @@ GameObject:
   - component: {fileID: 30675864}
   - component: {fileID: 30675865}
   m_Layer: 0
-  m_Name: Rocket Spawner
+  m_Name: Comet Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &30675864
 Transform:
   m_ObjectHideFlags: 0
@@ -195,8 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b170632a3fda9442a95cc5258efc65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rockets:
-  - {fileID: 1165326566634262, guid: 82e5f76eaf777f74aaf625d484db1feb, type: 2}
+  comets:
+  - {fileID: 1863893109375848, guid: 2e1df86b4f497de4bbbf31c317aa7971, type: 2}
   minSpawnTime: 2.5
   maxSpawnTime: 3
   minDistanceToPortal: 45

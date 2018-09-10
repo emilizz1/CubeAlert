@@ -30,7 +30,7 @@ public class HeadShooter : MonoBehaviour
                     figure.RemoveAmmo();
                 }
             }
-            foreach(Rocket rocket in GetRocketsInRange())
+            foreach(Comet rocket in GetRocketsInRange())
             {
                 Rigidbody2D rb = rocket.GetComponent<Rigidbody2D>();
                 if (rb != null)
@@ -54,10 +54,10 @@ public class HeadShooter : MonoBehaviour
         return figures;
     }
 
-    List<Rocket> GetRocketsInRange()
+    List<Comet> GetRocketsInRange()
     {
-        List<Rocket> rockets = new List<Rocket>();
-        foreach (Rocket rocket in FindObjectsOfType<Rocket>())
+        List<Comet> rockets = new List<Comet>();
+        foreach (Comet rocket in FindObjectsOfType<Comet>())
         {
             if (Vector2.Distance(rocket.transform.position, transform.position) <= explosionRadius)
             {

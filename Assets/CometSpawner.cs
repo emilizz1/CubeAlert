@@ -18,21 +18,22 @@ public class CometSpawner : MonoBehaviour
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
         pos = new Vector2(pos.x - 3, pos.y - 3);
         portal = FindObjectOfType<Portal>();
-        StartCoroutine(SpawnRocket());
+        StartCoroutine(SpawnComet());
     }
 
-	IEnumerator SpawnRocket()
+	IEnumerator SpawnComet()
     {
         while (playing)
         {
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
-            GameObject rocketToSpawn = comets[Random.Range(0, comets.Length)];
-            GameObject myObject = Instantiate(rocketToSpawn, GetRocketSpawnPos(), Quaternion.identity, transform);
+            GameObject cometToSpawn = comets[Random.Range(0, comets.Length)];
+            GameObject myObject = Instantiate(cometToSpawn, GetCometSpawnPos(), Quaternion.identity, transform);
+            LookAtPortal(myObject);
             CheckIfItsInPortalsBlindSpot(myObject);
         }
     }
 
-    Vector2 GetRocketSpawnPos()
+    Vector2 GetCometSpawnPos()
     {
         Vector2 rocketPos = new Vector2(Random.Range(-10f,10f), Random.Range(-10f, 10f));
         float trueDistanceToCenter = Vector2.Distance(pos, new Vector2(0f,0f));
@@ -51,5 +52,16 @@ public class CometSpawner : MonoBehaviour
         {
             Destroy(rocket);
         }
+    }
+
+    void LookAtPortal(GameObject myObject)
+    {
+        Vector3 targ = portal.transform.position;
+        Vector3 myPos = myObject.transform.position;
+        targ.z = 0f;
+        targ.x = targ.x - myPos.x;
+        targ.y = targ.y - myPos.y;
+        float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
+        myObject.transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
     }
 }

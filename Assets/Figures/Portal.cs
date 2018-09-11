@@ -9,7 +9,6 @@ public class Portal : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
     
-
     Ammo ammo;
     Vector3 pos;
     LifePoints lifePoints;
@@ -84,4 +83,6 @@ public class Portal : MonoBehaviour
         float maxY = pos.y * -0.7f;
         targetPos = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
+
+
 }

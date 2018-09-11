@@ -25,7 +25,6 @@ public class Comet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ps = GetComponentInChildren<ParticleSystem>();
         flightSpeed = Random.Range(flightSpeedMin, flightSpeedMax);
-        LookAtPortal();
     }
 
     void Update()
@@ -36,18 +35,6 @@ public class Comet : MonoBehaviour
             rb.velocity = new Vector2( Mathf.Clamp(rb.velocity.x, -maxVelocity, maxVelocity), Mathf.Clamp(rb.velocity.y, -maxVelocity, maxVelocity));
             transform.rotation = startRotation;
         }
-    }
-
-    void LookAtPortal()
-    {
-        Vector3 targ = portal.transform.position;
-        Vector3 myPos = transform.position;
-        targ.z = 0f;
-        targ.x = targ.x - myPos.x;
-        targ.y = targ.y - myPos.y;
-        float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
-        startRotation = transform.rotation;
     }
 
     public void RocketHit()
@@ -89,5 +76,10 @@ public class Comet : MonoBehaviour
             itPassed = true;
             return true;
         }
+    }
+
+    public void GiveStartingRotation(Quaternion startingRot)
+    {
+        startRotation = startingRot;
     }
 }

@@ -45,7 +45,7 @@ public class Portal : MonoBehaviour
         else if (collision.gameObject.GetComponent<Comet>())
         {
             lifePoints.RemoveLife();
-            cameraShaker.AddShakeDuration(0.5f);
+            cameraShaker.AddShakeDuration(0.2f);
             collision.gameObject.GetComponent<Comet>().RocketHit();
         }
         else

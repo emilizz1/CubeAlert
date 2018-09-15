@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PortalCometSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] comets;
     [SerializeField] float minSpawnTime;
     [SerializeField] float maxSpawnTime;
     [SerializeField] float startSpeed;
@@ -12,9 +11,11 @@ public class PortalCometSpawner : MonoBehaviour
 
     bool playing = true;
     GameObject myObject;
+    GameObject cometToSpawn;
 
     void Start()
     {
+        cometToSpawn = FindObjectOfType<CometSpawner>().GetCometToSpawn();
         StartCoroutine(SpawnComet());
     }
 
@@ -23,8 +24,11 @@ public class PortalCometSpawner : MonoBehaviour
         while (playing)
         {
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
-            GameObject rocketToSpawn = comets[Random.Range(0, comets.Length)];
-             myObject = Instantiate(rocketToSpawn, GetCometSpawnPos(), Quaternion.identity, transform);
+            if(cometToSpawn == null)
+            {
+                cometToSpawn = FindObjectOfType<CometSpawner>().GetCometToSpawn();
+            }
+             myObject = Instantiate(cometToSpawn, GetCometSpawnPos(), Quaternion.identity, transform);
             LookAwayFromPortal();
             TurnOffCollider();
             myObject.GetComponent<Comet>().DidItPass();
@@ -66,4 +70,6 @@ public class PortalCometSpawner : MonoBehaviour
             myObject.GetComponent<BoxCollider2D>().enabled = true;
         }
     }
+
+
 }

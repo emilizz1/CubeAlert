@@ -145,7 +145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comets:
-  - {fileID: 1863893109375848, guid: 2e1df86b4f497de4bbbf31c317aa7971, type: 2}
+  - {fileID: 1803869496197826, guid: 4bbfc02579e346a4eb9a22b94ebe5e6f, type: 2}
+  - {fileID: 1400010254196230, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+  - {fileID: 1746230545456380, guid: 4fb7a642b18f6e743b6452b2930323c1, type: 2}
+  - {fileID: 1127038371710402, guid: 4144402a92defdb40a3893ff3cdd94f3, type: 2}
+  - {fileID: 1005798705740572, guid: 5165ef5d4593928448c1d6fd62ebaf76, type: 2}
   minSpawnTime: 4
   maxSpawnTime: 8
   startSpeed: 25

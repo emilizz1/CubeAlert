@@ -5,18 +5,29 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
-    int currenLevel = 1;
+    public int currenLevel = 1;
     Text text;
     EndLevelPush endLevelPush;
     PortalSpawner portalSpawner;
     bool nextLevel = false;
-    
-	void Start ()
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Start ()
     {
         text = GetComponent<Text>();
         text.text = " Level " + currenLevel.ToString();
         endLevelPush = FindObjectOfType<EndLevelPush>();
         portalSpawner = FindObjectOfType<PortalSpawner>();
+        UpdateText();
+        CheckCurrentLevel();
+        if (FindObjectsOfType<Level>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
@@ -32,6 +43,7 @@ public class Level : MonoBehaviour
             if (!nextLevel)
             {
                 Invoke("startLoadingNextScene", 3f);
+                currenLevel++;
                 nextLevel = true;
             }
         }
@@ -39,12 +51,27 @@ public class Level : MonoBehaviour
 
     void startLoadingNextScene()
     {
-        FindObjectOfType<LoadScene>().mLoadScene(2);
+        FindObjectOfType<LoadScene>().mLoadScene(0);
     }
 
-    public void NextLevel()
+    public void UpdateText()
     {
-        currenLevel++;
         text.text = " Level " + currenLevel.ToString();
+    }
+
+    void CheckCurrentLevel()
+    {
+        int highiestLevel = 0;
+        foreach(Level level in FindObjectsOfType<Level>())
+        {
+            if(highiestLevel < level.currenLevel)
+            {
+                highiestLevel = level.currenLevel;
+            }
+        }
+        foreach (Level level in FindObjectsOfType<Level>())
+        {
+            level.currenLevel = highiestLevel;
+        }
     }
 }

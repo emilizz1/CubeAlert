@@ -201,8 +201,8 @@ MonoBehaviour:
   - {fileID: 1746230545456380, guid: 4fb7a642b18f6e743b6452b2930323c1, type: 2}
   - {fileID: 1127038371710402, guid: 4144402a92defdb40a3893ff3cdd94f3, type: 2}
   - {fileID: 1005798705740572, guid: 5165ef5d4593928448c1d6fd62ebaf76, type: 2}
-  minSpawnTime: 2.5
-  maxSpawnTime: 3
+  minSpawnTime: 3.5
+  maxSpawnTime: 4.5
   minDistanceToPortal: 45
 --- !u!1 &36276533
 GameObject:
@@ -779,7 +779,91 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!43 &446673064
+--- !u!1 &526501151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 526501153}
+  - component: {fileID: 526501152}
+  m_Layer: 0
+  m_Name: LevelHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &526501152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 526501151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860f8b7b522a3cd48b14ad16645774f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+--- !u!4 &526501153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 526501151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &541743211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1248594970366140, guid: 052be0432aaf1b548bdb8d3cfb02b9f6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1414544620}
+  - component: {fileID: 541743213}
+  - component: {fileID: 541743212}
+  m_Layer: 0
+  m_Name: Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &541743212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 541743211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad73caed8ed48a45929b013ac0c3bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &541743213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114694123510362824, guid: 052be0432aaf1b548bdb8d3cfb02b9f6,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 541743211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2443ceefb30daa4f841eff44aa5c436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionForce: 1
+  explosionRadius: 8
+--- !u!43 &715344285
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -934,49 +1018,6 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
---- !u!1 &541743211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1248594970366140, guid: 052be0432aaf1b548bdb8d3cfb02b9f6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1414544620}
-  - component: {fileID: 541743213}
-  - component: {fileID: 541743212}
-  m_Layer: 0
-  m_Name: Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &541743212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 541743211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad73caed8ed48a45929b013ac0c3bfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &541743213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114694123510362824, guid: 052be0432aaf1b548bdb8d3cfb02b9f6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 541743211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2443ceefb30daa4f841eff44aa5c436, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionForce: 1
-  explosionRadius: 8
 --- !u!1 &780696320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1060,7 @@ MonoBehaviour:
   - {x: -17.5, y: -37.5}
   - {x: 0, y: -37.5}
   numberOfPortalsToSpawn: 2
-  timeBetweenSpawns: 10
+  timeBetweenSpawns: 12
 --- !u!4 &780696322
 Transform:
   m_ObjectHideFlags: 0
@@ -1402,7 +1443,7 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 446673064}
+      objectReference: {fileID: 715344285}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 707042c13f4f10245af1290291c3602e, type: 2}
   m_IsPrefabAsset: 0

@@ -15,7 +15,7 @@ public class LifePoints : MonoBehaviour
 
     void Start()
     {
-        startingLifePoints = Random.Range(minLifePoints, maxLifePoints);
+        startingLifePoints = Random.Range(minLifePoints, maxLifePoints) + 10 * FindObjectOfType<LevelHolder>().currentLevel;
         currentLife = startingLifePoints;
         lifeNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
         lifeNumberText = lifeNumber.GetComponent<Text>();

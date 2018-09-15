@@ -5,29 +5,19 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
-    public int currenLevel = 1;
     Text text;
     EndLevelPush endLevelPush;
     PortalSpawner portalSpawner;
+    LevelHolder levelHolder;
     bool nextLevel = false;
-
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 
     void Start ()
     {
         text = GetComponent<Text>();
-        text.text = " Level " + currenLevel.ToString();
         endLevelPush = FindObjectOfType<EndLevelPush>();
         portalSpawner = FindObjectOfType<PortalSpawner>();
+        levelHolder = FindObjectOfType<LevelHolder>();
         UpdateText();
-        CheckCurrentLevel();
-        if (FindObjectsOfType<Level>().Length > 1)
-        {
-            Destroy(gameObject);
-        }
     }
 
     void Update()
@@ -43,7 +33,7 @@ public class Level : MonoBehaviour
             if (!nextLevel)
             {
                 Invoke("startLoadingNextScene", 3f);
-                currenLevel++;
+                levelHolder.currentLevel++;
                 nextLevel = true;
             }
         }
@@ -56,22 +46,6 @@ public class Level : MonoBehaviour
 
     public void UpdateText()
     {
-        text.text = " Level " + currenLevel.ToString();
-    }
-
-    void CheckCurrentLevel()
-    {
-        int highiestLevel = 0;
-        foreach(Level level in FindObjectsOfType<Level>())
-        {
-            if(highiestLevel < level.currenLevel)
-            {
-                highiestLevel = level.currenLevel;
-            }
-        }
-        foreach (Level level in FindObjectsOfType<Level>())
-        {
-            level.currenLevel = highiestLevel;
-        }
+        text.text = " Level " + levelHolder.currentLevel.ToString();
     }
 }

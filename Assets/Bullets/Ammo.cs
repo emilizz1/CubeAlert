@@ -8,6 +8,11 @@ public class Ammo : MonoBehaviour
 {
     [SerializeField] float levelBulletAmount = 350f;
 
+    private void Start()
+    {
+        levelBulletAmount += 10 * FindObjectOfType<LevelHolder>().currentLevel;
+    }
+
     public bool IsThereLevelAmmo(int amount)
     {
         if(levelBulletAmount - amount >= 0)

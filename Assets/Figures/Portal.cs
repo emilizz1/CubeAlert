@@ -10,6 +10,7 @@ public class Portal : MonoBehaviour
     [SerializeField] float minDistance;
     
     Vector3 pos;
+    CameraShaker cameraShaker;
     LifePoints lifePoints;
     Vector3 targetPos;
 
@@ -18,6 +19,7 @@ public class Portal : MonoBehaviour
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
         lifePoints = FindObjectOfType<LifePoints>();
         CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
+        cameraShaker = FindObjectOfType<CameraShaker>();
         circleCollider.radius = 3.2f;
         GetNewTargetPos();
     }
@@ -43,6 +45,7 @@ public class Portal : MonoBehaviour
         else if (collision.gameObject.GetComponent<Comet>())
         {
             lifePoints.RemoveLife();
+            cameraShaker.AddShakeDuration(0.5f);
             collision.gameObject.GetComponent<Comet>().RocketHit();
         }
         else

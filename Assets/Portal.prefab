@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5257178953d7ee49b11e83ba47a3cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minLifePoints: 50
+  minLifePoints: 60
   maxLifePoints: 80
 --- !u!114 &114989713357701980
 MonoBehaviour:
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comets:
   - {fileID: 1863893109375848, guid: 2e1df86b4f497de4bbbf31c317aa7971, type: 2}
-  minSpawnTime: 2
-  maxSpawnTime: 4
+  minSpawnTime: 4
+  maxSpawnTime: 8
   startSpeed: 25
   distanceFromPortalCenter: 7.5

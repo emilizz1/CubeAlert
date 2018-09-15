@@ -15,13 +15,13 @@ public class Figure : MonoBehaviour
     int bulletAmount;
     DreamStarGen.DreamStarGenerator star;
     float lastTimeLooped = 0f;
-    CircleCollider2D collider;
+    CircleCollider2D myCollider;
 
     void Start()
     {
         rotationSpeed = Random.Range(-40, 40f);
         star=GetComponent<DreamStarGen.DreamStarGenerator>();
-        collider = GetComponent<CircleCollider2D>();
+        myCollider = GetComponent<CircleCollider2D>();
     }
 
     void Update()
@@ -45,7 +45,7 @@ public class Figure : MonoBehaviour
     {
         startedExploding = true;
         Destroy(gameObject.GetComponent<Rigidbody2D>());
-        Destroy(collider);
+        Destroy(myCollider);
         if (quick)
         {
             StartCoroutine(ShrinkingStar(0.1f));
@@ -73,9 +73,9 @@ public class Figure : MonoBehaviour
     {
         star.Radius = (bulletAmount * starRadiusIncrease) + starRadiusIncrease;
         star.Width = star.Radius;
-        if (collider)
+        if (myCollider)
         {
-            collider.radius = star.Radius;
+            myCollider.radius = star.Radius;
         }
     }
 

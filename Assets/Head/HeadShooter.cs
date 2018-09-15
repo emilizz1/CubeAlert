@@ -6,37 +6,32 @@ public class HeadShooter : MonoBehaviour
 {
     [SerializeField] float explosionForce = 10f;
     [SerializeField] float explosionRadius = 5f;
-
-    Ammo ammo;
+    
     ParticleSystem ps;
 
     void Start()
     {
-        ammo = FindObjectOfType<Ammo>();
         ps = GetComponentInChildren<ParticleSystem>();
     }
 
     public void Explode()
     {
-        if (ammo.IsThereAmmo())
+        ps.Play();
+        foreach (Figure figure in GetFiguresInRange())
         {
-            ps.Play();
-            foreach (Figure figure in GetFiguresInRange())
+            Rigidbody2D rb = figure.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                Rigidbody2D rb = figure.GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    rb.AddForce((rb.transform.position - transform.position) * explosionForce, ForceMode2D.Impulse);
-                    figure.RemoveAmmo();
-                }
+                rb.AddForce((rb.transform.position - transform.position) * explosionForce, ForceMode2D.Impulse);
+                figure.RemoveAmmo();
             }
-            foreach(Comet rocket in GetRocketsInRange())
+        }
+        foreach (Comet rocket in GetRocketsInRange())
+        {
+            Rigidbody2D rb = rocket.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                Rigidbody2D rb = rocket.GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    rocket.RocketHit();
-                }
+                rocket.RocketHit();
             }
         }
     }

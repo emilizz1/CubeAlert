@@ -9,10 +9,8 @@ public class Comet : MonoBehaviour
     [SerializeField] float maxVelocity;
     [SerializeField] GameObject explosion;
     [SerializeField] float loopingTimer = 0.5f;
-
-    Portal portal;
+    
     Rigidbody2D rb;
-    ParticleSystem ps;
     Quaternion startRotation;
     float flightSpeed;
     bool itPassed = false;
@@ -21,9 +19,7 @@ public class Comet : MonoBehaviour
 
 	void Start ()
     {
-        portal = FindObjectOfType<Portal>();
         rb = GetComponent<Rigidbody2D>();
-        ps = GetComponentInChildren<ParticleSystem>();
         flightSpeed = Random.Range(flightSpeedMin, flightSpeedMax);
     }
 

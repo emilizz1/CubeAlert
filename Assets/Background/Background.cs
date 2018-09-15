@@ -9,7 +9,8 @@ public class Background : MonoBehaviour
 
 	void Start ()
     {
-        stars.startColor = GetRandomColor();
+        var starPs = stars.main;
+        starPs.startColor = GetRandomColor();
         mainCamera.backgroundColor = new Color(Random.Range(0.17f, 0.33f), Random.Range(0.17f, 0.33f), Random.Range(0.17f, 0.33f));
 	}
 

@@ -10,13 +10,11 @@ public class LifePoints : MonoBehaviour
     
     int currentLife;
     int startingLifePoints;
-    CameraShaker cameraShaker;
     GameObject lifeNumber;
     Text lifeNumberText;
 
     void Start()
     {
-        cameraShaker = FindObjectOfType<CameraShaker>();
         startingLifePoints = Random.Range(minLifePoints, maxLifePoints);
         currentLife = startingLifePoints;
         lifeNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
@@ -38,7 +36,6 @@ public class LifePoints : MonoBehaviour
     {
         currentLife--;
         UpdateLife();
-        //cameraShaker.AddShakeDuration(1f); //think of something else
         if (currentLife <= 0)
         {
             DestroyPortal();

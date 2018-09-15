@@ -13,7 +13,6 @@ public class Figure : MonoBehaviour
     bool beenHit = false;
     float rotationSpeed;
     int bulletAmount;
-    GameObject figureNumber;
     DreamStarGen.DreamStarGenerator star;
     float lastTimeLooped = 0f;
     CircleCollider2D collider;
@@ -44,7 +43,6 @@ public class Figure : MonoBehaviour
 
     public void DestroyFigure(bool quick)
     {
-        DestroyFigureNumber();
         startedExploding = true;
         Destroy(gameObject.GetComponent<Rigidbody2D>());
         Destroy(collider);
@@ -79,17 +77,6 @@ public class Figure : MonoBehaviour
         {
             collider.radius = star.Radius;
         }
-        if (figureNumber != null)
-        {
-            figureNumber.transform.position = transform.position;
-            figureNumber.transform.rotation = transform.rotation;
-            figureNumber.GetComponent<Text>().text = bulletAmount.ToString();
-        }
-    }
-
-    public void DestroyFigureNumber()
-    {
-        Destroy(figureNumber);
     }
 
     public int GetBulletAmount()
@@ -103,10 +90,9 @@ public class Figure : MonoBehaviour
         bulletAmount--;
     }
 
-    public void GiveBulletsAndNumber(int bullets, GameObject number)
+    public void GiveBulletsAmount(int bullets)
     {
         bulletAmount = bullets;
-        figureNumber = number;
     }
 
     public bool ShouldItLoop()

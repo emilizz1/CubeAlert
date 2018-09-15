@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class LifePoints : MonoBehaviour
 {
-    [SerializeField] int startingLife = 3;
+    [SerializeField] int minLifePoints = 10;
+    [SerializeField] int maxLifePoints = 15;
     
     int currentLife;
+    int startingLifePoints;
     CameraShaker cameraShaker;
     GameObject lifeNumber;
     Text lifeNumberText;
@@ -16,7 +17,8 @@ public class LifePoints : MonoBehaviour
     void Start()
     {
         cameraShaker = FindObjectOfType<CameraShaker>();
-        currentLife = startingLife;
+        startingLifePoints = Random.Range(minLifePoints, maxLifePoints);
+        currentLife = startingLifePoints;
         lifeNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
         lifeNumberText = lifeNumber.GetComponent<Text>();
         lifeNumberText.color = Color.white;
@@ -36,10 +38,10 @@ public class LifePoints : MonoBehaviour
     {
         currentLife--;
         UpdateLife();
-        cameraShaker.AddShakeDuration(1f);
+        //cameraShaker.AddShakeDuration(1f); //think of something else
         if (currentLife <= 0)
         {
-            SceneManager.LoadScene(1);
+            DestroyPortal();
         }
     }
 
@@ -47,5 +49,16 @@ public class LifePoints : MonoBehaviour
     {
         lifeNumberText.text = currentLife.ToString();
         lifeNumber.transform.position = transform.position;
+    }
+
+    void DestroyPortal()
+    {
+        Destroy(lifeNumber); //add some kind animation
+        Destroy(gameObject);
+    }
+
+    public float GetLifePercentage()
+    {
+        return currentLife / startingLifePoints;
     }
 }

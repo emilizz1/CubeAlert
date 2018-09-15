@@ -9,7 +9,6 @@ public class Portal : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
     
-    Ammo ammo;
     Vector3 pos;
     LifePoints lifePoints;
     Vector3 targetPos;
@@ -17,7 +16,6 @@ public class Portal : MonoBehaviour
     void Start()
     {
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
-        ammo = FindObjectOfType<Ammo>();
         lifePoints = FindObjectOfType<LifePoints>();
         CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
         circleCollider.radius = 3.2f;
@@ -61,7 +59,7 @@ public class Portal : MonoBehaviour
             figure.transform.localPosition = Vector2.MoveTowards(figure.transform.localPosition, transform.position, 0.5f);
             if(absorbedBullets > 0)
             {
-                ammo.AddAmmo(1);
+                lifePoints.RemoveLife();
                 absorbedBullets--;
             }
             yield return new WaitForFixedUpdate();
@@ -70,8 +68,8 @@ public class Portal : MonoBehaviour
 
     void UpdateSizeFromAmmo()
     {
-        float ammoPer = ammo.GetAmmoPercantage();
-        float currentSize = 1f + (ammoPer * 0.4f);
+        float lifePer = lifePoints.GetLifePercentage();
+        float currentSize = 1f + (lifePer * 0.4f);
         transform.localScale = new Vector2(currentSize, currentSize);
     }
 
@@ -83,6 +81,4 @@ public class Portal : MonoBehaviour
         float maxY = pos.y * -0.7f;
         targetPos = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
     }
-
-
 }

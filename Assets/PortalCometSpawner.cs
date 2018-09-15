@@ -7,8 +7,8 @@ public class PortalCometSpawner : MonoBehaviour
     [SerializeField] GameObject[] comets;
     [SerializeField] float minSpawnTime;
     [SerializeField] float maxSpawnTime;
-    [SerializeField] float timeToColliderToApear;
     [SerializeField] float startSpeed;
+    [SerializeField] float distanceFromPortalCenter = 7.5f; 
 
     bool playing = true;
     GameObject myObject;
@@ -52,12 +52,16 @@ public class PortalCometSpawner : MonoBehaviour
     void TurnOffCollider()
     {
         myObject.GetComponent<BoxCollider2D>().enabled = false;
-        Invoke("TurnOnCollider", timeToColliderToApear);
+        StartCoroutine(TurnOnCollider());
     }
 
-    void TurnOnCollider()
+    IEnumerator TurnOnCollider()
     {
-        if (myObject)
+        while (myObject != null && Vector2.Distance(myObject.transform.position, transform.position) < distanceFromPortalCenter)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        if (myObject != null)
         {
             myObject.GetComponent<BoxCollider2D>().enabled = true;
         }

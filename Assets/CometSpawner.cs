@@ -28,8 +28,15 @@ public class CometSpawner : MonoBehaviour
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
             GameObject cometToSpawn = comets[Random.Range(0, comets.Length)];
             GameObject myObject = Instantiate(cometToSpawn, GetCometSpawnPos(), Quaternion.identity, transform);
-            LookAtPortal(myObject);
-            CheckIfItsInPortalsBlindSpot(myObject);
+            if (portal == null)
+            {
+                portal = FindObjectOfType<Portal>();
+            }
+            else
+            {
+                LookAtPortal(myObject);
+                CheckIfItsInPortalsBlindSpot(myObject);
+            }
         }
     }
 

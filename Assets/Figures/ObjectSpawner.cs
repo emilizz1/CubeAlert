@@ -47,7 +47,7 @@ public class ObjectSpawner : MonoBehaviour
                 myObject.transform.position = new Vector2(Random.Range(minStartingPosX, maxStartingPosX), Random.Range(minStartingPosY, maxStartingPosY));
                 myObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(minThrowForce_x, maxThrowForce_x), Random.Range(minThrowForce_y, maxThrowForce_y)), ForceMode2D.Impulse);
                 GameObject figureNumber = FindObjectOfType<FigureNumbers>().GetFigureNumber();
-                myObject.GetComponent<Figure>().GiveBulletsAndNumber(bulletAmount, figureNumber);
+                myObject.GetComponent<Figure>().GiveBulletsAmount(bulletAmount);
             }
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
         }

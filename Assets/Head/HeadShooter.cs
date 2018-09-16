@@ -23,7 +23,7 @@ public class HeadShooter : MonoBehaviour
             if (rb != null)
             {
                 rb.AddForce((rb.transform.position - transform.position) * explosionForce, ForceMode2D.Impulse);
-                figure.RemoveAmmo();
+                //figure.RemoveAmmo();
             }
         }
         foreach (Comet rocket in GetRocketsInRange())

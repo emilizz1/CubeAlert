@@ -35,6 +35,7 @@ public class Level : MonoBehaviour
                 Invoke("startLoadingNextScene", 3f);
                 levelHolder.currentLevel++;
                 nextLevel = true;
+                FindObjectOfType<Timer>().playing = false;
             }
         }
     }

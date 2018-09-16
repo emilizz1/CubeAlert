@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 50481132564461968}
   - component: {fileID: 61766130392975340}
   - component: {fileID: 114611859333489182}
+  - component: {fileID: 114349657083888706}
   m_Layer: 0
   m_Name: Comet (4)
   m_TagString: Untagged
@@ -180,6 +181,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114349657083888706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005798705740572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a316b504d32bd4c9183d0d3e1cb0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_targetIconOffScreen: {fileID: 21300000, guid: d7e4709fb96f47242a72b948956cff04,
+    type: 3}
+  m_edgeBuffer: 0
+  m_targetIconScale: {x: 0.5, y: 0.5, z: 0.5}
+  PointTarget: 1
 --- !u!114 &114611859333489182
 MonoBehaviour:
   m_ObjectHideFlags: 1

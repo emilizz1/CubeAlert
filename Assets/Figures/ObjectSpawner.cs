@@ -55,36 +55,28 @@ public class ObjectSpawner : MonoBehaviour
         int randomaizer = Random.Range(0, 4);
         switch (randomaizer) {
             case 0:
-                shape.Radius = Random.Range(2f, 3f);
-                shape.Width = Random.Range(0.2f, 4);
                 shape.Density = 4f;
                 shape.a = Random.Range(1f, 44f);
                 break;
             case 1:
-                shape.Radius = Random.Range(2f, 3f);
-                shape.Width = Random.Range(0.2f, 4);
                 shape.Density = 8f;
                 shape.a = Random.Range(1f, 21f);
                 break;
             case 2:
-                shape.Radius = Random.Range(2f, 3f);
-                shape.Width = Random.Range(0.2f, 4);
                 shape.Density = 12f;
                 shape.a = Random.Range(1f, 14f);
                 break;
             case 3:
-                shape.Radius = Random.Range(2f, 3f);
-                shape.Width = Random.Range(0.2f, 4);
                 shape.Density = 16f;
                 shape.a = Random.Range(1f, 10.5f);
                 break;
             case 4:
-                shape.Radius = Random.Range(2f, 3f);
-                shape.Width = Random.Range(0.2f, 4);
                 shape.Density = 20f;
                 shape.a = Random.Range(1f, 8.5f);
                 break;
         }
+        shape.Radius = Random.Range(2f, 3f);
+        shape.Width = Random.Range(0.01f,0.1F); 
         shape.b = 0f;
         shape.c = 0f;
         shape.d = 0f;

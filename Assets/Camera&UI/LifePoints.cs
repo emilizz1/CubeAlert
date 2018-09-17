@@ -58,4 +58,9 @@ public class LifePoints : MonoBehaviour
     {
         return currentLife / startingLifePoints;
     }
+
+    public int GetCurrentLifePoints()
+    {
+        return currentLife;
+    }
 }

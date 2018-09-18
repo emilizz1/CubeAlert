@@ -50,7 +50,7 @@ public class LifePoints : MonoBehaviour
 
     void DestroyPortal()
     {
-        Destroy(lifeNumber); //add some kind animation
+        Destroy(lifeNumber);
         Destroy(gameObject);
     }
 

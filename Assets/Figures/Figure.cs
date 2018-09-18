@@ -20,7 +20,7 @@ public class Figure : MonoBehaviour
     void Start()
     {
         rotationSpeed = Random.Range(-40, 40f);
-        star=GetComponent<DreamStarGen.DreamStarGenerator>();
+        star = GetComponent<DreamStarGen.DreamStarGenerator>();
         myCollider = GetComponent<CircleCollider2D>();
     }
 
@@ -72,7 +72,6 @@ public class Figure : MonoBehaviour
     void UpdateFigureLifes()
     {
         star.Radius = (bulletAmount * starRadiusIncrease) + starRadiusIncrease;
-        star.Width = star.Radius;
         if (myCollider)
         {
             myCollider.radius = star.Radius;

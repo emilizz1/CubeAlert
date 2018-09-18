@@ -13,14 +13,16 @@ public class Portal : MonoBehaviour
     CameraShaker cameraShaker;
     LifePoints lifePoints;
     Vector3 targetPos;
+    DreamStarGen.DreamStarGenerator blackHole;
+    CircleCollider2D circleCollider;
 
     void Start()
     {
+        blackHole = GetComponent<DreamStarGen.DreamStarGenerator>();
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
-        lifePoints = FindObjectOfType<LifePoints>();
-        CircleCollider2D circleCollider = gameObject.AddComponent<CircleCollider2D>();
+        lifePoints = GetComponent<LifePoints>();
+        circleCollider = gameObject.AddComponent<CircleCollider2D>();
         cameraShaker = FindObjectOfType<CameraShaker>();
-        circleCollider.radius = 3.2f;
         GetNewTargetPos();
     }
 
@@ -31,7 +33,7 @@ public class Portal : MonoBehaviour
         {
             GetNewTargetPos();
         }
-        UpdateSizeFromAmmo();
+        UpdateSizeFromLifePoints();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -69,11 +71,12 @@ public class Portal : MonoBehaviour
         }
     }
 
-    void UpdateSizeFromAmmo()
+    void UpdateSizeFromLifePoints()
     {
-        float lifePer = lifePoints.GetLifePercentage();
-        float currentSize = 1f + (lifePer * 0.4f);
-        transform.localScale = new Vector2(currentSize, currentSize);
+        float currentSize = 0.85f + (lifePoints.GetCurrentLifePoints() * 0.04f);
+        circleCollider.radius = 1.35f + (lifePoints.GetCurrentLifePoints() * 0.025f);
+        blackHole.Width = currentSize;
+        blackHole._GenerateStar();
     }
 
     public void GetNewTargetPos()

@@ -17,13 +17,13 @@ public class HeadShooter : MonoBehaviour
     public void Explode()
     {
         ps.Play();
+        FindObjectOfType<TapNumber>().RemoveATap();
         foreach (Figure figure in GetFiguresInRange())
         {
             Rigidbody2D rb = figure.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
                 rb.AddForce((rb.transform.position - transform.position) * explosionForce, ForceMode2D.Impulse);
-                //figure.RemoveAmmo();
             }
         }
         foreach (Comet rocket in GetRocketsInRange())

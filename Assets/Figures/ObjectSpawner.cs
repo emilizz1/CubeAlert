@@ -76,7 +76,7 @@ public class ObjectSpawner : MonoBehaviour
                 break;
         }
         shape.Radius = Random.Range(2f, 3f);
-        shape.Width = Random.Range(0.01f,0.1F); 
+        shape.Width = Random.Range(0.1f,0.5F); 
         shape.b = 0f;
         shape.c = 0f;
         shape.d = 0f;

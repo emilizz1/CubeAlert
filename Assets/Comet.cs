@@ -36,6 +36,7 @@ public class Comet : MonoBehaviour
     public void RocketHit()
     {
         Instantiate(explosion, transform.position, Quaternion.identity, gameObject.transform.parent);
+        Destroy(GetComponent<CometIndicator>().GetIndicator());
         Destroy(gameObject);
     }
 

@@ -6,6 +6,13 @@ public class ObjectCather : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
+        if (collision.GetComponent<Comet>())
+        {
+            collision.GetComponent<Comet>().RocketHit();
+        }
+        else
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

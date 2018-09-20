@@ -109,4 +109,9 @@ public class CometIndicator : MonoBehaviour
         returnVector /= max;
         return returnVector;
     }
+
+    public GameObject GetIndicator()
+    {
+        return m_icon.gameObject;
+    }
 }

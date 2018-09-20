@@ -29,7 +29,6 @@ public class Wall : MonoBehaviour
                 var pos = other.gameObject.transform.position;
                 pos = pos * multipliyier;
                 other.gameObject.transform.position = pos;
-
             }
         }
     }

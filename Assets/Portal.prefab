@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 33809114753911732}
   - component: {fileID: 23429971431810788}
   - component: {fileID: 114350877670385160}
-  - component: {fileID: 114989713357701980}
   - component: {fileID: 114553398902333090}
   m_Layer: 0
   m_Name: Portal
@@ -133,24 +132,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minLifePoints: 60
   maxLifePoints: 80
---- !u!114 &114989713357701980
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1053254741833924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d260f2ad58319a94ea2f152cbed84ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comets:
-  - {fileID: 1803869496197826, guid: 4bbfc02579e346a4eb9a22b94ebe5e6f, type: 2}
-  - {fileID: 1400010254196230, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
-  - {fileID: 1746230545456380, guid: 4fb7a642b18f6e743b6452b2930323c1, type: 2}
-  - {fileID: 1127038371710402, guid: 4144402a92defdb40a3893ff3cdd94f3, type: 2}
-  - {fileID: 1005798705740572, guid: 5165ef5d4593928448c1d6fd62ebaf76, type: 2}
-  minSpawnTime: 4
-  maxSpawnTime: 8
-  startSpeed: 25
-  distanceFromPortalCenter: 7.5

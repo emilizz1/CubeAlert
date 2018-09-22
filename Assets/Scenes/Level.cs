@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
-    Text text;
     EndLevelPush endLevelPush;
     PortalSpawner portalSpawner;
     LevelHolder levelHolder;
@@ -13,7 +12,6 @@ public class Level : MonoBehaviour
 
     void Start ()
     {
-        text = GetComponent<Text>();
         endLevelPush = FindObjectOfType<EndLevelPush>();
         portalSpawner = FindObjectOfType<PortalSpawner>();
         levelHolder = FindObjectOfType<LevelHolder>();
@@ -27,7 +25,7 @@ public class Level : MonoBehaviour
 
     void CheckIfLevelEnded()
     {
-        if (portalSpawner.GetSpawningFinished() && FindObjectsOfType<Portal>().Length <= 0)
+        if (portalSpawner.GetSpawningFinished() && FindObjectsOfType<BlackHole>().Length <= 0)
         {
             endLevelPush.Explode();
             if (!nextLevel)
@@ -45,8 +43,8 @@ public class Level : MonoBehaviour
         FindObjectOfType<LoadScene>().mLoadScene(0);
     }
 
-    public void UpdateText()
+    void UpdateText()
     {
-        text.text = " Level " + levelHolder.currentLevel.ToString();
+        GetComponent<Text>().text = " Level " + levelHolder.currentLevel.ToString();
     }
 }

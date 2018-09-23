@@ -22,6 +22,7 @@ public class TapNumber : MonoBehaviour
         UpdateText();
         if (numberOfTaps <= 0)
         {
+            print("Out of Taps");
             FindObjectOfType<LoadScene>().mLoadScene(1);
         }
     }

@@ -30,6 +30,7 @@ public class Ammo : MonoBehaviour
         }
         if(currentlyHaving < currentlyNeeded)
         {
+            print("Cant fill all the blackholes");
             FindObjectOfType<LoadScene>().mLoadScene(1);
         }
     }

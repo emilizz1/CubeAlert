@@ -8,6 +8,7 @@ public class BlackHole : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
+    [SerializeField] DreamStarGen.DreamStarGenerator back;
     
     Vector3 pos;
     CameraShaker cameraShaker;
@@ -76,7 +77,9 @@ public class BlackHole : MonoBehaviour
         float currentSize = 0.85f + (lifePoints.GetCurrentLifePoints() * 0.04f);
         circleCollider.radius = 1.35f + (lifePoints.GetCurrentLifePoints() * 0.025f);
         blackHole.Width = currentSize;
+        back.Width = currentSize + 0.5f;
         blackHole._GenerateStar();
+        back._GenerateStar();
     }
 
     void GetNewTargetPos()

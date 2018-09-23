@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class Level : MonoBehaviour
 {
     EndLevelPush endLevelPush;
-    PortalSpawner portalSpawner;
+    BlackHoleSpawner portalSpawner;
     LevelHolder levelHolder;
     bool nextLevel = false;
 
     void Start ()
     {
         endLevelPush = FindObjectOfType<EndLevelPush>();
-        portalSpawner = FindObjectOfType<PortalSpawner>();
+        portalSpawner = FindObjectOfType<BlackHoleSpawner>();
         levelHolder = FindObjectOfType<LevelHolder>();
         UpdateText();
     }

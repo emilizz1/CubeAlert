@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PortalSpawner : MonoBehaviour
+public class BlackHoleSpawner : MonoBehaviour
 {
     [SerializeField] BlackHole portalPrefab;
     [SerializeField] Vector2[] spawnPositions;

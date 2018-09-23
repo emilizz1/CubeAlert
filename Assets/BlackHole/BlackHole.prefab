@@ -175,7 +175,7 @@ MonoBehaviour:
   Generator: {fileID: 114378876074108356}
   Speed: 0.1
   FrameSkip: 5
-  Change_A: -0.008
+  Change_A: -0.01
   Change_B: 0
   Change_C: 0
   Change_D: 0

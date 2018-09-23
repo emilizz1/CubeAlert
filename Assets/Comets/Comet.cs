@@ -6,7 +6,7 @@ public class Comet : MonoBehaviour
 {
     [SerializeField] float flightSpeedMin;
     [SerializeField] float flightSpeedMax;
-    [SerializeField] float maxVelocity;
+    [SerializeField] float flightSpeed;
     [SerializeField] GameObject explosion;
     [SerializeField] float loopingTimer = 0.5f;
 
@@ -15,13 +15,11 @@ public class Comet : MonoBehaviour
 
     Rigidbody2D rb;
     Quaternion startRotation;
-    float flightSpeed;
     float lastTimeLooped = 0f;
 
 	void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
-        flightSpeed = Random.Range(flightSpeedMin, flightSpeedMax);
     }
 
     void Update()
@@ -29,7 +27,7 @@ public class Comet : MonoBehaviour
         if (working)
         {
             rb.AddForce(transform.up * flightSpeed, ForceMode2D.Force);
-            rb.velocity = new Vector2( Mathf.Clamp(rb.velocity.x, -maxVelocity, maxVelocity), Mathf.Clamp(rb.velocity.y, -maxVelocity, maxVelocity));
+            rb.velocity = new Vector2( Mathf.Clamp(rb.velocity.x, flightSpeedMin, flightSpeedMax), Mathf.Clamp(rb.velocity.y, flightSpeedMin, flightSpeedMax));
             transform.rotation = startRotation;
         }
     }

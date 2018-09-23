@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 885, y: 492}
-  m_MaxSize: {x: 16010, y: 14042}
+  m_MinSize: {x: 887, y: 492}
+  m_MaxSize: {x: 16012, y: 14042}
   vertical: 0
-  controlID: 95
+  controlID: 107
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,10 +130,10 @@ MonoBehaviour:
     y: 0
     width: 1524
     height: 947
-  m_MinSize: {x: 608, y: 492}
-  m_MaxSize: {x: 12008, y: 14042}
+  m_MinSize: {x: 610, y: 492}
+  m_MaxSize: {x: 12010, y: 14042}
   vertical: 1
-  controlID: 96
+  controlID: 108
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -155,10 +155,10 @@ MonoBehaviour:
     y: 0
     width: 1524
     height: 558
-  m_MinSize: {x: 608, y: 221}
-  m_MaxSize: {x: 12008, y: 4021}
+  m_MinSize: {x: 610, y: 221}
+  m_MaxSize: {x: 12010, y: 4021}
   vertical: 0
-  controlID: 97
+  controlID: 109
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -419,21 +419,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: acd7feff08d9feff96dafeff8adcfeff7cdefeffe6fbffff00000000
+    m_ExpandedIDs: 8c57f9ff9458f9ff7259f9ffe85af9fff05af9ff045bf9ff1c30faffce31faff7c33faff9c35faff9650faffb0a5ffffd6a5ffff8aa9ffffeeabffffa0adfffffaafffff76b4ffffe2b6ffffe6fbffff00000000f867000030680000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: BlackHole Spawner
+      m_OriginalName: BlackHole Spawner
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 26616
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -474,9 +474,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.09784579, y: -1.2441454, z: -0.13476562}
+    m_Target: {x: -10.305882, y: -0.99315, z: 11.0769205}
     speed: 2
-    m_Value: {x: 0.09784579, y: -1.2441454, z: -0.13476562}
+    m_Value: {x: -10.305882, y: -0.99315, z: 11.0769205}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -508,15 +508,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 14.080975
+    m_Target: 38.858692
     speed: 2
-    m_Value: 14.080975
+    m_Value: 38.858692
   m_Ortho:
     m_Target: 1
     speed: 2
     m_Value: 1
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: 0.120127775, y: -0.8748874, z: 0.27813908, w: 0.37786242}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -559,20 +559,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Comets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Comets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\simon_000\Desktop\Unity projects\Cube_Alert
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: bc2a0000
-    m_LastClickedID: 10940
-    m_ExpandedIDs: 00000000bc2a0000bc2b0000be2b0000162c0000de2c0000682f0000d630000018310000e6320000ec330000be34000010350000603500007c370000d6370000fa370000fa380000ea390000083d00000a3d00000c3d00000e3d0000103d0000123d0000143d0000163d0000183d0000f83e0000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: ac410000
+    m_LastClickedID: 16812
+    m_ExpandedIDs: 00000000bc2a0000c82c0000022e0000343100007e310000b2310000943200004634000072380000ac3900002e3a0000c63d0000383e00003c400000e2440000e4440000e6440000e8440000ea440000ec440000ee440000f0440000f2440000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -600,7 +600,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000bc2a0000bc2b0000be2b0000162c0000de2c0000682f0000d630000018310000e6320000ec330000be34000010350000603500007c370000d6370000fa370000fa380000ea390000083d00000a3d00000c3d00000e3d0000103d0000123d0000143d0000163d0000183d0000
+    m_ExpandedIDs: 00000000bc2a00004a2c00004c2c0000c82c0000022e0000b2310000e633000046340000be36000072380000ac3900002e3a00009e3a0000c63d0000203e0000383e0000723e00003c400000b4410000e2440000e4440000e6440000e8440000ea440000ec440000ee440000f0440000f2440000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -631,15 +631,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Comet (0)
-      m_OriginalName: Comet (0)
+      m_Name: Prefabs
+      m_OriginalName: Prefabs
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 12158
+      m_UserData: 12596
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
-  m_DirectoriesAreaWidth: 115
+  m_DirectoriesAreaWidth: 196
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52

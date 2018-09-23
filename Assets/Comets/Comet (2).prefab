@@ -192,9 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a316b504d32bd4c9183d0d3e1cb0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_targetIconOffScreen: {fileID: 21300000, guid: d7e4709fb96f47242a72b948956cff04,
+  m_targetIconOffScreen: {fileID: 21300000, guid: adf7f75450511a44d90157cf10d6e856,
     type: 3}
-  m_edgeBuffer: 0
+  m_edgeBuffer: 20
   m_targetIconScale: {x: 0.5, y: 0.5, z: 0.5}
   PointTarget: 1
 --- !u!114 &114472094398521746

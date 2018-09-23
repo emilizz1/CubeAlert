@@ -29,8 +29,10 @@ public class Timer : MonoBehaviour
             currentTime--;
             timerText.text = currentTime.ToString();
         }
-        print("Out of time");
-        FindObjectOfType<LoadScene>().mLoadScene(1);
+        if (playing)
+        {
+            FindObjectOfType<LoadScene>().mLoadScene(1);
+        }
     }
 
     void AddColor()

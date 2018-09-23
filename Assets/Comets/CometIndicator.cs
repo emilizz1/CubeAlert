@@ -52,6 +52,7 @@ public class CometIndicator : MonoBehaviour
         m_icon.name = name + ": OTI icon";
         m_iconImage = m_icon.gameObject.AddComponent<Image>();
         m_iconImage.sprite = m_targetIconOffScreen;
+        m_iconImage.color = Color.red;
     }
 
     void UpdateTargetIconPosition()

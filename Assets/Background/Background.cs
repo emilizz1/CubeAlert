@@ -7,12 +7,34 @@ public class Background : MonoBehaviour
     [SerializeField] ParticleSystem stars;
     [SerializeField] Camera mainCamera;
 
+    bool playing = true;
+
 	void Start ()
     {
-        var starPs = stars.main;
-        starPs.startColor = GetRandomColor();
-        mainCamera.backgroundColor = new Color(Random.Range(0.17f, 0.33f), Random.Range(0.17f, 0.33f), Random.Range(0.17f, 0.33f));
+
+        StartCoroutine(ChangingColors());
+        mainCamera.backgroundColor = new Color(Random.Range(0.1f, 0.15f), Random.Range(0.1f, 0.15f), Random.Range(0.1f, 0.15f));
 	}
+
+    IEnumerator ChangingColors()
+    {
+        var starPs = stars.main;
+        float combining = 0f;
+        Color startingColor = GetRandomColor();
+        Color endingColor = GetRandomColor();
+        while (playing)
+        {
+            if(combining == 1f)
+            {
+                startingColor = endingColor;
+                endingColor = GetRandomColor();
+                combining = 0f;
+            }
+            starPs.startColor = Color.Lerp(startingColor, endingColor, combining);
+            combining += 0.02f;
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
 
     Color GetRandomColor()
     {

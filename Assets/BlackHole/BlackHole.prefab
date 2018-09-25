@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23429971431810788}
   - component: {fileID: 114350877670385160}
   - component: {fileID: 114553398902333090}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlackHole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 33810582151977056}
   - component: {fileID: 114378876074108356}
   - component: {fileID: 114281555738225558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlackHole Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}

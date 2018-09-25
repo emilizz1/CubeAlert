@@ -15,7 +15,7 @@ public class LifePoints : MonoBehaviour
     void Start()
     {
         currentLife = Random.Range(minLifePoints, maxLifePoints) + 10 * FindObjectOfType<LevelHolder>().currentLevel;
-        lifeNumber = FindObjectOfType<ObjectNumber>().GetFigureNumber();
+        lifeNumber = FindObjectOfType<BlackholeNumber>().GetNumber();
         lifeNumberText = lifeNumber.GetComponent<Text>();
         lifeNumberText.color = Color.white;
     }
@@ -25,9 +25,9 @@ public class LifePoints : MonoBehaviour
         UpdateLife();
     }
 
-    public void RemoveLife()
+    public void RemoveLife(int amount = 1)
     {
-        currentLife--;
+        currentLife -= amount;
         UpdateLife();
         if (currentLife <= 0)
         {
@@ -51,6 +51,4 @@ public class LifePoints : MonoBehaviour
         Destroy(lifeNumber);
         Destroy(gameObject);
     }
-
-    
 }

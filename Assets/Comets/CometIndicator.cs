@@ -37,7 +37,7 @@ public class CometIndicator : MonoBehaviour
         var allCanvas = FindObjectsOfType<Canvas>();
         foreach(Canvas canvas in allCanvas)
         {
-            if (!canvas.GetComponent<ObjectNumber>())
+            if (!canvas.GetComponent<BlackholeNumber>())
             {
                 mainCanvas = canvas; 
             }

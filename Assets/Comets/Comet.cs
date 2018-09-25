@@ -69,13 +69,4 @@ public class Comet : MonoBehaviour
     {
         startRotation = startingRot;
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<Star>())
-        {
-            collision.gameObject.GetComponent<Star>().RemoveAmmo();
-        }
-        startRotation = transform.rotation;
-    }
 }

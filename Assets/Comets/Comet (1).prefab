@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4250519305182134}
   - component: {fileID: 198092014775970904}
   - component: {fileID: 199761360908648758}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BigGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 61383494287089124}
   - component: {fileID: 114108618101876706}
   - component: {fileID: 114345215991760584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Comet (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 198579846354637432}
   - component: {fileID: 199317597433949686}
   - component: {fileID: 96055306574493838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4912228772057636}
   - component: {fileID: 108632773314219396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 4649716024904100}
   - component: {fileID: 198265797284445710}
   - component: {fileID: 199901830964661416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SphereMissileGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}

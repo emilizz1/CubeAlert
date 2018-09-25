@@ -16,6 +16,7 @@ public class BlackHole : MonoBehaviour
     Vector3 targetPos;
     DreamStarGen.DreamStarGenerator blackHole;
     CircleCollider2D circleCollider;
+    BlackholeDamageNumber damageNumber;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class BlackHole : MonoBehaviour
         lifePoints = GetComponent<LifePoints>();
         circleCollider = gameObject.AddComponent<CircleCollider2D>();
         cameraShaker = FindObjectOfType<CameraShaker>();
+        damageNumber = FindObjectOfType<BlackholeDamageNumber>();
         GetNewTargetPos();
     }
 
@@ -47,7 +49,9 @@ public class BlackHole : MonoBehaviour
         }
         else if (collision.gameObject.GetComponent<Comet>())
         {
-            lifePoints.RemoveLife();
+            GameObject numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
+            numberInstance.GetComponent<Text>().text = "1";
+            lifePoints.RemoveLife(-1);
             cameraShaker.AddShakeDuration(0.2f);
             collision.gameObject.GetComponent<Comet>().RocketHit();
         }

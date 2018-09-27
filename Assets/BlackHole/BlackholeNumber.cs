@@ -9,6 +9,8 @@ public class BlackholeNumber : MonoBehaviour
 
     public GameObject GetNumber()
     {
-        return Instantiate(text, new Vector3(100f,100f,100f), Quaternion.identity, transform);
+        GameObject number= Instantiate(text, new Vector3(100f, 100f, 100f), Quaternion.identity, transform);
+        number.GetComponent<Text>().color = Color.black;
+        return number;
     }
 }

@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -106,10 +106,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 887, y: 492}
-  m_MaxSize: {x: 16012, y: 14042}
+  m_MinSize: {x: 885, y: 492}
+  m_MaxSize: {x: 16010, y: 14042}
   vertical: 0
-  controlID: 130
+  controlID: 46
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 492}
   m_MaxSize: {x: 12010, y: 14042}
   vertical: 1
-  controlID: 131
+  controlID: 47
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 221}
   m_MaxSize: {x: 12010, y: 4021}
   vertical: 0
-  controlID: 132
+  controlID: 48
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,8 +202,8 @@ MonoBehaviour:
     y: 0
     width: 804
     height: 558
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -279,8 +279,8 @@ MonoBehaviour:
     y: 0
     width: 396
     height: 947
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -417,20 +417,20 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e0fbffff
-    m_LastClickedID: -1056
-    m_ExpandedIDs: 1ee8fcff4ee8fcff7ee8fcffaee8fcffdee8fcff0ee9fcff3ee9fcff6ee9fcff9ee9fcffcee9fcff08eafcff42eafcff7ceafcffb6eafcfff0eafcff28ebfcff60ebfcff98ebfcffd0ebfcff08ecfcffe0fbffffe6fbffff00000000
+    m_SelectedIDs: 90310000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 0017fefffa1afeff2a1efeff1e21feffba3dfeffbc3dfeffe6fbffff00000000aa420000b84200002e43000078430000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: BlackHole Numbers
-      m_OriginalName: BlackHole Numbers
+      m_Name: 'Comet (6)(Clone): OTI icon'
+      m_OriginalName: 'Comet (6)(Clone): OTI icon'
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -1056
+      m_UserData: -166362
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -469,14 +469,14 @@ MonoBehaviour:
     height: 537
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 998.9187622918415
+  lastFramingTime: 2738.1782306947102
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -7.407554, y: 7.202664, z: -0.15234375}
+    m_Target: {x: -3.6476808, y: 2.541518, z: 3.941088}
     speed: 2
-    m_Value: {x: -7.407554, y: 7.202664, z: -0.15234375}
+    m_Value: {x: -3.6476808, y: 2.541518, z: 3.941088}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -508,9 +508,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 29.966873
+    m_Target: 14.815054
     speed: 2
-    m_Value: 29.966873
+    m_Value: 14.815054
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -559,20 +559,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/BlackHole
+    - Assets/Comets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/BlackHole
+  - Assets/Comets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\simon_000\Desktop\Unity projects\Cube_Alert
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: b2380000
-    m_LastClickedID: 14514
-    m_ExpandedIDs: 00000000c02a0000502c0000cc2c0000062e00003831000082310000b6310000983200004a34000076380000b0390000a03a0000ca3d00003e4000001c4500001e45000020450000224500002445000026450000284500002a4500002c4500002e45000030450000
+    m_SelectedIDs: fe410000
+    m_LastClickedID: 16894
+    m_ExpandedIDs: 00000000c02a0000542c0000d02c0000122e0000443100008e310000c6310000a8320000663400009e380000d8390000c83a0000fe3d0000824000000e49000010490000124900001449000016490000184900001a4900001c4900001e4900002049000022490000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -600,7 +600,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c02a0000502c0000cc2c0000062e000082310000b6310000983200004a34000076380000b0390000ca3d00003e4000001c4500001e45000020450000224500002445000026450000284500002a4500002c4500002e45000030450000
+    m_ExpandedIDs: 00000000c02a0000542c0000d02c0000122e0000443100008e310000c6310000a8320000663400009e380000d8390000c83a0000fe3d0000824000000e49000010490000124900001449000016490000184900001a4900001c4900001e4900002049000022490000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -631,18 +631,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Hyperbit Arsenal
-      m_OriginalName: Hyperbit Arsenal
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 14768
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:

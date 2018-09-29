@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ammo : MonoBehaviour
 {
     [SerializeField] int levelBulletAmount = 350;
 
+    Image image;
+    float maxPortalAmmo = 0;
+
     void Start()
     {
         levelBulletAmount += 10 * FindObjectOfType<LevelHolder>().currentLevel;
+        image = GetComponent<Image>();
     }
 
     void Update()
@@ -28,9 +33,9 @@ public class Ammo : MonoBehaviour
         {
             currentlyHaving += figure.GetBulletAmount();
         }
-        if(currentlyHaving < currentlyNeeded)
+        UpdateImage(currentlyNeeded);
+        if (currentlyHaving < currentlyNeeded)
         {
-            print("Cant fill all the blackholes");
             FindObjectOfType<LoadScene>().mLoadScene(1);
         }
     }
@@ -46,5 +51,17 @@ public class Ammo : MonoBehaviour
         {
             return false;
         }
+    }
+   
+    void UpdateImage(float needed)
+    {
+        float fillAmount =  needed / maxPortalAmmo;
+        image.fillAmount = Mathf.Lerp(0,1, fillAmount);
+        image.color = Color.Lerp(Color.green, Color.red, image.fillAmount);
+    }
+
+    public void AddMaxPortalAmmo(int amount)
+    {
+        maxPortalAmmo += amount;
     }
 }

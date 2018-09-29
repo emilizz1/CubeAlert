@@ -381,7 +381,7 @@ MonoBehaviour:
   flightSpeedMax: 18
   flightSpeed: 8
   explosion: {fileID: 1092724130698248, guid: fd69a047b273e7046aa3bf790bbf9cc8, type: 2}
-  loopingTimer: 0.5
+  loopingTimer: 0.35
 --- !u!198 &198627460624623946
 ParticleSystem:
   m_ObjectHideFlags: 1

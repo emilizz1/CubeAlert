@@ -45,6 +45,6 @@ public class Level : MonoBehaviour
 
     void UpdateText()
     {
-        GetComponent<Text>().text = " Level " + levelHolder.currentLevel.ToString();
+        GetComponent<Text>().text = levelHolder.currentLevel.ToString();
     }
 }

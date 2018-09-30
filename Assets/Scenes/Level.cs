@@ -27,7 +27,7 @@ public class Level : MonoBehaviour
     {
         if (portalSpawner.GetSpawningFinished() && FindObjectsOfType<BlackHole>().Length <= 0)
         {
-            endLevelPush.Explode();
+            FindObjectOfType<EndLevelFlash>().EndLevel();
             if (!nextLevel)
             {
                 Invoke("startLoadingNextScene", 3f);

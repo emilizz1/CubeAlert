@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
-    EndLevelPush endLevelPush;
     BlackHoleSpawner portalSpawner;
     LevelHolder levelHolder;
     bool nextLevel = false;
 
     void Start ()
     {
-        endLevelPush = FindObjectOfType<EndLevelPush>();
         portalSpawner = FindObjectOfType<BlackHoleSpawner>();
         levelHolder = FindObjectOfType<LevelHolder>();
         UpdateText();

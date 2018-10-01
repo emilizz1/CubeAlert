@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Comet : MonoBehaviour
 {
-    [SerializeField] float flightSpeedMin;
     [SerializeField] float flightSpeedMax;
     [SerializeField] float flightSpeed;
     [SerializeField] GameObject explosion;
@@ -26,8 +25,8 @@ public class Comet : MonoBehaviour
     {
         if (working)
         {
-            rb.AddForce(transform.up * flightSpeed, ForceMode2D.Force);
-            rb.velocity = new Vector2( Mathf.Clamp(rb.velocity.x, flightSpeedMin, flightSpeedMax), Mathf.Clamp(rb.velocity.y, flightSpeedMin, flightSpeedMax));
+            print(transform.up + "   " + Time.deltaTime + "   " + flightSpeed + "    " + transform.up * Time.deltaTime * flightSpeed);
+            rb.AddForce(transform.up * Time.deltaTime * flightSpeed);
             transform.rotation = startRotation;
         }
     }

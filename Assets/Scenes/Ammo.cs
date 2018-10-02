@@ -55,9 +55,9 @@ public class Ammo : MonoBehaviour
    
     void UpdateImage(float needed)
     {
-        float fillAmount =  needed / maxPortalAmmo;
+        float fillAmount = 1 - needed / maxPortalAmmo;
         image.fillAmount = Mathf.Lerp(0,1, fillAmount);
-        image.color = Color.Lerp(Color.green, Color.red, image.fillAmount);
+        image.color = Color.Lerp(Color.red, Color.green, image.fillAmount);
     }
 
     public void AddMaxPortalAmmo(int amount)

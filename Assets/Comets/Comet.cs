@@ -25,8 +25,8 @@ public class Comet : MonoBehaviour
     {
         if (working)
         {
-            print(transform.up + "   " + Time.deltaTime + "   " + flightSpeed + "    " + transform.up * Time.deltaTime * flightSpeed);
-            rb.AddForce(transform.up * Time.deltaTime * flightSpeed);
+            rb.AddForce(transform.up * Time.deltaTime * flightSpeed, ForceMode2D.Impulse);
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -flightSpeedMax, flightSpeedMax), Mathf.Clamp(rb.velocity.y, -flightSpeedMax, flightSpeedMax));
             transform.rotation = startRotation;
         }
     }

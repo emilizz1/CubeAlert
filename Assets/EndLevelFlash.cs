@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EndLevelFlash : MonoBehaviour
 {
+    [SerializeField] float transitionSpeed = 1f;
+
 	public void EndLevel()
     {
-        GetComponent<CanvasGroup>().alpha = 1f;
+        GetComponent<CanvasGroup>().alpha += Time.deltaTime * transitionSpeed;
     }
 }

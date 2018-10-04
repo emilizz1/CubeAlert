@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
         currentTime += Time.deltaTime;
         float fillingNeeded = currentTime / playingTime;
         image.fillAmount = Mathf.Lerp(0, 1, fillingNeeded);
-
+        image.color = Color.Lerp(Color.green, Color.red, image.fillAmount);
         if (currentTime >= playingTime && playing)
         {
             FindObjectOfType<LoadScene>().mLoadScene(1);

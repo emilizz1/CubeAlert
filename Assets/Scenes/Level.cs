@@ -28,6 +28,7 @@ public class Level : MonoBehaviour
             FindObjectOfType<EndLevelFlash>().EndLevel();
             if (!nextLevel)
             {
+                FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
                 Invoke("startLoadingNextScene", 3f);
                 levelHolder.currentLevel++;
                 nextLevel = true;

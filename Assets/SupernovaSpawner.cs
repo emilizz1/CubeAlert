@@ -15,13 +15,8 @@ public class SupernovaSpawner : MonoBehaviour
     void Start ()
     {
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
-
+        StartCoroutine(SpawnSupernova());
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     IEnumerator SpawnSupernova()
     {

@@ -363,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flightSpeedMax: 18
   flightSpeed: 80
-  explosion: {fileID: 1092724130698248, guid: fd69a047b273e7046aa3bf790bbf9cc8, type: 2}
+  explosion: {fileID: 1365048418318128, guid: 2392026d3dc16e44ba8192a11fc45209, type: 2}
   loopingTimer: 0.35
 --- !u!114 &114977979870934822
 MonoBehaviour:

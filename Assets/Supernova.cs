@@ -15,6 +15,7 @@ public class Supernova : MonoBehaviour
 
     [SerializeField] ParticleSystem Range;
     [SerializeField] ParticleSystem supernovaPS;
+    [SerializeField] ParticleSystem supernovaExplosion;
 
     bool playing = true;
     
@@ -82,6 +83,8 @@ public class Supernova : MonoBehaviour
                 StartCoroutine(RemoveStarLife(star));
             }
         }
+        supernovaExplosion.gameObject.SetActive(true);
+        Destroy(supernovaExplosion, supernovaExplosion.main.duration *2f);
         Destroy(supernovaPS);
         Destroy(Range);
         Destroy(gameObject, starLivesToRemove * waitTimeBetweenLifeRemove);

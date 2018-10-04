@@ -18,7 +18,6 @@ public class LifePoints : MonoBehaviour
         FindObjectOfType<Ammo>().AddMaxPortalAmmo(currentLife);
         lifeNumber = FindObjectOfType<BlackholeNumber>().GetNumber(); 
         lifeNumberText = lifeNumber.GetComponent<Text>();
-        lifeNumberText.color = Color.white;
     }
 
     void Update()

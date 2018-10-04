@@ -50,7 +50,7 @@ public class BlackHole : MonoBehaviour
         else if (collision.gameObject.GetComponent<Comet>())
         {
             GameObject numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
-            numberInstance.GetComponent<Text>().text = "1";
+            numberInstance.GetComponent<Text>().text = "+1";
             lifePoints.RemoveLife(-1);
             cameraShaker.AddShakeDuration(0.2f);
             collision.gameObject.GetComponent<Comet>().RocketHit();

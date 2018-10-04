@@ -18,10 +18,12 @@ public class Supernova : MonoBehaviour
     bool playing = true;
 
     ParticleSystem supernovaPS;
+    CircleCollider2D collider;
 
 	void Start ()
     {
         supernovaPS = GetComponentInChildren<ParticleSystem>();
+        collider = GetComponent<CircleCollider2D>();
         SetStartingStats();
 	}
 	
@@ -54,6 +56,7 @@ public class Supernova : MonoBehaviour
         if (Range.transform.localScale.x < maxRadius * 2)
         {
             Range.transform.localScale += new Vector3(expandRate * Time.deltaTime * 8f, expandRate * Time.deltaTime * 8f, 0f);
+            collider.radius = Range.transform.localScale.x / 2f;
         }
     }
 
@@ -65,6 +68,7 @@ public class Supernova : MonoBehaviour
         supernovaSize.constantMin = startingSizeMin;
         supernovaSize.constantMax = startingSizeMax;
         Range.transform.localScale = new Vector3(0f, 0f, 1f);
+        collider.radius = Range.transform.localScale.x / 2f;
     }
 
     void Explode()

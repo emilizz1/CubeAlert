@@ -178,7 +178,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flightSpeedMax: 18
-  flightSpeed: 8
+  flightSpeed: 80
   explosion: {fileID: 1092724130698248, guid: fd69a047b273e7046aa3bf790bbf9cc8, type: 2}
   loopingTimer: 0.35
 --- !u!198 &198343081957013910

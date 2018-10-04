@@ -13,16 +13,15 @@ public class Supernova : MonoBehaviour
     [SerializeField] float startingSizeMin = 0.2f;
     [SerializeField] float startingSizeMax = 0.6f;
 
-    [SerializeField] GameObject Range;
+    [SerializeField] ParticleSystem Range;
+    [SerializeField] ParticleSystem supernovaPS;
 
     bool playing = true;
-
-    ParticleSystem supernovaPS;
+    
     CircleCollider2D collider;
-
+     
 	void Start ()
     {
-        supernovaPS = GetComponentInChildren<ParticleSystem>();
         collider = GetComponent<CircleCollider2D>();
         SetStartingStats();
 	}
@@ -43,6 +42,7 @@ public class Supernova : MonoBehaviour
     void ExpandSupernova()
     {
         var supernovaShape = supernovaPS.shape;
+        var rangeShape = Range.shape;
         supernovaShape.radius += expandRate * Time.deltaTime;
         var supernovaSize = supernovaPS.main.startSize;
         if (supernovaSize.constantMin < startingSizeMin * 10)
@@ -53,22 +53,23 @@ public class Supernova : MonoBehaviour
         {
             supernovaSize.constantMax = startingSizeMax;
         }
-        if (Range.transform.localScale.x < maxRadius * 2)
+        if (rangeShape.radius < maxRadius)
         {
-            Range.transform.localScale += new Vector3(expandRate * Time.deltaTime * 8f, expandRate * Time.deltaTime * 8f, 0f);
-            collider.radius = Range.transform.localScale.x / 2f;
+            rangeShape.radius += expandRate * Time.deltaTime * 8f;
+            collider.radius = rangeShape.radius;
         }
     }
 
     void SetStartingStats()
     {
         var supernovaShape = supernovaPS.shape;
+        var rangeShape = Range.shape;
         supernovaShape.radius = startingRadius;
         var supernovaSize = supernovaPS.main.startSize;
         supernovaSize.constantMin = startingSizeMin;
         supernovaSize.constantMax = startingSizeMax;
-        Range.transform.localScale = new Vector3(0f, 0f, 1f);
-        collider.radius = Range.transform.localScale.x / 2f;
+        rangeShape.radius = 0f;
+        collider.radius = rangeShape.radius;
     }
 
     void Explode()

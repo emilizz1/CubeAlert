@@ -19,7 +19,7 @@ public class DamageNumber : MonoBehaviour
 
     void Update ()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + Vector3.up, speed);
+        transform.localScale += new Vector3((Time.deltaTime * speed),(Time.deltaTime * speed),0f);
         text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - fadingSpeed);
 	}
 }

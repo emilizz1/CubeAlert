@@ -9,7 +9,9 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
     [SerializeField] DreamStarGen.DreamStarGenerator back;
-    
+
+    bool alive = true;
+
     Vector3 pos;
     CameraShaker cameraShaker;
     LifePoints lifePoints;
@@ -31,12 +33,15 @@ public class BlackHole : MonoBehaviour
 
     void Update()
     {
-        transform.position =  Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
-        if(Vector3.Distance(transform.position, targetPos) < minDistance)
+        if (alive)
         {
-            GetNewTargetPos();
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
+            if (Vector3.Distance(transform.position, targetPos) < minDistance)
+            {
+                GetNewTargetPos();
+            }
+            UpdateSizeFromLifePoints();
         }
-        UpdateSizeFromLifePoints();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -93,5 +98,10 @@ public class BlackHole : MonoBehaviour
         float minY = pos.y * 0.3f;
         float maxY = pos.y * -0.7f;
         targetPos = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+    }
+
+    public void BlackholeDied()
+    {
+        alive = false;
     }
 }

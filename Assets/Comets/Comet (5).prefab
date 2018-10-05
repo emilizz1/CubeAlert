@@ -377,8 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43535a4603883274da90572ae0f75dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flightSpeedMax: 18
-  flightSpeed: 80
+  flightSpeedMax: 15
+  flightSpeed: 60
   explosion: {fileID: 1365048418318128, guid: 2392026d3dc16e44ba8192a11fc45209, type: 2}
   loopingTimer: 0.35
 --- !u!198 &198810974229107580

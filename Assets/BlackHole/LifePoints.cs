@@ -7,6 +7,8 @@ public class LifePoints : MonoBehaviour
 {
     [SerializeField] int minLifePoints = 10;
     [SerializeField] int maxLifePoints = 15;
+    [SerializeField] float shrinkingSpeed = 1f;
+    [SerializeField] ParticleSystem blackHoleDeath;
     
     int currentLife;
     GameObject lifeNumber;
@@ -31,7 +33,7 @@ public class LifePoints : MonoBehaviour
         UpdateLife();
         if (currentLife <= 0)
         {
-            DestroyPortal();
+            StartCoroutine(BlackHoleDeath());
         }
     }
 
@@ -46,8 +48,18 @@ public class LifePoints : MonoBehaviour
         lifeNumber.transform.position = transform.position;
     }
 
-    void DestroyPortal()
+    IEnumerator BlackHoleDeath()
     {
+        GetComponent<BlackHole>().BlackholeDied();
+        Destroy(GetComponent<CircleCollider2D>());
+        blackHoleDeath.gameObject.SetActive(true);
+        float timeRemaining = blackHoleDeath.main.duration;
+        while (timeRemaining >= 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            transform.localScale -= new Vector3(shrinkingSpeed * Time.deltaTime, shrinkingSpeed * Time.deltaTime, 0f);
+            yield return new WaitForEndOfFrame();
+        }
         Destroy(lifeNumber);
         Destroy(gameObject);
     }

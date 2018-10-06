@@ -9,6 +9,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
     [SerializeField] DreamStarGen.DreamStarGenerator back;
+    [SerializeField] float extraDistanceForSupernovaCollision = 2.5f;
 
     bool alive = true;
 
@@ -36,7 +37,7 @@ public class BlackHole : MonoBehaviour
         if (alive)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
-            if (Vector3.Distance(transform.position, targetPos) < minDistance)
+            if (Vector3.Distance(transform.position, targetPos) < minDistance || CheckIfCollidingWithSupernova())
             {
                 GetNewTargetPos();
             }
@@ -72,7 +73,7 @@ public class BlackHole : MonoBehaviour
         while (figure)
         {
             figure.transform.localPosition = Vector2.MoveTowards(figure.transform.localPosition, transform.position, 0.5f);
-            if(absorbedBullets > 0)
+            if (absorbedBullets > 0)
             {
                 lifePoints.RemoveLife();
                 absorbedBullets--;
@@ -103,5 +104,21 @@ public class BlackHole : MonoBehaviour
     public void BlackholeDied()
     {
         alive = false;
+    }
+
+    bool CheckIfCollidingWithSupernova()
+    {
+        if (FindObjectOfType<Supernova>())
+        {
+            foreach (Supernova supernova in FindObjectsOfType<Supernova>())
+            {
+                float extraDistance = supernova.GetMaxRadius() + circleCollider.radius + extraDistanceForSupernovaCollision;
+                if (Vector2.Distance(transform.position, supernova.transform.position) - extraDistance  < 0)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -99,5 +99,8 @@ public class Supernova : MonoBehaviour
         }
     }
 
-
+    public float GetMaxRadius()
+    {
+        return maxRadius;
+    }
 }

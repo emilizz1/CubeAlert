@@ -5,55 +5,33 @@ using UnityEngine.UI;
 
 public class TapNumber : MonoBehaviour
 {
-    [SerializeField] int numberOfTaps = 100;
+    [SerializeField] int maxNumberOfTaps = 100;
 
-    Text text;
+    Image image;
+    float numberOfTaps;
 
     void Start()
     {
-        text = GetComponent<Text>();
-        AddColor();
-        UpdateText();
+        image = GetComponent<Image>();
+        numberOfTaps = maxNumberOfTaps;
+        UpdateImage();
+        
     }
 
     public void RemoveATap()
     {
         numberOfTaps--;
-        UpdateText();
+        UpdateImage();
         if (numberOfTaps <= 0)
         {
-            print("Out of Taps");
             FindObjectOfType<LoadScene>().mLoadScene(1);
         }
     }
 
-    void UpdateText()
+    void UpdateImage()
     {
-        text.text = numberOfTaps.ToString();
-    }
-
-    void AddColor()
-    {
-        switch (Random.Range(0, 5))
-        {
-            case (0):
-                text.color = Color.blue;
-                break;
-            case (1):
-                text.color = Color.cyan;
-                break;
-            case (2):
-                text.color = Color.green;
-                break;
-            case (3):
-                text.color = Color.magenta;
-                break;
-            case (4):
-                text.color = Color.red;
-                break;
-            case (5):
-                text.color = Color.yellow;
-                break;
-        }
+        float fillAmount = 1 - numberOfTaps / maxNumberOfTaps;
+        image.fillAmount = Mathf.Lerp(0, 1, fillAmount);
+        image.color = Color.Lerp(Color.green, Color.red , image.fillAmount);
     }
 }

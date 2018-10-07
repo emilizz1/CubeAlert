@@ -40,6 +40,7 @@ public class Comet : MonoBehaviour
 
     public bool ShouldItLoop()
     {
+        StartCoroutine(ResetTrails());
         if (Time.time - lastTimeLooped >= loopingTimer)
         {
             lastTimeLooped = Time.time;
@@ -67,5 +68,13 @@ public class Comet : MonoBehaviour
     public void GiveStartingRotation(Quaternion startingRot)
     {
         startRotation = startingRot;
+    }
+
+    IEnumerator ResetTrails()
+    {
+        var trail = GetComponentInChildren<TrailRenderer>();
+        trail.enabled = false;
+        yield return new WaitForSecondsRealtime(0.15f);
+        trail.enabled = true;
     }
 }

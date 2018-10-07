@@ -16,7 +16,7 @@ public class CometSpawner : MonoBehaviour
     void Start()
     {
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
-        pos = new Vector2(pos.x - 0.5f, pos.y - 0.5f);
+        pos = new Vector2(pos.x - 4f, pos.y - 4f);
         cometToSpawn = comets[Random.Range(0, comets.Length)];
         StartCoroutine(SpawnComet());
     }

@@ -8,6 +8,7 @@ public class Star : MonoBehaviour
 {
     [Range(0.1f, 1f)] [SerializeField] float starRadiusIncrease = 0.3f;
     [SerializeField] float loopingTimer = 1f;
+    [SerializeField] GameObject[] centerParticles;
 
     bool startedExploding = false;
     bool beenHit = false;
@@ -23,6 +24,7 @@ public class Star : MonoBehaviour
         rotationSpeed = Random.Range(-40, 40f);
         star = GetComponent<DreamStarGen.DreamStarGenerator>();
         myCollider = GetComponent<CircleCollider2D>();
+        Instantiate(centerParticles[Random.Range(0, centerParticles.Length)], transform.position, Quaternion.identity, transform);
     }
 
     void Update()

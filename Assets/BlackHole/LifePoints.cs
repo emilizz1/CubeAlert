@@ -9,6 +9,8 @@ public class LifePoints : MonoBehaviour
     [SerializeField] int maxLifePoints = 15;
     [SerializeField] float shrinkingSpeed = 1f;
     [SerializeField] ParticleSystem blackHoleDeath;
+
+    bool alive = true;
     
     int currentLife;
     GameObject lifeNumber;
@@ -24,7 +26,7 @@ public class LifePoints : MonoBehaviour
 
     void Update()
     {
-        UpdateLife();
+            UpdateLife();
     }
 
     public void RemoveLife(int amount = 1)
@@ -33,6 +35,8 @@ public class LifePoints : MonoBehaviour
         UpdateLife();
         if (currentLife <= 0)
         {
+            alive = false;
+            Destroy(lifeNumber);
             StartCoroutine(BlackHoleDeath());
         }
     }
@@ -44,8 +48,11 @@ public class LifePoints : MonoBehaviour
 
     void UpdateLife()
     {
-        lifeNumberText.text = currentLife.ToString();
-        lifeNumber.transform.position = transform.position;
+        if (alive)
+        {
+            lifeNumberText.text = currentLife.ToString();
+            lifeNumber.transform.position = transform.position;
+        }
     }
 
     IEnumerator BlackHoleDeath()
@@ -60,7 +67,6 @@ public class LifePoints : MonoBehaviour
             transform.localScale -= new Vector3(shrinkingSpeed * Time.deltaTime, shrinkingSpeed * Time.deltaTime, 0f);
             yield return new WaitForEndOfFrame();
         }
-        Destroy(lifeNumber);
         Destroy(gameObject);
     }
 }

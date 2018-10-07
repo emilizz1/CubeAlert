@@ -37,12 +37,16 @@ public class BlackHole : MonoBehaviour
     {
         if (alive)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
-            if (Vector3.Distance(transform.position, targetPos) < minDistance || CheckIfCollidingWithSupernova())
+
+            if (!CheckIfCollidingWithSupernova())
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
+            }
+            if (Vector3.Distance(transform.position, targetPos) < minDistance)
             {
                 GetNewTargetPos();
             }
-            UpdateSizeFromLifePoints();
+                UpdateSizeFromLifePoints();
         }
     }
 

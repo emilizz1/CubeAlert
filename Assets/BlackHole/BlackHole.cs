@@ -10,6 +10,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float minDistance;
     [SerializeField] DreamStarGen.DreamStarGenerator back;
     [SerializeField] float extraDistanceForSupernovaCollision = 2.5f;
+    [SerializeField] ParticleSystem absorbingStar;
 
     bool alive = true;
 
@@ -49,6 +50,7 @@ public class BlackHole : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
+            var figurePS = Instantiate(absorbingStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
             var figure = collision.gameObject.GetComponent<Star>();
             StartCoroutine(AbsorbingFigure(figure));
             figure.DestroyFigure(false);
@@ -59,7 +61,7 @@ public class BlackHole : MonoBehaviour
             numberInstance.GetComponent<Text>().text = "+1";
             lifePoints.RemoveLife(-1);
             cameraShaker.AddShakeDuration(0.2f);
-            collision.gameObject.GetComponent<Comet>().RocketHit();
+            collision.gameObject.GetComponent<Comet>().CometHitBlackhole();
         }
         else
         {

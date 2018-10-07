@@ -8,7 +8,7 @@ public class ObjectCather : MonoBehaviour
     {
         if (collision.GetComponent<Comet>())
         {
-            collision.GetComponent<Comet>().RocketHit();
+            collision.GetComponent<Comet>().CometHit();
         }
         else
         {

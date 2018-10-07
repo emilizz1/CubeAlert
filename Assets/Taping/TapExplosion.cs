@@ -41,7 +41,7 @@ public class TapExplosion : MonoBehaviour
             Rigidbody2D rb = rocket.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rocket.RocketHit();
+                rocket.CometHit();
             }
         }
     }

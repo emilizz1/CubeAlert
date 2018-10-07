@@ -233,6 +233,8 @@ MonoBehaviour:
   Range: {fileID: 198526741352296724}
   supernovaPS: {fileID: 198236698425150482}
   supernovaExplosion: {fileID: 198676257807412340}
+  supernovaHitFigure: {fileID: 198607089230865036, guid: 2265deedb1cd1d14b8ed99d387efe920,
+    type: 2}
 --- !u!198 &198123768889604078
 ParticleSystem:
   m_ObjectHideFlags: 1

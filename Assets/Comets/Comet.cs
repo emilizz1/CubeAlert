@@ -6,7 +6,8 @@ public class Comet : MonoBehaviour
 {
     [SerializeField] float flightSpeedMax;
     [SerializeField] float flightSpeed;
-    [SerializeField] GameObject explosion;
+    [SerializeField] GameObject explosionOnHit;
+    [SerializeField] GameObject explosionOnHitWithBlackhole;
     [SerializeField] float loopingTimer = 0.5f;
 
     bool working = true;
@@ -31,9 +32,16 @@ public class Comet : MonoBehaviour
         }
     }
 
-    public void RocketHit()
+    public void CometHit()
     {
-        Instantiate(explosion, transform.position, Quaternion.identity, gameObject.transform.parent);
+        Instantiate(explosionOnHit, transform.position, Quaternion.identity, gameObject.transform.parent);
+        Destroy(GetComponent<CometIndicator>().GetIndicator());
+        Destroy(gameObject);
+    }
+
+    public void CometHitBlackhole()
+    {
+        Instantiate(explosionOnHitWithBlackhole, transform.position, Quaternion.identity, gameObject.transform.parent);
         Destroy(GetComponent<CometIndicator>().GetIndicator());
         Destroy(gameObject);
     }

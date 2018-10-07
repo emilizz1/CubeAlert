@@ -16,6 +16,7 @@ public class Supernova : MonoBehaviour
     [SerializeField] ParticleSystem Range;
     [SerializeField] ParticleSystem supernovaPS;
     [SerializeField] ParticleSystem supernovaExplosion;
+    [SerializeField] ParticleSystem supernovaHitFigure;
 
     bool playing = true;
     
@@ -80,6 +81,7 @@ public class Supernova : MonoBehaviour
         {
             if(Vector2.Distance(star.transform.position, transform.position) <= maxRadius)
             {
+                Instantiate(supernovaHitFigure, star.transform.position, Quaternion.identity, star.transform);
                 StartCoroutine(RemoveStarLife(star));
             }
         }

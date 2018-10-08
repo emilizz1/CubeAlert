@@ -9,7 +9,6 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
     [SerializeField] DreamStarGen.DreamStarGenerator back;
-    [SerializeField] float extraDistanceForSupernovaCollision = 2.5f;
     [SerializeField] ParticleSystem absorbingStar;
 
     bool alive = true;
@@ -118,7 +117,7 @@ public class BlackHole : MonoBehaviour
         {
             foreach (Supernova supernova in FindObjectsOfType<Supernova>())
             {
-                float extraDistance = supernova.GetMaxRadius() + circleCollider.radius + extraDistanceForSupernovaCollision;
+                float extraDistance = supernova.GetMaxRadius() + circleCollider.radius;
                 if (Vector2.Distance(transform.position, supernova.transform.position) - extraDistance  < 0)
                 {
                     return true;

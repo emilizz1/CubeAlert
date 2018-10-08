@@ -18,14 +18,13 @@ public class Star : MonoBehaviour
     DreamStarGen.DreamStarGenerator star;
     float lastTimeLooped = 0f;
     CircleCollider2D myCollider;
-    GameObject myCenterParticles;
 
     void Start()
     {
         rotationSpeed = Random.Range(-40, 40f);
         star = GetComponent<DreamStarGen.DreamStarGenerator>();
         myCollider = GetComponent<CircleCollider2D>();
-        myCenterParticles = Instantiate(centerParticles[Random.Range(0, centerParticles.Length)], transform.position, Quaternion.identity, transform);
+        Instantiate(centerParticles[Random.Range(0, centerParticles.Length)], transform.position, Quaternion.identity, transform);
         AddSizeToCenterParticles(bulletAmount);
     }
 
@@ -115,12 +114,10 @@ public class Star : MonoBehaviour
 
     void AddSizeToCenterParticles(int times)
     {
-        var particles = myCenterParticles.GetComponent<ParticleSystem>().main.startSize;
-        particles.constantMin += particles.constantMin * 0.15f * times;
-        particles.constantMax += particles.constantMax * 0.15f * times;
-
-        var particleChildParticles = myCenterParticles.GetComponentInChildren<ParticleSystem>().main.startSize;
-        particleChildParticles.constantMin += particleChildParticles.constantMin * 0.15f * times;
-        particleChildParticles.constantMax += particleChildParticles.constantMax * 0.15f * times;
+        foreach (ParticleSystem particle in GetComponentsInChildren<ParticleSystem>())
+        {
+            var particles = particle.main;
+            particles.startSizeMultiplier = particles.startSize.constantMax * 0.75f * times;
+        }
     }
 }

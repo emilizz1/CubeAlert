@@ -6,13 +6,6 @@ public class TapExplosion : MonoBehaviour
 {
     [SerializeField] float explosionForce = 10f;
     [SerializeField] float explosionRadius = 5f;
-    
-    ParticleSystem ps;
-
-    void Start()
-    {
-        ps = GetComponentInChildren<ParticleSystem>();
-    }
 
     void Update()
     {
@@ -26,7 +19,6 @@ public class TapExplosion : MonoBehaviour
 
     void Explode()
     {
-        ps.Play();
         FindObjectOfType<TapNumber>().RemoveATap();
         foreach (Star figure in GetFiguresInRange())
         {

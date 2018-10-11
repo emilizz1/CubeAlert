@@ -2261,6 +2261,7 @@ GameObject:
   - component: {fileID: 1785185925}
   - component: {fileID: 1785185924}
   - component: {fileID: 1785185929}
+  - component: {fileID: 1785185930}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2356,6 +2357,44 @@ MonoBehaviour:
   shakeDuration: 0
   shakeAmount: 0.7
   decreaseFactor: 1
+--- !u!114 &1785185930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1785185923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f1dd661bcfdd545a528bef2d29a613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Mat:
+  - {fileID: 2100000, guid: 044d601d51494904dbd8bf2777e533aa, type: 2}
+  - {fileID: 2100000, guid: 8fcf9505bb88fe14caf39bb504923891, type: 2}
+  - {fileID: 2100000, guid: b9678ac539f819441bd9564440935801, type: 2}
+  m_Camera: {fileID: 0}
+  m_RippleType: 2
+  m_RippleMaskName: TransparentFX
+  m_SdrRippleMask: {fileID: 4800000, guid: 686d6989f875f4e49a4085a2a3d2ea62, type: 3}
+  m_EnableMaskObjects: 0
+  m_ShowInternalMaps: 0
+  m_AntiAliasing: 0
+  m_Ripple1:
+    Spread: 0.3
+    Amplitude: 0.8
+    Gap: 0.03
+  m_Ripple2:
+    StrengthInit: 0.03
+    StrengthDecay: 0.0002
+    Spread: 0.3
+    Frequence: 24
+    Velocity: 16
+  m_Ripple3:
+    Frequence: 100
+    Speed: 30
+    Strength: 3
+    WaveWidth: 0.12
+    Spread: 0.9
 --- !u!1 &1847276000
 GameObject:
   m_ObjectHideFlags: 0

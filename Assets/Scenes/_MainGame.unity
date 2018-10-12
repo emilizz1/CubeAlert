@@ -1164,6 +1164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionForce: 1.5
   explosionRadius: 8
+  explosions: []
 --- !u!1 &780696320
 GameObject:
   m_ObjectHideFlags: 0

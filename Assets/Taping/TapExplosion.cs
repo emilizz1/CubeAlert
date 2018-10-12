@@ -6,6 +6,7 @@ public class TapExplosion : MonoBehaviour
 {
     [SerializeField] float explosionForce = 10f;
     [SerializeField] float explosionRadius = 5f;
+    [SerializeField] GameObject[] explosions;
 
     void Update()
     {
@@ -19,6 +20,8 @@ public class TapExplosion : MonoBehaviour
 
     void Explode()
     {
+        GameObject explosion = Instantiate(explosions[Random.Range(0, explosions.Length)], transform.position, Quaternion.identity, transform);
+        Destroy(explosion);
         FindObjectOfType<TapNumber>().RemoveATap();
         foreach (Star figure in GetFiguresInRange())
         {

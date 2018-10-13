@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionForce: 1.5
-  explosionRadius: 8
+  explosionRadius: 7
   explosions:
   - {fileID: 1600119894177758, guid: 0f0685102eedba3478e87c62fb6fe082, type: 2}
   - {fileID: 1893885560865278, guid: 06b8809618f895a4abe38977dc570aff, type: 2}

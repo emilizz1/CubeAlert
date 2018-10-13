@@ -20,7 +20,7 @@ public class TapExplosion : MonoBehaviour
 
     void Explode()
     {
-        GameObject explosion = Instantiate(explosions[Random.Range(0, explosions.Length)], transform.position, Quaternion.identity, transform);
+        GameObject explosion = Instantiate(explosions[Random.Range(0, explosions.Length)], transform.position, Quaternion.identity);
         Destroy(explosion, 1f);
         FindObjectOfType<TapNumber>().RemoveATap();
         foreach (Star figure in GetFiguresInRange())

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ScreenClickRipple : MonoBehaviour
+public class PointRipple : MonoBehaviour
 {
 	public Material[] m_Mat;
 	public Camera m_Camera;
@@ -52,6 +52,8 @@ public class ScreenClickRipple : MonoBehaviour
 	private int m_CurrentRippleClick = 0;
 	private Camera m_RTCam;
 	private RenderTexture m_RTRippleMask;
+
+    Vector3 ripple = Vector3.zero;
 	
 	void Start ()
 	{
@@ -69,6 +71,7 @@ public class ScreenClickRipple : MonoBehaviour
 		m_RTRippleMask = new RenderTexture (Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32);
 		m_RTRippleMask.name = "Ripple Mask";
 	}
+
     void Update ()
 	{
 		if (m_AntiAliasing)
@@ -76,19 +79,20 @@ public class ScreenClickRipple : MonoBehaviour
 		else
 			QualitySettings.antiAliasing = 0;
 
-		if (Input.GetMouseButtonUp (0))
+		if (ripple == Vector3.zero)
 		{
-			float mouseX = Input.mousePosition.x / Screen.width;
-			float mouseY = Input.mousePosition.y / Screen.height;
+			float posX = ripple.x / Screen.width;
+			float posY = ripple.y / Screen.height;
 			if (m_AntiAliasing)
-				mouseY = 1f - mouseY;  // yes, unity build-in AntiAliasing will flip y coordinate, so we have to flip it here.
-			m_RippleClick[m_CurrentRippleClick].MouseX = mouseX;
-			m_RippleClick[m_CurrentRippleClick].MouseY = mouseY;
+				posY = 1f - posY;  // yes, unity build-in AntiAliasing will flip y coordinate, so we have to flip it here.
+			m_RippleClick[m_CurrentRippleClick].MouseX = posX;
+			m_RippleClick[m_CurrentRippleClick].MouseY = posY;
 			m_RippleClick[m_CurrentRippleClick].Progress = 0f;
 			if (ERippleType.Ripple2 == m_RippleType)  // only give it strength when you are playing ripple2
 				m_RippleClick[m_CurrentRippleClick].Strength = m_Ripple2.StrengthInit;
 			m_CurrentRippleClick++;
 			m_CurrentRippleClick = (m_CurrentRippleClick >= 3) ? 0 : m_CurrentRippleClick;
+            ripple = Vector3.zero;
 		}
 			
 		// build ripple mask
@@ -154,4 +158,9 @@ public class ScreenClickRipple : MonoBehaviour
 		if (m_ShowInternalMaps)
 			GUI.DrawTextureWithTexCoords (new Rect (10, 10, 128, 128), m_RTRippleMask, new Rect (0, 0, 1, 1));
 	}
+
+    public void AddRipples(Vector3 position)
+    {
+        ripple = position;
+    }
 }

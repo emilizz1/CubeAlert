@@ -79,17 +79,22 @@ public class PointRipple : MonoBehaviour
 		else
 			QualitySettings.antiAliasing = 0;
 
-		if (ripple == Vector3.zero)
+		if (ripple != Vector3.zero)
 		{
-			float posX = ripple.x / Screen.width;
-			float posY = ripple.y / Screen.height;
-			if (m_AntiAliasing)
-				posY = 1f - posY;  // yes, unity build-in AntiAliasing will flip y coordinate, so we have to flip it here.
+			float posX = ripple.x;
+			float posY = ripple.y;
+            if (m_AntiAliasing)
+            {
+                posY = 1f - posY;  // yes, unity build-in AntiAliasing will flip y coordinate, so we have to flip it here.
+            }
 			m_RippleClick[m_CurrentRippleClick].MouseX = posX;
 			m_RippleClick[m_CurrentRippleClick].MouseY = posY;
 			m_RippleClick[m_CurrentRippleClick].Progress = 0f;
-			if (ERippleType.Ripple2 == m_RippleType)  // only give it strength when you are playing ripple2
-				m_RippleClick[m_CurrentRippleClick].Strength = m_Ripple2.StrengthInit;
+            if (ERippleType.Ripple2 == m_RippleType)  // only give it strength when you are playing ripple2
+            {
+                m_RippleClick[m_CurrentRippleClick].Strength = m_Ripple2.StrengthInit;
+            }
+            print(m_RippleClick[m_CurrentRippleClick].MouseX + "   " + m_RippleClick[m_CurrentRippleClick].MouseY);
 			m_CurrentRippleClick++;
 			m_CurrentRippleClick = (m_CurrentRippleClick >= 3) ? 0 : m_CurrentRippleClick;
             ripple = Vector3.zero;

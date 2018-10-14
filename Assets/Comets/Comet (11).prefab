@@ -430,6 +430,7 @@ MonoBehaviour:
   explosionOnHitWithBlackhole: {fileID: 1794487347442784, guid: 0d8831f6ec1cdb943a12bbe91bd23e40,
     type: 2}
   loopingTimer: 0.35
+  healingToBlackhole: 3
 --- !u!114 &114452423966081836
 MonoBehaviour:
   m_ObjectHideFlags: 1

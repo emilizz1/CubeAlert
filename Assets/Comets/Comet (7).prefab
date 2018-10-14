@@ -236,7 +236,7 @@ Transform:
   m_GameObject: {fileID: 1727865634801680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 8, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4912080008448558}
   - {fileID: 4918147498648006}
@@ -586,6 +586,7 @@ MonoBehaviour:
   explosionOnHitWithBlackhole: {fileID: 1794487347442784, guid: 0d8831f6ec1cdb943a12bbe91bd23e40,
     type: 2}
   loopingTimer: 0.35
+  healingToBlackhole: 2
 --- !u!198 &198273065306214730
 ParticleSystem:
   m_ObjectHideFlags: 1

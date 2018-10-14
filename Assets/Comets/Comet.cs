@@ -9,6 +9,7 @@ public class Comet : MonoBehaviour
     [SerializeField] GameObject explosionOnHit;
     [SerializeField] GameObject explosionOnHitWithBlackhole;
     [SerializeField] float loopingTimer = 0.5f;
+    [SerializeField] int healingToBlackhole = 1; 
 
     bool working = true;
     bool itPassed = false;
@@ -84,5 +85,10 @@ public class Comet : MonoBehaviour
         trail.enabled = false;
         yield return new WaitForSecondsRealtime(0.15f);
         trail.enabled = true;
+    }
+
+    public int GetHealing()
+    {
+        return healingToBlackhole;
     }
 }

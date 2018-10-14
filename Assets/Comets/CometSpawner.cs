@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class CometSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] comets;
+    [SerializeField] GameObject[] cometsSize1;
+    [SerializeField] GameObject[] cometsSize2;
+    [SerializeField] GameObject[] cometsSize3;
+    [SerializeField] GameObject[] cometsSize4;
+    [SerializeField] GameObject[] cometsSize5;
     [SerializeField] float minSpawnTime;
     [SerializeField] float maxSpawnTime;
 
     bool playing = true;
 
+    GameObject[] comets = new GameObject[5];
     Vector2 pos;
-    GameObject cometToSpawn;
 
     void Start()
     {
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
         pos = new Vector2(pos.x - 4f, pos.y - 4f);
-        cometToSpawn = comets[Random.Range(0, comets.Length)];
+        PrepareLevelComets();
         StartCoroutine(SpawnComet());
     }
 
@@ -27,7 +31,7 @@ public class CometSpawner : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
             Vector2 cometSpawnPos = GetCometSpawnPos();
-            GameObject myObject = Instantiate(cometToSpawn, cometSpawnPos, Quaternion.identity, transform);
+            GameObject myObject = Instantiate(comets[Random.Range(0, comets.Length)], cometSpawnPos, Quaternion.identity, transform);
             myObject.GetComponent<Comet>().GiveStartingRotation(LookAtPortal(cometSpawnPos));
         }
     }
@@ -60,5 +64,14 @@ public class CometSpawner : MonoBehaviour
         targ.y = targ.y - myPos.y;
         float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
         return Quaternion.Euler(0f, 0f, angle - 90f);
+    }
+
+    void PrepareLevelComets()
+    {
+        comets[0] = cometsSize1[Random.Range(0, cometsSize1.Length)];
+        comets[1] = cometsSize2[Random.Range(0, cometsSize2.Length)];
+        comets[2] = cometsSize3[Random.Range(0, cometsSize3.Length)];
+        comets[3] = cometsSize4[Random.Range(0, cometsSize4.Length)];
+        comets[4] = cometsSize5[Random.Range(0, cometsSize5.Length)];
     }
 }

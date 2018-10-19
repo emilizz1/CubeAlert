@@ -10,6 +10,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float minDistance;
     [SerializeField] DreamStarGen.DreamStarGenerator back;
     [SerializeField] ParticleSystem absorbingStar;
+    [SerializeField] bool tutorial = false;
 
     bool alive = true;
 
@@ -37,11 +38,11 @@ public class BlackHole : MonoBehaviour
         if (alive)
         {
 
-            if (!CheckIfCollidingWithSupernova())
+            if (!CheckIfCollidingWithSupernova() && !tutorial)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
             }
-            if (Vector3.Distance(transform.position, targetPos) < minDistance)
+            if (Vector3.Distance(transform.position, targetPos) < minDistance && !tutorial)
             {
                 GetNewTargetPos();
             }

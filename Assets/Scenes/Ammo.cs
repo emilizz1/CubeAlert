@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Ammo : MonoBehaviour
 {
     [SerializeField] int levelBulletAmount = 350;
+    [SerializeField] bool tutorial = false;
 
     Image image;
     float maxPortalAmmo = 0;
@@ -56,9 +57,12 @@ public class Ammo : MonoBehaviour
    
     void UpdateImage(float needed)
     {
-        float fillAmount = 1 - needed / maxPortalAmmo;
-        image.fillAmount = Mathf.Lerp(0,1, fillAmount);
-        image.color = Color.Lerp(Color.red, Color.green, image.fillAmount);
+        if (!tutorial)
+        {
+            float fillAmount = 1 - needed / maxPortalAmmo;
+            image.fillAmount = Mathf.Lerp(0, 1, fillAmount);
+            image.color = Color.Lerp(Color.red, Color.green, image.fillAmount);
+        }
     }
 
     public void AddMaxPortalAmmo(int amount)

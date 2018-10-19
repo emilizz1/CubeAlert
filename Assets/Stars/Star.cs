@@ -14,7 +14,7 @@ public class Star : MonoBehaviour
     bool beenHit = false;
 
     float rotationSpeed;
-    int bulletAmount;
+    int bulletAmount = 7;
     DreamStarGen.DreamStarGenerator star;
     float lastTimeLooped = 0f;
     CircleCollider2D myCollider;

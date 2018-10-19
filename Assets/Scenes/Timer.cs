@@ -29,6 +29,7 @@ public class Timer : MonoBehaviour
         image.color = Color.Lerp(Color.green, Color.red, image.fillAmount);
         if (currentTime >= playingTime && playing)
         {
+            FindObjectOfType<LostCondition>().GiveLostCondition("Out of Time");
             FindObjectOfType<LoadScene>().mLoadScene(1);
         }
     }

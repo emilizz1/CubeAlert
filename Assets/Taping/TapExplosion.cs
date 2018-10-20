@@ -27,6 +27,10 @@ public class TapExplosion : MonoBehaviour
         {
             FindObjectOfType<TapNumber>().RemoveATap();
         }
+        else
+        {
+            FindObjectOfType<TutorialGuide>().Tapped();
+        }
         foreach (Star figure in GetFiguresInRange())
         {
             Rigidbody2D rb = figure.GetComponent<Rigidbody2D>();

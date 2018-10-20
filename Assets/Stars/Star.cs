@@ -114,10 +114,13 @@ public class Star : MonoBehaviour
 
     void AddSizeToCenterParticles(int times)
     {
-        foreach (ParticleSystem particle in GetComponentsInChildren<ParticleSystem>())
+        if (gameObject != null)
         {
-            var particles = particle.main;
-            particles.startSizeMultiplier = particles.startSize.constantMax * 0.75f * times;
+            foreach (ParticleSystem particle in GetComponentsInChildren<ParticleSystem>())
+            {
+                var particles = particle.main;
+                particles.startSizeMultiplier = particles.startSize.constantMax * 0.75f * times;
+            }
         }
     }
 }

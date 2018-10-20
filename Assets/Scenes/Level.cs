@@ -28,11 +28,11 @@ public class Level : MonoBehaviour
             FindObjectOfType<EndLevelFlash>().EndLevel();
             if (!nextLevel)
             {
+                FindObjectOfType<Timer>().playing = false;
                 FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
                 Invoke("startLoadingNextScene", 3f);
                 levelHolder.currentLevel++;
                 nextLevel = true;
-                FindObjectOfType<Timer>().playing = false;
             }
         }
     }

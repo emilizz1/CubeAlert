@@ -23,14 +23,17 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        currentTime += Time.deltaTime;
-        float fillingNeeded = currentTime / playingTime;
-        image.fillAmount = Mathf.Lerp(0, 1, fillingNeeded);
-        image.color = Color.Lerp(Color.green, Color.red, image.fillAmount);
-        if (currentTime >= playingTime && playing)
+        if (playing)
         {
-            FindObjectOfType<LostCondition>().GiveLostCondition("Out of Time");
-            FindObjectOfType<LoadScene>().mLoadScene(1);
+            currentTime += Time.deltaTime;
+            float fillingNeeded = currentTime / playingTime;
+            image.fillAmount = Mathf.Lerp(0, 1, fillingNeeded);
+            image.color = Color.Lerp(Color.green, Color.red, image.fillAmount);
+            if (currentTime >= playingTime && playing)
+            {
+                FindObjectOfType<LostCondition>().GiveLostCondition("Out of Time");
+                FindObjectOfType<LoadScene>().mLoadScene(1);
+            }
         }
     }
 }

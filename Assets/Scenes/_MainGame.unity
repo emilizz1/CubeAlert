@@ -1786,6 +1786,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 780696322}
     m_Modifications:
+    - target: {fileID: 114350877670385160, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: cometImpact.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: blackholeCompleted.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1828,6 +1838,46 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 489690655}
+    - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: blackholeCompleted.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a8c00973acd35f4bab060c81e4a236d, type: 3}
+    - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: blackholeCompleted.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c9e368686521b44bb1854db76790578, type: 3}
+    - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: blackholeCompleted.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c22f69388fa83b449c46da25634819b, type: 3}
+    - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: blackholeCompleted.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4be5e8f20d9134eb8788cec57261ed, type: 3}
+    - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: blackholeCompleted.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3ff08befab8ea724f9adcfd2ea73a9bc, type: 3}
+    - target: {fileID: 114350877670385160, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: cometImpact.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 344e75d8d5ce895448eff31f055a0884, type: 3}
+    - target: {fileID: 114350877670385160, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: cometImpact.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f2d8b5986e2891489ffa0f3aca51dfe, type: 3}
+    - target: {fileID: 114350877670385160, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: starEaten
+      value: 
+      objectReference: {fileID: 8300000, guid: b3a1bf8c6b1c6e14db77865a7b118561, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 707042c13f4f10245af1290291c3602e, type: 2}
   m_IsPrefabAsset: 0

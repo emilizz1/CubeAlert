@@ -9,6 +9,7 @@ public class LifePoints : MonoBehaviour
     [SerializeField] int maxLifePoints = 15;
     [SerializeField] float shrinkingSpeed = 1f;
     [SerializeField] ParticleSystem blackHoleDeath;
+    [SerializeField] AudioClip[] blackholeCompleted;
 
     bool alive = true;
     
@@ -59,6 +60,8 @@ public class LifePoints : MonoBehaviour
 
     IEnumerator BlackHoleDeath()
     {
+        GetComponent<AudioSource>().clip = blackholeCompleted[Random.Range(0, blackholeCompleted.Length)];
+        GetComponent<AudioSource>().Play();
         GetComponent<BlackHole>().BlackholeDied();
         Destroy(GetComponent<CircleCollider2D>());
         blackHoleDeath.gameObject.SetActive(true);

@@ -1130,7 +1130,7 @@ BoxCollider2D:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e,
     type: 2}
-  m_PrefabInternal: {fileID: 1994959630}
+  m_PrefabInternal: {fileID: 1347595439}
 --- !u!1001 &1077240907
 Prefab:
   m_ObjectHideFlags: 0
@@ -1312,6 +1312,53 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73be4dfd77dd4a84eadd58b49abf4e87, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1347595439
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 780696322}
+    m_Modifications:
+    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198207526447344100, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 707042c13f4f10245af1290291c3602e, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1391131195
 Prefab:
@@ -1830,48 +1877,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4292405311846792, guid: d6abbaa7e22e0ee4fb46dc5a6d6e0763,
     type: 2}
   m_PrefabInternal: {fileID: 2036892180}
---- !u!1001 &1994959630
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 780696322}
-    m_Modifications:
-    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527956516779012, guid: 707042c13f4f10245af1290291c3602e, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 707042c13f4f10245af1290291c3602e, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1001 &2036892180
 Prefab:
   m_ObjectHideFlags: 0

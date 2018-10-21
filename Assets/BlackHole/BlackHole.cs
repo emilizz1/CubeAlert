@@ -8,11 +8,11 @@ public class BlackHole : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
-    [SerializeField] DreamStarGen.DreamStarGenerator back;
     [SerializeField] ParticleSystem absorbingStar;
     [SerializeField] bool tutorial = false;
     [SerializeField] AudioClip[] cometImpact;
     [SerializeField] AudioClip starEaten;
+    [SerializeField] GameObject[] particles;
 
     bool alive = true;
 
@@ -20,20 +20,20 @@ public class BlackHole : MonoBehaviour
     CameraShaker cameraShaker;
     LifePoints lifePoints;
     Vector3 targetPos;
-    DreamStarGen.DreamStarGenerator blackHole;
     CircleCollider2D circleCollider;
     BlackholeDamageNumber damageNumber;
     AudioSource audioSource;
+    
 
     void Start()
     {
-        blackHole = GetComponent<DreamStarGen.DreamStarGenerator>();
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
         lifePoints = GetComponent<LifePoints>();
         circleCollider = gameObject.AddComponent<CircleCollider2D>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         damageNumber = FindObjectOfType<BlackholeDamageNumber>();
         audioSource = GetComponent<AudioSource>();
+        Instantiate(particles[Random.Range(0, particles.Length)], transform.position, Quaternion.identity, transform);
         GetNewTargetPos();
     }
 
@@ -99,12 +99,12 @@ public class BlackHole : MonoBehaviour
 
     void UpdateSizeFromLifePoints()
     {
-        float currentSize = 0.85f + (lifePoints.GetCurrentLifePoints() * 0.04f);
         circleCollider.radius = 1.35f + (lifePoints.GetCurrentLifePoints() * 0.025f);
-        blackHole.Width = currentSize;
-        back.Width = currentSize + 0.5f;
-        blackHole._GenerateStar();
-        back._GenerateStar();
+        foreach (ParticleSystem particle in GetComponentsInChildren<ParticleSystem>())
+        {
+            var particles = particle.main;
+            particles.startSizeMultiplier = circleCollider.radius * 2f + 2f;
+        }
     }
 
     void GetNewTargetPos()

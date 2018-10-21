@@ -6,6 +6,8 @@ public class BackgroundTheme : MonoBehaviour
 {
     [SerializeField] AudioClip[] themeSFX;
 
+    bool sameTheme = false;
+
     AudioSource audioSource;
     float maxVolume;
 
@@ -19,23 +21,45 @@ public class BackgroundTheme : MonoBehaviour
     IEnumerator PlayTheme(AudioClip theme)
     {
         float startTime = Time.time;
-        audioSource.volume = 0f;
-        audioSource.clip = themeSFX[Random.Range(0, themeSFX.Length)];
+        audioSource.clip = theme;
         audioSource.Play();
-        while (audioSource.volume < maxVolume)
+        AudioClip nextTheme = themeSFX[Random.Range(0, themeSFX.Length)];
+        if (!sameTheme)
         {
-            audioSource.volume += 0.01f;
-            yield return new WaitForSeconds(0.1f);
+            audioSource.volume = 0f;
+            while (audioSource.volume < maxVolume)
+            {
+                audioSource.volume += 0.01f;
+                yield return new WaitForSeconds(0.1f);
+            }
         }
-        while(Time.time - startTime + 3f < audioSource.clip.length)
+        if(nextTheme == theme)
         {
-            yield return new WaitForSeconds(1f);
+            sameTheme = true;
         }
-        while(audioSource.volume > 0f)
+        else
         {
-            audioSource.volume -= 0.01f;
-            yield return new WaitForSeconds(0.1f);
+            sameTheme = false;
         }
-        StartCoroutine(PlayTheme(themeSFX[Random.Range(0, themeSFX.Length)]));
+        if (sameTheme)
+        {
+            while (Time.time - startTime < audioSource.clip.length)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else
+        {
+            while (Time.time - startTime + 3f < audioSource.clip.length)
+            {
+                yield return new WaitForSeconds(1f);
+            }
+            while (audioSource.volume > 0f)
+            {
+                audioSource.volume -= 0.01f;
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        StartCoroutine(PlayTheme(nextTheme));
     }
 }

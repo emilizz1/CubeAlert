@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
+    [SerializeField] AudioClip levelCompleted;
+
     BlackHoleSpawner portalSpawner;
     LevelHolder levelHolder;
     bool nextLevel = false;
@@ -30,6 +32,8 @@ public class Level : MonoBehaviour
             {
                 FindObjectOfType<Timer>().playing = false;
                 FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
+                GetComponent<AudioSource>().clip = levelCompleted;
+                GetComponent<AudioSource>().Play();
                 Invoke("startLoadingNextScene", 3f);
                 levelHolder.currentLevel++;
                 nextLevel = true;

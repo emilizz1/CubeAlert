@@ -137,9 +137,10 @@ MonoBehaviour:
   starRadiusIncrease: 0.3
   loopingTimer: 1
   centerParticles:
-  - {fileID: 1485306556106058, guid: 191a3a67b78fcf941835cd77031ed726, type: 2}
-  - {fileID: 1216078732979000, guid: ed2313d73b6a1fa4c850753ccab24c24, type: 2}
-  - {fileID: 1847837624736528, guid: 31d4737db878ef04e9e5df59552d2c73, type: 2}
+  - {fileID: 1684889997172936, guid: 191a3a67b78fcf941835cd77031ed726, type: 2}
+  - {fileID: 1371647454427750, guid: ed2313d73b6a1fa4c850753ccab24c24, type: 2}
+  - {fileID: 1773289960377032, guid: 31d4737db878ef04e9e5df59552d2c73, type: 2}
+  - {fileID: 1789578788775654, guid: a8a82df7581100e4ab412f4e2480e55c, type: 2}
 --- !u!114 &114494020585301286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,7 +155,7 @@ MonoBehaviour:
   Generator: {fileID: 0}
   Speed: 0.175
   FrameSkip: 3
-  Change_A: 0.03
+  Change_A: 0.04
   Change_B: 0
   Change_C: 0
   Change_D: 0

@@ -6,17 +6,16 @@ public class Supernova : MonoBehaviour
 {
     [SerializeField] float expandRate;
     [SerializeField] float maxRadius;
-    [SerializeField] float starLivesToRemove = 5f;
+    [SerializeField] float starLivesToRemove = 3f;
     [SerializeField] float waitTimeBetweenLifeRemove = 0.1f;
+    [SerializeField] float waitBeforeExploding = 5f;
 
     [SerializeField] float startingRadius = 0.1f;
     [SerializeField] float startingSizeMin = 0.2f;
     [SerializeField] float startingSizeMax = 0.6f;
-
-    [SerializeField] ParticleSystem Range;
+    
     [SerializeField] ParticleSystem supernovaPS;
     [SerializeField] ParticleSystem supernovaExplosion;
-    [SerializeField] ParticleSystem supernovaHitFigure;
 
     bool playing = true;
     
@@ -32,11 +31,14 @@ public class Supernova : MonoBehaviour
     {
         if (playing)
         {
-            var supernovaShape = supernovaPS.shape;
-            ExpandSupernova();
-            if (supernovaShape.radius > maxRadius)
+            if (supernovaPS.shape.radius < maxRadius)
             {
-               Explode();
+                ExpandSupernova();
+                Explode();
+            }
+            else
+            {
+                StartCoroutine(Explode());
             }
         }
 	}
@@ -44,8 +46,8 @@ public class Supernova : MonoBehaviour
     void ExpandSupernova()
     {
         var supernovaShape = supernovaPS.shape;
-        var rangeShape = Range.shape;
         supernovaShape.radius += expandRate * Time.deltaTime;
+        collider.radius = supernovaShape.radius;
         var supernovaSize = supernovaPS.main.startSize;
         if (supernovaSize.constantMin < startingSizeMin * 10)
         {
@@ -55,41 +57,35 @@ public class Supernova : MonoBehaviour
         {
             supernovaSize.constantMax = startingSizeMax;
         }
-        if (rangeShape.radius < maxRadius)
-        {
-            rangeShape.radius += expandRate * Time.deltaTime * 8f;
-            collider.radius = rangeShape.radius;
-        }
     }
 
     void SetStartingStats()
     {
         var supernovaShape = supernovaPS.shape;
-        var rangeShape = Range.shape;
         supernovaShape.radius = startingRadius;
         var supernovaSize = supernovaPS.main.startSize;
         supernovaSize.constantMin = startingSizeMin;
         supernovaSize.constantMax = startingSizeMax;
-        rangeShape.radius = 0f;
-        collider.radius = rangeShape.radius;
     }
 
-    void Explode()
+    IEnumerator Explode()
     {
+        yield return new WaitForSeconds(waitBeforeExploding);
         playing = false;
-        foreach (Star star in FindObjectsOfType<Star>())
-        {
-            if(Vector2.Distance(star.transform.position, transform.position) <= maxRadius)
-            {
-                Instantiate(supernovaHitFigure, star.transform.position, Quaternion.identity, star.transform);
-                StartCoroutine(RemoveStarLife(star));
-            }
-        }
-        supernovaExplosion.gameObject.SetActive(true);
+        supernovaExplosion.Play();
         Destroy(supernovaExplosion, supernovaExplosion.main.duration *2f);
         Destroy(supernovaPS);
-        Destroy(Range);
-        Destroy(gameObject, starLivesToRemove * waitTimeBetweenLifeRemove);
+        Destroy(gameObject, supernovaExplosion.main.duration * 2f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Star>())
+        {
+            print("Collided");
+            supernovaExplosion.Play();
+            RemoveStarLife(collision.gameObject.GetComponent<Star>());
+        }
     }
 
     IEnumerator RemoveStarLife(Star star)

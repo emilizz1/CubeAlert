@@ -17,6 +17,8 @@ public class Supernova : MonoBehaviour
     [SerializeField] ParticleSystem supernovaPS;
     [SerializeField] ParticleSystem supernovaExplosion;
 
+    [SerializeField] AudioClip[] supernovaHit;
+
     bool playing = true;
     
     CircleCollider2D collider;
@@ -90,6 +92,8 @@ public class Supernova : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
+            GetComponent<AudioSource>().clip = supernovaHit[Random.Range(0, supernovaHit.Length)];
+            GetComponent<AudioSource>().Play();
             supernovaExplosion.Play();
             StartCoroutine( RemoveStarLife(collision.gameObject.GetComponent<Star>()));
         }

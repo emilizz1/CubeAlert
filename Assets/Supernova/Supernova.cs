@@ -59,6 +59,13 @@ public class Supernova : MonoBehaviour
         }
     }
 
+    IEnumerator ShrinkSupernova()
+    {
+        var supernovaExplosionMain = supernovaExplosion.main;
+        supernovaExplosionMain.startSpeedMultiplier -= expandRate * Time.deltaTime * 5f;
+        yield return new WaitForEndOfFrame();
+    }
+
     void SetStartingStats()
     {
         var supernovaShape = supernovaPS.shape;
@@ -71,6 +78,7 @@ public class Supernova : MonoBehaviour
     IEnumerator Explode()
     {
         yield return new WaitForSeconds(waitBeforeExploding);
+        StartCoroutine(ShrinkSupernova());
         playing = false;
         supernovaExplosion.Play();
         Destroy(supernovaExplosion, supernovaExplosion.main.duration *2f);
@@ -82,9 +90,8 @@ public class Supernova : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
-            print("Collided");
             supernovaExplosion.Play();
-            RemoveStarLife(collision.gameObject.GetComponent<Star>());
+            StartCoroutine( RemoveStarLife(collision.gameObject.GetComponent<Star>()));
         }
     }
 

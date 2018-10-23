@@ -43,7 +43,7 @@ public class Level : MonoBehaviour
 
     void startLoadingNextScene()
     {
-        FindObjectOfType<LoadScene>().mLoadScene(0);
+        FindObjectOfType<LoadScene>().mLoadScene(1);
     }
 
     void UpdateText()

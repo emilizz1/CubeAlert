@@ -8,7 +8,7 @@ public class LostCondition : MonoBehaviour
 
     private void Awake()
     {
-        if(FindObjectsOfType<LostCondition>().Length > 0)
+        if(FindObjectsOfType<LostCondition>().Length > 1)
         {
             Destroy(gameObject);
         }

@@ -25,7 +25,7 @@ public class TapNumber : MonoBehaviour
         if (numberOfTaps <= 0)
         {
             FindObjectOfType<LostCondition>().GiveLostCondition("Out of Taps");
-            FindObjectOfType<LoadScene>().mLoadScene(1);
+            FindObjectOfType<LoadScene>().mLoadScene(2);
         }
     }
 

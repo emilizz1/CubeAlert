@@ -11,6 +11,19 @@ public class BackgroundTheme : MonoBehaviour
     AudioSource audioSource;
     float maxVolume;
 
+    void Awake()
+    {
+        var numOfBackgroundThemes = FindObjectsOfType<BackgroundTheme>().Length;
+        if(numOfBackgroundThemes > 1)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();

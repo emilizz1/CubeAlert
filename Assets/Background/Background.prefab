@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4767791111955734}
   - component: {fileID: 82461005295447640}
   - component: {fileID: 114517480813469342}
-  - component: {fileID: 114612466680855280}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -181,21 +180,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stars: {fileID: 198253295057804822}
   mainCamera: {fileID: 0}
---- !u!114 &114612466680855280
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1260485952732762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b78ee7ede0c59ab449b7a7e67b73f5ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  themeSFX:
-  - {fileID: 8300000, guid: c529abcbef25d0f499f677843f3e6992, type: 3}
-  - {fileID: 8300000, guid: cd23e372f833ca549a47edd698cfbaca, type: 3}
-  - {fileID: 8300000, guid: 950524774d682b74f9bc38d802cb7e1c, type: 3}
 --- !u!198 &198253295057804822
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -2,31 +2,13 @@
 
 public class PointRipple : MonoBehaviour
 {
-	public Material[] m_Mat;
-	public Camera m_Camera;
-	public enum ERippleType { Ripple1 = 0, Ripple2, Ripple3 };
-	public ERippleType m_RippleType = ERippleType.Ripple1;
-	
+	public Material m_Mat;
 	public string m_RippleMaskName = "TransparentFX";
 	public Shader m_SdrRippleMask;
 	public bool m_EnableMaskObjects = false;
 	public bool m_ShowInternalMaps = false;
 	public bool m_AntiAliasing = false;
-	[System.Serializable] public class Ripple1
-	{
-		[Range(0.1f, 1f)]    public float Spread = 0.3f;
-		[Range(0.1f, 2f)]    public float Amplitude = 0.8f;
-		[Range(0.02f, 0.1f)] public float Gap = 0.1f;
-	}
-	[System.Serializable] public class Ripple2
-	{
-		[Range(0.01f, 0.06f)] public float StrengthInit = 0.03f;
-		[Range(0.0001f, 0.0008f)] public float StrengthDecay = 0.0002f;
-		[Range(0.1f, 1f)] public float Spread = 0.3f;
-		[Range(0f, 64f)]  public float Frequence = 24f;
-		[Range(8f, 32f)]  public float Velocity = 16f;
-	}
-	[System.Serializable] public class Ripple3
+	[System.Serializable] public class Ripple
 	{
 		public float Frequence = 60f;
 		public float Speed = 30f;
@@ -34,24 +16,21 @@ public class PointRipple : MonoBehaviour
 		public float WaveWidth = 0.3f;
 		[Range(0.1f, 1f)] public float Spread = 0.3f;
 	}
-	[Header("Ripple Effect 1")]
-	public Ripple1 m_Ripple1;
-	[Header("Ripple Effect 2")]
-	public Ripple2 m_Ripple2;
-	[Header("Ripple Effect 3")]
-	public Ripple3 m_Ripple3;
+	[Header("Ripple Effect")]
+	public Ripple m_Ripple;
 	
 	public class RippleClick
 	{
-		public float MouseX = 0.5f;
-		public float MouseY = 0.5f;
+		public float PosX = 0.5f;
+		public float PosY = 0.5f;
 		public float Progress = 1f;
 		public float Strength = 0f;  // ripple2 need
 	}
-	private RippleClick[] m_RippleClick = new RippleClick[3];
-	private int m_CurrentRippleClick = 0;
-	private Camera m_RTCam;
-	private RenderTexture m_RTRippleMask;
+	RippleClick[] m_RippleClick = new RippleClick[3];
+	int m_CurrentRippleClick = 0;
+	Camera m_RTCam;
+	RenderTexture m_RTRippleMask;
+    Camera m_Camera;
 
     Vector3 ripple = Vector3.zero;
 	
@@ -81,22 +60,12 @@ public class PointRipple : MonoBehaviour
 
 		if (ripple != Vector3.zero)
 		{
-			float posX = ripple.x;
-			float posY = ripple.y;
-            if (m_AntiAliasing)
-            {
-                posY = 1f - posY;  // yes, unity build-in AntiAliasing will flip y coordinate, so we have to flip it here.
-            }
-			m_RippleClick[m_CurrentRippleClick].MouseX = posX;
-			m_RippleClick[m_CurrentRippleClick].MouseY = posY;
+			m_RippleClick[m_CurrentRippleClick].PosX = ripple.x;
+			m_RippleClick[m_CurrentRippleClick].PosY = ripple.y;
 			m_RippleClick[m_CurrentRippleClick].Progress = 0f;
-            if (ERippleType.Ripple2 == m_RippleType)  // only give it strength when you are playing ripple2
-            {
-                m_RippleClick[m_CurrentRippleClick].Strength = m_Ripple2.StrengthInit;
-            }
-            print(m_RippleClick[m_CurrentRippleClick].MouseX + "   " + m_RippleClick[m_CurrentRippleClick].MouseY);
+            print(m_RippleClick[m_CurrentRippleClick].PosX + "   " + m_RippleClick[m_CurrentRippleClick].PosY);
 			m_CurrentRippleClick++;
-			m_CurrentRippleClick = (m_CurrentRippleClick >= 3) ? 0 : m_CurrentRippleClick;
+            m_CurrentRippleClick = (m_CurrentRippleClick >= 3) ? 0 : m_CurrentRippleClick;
             ripple = Vector3.zero;
 		}
 			
@@ -109,18 +78,12 @@ public class PointRipple : MonoBehaviour
 			m_RTCam.targetTexture = m_RTRippleMask;
 			m_RTCam.cullingMask = 1 << LayerMask.NameToLayer (m_RippleMaskName);
 			m_RTCam.RenderWithShader (m_SdrRippleMask, "");
-			m_Mat[0].EnableKeyword ("SR_MASK");
-			m_Mat[0].SetTexture ("_MaskTex", m_RTRippleMask);
-			m_Mat[1].EnableKeyword ("SR_MASK");
-			m_Mat[1].SetTexture ("_MaskTex", m_RTRippleMask);
-			m_Mat[2].EnableKeyword ("SR_MASK");
-			m_Mat[2].SetTexture ("_MaskTex", m_RTRippleMask);
+			m_Mat.EnableKeyword ("SR_MASK");
+			m_Mat.SetTexture ("_MaskTex", m_RTRippleMask);
 		}
 		else
 		{
-			m_Mat[0].DisableKeyword ("SR_MASK");
-			m_Mat[1].DisableKeyword ("SR_MASK");
-			m_Mat[2].DisableKeyword ("SR_MASK");
+			m_Mat.DisableKeyword ("SR_MASK");
 		}
 			
 		// update click
@@ -128,35 +91,21 @@ public class PointRipple : MonoBehaviour
 		for (int i = 0; i < n; i++)
 		{
 			m_RippleClick[i].Progress += 0.01f;
-			m_RippleClick[i].Strength = Mathf.Max(m_RippleClick[i].Strength - m_Ripple2.StrengthDecay, 0f);
+			m_RippleClick[i].Strength = Mathf.Max(m_RippleClick[i].Strength, 0f);
 		}
-		m_Mat[0].SetFloat ("_Spread", m_Ripple1.Spread);
-		m_Mat[0].SetFloat ("_Amplitude", m_Ripple1.Amplitude);
-		m_Mat[0].SetFloat ("_Gap", m_Ripple1.Gap);
-		m_Mat[1].SetFloat ("_Spread", m_Ripple2.Spread);
-		m_Mat[1].SetFloat ("_Frequence", m_Ripple2.Frequence);
-		m_Mat[1].SetFloat ("_Velocity", m_Ripple2.Velocity);
-		m_Mat[2].SetFloat ("_Frequence", m_Ripple3.Frequence);  
-		m_Mat[2].SetFloat ("_Speed", m_Ripple3.Speed);
-		m_Mat[2].SetFloat ("_Strength", m_Ripple3.Strength);
-		m_Mat[2].SetFloat ("_WaveWidth", m_Ripple3.WaveWidth);
-		m_Mat[2].SetFloat ("_CurWaveDis", m_RippleClick[0].Progress);
-		m_Mat[2].SetFloat ("_Spread", m_Ripple3.Spread);
+		m_Mat.SetFloat ("_Frequence", m_Ripple.Frequence);  
+		m_Mat.SetFloat ("_Speed", m_Ripple.Speed);
+		m_Mat.SetFloat ("_Strength", m_Ripple.Strength);
+		m_Mat.SetFloat ("_WaveWidth", m_Ripple.WaveWidth);
+		m_Mat.SetFloat ("_CurWaveDis", m_RippleClick[0].Progress);
+		m_Mat.SetFloat ("_Spread", m_Ripple.Spread);
 			
 		// send click data to ripple shader
-		m_Mat[0].SetVector ("_Ripple1", new Vector4 (m_RippleClick[0].MouseX, m_RippleClick[0].MouseY, m_RippleClick[0].Progress, 0));
-		m_Mat[0].SetVector ("_Ripple2", new Vector4 (m_RippleClick[1].MouseX, m_RippleClick[1].MouseY, m_RippleClick[1].Progress, 0));
-		m_Mat[0].SetVector ("_Ripple3", new Vector4 (m_RippleClick[2].MouseX, m_RippleClick[2].MouseY, m_RippleClick[2].Progress, 0));
-		m_Mat[1].SetVector ("_Ripple1", new Vector4 (m_RippleClick[0].MouseX, m_RippleClick[0].MouseY, m_RippleClick[0].Progress, m_RippleClick[0].Strength));
-		m_Mat[1].SetVector ("_Ripple2", new Vector4 (m_RippleClick[1].MouseX, m_RippleClick[1].MouseY, m_RippleClick[1].Progress, m_RippleClick[1].Strength));
-		m_Mat[1].SetVector ("_Ripple3", new Vector4 (m_RippleClick[2].MouseX, m_RippleClick[2].MouseY, m_RippleClick[2].Progress, m_RippleClick[2].Strength));
-		m_Mat[2].SetVector ("_Ripple1", new Vector4 (m_RippleClick[0].MouseX, m_RippleClick[0].MouseY, m_RippleClick[0].Progress, 0));
-		m_Mat[2].SetVector ("_Ripple2", new Vector4 (m_RippleClick[1].MouseX, m_RippleClick[1].MouseY, m_RippleClick[1].Progress, 0));
-		m_Mat[2].SetVector ("_Ripple3", new Vector4 (m_RippleClick[2].MouseX, m_RippleClick[2].MouseY, m_RippleClick[2].Progress, 0));
+		m_Mat.SetVector ("_Ripple3", new Vector4 (m_RippleClick[2].PosX, m_RippleClick[2].PosY, m_RippleClick[2].Progress, 0));
 	}
 	void OnRenderImage (RenderTexture src, RenderTexture dst)
 	{
-		Graphics.Blit (src, dst, m_Mat[(int)m_RippleType]);
+		Graphics.Blit (src, dst, m_Mat);
 	}
 	void OnGUI ()
 	{

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 82477557523988896}
   - component: {fileID: 114350877670385160}
   - component: {fileID: 114553398902333090}
+  - component: {fileID: 114241565750306978}
   m_Layer: 9
   m_Name: BlackHole
   m_TagString: Untagged
@@ -45,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1778830328181344
 GameObject:
   m_ObjectHideFlags: 1
@@ -79,7 +80,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4527956516779012
 Transform:
   m_ObjectHideFlags: 1
@@ -87,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1053254741833924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4920551961740306}
@@ -230,6 +231,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114241565750306978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053254741833924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f1dd661bcfdd545a528bef2d29a613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Mat: {fileID: 2100000, guid: b9678ac539f819441bd9564440935801, type: 2}
+  m_RippleMaskName: TransparentFX
+  m_SdrRippleMask: {fileID: 4800000, guid: 686d6989f875f4e49a4085a2a3d2ea62, type: 3}
+  m_EnableMaskObjects: 0
+  m_ShowInternalMaps: 0
+  m_AntiAliasing: 0
+  m_Ripple:
+    Frequence: 60
+    Speed: 30
+    Strength: 1
+    WaveWidth: 0.3
+    Spread: 0.3
 --- !u!114 &114350877670385160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -265,8 +289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5257178953d7ee49b11e83ba47a3cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minLifePoints: 60
-  maxLifePoints: 80
+  minLifePoints: 50
+  maxLifePoints: 70
   shrinkingSpeed: 0.1
   blackHoleDeath:
   - {fileID: 198015279655718028}

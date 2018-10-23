@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour
             if (currentTime >= playingTime && playing)
             {
                 FindObjectOfType<LostCondition>().GiveLostCondition("Out of Time");
-                FindObjectOfType<LoadScene>().mLoadScene(1);
+                FindObjectOfType<LoadScene>().mLoadScene(2);
             }
         }
     }

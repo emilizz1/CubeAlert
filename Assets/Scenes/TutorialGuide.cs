@@ -38,7 +38,7 @@ public class TutorialGuide : MonoBehaviour
 
     void StartLoadingScene()
     {
-        FindObjectOfType<LoadScene>().mLoadScene(0);
+        FindObjectOfType<LoadScene>().mLoadScene(1);
     }
 
     public void Tapped()

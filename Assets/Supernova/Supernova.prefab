@@ -226,7 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expandRate: 1
-  maxRadius: 3
+  minRadius: 1.5
+  maxRadius: 3.5
   starLivesToRemove: 3
   waitTimeBetweenLifeRemove: 0.1
   waitBeforeExploding: 3

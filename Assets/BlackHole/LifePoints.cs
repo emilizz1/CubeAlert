@@ -10,7 +10,6 @@ public class LifePoints : MonoBehaviour
     [SerializeField] float shrinkingSpeed = 1f;
     [SerializeField] ParticleSystem[] blackHoleDeath;
     [SerializeField] AudioClip[] blackholeCompleted;
-    [SerializeField] float deathTime = 2f;
 
     bool alive = true;
     
@@ -62,12 +61,13 @@ public class LifePoints : MonoBehaviour
     IEnumerator BlackHoleDeath()
     {
         GetComponent<AudioSource>().clip = blackholeCompleted[Random.Range(0, blackholeCompleted.Length)];
+        float deathTime = GetComponent<AudioSource>().clip.length;
         GetComponent<AudioSource>().Play();
         GetComponent<BlackHole>().BlackholeDied();
         Destroy(GetComponent<CircleCollider2D>());
         foreach (ParticleSystem particle in blackHoleDeath)
         {
-            particle.gameObject.SetActive(true);
+            particle.Play();
         }
         while (deathTime >= 0)
         {

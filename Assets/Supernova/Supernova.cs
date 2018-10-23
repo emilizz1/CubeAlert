@@ -5,6 +5,7 @@ using UnityEngine;
 public class Supernova : MonoBehaviour
 {
     [SerializeField] float expandRate;
+    [SerializeField] float minRadius;
     [SerializeField] float maxRadius;
     [SerializeField] float starLivesToRemove = 3f;
     [SerializeField] float waitTimeBetweenLifeRemove = 0.1f;
@@ -22,10 +23,12 @@ public class Supernova : MonoBehaviour
     bool playing = true;
     
     CircleCollider2D collider;
+    float myRadius;
      
 	void Start ()
     {
         collider = GetComponent<CircleCollider2D>();
+        myRadius = Random.Range(minRadius, maxRadius);
         SetStartingStats();
 	}
 	
@@ -33,7 +36,7 @@ public class Supernova : MonoBehaviour
     {
         if (playing)
         {
-            if (supernovaPS.shape.radius < maxRadius)
+            if (supernovaPS.shape.radius < myRadius)
             {
                 ExpandSupernova();
                 Explode();
@@ -64,7 +67,7 @@ public class Supernova : MonoBehaviour
     IEnumerator ShrinkSupernova()
     {
         var supernovaExplosionMain = supernovaExplosion.main;
-        supernovaExplosionMain.startSpeedMultiplier -= expandRate * Time.deltaTime * 5f;
+        supernovaExplosionMain.startSpeedMultiplier -= expandRate * Time.deltaTime * 6f;
         yield return new WaitForEndOfFrame();
     }
 
@@ -108,8 +111,8 @@ public class Supernova : MonoBehaviour
         }
     }
 
-    public float GetMaxRadius()
+    public float GetRadius()
     {
-        return maxRadius;
+        return myRadius;
     }
 }

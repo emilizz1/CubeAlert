@@ -127,7 +127,7 @@ public class BlackHole : MonoBehaviour
         {
             foreach (Supernova supernova in FindObjectsOfType<Supernova>())
             {
-                float extraDistance = supernova.GetMaxRadius() + circleCollider.radius;
+                float extraDistance = supernova.GetRadius() + circleCollider.radius;
                 if (Vector2.Distance(transform.position, supernova.transform.position) - extraDistance  < 0)
                 {
                     return true;

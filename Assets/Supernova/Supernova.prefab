@@ -198,11 +198,11 @@ MonoBehaviour:
   minRadius: 1.5
   maxRadius: 3.5
   starLivesToRemove: 3
-  waitTimeBetweenLifeRemove: 0.1
   waitBeforeExploding: 3
-  startingRadius: 0.1
-  startingSizeMin: 0.2
-  startingSizeMax: 0.6
+  clashWithComet: {fileID: 198301411790792142, guid: d8ed3db2098190848a2528441b988082,
+    type: 2}
+  clashWithStar: {fileID: 198816119215528010, guid: 7e6e0e7f0c970b14dbea250183582036,
+    type: 2}
   supernovaHit:
   - {fileID: 8300000, guid: 1ce1186770d7c2d4c905597b709f91f9, type: 3}
   - {fileID: 8300000, guid: 98e18b9b664383f479ba32becce72a1c, type: 3}

@@ -8,13 +8,9 @@ public class Supernova : MonoBehaviour
     [SerializeField] float minRadius;
     [SerializeField] float maxRadius;
     [SerializeField] float starLivesToRemove = 3f;
-    [SerializeField] float waitTimeBetweenLifeRemove = 0.1f;
     [SerializeField] float waitBeforeExploding = 5f;
-
-    [SerializeField] float startingRadius = 0.1f;
-    [SerializeField] float startingSizeMin = 0.2f;
-    [SerializeField] float startingSizeMax = 0.6f;
-
+    [SerializeField] ParticleSystem clashWithComet;
+    [SerializeField] ParticleSystem clashWithStar;
     [SerializeField] AudioClip[] supernovaHit;
 
     bool playing = true;
@@ -28,7 +24,6 @@ public class Supernova : MonoBehaviour
         supernovaPS = GetComponentInChildren<ParticleSystem>();
         collider = GetComponent<CircleCollider2D>();
         myRadius = Random.Range(minRadius, maxRadius);
-        SetStartingStats();
 	}
 	
 	void Update ()
@@ -63,15 +58,6 @@ public class Supernova : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
-    void SetStartingStats()
-    {
-        var supernovaShape = supernovaPS.shape;
-        supernovaShape.radius = startingRadius;
-        var supernovaSize = supernovaPS.main.startSize;
-        supernovaSize.constantMin = startingSizeMin;
-        supernovaSize.constantMax = startingSizeMax;
-    }
-
     IEnumerator Explode()
     {
         yield return new WaitForSeconds(waitBeforeExploding);
@@ -84,9 +70,17 @@ public class Supernova : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
+            Instantiate(clashWithStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
             GetComponent<AudioSource>().clip = supernovaHit[Random.Range(0, supernovaHit.Length)];
             GetComponent<AudioSource>().Play();
             StartCoroutine( RemoveStarLife(collision.gameObject.GetComponent<Star>()));
+        }
+        else if (collision.gameObject.GetComponent<Comet>())
+        {
+            Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
+            GetComponent<AudioSource>().clip = supernovaHit[Random.Range(0, supernovaHit.Length)];
+            GetComponent<AudioSource>().Play();
+            collision.gameObject.GetComponent<Comet>().CometHit();
         }
     }
 
@@ -95,7 +89,7 @@ public class Supernova : MonoBehaviour
         for (int i = 0; i < starLivesToRemove; i++)
         {
             star.RemoveAmmo();
-            yield return new WaitForSeconds(waitTimeBetweenLifeRemove);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 

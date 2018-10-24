@@ -269,6 +269,8 @@ MonoBehaviour:
   minDistance: 1
   absorbingStar: {fileID: 198359850944967296, guid: 6c28dddb0a3d8d94397c28f8605692c2,
     type: 2}
+  clashWithComet: {fileID: 198739972878761682, guid: 02117cc1240b1a748a873c3d3c800503,
+    type: 2}
   tutorial: 0
   cometImpact:
   - {fileID: 8300000, guid: 344e75d8d5ce895448eff31f055a0884, type: 3}

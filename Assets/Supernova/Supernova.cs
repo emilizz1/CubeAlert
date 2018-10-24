@@ -14,19 +14,18 @@ public class Supernova : MonoBehaviour
     [SerializeField] float startingRadius = 0.1f;
     [SerializeField] float startingSizeMin = 0.2f;
     [SerializeField] float startingSizeMax = 0.6f;
-    
-    [SerializeField] ParticleSystem supernovaPS;
-    [SerializeField] ParticleSystem supernovaExplosion;
 
     [SerializeField] AudioClip[] supernovaHit;
 
     bool playing = true;
-    
+
+    ParticleSystem supernovaPS;
     CircleCollider2D collider;
     float myRadius;
      
 	void Start ()
     {
+        supernovaPS = GetComponentInChildren<ParticleSystem>();
         collider = GetComponent<CircleCollider2D>();
         myRadius = Random.Range(minRadius, maxRadius);
         SetStartingStats();
@@ -36,38 +35,31 @@ public class Supernova : MonoBehaviour
     {
         if (playing)
         {
-            if (supernovaPS.shape.radius < myRadius)
-            {
-                ExpandSupernova();
-                Explode();
-            }
-            else
-            {
-                StartCoroutine(Explode());
-            }
+            ExpandSupernova();
         }
 	}
 
     void ExpandSupernova()
     {
-        var supernovaShape = supernovaPS.shape;
-        supernovaShape.radius += expandRate * Time.deltaTime;
-        collider.radius = supernovaShape.radius;
-        var supernovaSize = supernovaPS.main.startSize;
-        if (supernovaSize.constantMin < startingSizeMin * 10)
+        if (collider.radius < myRadius)
         {
-            supernovaSize.constantMin = startingSizeMin;
+            collider.radius += expandRate * Time.deltaTime;
         }
-        if (supernovaSize.constantMax < startingSizeMax * 10)
+        else
         {
-            supernovaSize.constantMax = startingSizeMax;
+            StartCoroutine(Explode());
+        }
+        var supernovaMain = supernovaPS.main;
+        if (supernovaMain.startSize.constantMax <= (collider.radius * 2f))
+        {
+            supernovaMain.startSizeMultiplier += Time.deltaTime * expandRate;
         }
     }
 
     IEnumerator ShrinkSupernova()
     {
-        var supernovaExplosionMain = supernovaExplosion.main;
-        supernovaExplosionMain.startSpeedMultiplier -= expandRate * Time.deltaTime * 6f;
+        var supernovaMain = supernovaPS.main;
+        supernovaMain.startSizeMultiplier -= Time.deltaTime * expandRate;
         yield return new WaitForEndOfFrame();
     }
 
@@ -83,12 +75,9 @@ public class Supernova : MonoBehaviour
     IEnumerator Explode()
     {
         yield return new WaitForSeconds(waitBeforeExploding);
-        StartCoroutine(ShrinkSupernova());
         playing = false;
-        supernovaExplosion.Play();
-        Destroy(supernovaExplosion, supernovaExplosion.main.duration *2f);
-        Destroy(supernovaPS);
-        Destroy(gameObject, supernovaExplosion.main.duration * 2f);
+        StartCoroutine(ShrinkSupernova());
+        Destroy(gameObject, waitBeforeExploding);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -97,7 +86,6 @@ public class Supernova : MonoBehaviour
         {
             GetComponent<AudioSource>().clip = supernovaHit[Random.Range(0, supernovaHit.Length)];
             GetComponent<AudioSource>().Play();
-            supernovaExplosion.Play();
             StartCoroutine( RemoveStarLife(collision.gameObject.GetComponent<Star>()));
         }
     }

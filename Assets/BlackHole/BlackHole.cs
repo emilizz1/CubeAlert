@@ -9,6 +9,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float minDistance;
     [SerializeField] ParticleSystem absorbingStar;
+    [SerializeField] ParticleSystem clashWithComet;
     [SerializeField] bool tutorial = false;
     [SerializeField] AudioClip[] cometImpact;
     [SerializeField] AudioClip[] starEaten;
@@ -23,6 +24,7 @@ public class BlackHole : MonoBehaviour
     CircleCollider2D circleCollider;
     BlackholeDamageNumber damageNumber;
     AudioSource audioSource;
+    GameObject myParticle;
     
 
     void Start()
@@ -33,7 +35,7 @@ public class BlackHole : MonoBehaviour
         cameraShaker = FindObjectOfType<CameraShaker>();
         damageNumber = FindObjectOfType<BlackholeDamageNumber>();
         audioSource = GetComponent<AudioSource>();
-        Instantiate(particles[Random.Range(0, particles.Length)], transform.position, Quaternion.identity, transform);
+        myParticle = Instantiate(particles[Random.Range(0, particles.Length)], transform.position, Quaternion.identity, transform);
         GetNewTargetPos();
     }
 
@@ -60,7 +62,7 @@ public class BlackHole : MonoBehaviour
         {
             audioSource.clip = starEaten[Random.Range(0, starEaten.Length)];
             audioSource.Play();
-            var figurePS = Instantiate(absorbingStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
+            Instantiate(absorbingStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
             var figure = collision.gameObject.GetComponent<Star>();
             StartCoroutine(AbsorbingFigure(figure));
             figure.DestroyFigure(false);
@@ -69,6 +71,7 @@ public class BlackHole : MonoBehaviour
         {
             audioSource.clip = cometImpact[Random.Range(0, cometImpact.Length)];
             audioSource.Play();
+            Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
             GameObject numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
             int healing = collision.gameObject.GetComponent<Comet>().GetHealing();
             numberInstance.GetComponent<Text>().text = "+" + healing.ToString();
@@ -119,6 +122,7 @@ public class BlackHole : MonoBehaviour
     public void BlackholeDied()
     {
         alive = false;
+        Destroy(myParticle);
     }
 
     bool CheckIfCollidingWithSupernova()

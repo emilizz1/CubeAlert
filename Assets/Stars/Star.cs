@@ -18,13 +18,14 @@ public class Star : MonoBehaviour
     DreamStarGen.DreamStarGenerator star;
     float lastTimeLooped = 0f;
     CircleCollider2D myCollider;
+    GameObject myCentralParticles;
 
     void Start()
     {
         rotationSpeed = Random.Range(-40, 40f);
         star = GetComponent<DreamStarGen.DreamStarGenerator>();
         myCollider = GetComponent<CircleCollider2D>();
-        Instantiate(centerParticles[Random.Range(0, centerParticles.Length)], transform.position, Quaternion.identity, transform);
+        myCentralParticles = Instantiate(centerParticles[Random.Range(0, centerParticles.Length)], transform.position, Quaternion.identity, transform);
         AddSizeToCenterParticles(bulletAmount);
     }
 
@@ -79,6 +80,8 @@ public class Star : MonoBehaviour
     {
         startedExploding = true;
         Destroy(gameObject.GetComponent<Rigidbody2D>());
+        var myPsEmission = myCentralParticles.GetComponent<ParticleSystem>().emission;
+        myPsEmission.enabled = false;
         Destroy(myCollider);
         if (quick)
         {

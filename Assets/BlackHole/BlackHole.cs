@@ -11,7 +11,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] ParticleSystem absorbingStar;
     [SerializeField] bool tutorial = false;
     [SerializeField] AudioClip[] cometImpact;
-    [SerializeField] AudioClip starEaten;
+    [SerializeField] AudioClip[] starEaten;
     [SerializeField] GameObject[] particles;
 
     bool alive = true;
@@ -58,7 +58,7 @@ public class BlackHole : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
-            audioSource.clip = starEaten;
+            audioSource.clip = starEaten[Random.Range(0, starEaten.Length)];
             audioSource.Play();
             var figurePS = Instantiate(absorbingStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
             var figure = collision.gameObject.GetComponent<Star>();

@@ -14,6 +14,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] AudioClip[] cometImpact;
     [SerializeField] AudioClip[] starEaten;
     [SerializeField] GameObject[] particles;
+    [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
 
     bool alive = true;
 
@@ -23,7 +24,6 @@ public class BlackHole : MonoBehaviour
     Vector3 targetPos;
     CircleCollider2D circleCollider;
     BlackholeDamageNumber damageNumber;
-    AudioSource audioSource;
     GameObject myParticle;
     
 
@@ -34,7 +34,6 @@ public class BlackHole : MonoBehaviour
         circleCollider = gameObject.AddComponent<CircleCollider2D>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         damageNumber = FindObjectOfType<BlackholeDamageNumber>();
-        audioSource = GetComponent<AudioSource>();
         myParticle = Instantiate(particles[Random.Range(0, particles.Length)], transform.position, Quaternion.identity, transform);
         GetNewTargetPos();
     }
@@ -60,8 +59,7 @@ public class BlackHole : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
-            audioSource.clip = starEaten[Random.Range(0, starEaten.Length)];
-            audioSource.Play();
+            AudioSource.PlayClipAtPoint(starEaten[Random.Range(0, starEaten.Length)], Camera.main.transform.position, soundVolume);
             Instantiate(absorbingStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
             var figure = collision.gameObject.GetComponent<Star>();
             StartCoroutine(AbsorbingFigure(figure));
@@ -69,8 +67,7 @@ public class BlackHole : MonoBehaviour
         }
         else if (collision.gameObject.GetComponent<Comet>())
         {
-            audioSource.clip = cometImpact[Random.Range(0, cometImpact.Length)];
-            audioSource.Play();
+            AudioSource.PlayClipAtPoint(cometImpact[Random.Range(0, cometImpact.Length)], Camera.main.transform.position, soundVolume);
             Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
             GameObject numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
             int healing = collision.gameObject.GetComponent<Comet>().GetHealing();

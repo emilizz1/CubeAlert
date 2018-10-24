@@ -10,20 +10,13 @@ public class TapExplosion : MonoBehaviour
     [SerializeField] bool tutorial = false;
     [SerializeField] AudioClip tapSFX;
     [SerializeField] AudioClip[] tapCometSFX;
-
-    AudioSource audioSource;
-
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            audioSource.clip = tapSFX;
-            audioSource.Play();
+            AudioSource.PlayClipAtPoint(tapSFX, Camera.main.transform.position, soundVolume);
             var touchPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 60f));
             transform.position = touchPos;
             Explode();
@@ -55,8 +48,7 @@ public class TapExplosion : MonoBehaviour
             Rigidbody2D rb = rocket.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                audioSource.clip = tapCometSFX[Random.Range(0, tapCometSFX.Length)];
-                audioSource.Play();
+                AudioSource.PlayClipAtPoint(tapCometSFX[Random.Range(0, tapCometSFX.Length)], Camera.main.transform.position, soundVolume);
                 rocket.CometHit();
             }
         }

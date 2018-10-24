@@ -12,6 +12,7 @@ public class Supernova : MonoBehaviour
     [SerializeField] ParticleSystem clashWithComet;
     [SerializeField] ParticleSystem clashWithStar;
     [SerializeField] AudioClip[] supernovaHit;
+    [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
 
     bool playing = true;
 
@@ -53,6 +54,10 @@ public class Supernova : MonoBehaviour
 
     IEnumerator ShrinkSupernova()
     {
+        if(collider.radius > 0)
+        {
+            collider.radius -= expandRate * Time.deltaTime;
+        }
         var supernovaMain = supernovaPS.main;
         supernovaMain.startSizeMultiplier -= Time.deltaTime * expandRate;
         yield return new WaitForEndOfFrame();
@@ -71,15 +76,13 @@ public class Supernova : MonoBehaviour
         if (collision.gameObject.GetComponent<Star>())
         {
             Instantiate(clashWithStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
-            GetComponent<AudioSource>().clip = supernovaHit[Random.Range(0, supernovaHit.Length)];
-            GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
             StartCoroutine( RemoveStarLife(collision.gameObject.GetComponent<Star>()));
         }
         else if (collision.gameObject.GetComponent<Comet>())
         {
             Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
-            GetComponent<AudioSource>().clip = supernovaHit[Random.Range(0, supernovaHit.Length)];
-            GetComponent<AudioSource>().Play();
+            AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
             collision.gameObject.GetComponent<Comet>().CometHit();
         }
     }

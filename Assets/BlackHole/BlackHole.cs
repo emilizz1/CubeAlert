@@ -74,7 +74,7 @@ public class BlackHole : MonoBehaviour
             numberInstance.GetComponent<Text>().text = "+" + healing.ToString();
             lifePoints.RemoveLife(-healing);
             cameraShaker.AddShakeDuration(0.2f);
-            collision.gameObject.GetComponent<Comet>().CometHitBlackhole();
+            collision.gameObject.GetComponent<Comet>().CometHit();
         }
         else
         {

@@ -7,7 +7,6 @@ public class Comet : MonoBehaviour
     [SerializeField] float flightSpeedMax;
     [SerializeField] float flightSpeed;
     [SerializeField] GameObject explosionOnHit;
-    [SerializeField] GameObject explosionOnHitWithBlackhole;
     [SerializeField] float loopingTimer = 0.5f;
     [SerializeField] int healingToBlackhole = 1; 
 
@@ -36,13 +35,6 @@ public class Comet : MonoBehaviour
     public void CometHit()
     {
         Instantiate(explosionOnHit, transform.position, Quaternion.identity, gameObject.transform.parent);
-        Destroy(GetComponent<CometIndicator>().GetIndicator());
-        Destroy(gameObject);
-    }
-
-    public void CometHitBlackhole()
-    {
-        Instantiate(explosionOnHitWithBlackhole, transform.position, Quaternion.identity, gameObject.transform.parent);
         Destroy(GetComponent<CometIndicator>().GetIndicator());
         Destroy(gameObject);
     }

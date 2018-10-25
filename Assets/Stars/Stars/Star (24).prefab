@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114568212177548168}
   - component: {fileID: 114672795611209608}
   - component: {fileID: 114406954385990934}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Star Generator Mixer 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114577638585804462}
   - component: {fileID: 50570429912130864}
   - component: {fileID: 58928773162223938}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Star (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 3.75
 --- !u!114 &114405971817825480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53312f194d0dae141a5cd7c873b071ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starRadiusIncrease: 0.3
+  starRadiusIncrease: 0.1
   loopingTimer: 1
   centerParticles:
   - {fileID: 1773289960377032, guid: 31d4737db878ef04e9e5df59552d2c73, type: 2}

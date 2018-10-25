@@ -38,8 +38,8 @@ public class StarSpawner : MonoBehaviour
             if (ammo.IsThereLevelAmmo(bulletAmount))
             {
                 GameObject myObject = Instantiate(stars[Random.Range(0, stars.Length)]) as GameObject;
-                myObject.GetComponent<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
-                myObject.GetComponent<DreamStarGen.DreamStarGenerator>()._GenerateStar();
+                myObject.GetComponentInChildren<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
+                myObject.GetComponentInChildren<DreamStarGen.DreamStarGenerator>()._GenerateStar();
                 myObject.transform.parent = transform;
                 myObject.transform.position = new Vector2(Random.Range(minStartingPosX, maxStartingPosX), Random.Range(minStartingPosY, maxStartingPosY));
                 myObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(minThrowForce_x, maxThrowForce_x), Random.Range(minThrowForce_y, maxThrowForce_y)), ForceMode2D.Impulse);

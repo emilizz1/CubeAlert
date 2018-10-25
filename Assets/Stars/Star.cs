@@ -15,7 +15,6 @@ public class Star : MonoBehaviour
 
     float rotationSpeed;
     int bulletAmount = 7;
-    DreamStarGen.DreamStarGenerator star;
     float lastTimeLooped = 0f;
     CircleCollider2D myCollider;
     GameObject myCentralParticles;
@@ -23,7 +22,6 @@ public class Star : MonoBehaviour
     void Start()
     {
         rotationSpeed = Random.Range(-40, 40f);
-        star = GetComponent<DreamStarGen.DreamStarGenerator>();
         myCollider = GetComponent<CircleCollider2D>();
         myCentralParticles = Instantiate(centerParticles[Random.Range(0, centerParticles.Length)], transform.position, Quaternion.identity, transform);
         AddSizeToCenterParticles(bulletAmount);
@@ -53,6 +51,7 @@ public class Star : MonoBehaviour
 
     public void RemoveAmmo()
     {
+        print("Life removed");
         beenHit = true;
         AddSizeToCenterParticles(-1);
         bulletAmount--;
@@ -95,6 +94,7 @@ public class Star : MonoBehaviour
 
     IEnumerator ShrinkingStar(float shrinkingSpeed)
     {
+        print("Started shrinking");
         while (startedExploding)
         {
             transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(0.01f, 0.01f), shrinkingSpeed);
@@ -108,10 +108,10 @@ public class Star : MonoBehaviour
 
     void UpdateFigureLifes()
     {
-        star.Radius = (bulletAmount * starRadiusIncrease) + starRadiusIncrease;
-        if (myCollider)
+        if (!startedExploding)
         {
-            myCollider.radius = star.Radius;
+            float size = (bulletAmount * starRadiusIncrease) + starRadiusIncrease;
+            transform.localScale = new Vector3(size, size, size);
         }
     }
 

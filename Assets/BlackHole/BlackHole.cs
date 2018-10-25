@@ -90,6 +90,7 @@ public class BlackHole : MonoBehaviour
             figure.transform.localPosition = Vector2.MoveTowards(figure.transform.localPosition, transform.position, 0.5f);
             if (absorbedBullets > 0)
             {
+                print(absorbedBullets);
                 lifePoints.RemoveLife();
                 absorbedBullets--;
             }

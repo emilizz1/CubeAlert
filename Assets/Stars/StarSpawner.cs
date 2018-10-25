@@ -5,7 +5,7 @@ using DreamStarGen.Algorithms;
 
 public class StarSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject objectToThrow;
+    [SerializeField] GameObject[] stars;
     [SerializeField] Material[] materials;
     [SerializeField] [Range(-100, 100)] float minThrowForce_x =0f;
     [SerializeField] [Range(-100, 100)] float maxThrowForce_x =0f;
@@ -37,11 +37,9 @@ public class StarSpawner : MonoBehaviour
             int bulletAmount = Random.Range(minBulletAmount, maxBulletAmount);
             if (ammo.IsThereLevelAmmo(bulletAmount))
             {
-                GameObject myObject = Instantiate(objectToThrow) as GameObject;
-                var shape = GenerateStar(myObject.GetComponent<DreamStarGen.DreamStarGenerator>());
+                GameObject myObject = Instantiate(stars[Random.Range(0, stars.Length)]) as GameObject;
                 myObject.GetComponent<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
-                shape._GenerateStar();
-                myObject.GetComponent<CircleCollider2D>().radius = shape.Radius;
+                myObject.GetComponent<DreamStarGen.DreamStarGenerator>()._GenerateStar();
                 myObject.transform.parent = transform;
                 myObject.transform.position = new Vector2(Random.Range(minStartingPosX, maxStartingPosX), Random.Range(minStartingPosY, maxStartingPosY));
                 myObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(minThrowForce_x, maxThrowForce_x), Random.Range(minThrowForce_y, maxThrowForce_y)), ForceMode2D.Impulse);
@@ -49,39 +47,5 @@ public class StarSpawner : MonoBehaviour
             }
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
         }
-    }
-
-    DreamStarGen.DreamStarGenerator GenerateStar(DreamStarGen.DreamStarGenerator shape)
-    {
-        int randomaizer = Random.Range(0, 4);
-        switch (randomaizer) {
-            case 0:
-                shape.Density = 4f;
-                shape.a = Random.Range(1f, 44f);
-                break;
-            case 1:
-                shape.Density = 8f;
-                shape.a = Random.Range(1f, 21f);
-                break;
-            case 2:
-                shape.Density = 12f;
-                shape.a = Random.Range(1f, 14f);
-                break;
-            case 3:
-                shape.Density = 16f;
-                shape.a = Random.Range(1f, 10.5f);
-                break;
-            case 4:
-                shape.Density = 20f;
-                shape.a = Random.Range(1f, 8.5f);
-                break;
-        }
-        shape.Radius = Random.Range(2f, 3f);
-        shape.Width = Random.Range(0.1f,0.5F); 
-        shape.b = 0f;
-        shape.c = 0f;
-        shape.d = 0f;
-        shape.e = 0f;
-        return shape;
     }
 }

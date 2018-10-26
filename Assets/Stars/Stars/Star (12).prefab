@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 33072965781114056}
   - component: {fileID: 23452674817579514}
   - component: {fileID: 114623218842923000}
+  - component: {fileID: 114545967917773206}
   m_Layer: 10
   m_Name: Star Generator Crazy 4
   m_TagString: Untagged
@@ -54,8 +55,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000156186881610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 10.5, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4926502284404962}
   m_Father: {fileID: 0}
@@ -170,6 +171,25 @@ MonoBehaviour:
   - {fileID: 1773289960377032, guid: cd8f4b74ff691d44c954d90be974a85e, type: 2}
   - {fileID: 1773289960377032, guid: 68eab6a2ed07dd643b38e8a408506da7, type: 2}
   - {fileID: 1773289960377032, guid: 59cf2e86ceaa0e6409c7bc927b66fe46, type: 2}
+--- !u!114 &114545967917773206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1126941246412084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9db9ee96570eb4e8982d7c71baf6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Generator: {fileID: 114623218842923000}
+  Speed: 0.175
+  FrameSkip: 3
+  Change_A: 0.0002
+  Change_B: 0
+  Change_C: 0
+  Change_D: 0
+  Change_E: 0
 --- !u!114 &114623218842923000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,7 +205,7 @@ MonoBehaviour:
   Radius: 2.4
   Density: 2
   Width: -0.22
-  a: 14.6
+  a: 15.319423
   b: 518.83
   c: 0
   d: 0

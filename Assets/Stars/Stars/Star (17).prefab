@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 33187175094415532}
   - component: {fileID: 23987981199842132}
   - component: {fileID: 114255580974692558}
+  - component: {fileID: 114417464049369696}
   m_Layer: 10
   m_Name: Star Generator Curved 2
   m_TagString: Untagged
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1148238308663014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 9.61, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4979748529485686}
@@ -223,3 +224,22 @@ MonoBehaviour:
     m_PreInfinity: 1
     m_PostInfinity: 1
     m_RotationOrder: 0
+--- !u!114 &114417464049369696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756830743325984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9db9ee96570eb4e8982d7c71baf6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Generator: {fileID: 114255580974692558}
+  Speed: 0.175
+  FrameSkip: 3
+  Change_A: 0.02
+  Change_B: 0
+  Change_C: 0
+  Change_D: 0
+  Change_E: 0

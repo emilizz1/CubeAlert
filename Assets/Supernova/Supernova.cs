@@ -100,4 +100,9 @@ public class Supernova : MonoBehaviour
     {
         return myRadius;
     }
+
+    public float GetMaxRadius()
+    {
+        return maxRadius;
+    }
 }

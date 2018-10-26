@@ -25,7 +25,7 @@ public class BlackHole : MonoBehaviour
     CircleCollider2D circleCollider;
     BlackholeDamageNumber damageNumber;
     GameObject myParticle;
-    
+    float waitForNewPos = 1f;
 
     void Start()
     {
@@ -42,8 +42,7 @@ public class BlackHole : MonoBehaviour
     {
         if (alive)
         {
-
-            if (!CheckIfCollidingWithSupernova() && !tutorial)
+            if (!tutorial)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
             }
@@ -51,8 +50,10 @@ public class BlackHole : MonoBehaviour
             {
                 GetNewTargetPos();
             }
-                UpdateSizeFromLifePoints();
+            CheckIfCollidingWithSupernova();
+            UpdateSizeFromLifePoints();
         }
+        waitForNewPos -= Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -110,11 +111,15 @@ public class BlackHole : MonoBehaviour
 
     void GetNewTargetPos()
     {
-        float minX = pos.x * 0.3f;
-        float maxX = pos.x * -0.7f;
-        float minY = pos.y * 0.3f;
-        float maxY = pos.y * -0.7f;
-        targetPos = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        if (waitForNewPos <= 0)
+        {
+            float minX = pos.x * 0.3f;
+            float maxX = pos.x * -0.7f;
+            float minY = pos.y * 0.3f;
+            float maxY = pos.y * -0.7f;
+            targetPos = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+            waitForNewPos = 3f;
+        }
     }
 
     public void BlackholeDied()
@@ -123,7 +128,7 @@ public class BlackHole : MonoBehaviour
         Destroy(myParticle);
     }
 
-    bool CheckIfCollidingWithSupernova()
+    void CheckIfCollidingWithSupernova()
     {
         if (FindObjectOfType<Supernova>())
         {
@@ -132,10 +137,18 @@ public class BlackHole : MonoBehaviour
                 float extraDistance = supernova.GetRadius() + circleCollider.radius;
                 if (Vector2.Distance(transform.position, supernova.transform.position) - extraDistance  < 0)
                 {
-                    return true;
+                    GetNewTargetPosFromSupernova(supernova.transform.position);
                 }
             }
         }
-        return false;
+    }
+
+    void GetNewTargetPosFromSupernova(Vector3 supernovaPos)
+    {
+        if (waitForNewPos <= 0)
+        {
+            targetPos = new Vector2(-supernovaPos.x, -supernovaPos.y);
+            waitForNewPos = 3f;
+        }
     }
 }

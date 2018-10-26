@@ -75,13 +75,13 @@ public class Supernova : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
-            Instantiate(clashWithStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
+            Destroy(Instantiate(clashWithStar, collision.GetContact(0).point, Quaternion.identity, transform), clashWithStar.main.duration);
             AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
             StartCoroutine( RemoveStarLife(collision.gameObject.GetComponent<Star>()));
         }
         else if (collision.gameObject.GetComponent<Comet>())
         {
-            Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
+            Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, transform), clashWithComet.main.duration);
             AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
             collision.gameObject.GetComponent<Comet>().CometHit();
         }

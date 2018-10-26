@@ -51,7 +51,6 @@ public class Star : MonoBehaviour
 
     public void RemoveAmmo()
     {
-        print("Life removed");
         beenHit = true;
         AddSizeToCenterParticles(-1);
         bulletAmount--;
@@ -94,7 +93,6 @@ public class Star : MonoBehaviour
 
     IEnumerator ShrinkingStar(float shrinkingSpeed)
     {
-        print("Started shrinking");
         while (startedExploding)
         {
             transform.localScale = Vector2.MoveTowards(transform.localScale, new Vector2(0.01f, 0.01f), shrinkingSpeed);

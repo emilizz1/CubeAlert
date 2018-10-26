@@ -473,7 +473,7 @@ Prefab:
         type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1733372162}
+      objectReference: {fileID: 1932504362}
     - target: {fileID: 50308442367091600, guid: db48d825b78125b468b72aa1a7b6a379,
         type: 2}
       propertyPath: m_Mass
@@ -730,7 +730,7 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 20333074543329452, guid: a8e2c9796f5a2a44a858b2e08c25fbed,
     type: 2}
   m_PrefabInternal: {fileID: 1539726800}
---- !u!43 &1733372162
+--- !u!43 &1932504362
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

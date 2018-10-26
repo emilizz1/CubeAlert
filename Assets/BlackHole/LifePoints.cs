@@ -17,7 +17,6 @@ public class LifePoints : MonoBehaviour
     int currentLife;
     GameObject lifeNumber;
     Text lifeNumberText;
-    PointRipple pointRipple;
 
     void Start()
     {
@@ -25,7 +24,6 @@ public class LifePoints : MonoBehaviour
         //currentLife = Random.Range(minLifePoints, maxLifePoints) + 10 * FindObjectOfType<LevelHolder>().currentLevel;
         FindObjectOfType<Ammo>().AddMaxPortalAmmo(currentLife);
         lifeNumber = FindObjectOfType<BlackholeNumber>().GetNumber();
-        pointRipple = FindObjectOfType<PointRipple>();
         lifeNumberText = lifeNumber.GetComponent<Text>();
     }
 
@@ -75,7 +73,6 @@ public class LifePoints : MonoBehaviour
         {
             deathTime -= Time.deltaTime;
             transform.localScale -= new Vector3(shrinkingSpeed * Time.deltaTime, shrinkingSpeed * Time.deltaTime, 0f);
-            pointRipple.AddRipples(transform.position);
             yield return new WaitForEndOfFrame();
         }
         Destroy(gameObject);

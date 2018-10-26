@@ -84,7 +84,7 @@ public class BlackHole : MonoBehaviour
     private void CometCollided(Collision2D collision)
     {
         AudioSource.PlayClipAtPoint(cometImpact[Random.Range(0, cometImpact.Length)], Camera.main.transform.position, soundVolume);
-        Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
+        Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity), clashWithComet.main.duration);
         GetHealed(collision);
         cameraShaker.AddShakeDuration(0.2f);
         collision.gameObject.GetComponent<Comet>().CometHit();

@@ -60,27 +60,42 @@ public class BlackHole : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
-            AudioSource.PlayClipAtPoint(starEaten[Random.Range(0, starEaten.Length)], Camera.main.transform.position, soundVolume);
-            Instantiate(absorbingStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
-            var figure = collision.gameObject.GetComponent<Star>();
-            StartCoroutine(AbsorbingFigure(figure));
-            figure.DestroyFigure(false);
+            StarCollided(collision);
         }
         else if (collision.gameObject.GetComponent<Comet>())
         {
-            AudioSource.PlayClipAtPoint(cometImpact[Random.Range(0, cometImpact.Length)], Camera.main.transform.position, soundVolume);
-            Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
-            GameObject numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
-            int healing = collision.gameObject.GetComponent<Comet>().GetHealing();
-            numberInstance.GetComponent<Text>().text = "+" + healing.ToString();
-            lifePoints.RemoveLife(-healing);
-            cameraShaker.AddShakeDuration(0.2f);
-            collision.gameObject.GetComponent<Comet>().CometHit();
+            CometCollided(collision);
         }
         else
         {
             Destroy(collision.gameObject);
         }
+    }
+
+    private void StarCollided(Collision2D collision)
+    {
+        AudioSource.PlayClipAtPoint(starEaten[Random.Range(0, starEaten.Length)], Camera.main.transform.position, soundVolume);
+        Instantiate(absorbingStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
+        var figure = collision.gameObject.GetComponent<Star>();
+        StartCoroutine(AbsorbingFigure(figure));
+        figure.DestroyFigure(false);
+    }
+
+    private void CometCollided(Collision2D collision)
+    {
+        AudioSource.PlayClipAtPoint(cometImpact[Random.Range(0, cometImpact.Length)], Camera.main.transform.position, soundVolume);
+        Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
+        GetHealed(collision);
+        cameraShaker.AddShakeDuration(0.2f);
+        collision.gameObject.GetComponent<Comet>().CometHit();
+    }
+
+    private void GetHealed(Collision2D collision)
+    {
+        GameObject numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
+        int healing = collision.gameObject.GetComponent<Comet>().GetHealing();
+        numberInstance.GetComponent<Text>().text = "+" + healing.ToString();
+        lifePoints.RemoveLife(-healing);
     }
 
     IEnumerator AbsorbingFigure(Star figure)
@@ -91,7 +106,6 @@ public class BlackHole : MonoBehaviour
             figure.transform.localPosition = Vector2.MoveTowards(figure.transform.localPosition, transform.position, 0.5f);
             if (absorbedBullets > 0)
             {
-                print(absorbedBullets);
                 lifePoints.RemoveLife();
                 absorbedBullets--;
             }

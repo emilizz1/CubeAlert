@@ -21,7 +21,8 @@ public class LifePoints : MonoBehaviour
 
     void Start()
     {
-        currentLife = Random.Range(minLifePoints, maxLifePoints) + 10 * FindObjectOfType<LevelHolder>().currentLevel;
+        currentLife = Random.Range(minLifePoints, maxLifePoints);
+        //currentLife = Random.Range(minLifePoints, maxLifePoints) + 10 * FindObjectOfType<LevelHolder>().currentLevel;
         FindObjectOfType<Ammo>().AddMaxPortalAmmo(currentLife);
         lifeNumber = FindObjectOfType<BlackholeNumber>().GetNumber();
         pointRipple = FindObjectOfType<PointRipple>();

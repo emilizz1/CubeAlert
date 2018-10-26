@@ -35,6 +35,7 @@ public class Ammo : MonoBehaviour
             currentlyHaving += figure.GetBulletAmount();
         }
         UpdateImage(currentlyNeeded);
+        print(currentlyHaving + "   " + currentlyNeeded);
         if (currentlyHaving < currentlyNeeded)
         {
             FindObjectOfType<LostCondition>().GiveLostCondition("Out of Stardust");

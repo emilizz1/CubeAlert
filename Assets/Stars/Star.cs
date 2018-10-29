@@ -120,7 +120,7 @@ public class Star : MonoBehaviour
             foreach (ParticleSystem particle in GetComponentsInChildren<ParticleSystem>())
             {
                 var particles = particle.main;
-                particles.startSizeMultiplier = particles.startSize.constantMax * 0.75f * times;
+                particles.startSizeMultiplier = particles.startSize.constantMax * 0.1f * times;
             }
         }
     }

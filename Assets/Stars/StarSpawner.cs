@@ -19,6 +19,7 @@ public class StarSpawner : MonoBehaviour
     [SerializeField] float maxStartingPosY;
     [SerializeField] int minBulletAmount = 3;
     [SerializeField] int maxBulletAmount = 12;
+    [SerializeField] int starMaxCap = 7;
 
     bool playing = true;
 
@@ -35,7 +36,7 @@ public class StarSpawner : MonoBehaviour
         while (playing)
         {
             int bulletAmount = Random.Range(minBulletAmount, maxBulletAmount);
-            if (ammo.IsThereLevelAmmo(bulletAmount))
+            if (ammo.IsThereLevelAmmo(bulletAmount) && FindObjectsOfType<Star>().Length <= starMaxCap)
             {
                 GameObject myObject = Instantiate(stars[Random.Range(0, stars.Length)]) as GameObject;
                 myObject.GetComponentInChildren<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];

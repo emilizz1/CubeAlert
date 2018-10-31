@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/_Tutorial.unity
+- path: Assets/ImportedAssets/Fork Particle Variety Pack FX/Assets/Scene/ForkScene.unity
   isLoaded: 1
   isActive: 1

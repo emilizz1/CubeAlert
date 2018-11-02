@@ -116,11 +116,8 @@ public class BlackHole : MonoBehaviour
     void UpdateSizeFromLifePoints()
     {
         circleCollider.radius = 1.35f + (lifePoints.GetCurrentLifePoints() * 0.025f);
-        foreach (ParticleSystem particle in GetComponentsInChildren<ParticleSystem>())
-        {
-            var particles = particle.main;
-            particles.startSizeMultiplier = circleCollider.radius * 2f + 2f;
-        }
+            var particles = myParticle.GetComponent<ParticleSystem>().main;
+            particles.startSizeMultiplier = circleCollider.radius * 4f;
     }
 
     void GetNewTargetPos()

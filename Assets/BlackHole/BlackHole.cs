@@ -165,4 +165,9 @@ public class BlackHole : MonoBehaviour
             waitForNewPos = 3f;
         }
     }
+
+    public void SetAlive(bool set)
+    {
+        alive = set;
+    }
 }

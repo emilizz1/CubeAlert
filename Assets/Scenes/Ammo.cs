@@ -38,7 +38,6 @@ public class Ammo : MonoBehaviour
         if (currentlyHaving < currentlyNeeded)
         {
             FindObjectOfType<LostCondition>().GiveLostCondition("Out of Stardust");
-            FindObjectOfType<LoadScene>().mLoadScene(2);
         }
     }
 

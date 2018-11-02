@@ -7,23 +7,33 @@ public class TutorialGuide : MonoBehaviour
     [SerializeField] float maxSize = 2f;
     [SerializeField] float minSize = 1f;
     [SerializeField] float changeSpeed = 0.1f;
+    [SerializeField] GameObject arrow;
+    [SerializeField] float minArrowSize = 0.65f;
+    [SerializeField] float maxArrowSize = 1.15f;
 
     bool gettingBigger = true;
+
+    Transform currentlyMoving;
+
+    void Start()
+    {
+        currentlyMoving = transform;
+    }
 
     void Update()
     {
         if (gettingBigger)
         {
-            transform.localScale =  Vector3.MoveTowards(transform.localScale, new Vector3(maxSize, maxSize, maxSize), changeSpeed);
-            if(transform.localScale.x == maxSize)
+            currentlyMoving.localScale =  Vector3.MoveTowards(currentlyMoving.localScale, new Vector3(maxSize, maxSize, maxSize), changeSpeed);
+            if(currentlyMoving.localScale.x == maxSize)
             {
                 gettingBigger = false;
             }
         }
         else
         {
-            transform.localScale = Vector3.MoveTowards(transform.localScale, new Vector3(minSize, minSize, minSize), changeSpeed);
-            if (transform.localScale.x == minSize)
+            currentlyMoving.localScale = Vector3.MoveTowards(currentlyMoving.localScale, new Vector3(minSize, minSize, minSize), changeSpeed);
+            if (currentlyMoving.localScale.x == minSize)
             {
                 gettingBigger = true;
             }
@@ -31,6 +41,7 @@ public class TutorialGuide : MonoBehaviour
 
         if(FindObjectOfType<BlackHole>() == null)
         {
+            arrow.SetActive(false);
             FindObjectOfType<EndLevelFlash>().EndLevel();
             Invoke("StartLoadingScene", 2f);
         }
@@ -43,6 +54,10 @@ public class TutorialGuide : MonoBehaviour
 
     public void Tapped()
     {
+        arrow.SetActive(true);
         Destroy(GetComponent<SpriteRenderer>());
+        currentlyMoving = arrow.transform;
+        minSize = minArrowSize;
+        maxSize = maxArrowSize;
     }
 }

@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class Ammo : MonoBehaviour
 {
-    [SerializeField] int levelBulletAmount = 350;
+    [SerializeField] int damageToLose = 100;
     [SerializeField] bool tutorial = false;
 
     Image image;
-    float maxPortalAmmo = 0;
+    float maxDamageToLose;
 
     void Start()
     {
-        levelBulletAmount += 10 * FindObjectOfType<LevelHolder>().currentLevel;
         image = GetComponent<Image>();
+        maxDamageToLose = damageToLose;
     }
 
     void Update()
@@ -24,48 +24,25 @@ public class Ammo : MonoBehaviour
 
     void CheckIfPossibleToFinish()
     {
-        int currentlyNeeded = 0;
-        int currentlyHaving = levelBulletAmount;
-        foreach(LifePoints portal in FindObjectsOfType<LifePoints>())
+        UpdateImage();
+        if (damageToLose <= 0)
         {
-            currentlyNeeded += portal.GetCurrentLifePoints();
-        }
-        foreach(Star figure in FindObjectsOfType<Star>())
-        {
-            currentlyHaving += figure.GetBulletAmount();
-        }
-        UpdateImage(currentlyNeeded);
-        if (currentlyHaving < currentlyNeeded)
-        {
-            FindObjectOfType<LostCondition>().GiveLostCondition("Out of Stardust");
-        }
-    }
-
-    public bool IsThereLevelAmmo(int amount)
-    {
-        if(levelBulletAmount - amount >= 0)
-        {
-            levelBulletAmount -= amount;
-            return true;
-        }
-        else
-        {
-            return false;
+            FindObjectOfType<LostCondition>().GiveLostCondition("Too much damage taken");
         }
     }
    
-    void UpdateImage(float needed)
+    void UpdateImage()
     {
         if (!tutorial)
         {
-            float fillAmount = 1 - needed / maxPortalAmmo;
+            float fillAmount = 1 - damageToLose / maxDamageToLose;
             image.fillAmount = Mathf.Lerp(0, 1, fillAmount);
-            image.color = Color.Lerp(Color.red, Color.green, image.fillAmount);
+            image.color = Color.Lerp(Color.green, Color.red, image.fillAmount);
         }
     }
 
-    public void AddMaxPortalAmmo(int amount)
+    public void DamageDealt(int damage)
     {
-        maxPortalAmmo += amount;
+        damageToLose -= damage;
     }
 }

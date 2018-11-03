@@ -7,7 +7,7 @@ public class Supernova : MonoBehaviour
     [SerializeField] float expandRate;
     [SerializeField] float minRadius;
     [SerializeField] float maxRadius;
-    [SerializeField] float starLivesToRemove = 3f;
+    [SerializeField] int starLivesToRemove = 3;
     [SerializeField] float waitBeforeExploding = 5f;
     [SerializeField] ParticleSystem clashWithComet;
     [SerializeField] ParticleSystem clashWithStar;
@@ -78,6 +78,7 @@ public class Supernova : MonoBehaviour
             Destroy(Instantiate(clashWithStar, collision.GetContact(0).point, Quaternion.identity, transform), clashWithStar.main.duration);
             AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
             StartCoroutine( RemoveStarLife(collision.gameObject.GetComponent<Star>()));
+            FindObjectOfType<Ammo>().DamageDealt(starLivesToRemove);
         }
         else if (collision.gameObject.GetComponent<Comet>())
         {

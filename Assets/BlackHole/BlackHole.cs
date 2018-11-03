@@ -96,6 +96,7 @@ public class BlackHole : MonoBehaviour
         int healing = collision.gameObject.GetComponent<Comet>().GetHealing();
         numberInstance.GetComponent<Text>().text = "+" + healing.ToString();
         lifePoints.RemoveLife(-healing);
+        FindObjectOfType<Ammo>().DamageDealt(healing);
     }
 
     IEnumerator AbsorbingFigure(Star figure)
@@ -115,7 +116,7 @@ public class BlackHole : MonoBehaviour
 
     void UpdateSizeFromLifePoints()
     {
-        circleCollider.radius = 1.35f + (lifePoints.GetCurrentLifePoints() * 0.025f);
+        circleCollider.radius = 1.35f + (lifePoints.GetCurrentLifePoints() * 0.0275f);
             var particles = myParticle.GetComponent<ParticleSystem>().main;
             particles.startSizeMultiplier = circleCollider.radius * 4f;
     }

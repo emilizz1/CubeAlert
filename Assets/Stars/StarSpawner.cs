@@ -23,11 +23,8 @@ public class StarSpawner : MonoBehaviour
 
     bool playing = true;
 
-    Ammo ammo;
-
 	void Start ()
     {
-        ammo = FindObjectOfType<Ammo>();
         StartCoroutine(SpawnObjects());
     }
 
@@ -36,7 +33,7 @@ public class StarSpawner : MonoBehaviour
         while (playing)
         {
             int bulletAmount = Random.Range(minBulletAmount, maxBulletAmount);
-            if (ammo.IsThereLevelAmmo(bulletAmount) && FindObjectsOfType<Star>().Length <= starMaxCap)
+            if (FindObjectsOfType<Star>().Length <= starMaxCap)
             {
                 GameObject myObject = Instantiate(stars[Random.Range(0, stars.Length)]) as GameObject;
                 myObject.GetComponentInChildren<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];

@@ -20,11 +20,14 @@ public class Wall : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.GetComponent<Comet>().ShouldItLoop() || other.gameObject.GetComponent<Comet>().DidItPass())
+            if (other.gameObject.GetComponent<Comet>())
             {
-                var pos = other.gameObject.transform.position;
-                pos = pos * multipliyier;
-                other.gameObject.transform.position = pos;
+                if (other.gameObject.GetComponent<Comet>().ShouldItLoop() || other.gameObject.GetComponent<Comet>().DidItPass())
+                {
+                    var pos = other.gameObject.transform.position;
+                    pos = pos * multipliyier;
+                    other.gameObject.transform.position = pos;
+                }
             }
         }
     }

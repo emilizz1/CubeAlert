@@ -35,4 +35,9 @@ public class Timer : MonoBehaviour
             }
         }
     }
+
+    public void AddTime(int amount)
+    {
+        playingTime += amount;
+    }
 }

@@ -52,6 +52,10 @@ public class TapExplosion : MonoBehaviour
                 rocket.CometHit();
             }
         }
+        foreach(UpgradeController upgrade in GetUpgradesInRange())
+        {
+            upgrade.tapped();
+        }
     }
 
     List<Star> GetFiguresInRange()
@@ -69,14 +73,27 @@ public class TapExplosion : MonoBehaviour
 
     List<Comet> GetRocketsInRange()
     {
-        List<Comet> rockets = new List<Comet>();
-        foreach (Comet rocket in FindObjectsOfType<Comet>())
+        List<Comet> comets = new List<Comet>();
+        foreach (Comet comet in FindObjectsOfType<Comet>())
         {
-            if (Vector2.Distance(rocket.transform.position, transform.position) <= explosionRadius)
+            if (Vector2.Distance(comet.transform.position, transform.position) <= explosionRadius)
             {
-                rockets.Add(rocket);
+                comets.Add(comet);
             }
         }
-        return rockets;
+        return comets;
+    }
+
+    List<UpgradeController> GetUpgradesInRange()
+    {
+        List<UpgradeController> upgrades = new List<UpgradeController>();
+        foreach(UpgradeController upgrade in FindObjectsOfType<UpgradeController>())
+        {
+            if(Vector2.Distance(upgrade.transform.position, transform.position) <= explosionRadius)
+            {
+                upgrades.Add(upgrade);
+            }
+        }
+        return upgrades;
     }
 }

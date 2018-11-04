@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b761cfac0ad9934b9fa17150c947cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelBulletAmount: 350
+  damageToLose: 100
   tutorial: 1
 --- !u!4 &376294784
 Transform:
@@ -488,6 +488,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738333595948418, guid: 65a175d984cf0e44fa093f12044bff18,
+        type: 2}
+      propertyPath: cameraZoomSpeed
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a175d984cf0e44fa093f12044bff18, type: 2}

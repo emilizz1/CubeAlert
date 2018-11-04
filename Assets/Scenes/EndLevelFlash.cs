@@ -9,6 +9,7 @@ public class EndLevelFlash : MonoBehaviour
     [SerializeField] GameObject triangle;
     [SerializeField] float triangleMaxSize;
     [SerializeField] GameObject whiteCanvas;
+    [SerializeField] float cameraZoomSpeed = 1f;
 
     bool once = true;
 
@@ -23,10 +24,12 @@ public class EndLevelFlash : MonoBehaviour
 
     IEnumerator TriangleGrowing()
     {
+        var camera = Camera.main;
         triangle.SetActive(true);
         triangle.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
         while(triangle.transform.localScale.x < triangleMaxSize)
         {
+            camera.fieldOfView -= Time.deltaTime * cameraZoomSpeed;
             triangle.transform.localScale += new Vector3((Time.deltaTime * transitionSpeed), (Time.deltaTime * transitionSpeed), (Time.deltaTime * transitionSpeed));
             yield return new WaitForEndOfFrame();
         }

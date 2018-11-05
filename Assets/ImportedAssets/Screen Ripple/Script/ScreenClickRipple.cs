@@ -82,9 +82,7 @@ public class ScreenClickRipple : MonoBehaviour
 		if (shouldRipple)
 		{
 			float mouseX = Camera.main.WorldToScreenPoint(ripplePos).x / Screen.width;
-            print("x: " + mouseX);
 			float mouseY = Camera.main.WorldToScreenPoint(ripplePos).y / Screen.height;
-            print("y: " + mouseY);
             if (m_AntiAliasing)
 				mouseY = 1f - mouseY;  // yes, unity build-in AntiAliasing will flip y coordinate, so we have to flip it here.
 			m_RippleClick[m_CurrentRippleClick].MouseX = mouseX;
@@ -162,7 +160,6 @@ public class ScreenClickRipple : MonoBehaviour
 	}
     public void AddRipple(Vector3 position)
     {
-        print("Recieved: " + position);
         shouldRipple = true;
         ripplePos = position;
     }

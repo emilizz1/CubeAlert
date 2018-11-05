@@ -849,6 +849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1400240223}
   lostConditionText: {fileID: 547095273}
+  fadeIn: {fileID: 1554032278}
 --- !u!1 &547095270
 GameObject:
   m_ObjectHideFlags: 0

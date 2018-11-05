@@ -64,7 +64,6 @@ public class LifePoints : MonoBehaviour
         float deathTime = clipToPlay.length;
         GetComponent<BlackHole>().BlackholeDied();
         Destroy(GetComponent<CircleCollider2D>());
-        print("Lifepoints: " + transform.position);
         FindObjectOfType<ScreenClickRipple>().AddRipple(transform.position);
         foreach (ParticleSystem particle in blackHoleDeath)
         {

@@ -167,6 +167,7 @@ MonoBehaviour:
   triangle: {fileID: 1914048532278942}
   triangleMaxSize: 1.3
   whiteCanvas: {fileID: 1260367788424588}
+  cameraZoomSpeed: 50
 --- !u!114 &114908186252914070
 MonoBehaviour:
   m_ObjectHideFlags: 1

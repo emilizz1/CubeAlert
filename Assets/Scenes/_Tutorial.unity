@@ -736,6 +736,49 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73be4dfd77dd4a84eadd58b49abf4e87, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1455120497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1106095913365746, guid: a8e2c9796f5a2a44a858b2e08c25fbed,
+    type: 2}
+  m_PrefabInternal: {fileID: 1539726800}
+--- !u!114 &1455120498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1455120497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f1dd661bcfdd545a528bef2d29a613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Mat:
+  - {fileID: 2100000, guid: 044d601d51494904dbd8bf2777e533aa, type: 2}
+  - {fileID: 2100000, guid: 8fcf9505bb88fe14caf39bb504923891, type: 2}
+  - {fileID: 2100000, guid: b9678ac539f819441bd9564440935801, type: 2}
+  m_Camera: {fileID: 0}
+  m_RippleType: 1
+  m_RippleMaskName: TransparentFX
+  m_SdrRippleMask: {fileID: 4800000, guid: 686d6989f875f4e49a4085a2a3d2ea62, type: 3}
+  m_EnableMaskObjects: 0
+  m_ShowInternalMaps: 0
+  m_AntiAliasing: 0
+  m_Ripple1:
+    Spread: 0.3
+    Amplitude: 0.8
+    Gap: 0.03
+  m_Ripple2:
+    StrengthInit: 0.03
+    StrengthDecay: 0.0002
+    Spread: 0.3
+    Frequence: 24
+    Velocity: 16
+  m_Ripple3:
+    Frequence: 100
+    Speed: 30
+    Strength: 1
+    WaveWidth: 0.12
+    Spread: 0.9
 --- !u!1001 &1539726800
 Prefab:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
+    [SerializeField] float minSpeed = 3f;
+    [SerializeField] float maxSpeed = 5f;
     [SerializeField] ParticleSystem stars;
     [SerializeField] Camera mainCamera;
 
@@ -14,6 +16,7 @@ public class Background : MonoBehaviour
         transform.eulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
         StartCoroutine(ChangingColors());
         mainCamera.backgroundColor = new Color(Random.Range(0.15f, 0.2f), Random.Range(0.15f, 0.2f), Random.Range(0.15f, 0.2f));
+        SetRandomSpeed();
 	}
 
     IEnumerator ChangingColors()
@@ -36,9 +39,17 @@ public class Background : MonoBehaviour
         }
     }
 
+    void SetRandomSpeed()
+    {
+        var mainParticles = stars.main;
+        mainParticles.startSpeedMultiplier = Random.Range(minSpeed, maxSpeed);
+        stars.Stop();
+        stars.Play();
+    }
+
     Color GetRandomColor()
     {
-        switch (Random.Range(0, 7))
+        switch (Random.Range(0, 6))
         {
             case (0):
                 return Color.blue;
@@ -51,10 +62,8 @@ public class Background : MonoBehaviour
             case (4):
                 return Color.magenta;
             case (5):
-                return Color.red;
-            case (6):
                 return Color.white;
-            case (7):
+            case (6):
                 return Color.yellow;
         }
         return Color.black;

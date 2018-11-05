@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Supernova : MonoBehaviour
 {
@@ -75,17 +76,35 @@ public class Supernova : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
-            Destroy(Instantiate(clashWithStar, collision.GetContact(0).point, Quaternion.identity, transform), clashWithStar.main.duration);
-            AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
-            StartCoroutine( RemoveStarLife(collision.gameObject.GetComponent<Star>()));
-            FindObjectOfType<Ammo>().DamageDealt(starLivesToRemove);
+            StarCollided(collision);
         }
         else if (collision.gameObject.GetComponent<Comet>())
         {
-            Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, transform), clashWithComet.main.duration);
-            AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
-            collision.gameObject.GetComponent<Comet>().CometHit();
+            CometCollided(collision);
         }
+    }
+
+    private void CometCollided(Collision2D collision)
+    {
+        Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, transform), clashWithComet.main.duration);
+        AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
+        collision.gameObject.GetComponent<Comet>().CometHit();
+    }
+
+    private void StarCollided(Collision2D collision)
+    {
+        ShowDamage(collision);
+        Destroy(Instantiate(clashWithStar, collision.GetContact(0).point, Quaternion.identity, transform), clashWithStar.main.duration);
+        AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
+        StartCoroutine(RemoveStarLife(collision.gameObject.GetComponent<Star>()));
+        FindObjectOfType<Ammo>().DamageDealt(starLivesToRemove);
+    }
+
+    private void ShowDamage(Collision2D collision)
+    {
+        var damageNumber = FindObjectOfType<BlackholeDamageNumber>();
+        var numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
+        numberInstance.GetComponent<Text>().text = "-" + starLivesToRemove.ToString();
     }
 
     IEnumerator RemoveStarLife(Star star)

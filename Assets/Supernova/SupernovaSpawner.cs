@@ -7,6 +7,7 @@ public class SupernovaSpawner : MonoBehaviour
     [SerializeField] GameObject supernova;
     [SerializeField] float minSpawnTime;
     [SerializeField] float maxSpawnTime;
+    [SerializeField] float maxSupernovas = 2;
 
     bool playing = true;
 
@@ -23,7 +24,10 @@ public class SupernovaSpawner : MonoBehaviour
         while (playing)
         {
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
-            Instantiate(supernova, GetNewTargetPos(), Quaternion.identity, transform);
+            if (FindObjectsOfType<Supernova>().Length < maxSupernovas)
+            {
+                Instantiate(supernova, GetNewTargetPos(), Quaternion.identity, transform);
+            }
         }
     }
 

@@ -6,9 +6,12 @@ public class UpgradeController : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 1f;
     [SerializeField] float fadeSpeed = 1f;
+    [SerializeField] float growthSpeed = 1f;
+    [SerializeField] GameObject upgradeDeathParticles;
 
     bool alive = true;
     bool fading = true;
+    bool growing = false;
 
     int extraTime, extraDamage, extraTaps;
     float rotation;
@@ -26,6 +29,7 @@ public class UpgradeController : MonoBehaviour
         StartCoroutine(FadeTimer());
         Fade();
         Rotate();
+        Grow();
     }
 
     void Fade()
@@ -44,8 +48,22 @@ public class UpgradeController : MonoBehaviour
     {
         while (alive)
         {
-            yield return new WaitForSeconds(Random.Range(1.5f, 3f));
+            yield return new WaitForSeconds(Random.Range(1f, 2.5f));
             fading = !fading;
+            growing = !growing;
+        }
+    }
+
+    void Grow()
+    {
+        float growthAmount = Time.deltaTime * growthSpeed;
+        if (growing)
+        {
+            transform.localScale += new Vector3(growthAmount, growthAmount, growthAmount);
+        }
+        else
+        {
+            transform.localScale -= new Vector3(growthAmount, growthAmount, growthAmount);
         }
     }
 
@@ -56,6 +74,8 @@ public class UpgradeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        var particles = Instantiate(upgradeDeathParticles, transform.position, Quaternion.identity, transform.parent);
+        Destroy(particles, particles.GetComponent<ParticleSystem>().main.duration);
         Destroy(gameObject);
     }
 

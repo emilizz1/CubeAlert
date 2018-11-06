@@ -2267,7 +2267,7 @@ MonoBehaviour:
   maxSpawnTime: 0.5
   spawnX: 26
   spawnY: 40
-  force: 0.5
+  force: 0.3
 --- !u!1 &1522709648
 GameObject:
   m_ObjectHideFlags: 0

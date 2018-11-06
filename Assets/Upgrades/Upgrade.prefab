@@ -99,8 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58642e00bab7d0c4ea73dfbf4305aebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 30
+  rotationSpeed: 50
   fadeSpeed: 0.225
+  growthSpeed: 0.5
+  upgradeDeathParticles: {fileID: 1115831520078274, guid: aa42a383e9f881f42a3a33bacddb20c4,
+    type: 2}
 --- !u!212 &212559835532569808
 SpriteRenderer:
   m_ObjectHideFlags: 1

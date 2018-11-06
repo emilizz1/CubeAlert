@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1593636621143004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.99, y: 12.58, z: 0}
+  m_LocalPosition: {x: -10, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4233947136580084}
@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781dc8db0e87b2f4d91bbb45afc28e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expandRate: 2
+  expandRate: 1.8
   minRadius: 1.5
   maxRadius: 3.5
   starLivesToRemove: 3
-  waitBeforeExploding: 3
+  waitBeforeExploding: 5
   clashWithComet: {fileID: 198301411790792142, guid: d8ed3db2098190848a2528441b988082,
     type: 2}
   clashWithStar: {fileID: 198816119215528010, guid: 7e6e0e7f0c970b14dbea250183582036,
@@ -190,8 +190,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 0.25
+      scalar: 0.4
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:

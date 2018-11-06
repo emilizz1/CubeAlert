@@ -16,6 +16,7 @@ public class Supernova : MonoBehaviour
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
 
     bool playing = true;
+    bool fullyExpanded = false;
 
     ParticleSystem supernovaPS;
     CircleCollider2D collider;
@@ -44,10 +45,11 @@ public class Supernova : MonoBehaviour
         }
         else
         {
+            fullyExpanded = true;
             StartCoroutine(Explode());
         }
         var supernovaMain = supernovaPS.main;
-        if (supernovaMain.startSize.constantMax <= (collider.radius * 2f))
+        if (supernovaMain.startSize.constantMax <= (collider.radius * 1.5f))
         {
             supernovaMain.startSizeMultiplier += Time.deltaTime * expandRate;
         }
@@ -76,11 +78,16 @@ public class Supernova : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
-            StarCollided(collision);
+            if (fullyExpanded)
+            {
+                StarCollided(collision);
+            }
         }
         else if (collision.gameObject.GetComponent<Comet>())
         {
+
             CometCollided(collision);
+
         }
     }
 

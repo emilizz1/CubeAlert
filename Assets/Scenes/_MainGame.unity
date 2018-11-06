@@ -443,6 +443,7 @@ MonoBehaviour:
   supernova: {fileID: 1593636621143004, guid: a5c71503c4fdaaf4bbed699defa19994, type: 2}
   minSpawnTime: 12
   maxSpawnTime: 16
+  maxSupernovas: 2
 --- !u!1001 &242052783
 Prefab:
   m_ObjectHideFlags: 0
@@ -2219,7 +2220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1406494915
 Transform:
   m_ObjectHideFlags: 0

@@ -7,7 +7,8 @@ using DreamStarGen.Algorithms;
 public class BlackHole : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    [SerializeField] float minDistance;
+    [SerializeField] float minSpeed = 1f;
+    [SerializeField] float maxSpeed = 5f;
     [SerializeField] ParticleSystem absorbingStar;
     [SerializeField] ParticleSystem clashWithComet;
     [SerializeField] bool tutorial = false;
@@ -21,16 +22,16 @@ public class BlackHole : MonoBehaviour
     Vector3 pos;
     CameraShaker cameraShaker;
     LifePoints lifePoints;
-    Vector3 targetPos;
     CircleCollider2D circleCollider;
+    Rigidbody2D myRigidbody;
     BlackholeDamageNumber damageNumber;
-    float waitForNewPos = 1f;
 
     void Start()
     {
         pos = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 60f));
         lifePoints = GetComponent<LifePoints>();
-        circleCollider = gameObject.AddComponent<CircleCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
+        myRigidbody = GetComponent<Rigidbody2D>();
         cameraShaker = FindObjectOfType<CameraShaker>();
         damageNumber = FindObjectOfType<BlackholeDamageNumber>();
         particle = Instantiate(particle, transform.position, Quaternion.identity, transform);
@@ -42,18 +43,17 @@ public class BlackHole : MonoBehaviour
     {
         if (alive)
         {
-            if (!tutorial)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed);
-            }
-            if (Vector3.Distance(transform.position, targetPos) < minDistance && !tutorial)
+            if (!tutorial && checkIfoutOfBounds() || !tutorial && myRigidbody.velocity.magnitude< minSpeed)
             {
                 GetNewTargetPos();
             }
-            CheckIfCollidingWithSupernova();
             UpdateSizeFromLifePoints();
+            if(myRigidbody.velocity.magnitude > maxSpeed)
+            {
+                myRigidbody.velocity = Vector3.ClampMagnitude(myRigidbody.velocity, maxSpeed);
+            }
         }
-        waitForNewPos -= Time.deltaTime;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -65,10 +65,6 @@ public class BlackHole : MonoBehaviour
         else if (collision.gameObject.GetComponent<Comet>())
         {
             CometCollided(collision);
-        }
-        else
-        {
-            Destroy(collision.gameObject);
         }
     }
 
@@ -124,45 +120,18 @@ public class BlackHole : MonoBehaviour
 
     void GetNewTargetPos()
     {
-        if (waitForNewPos <= 0)
-        {
-            float minX = pos.x * 0.3f;
-            float maxX = pos.x * -0.7f;
-            float minY = pos.y * 0.3f;
-            float maxY = pos.y * -0.7f;
-            targetPos = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-            waitForNewPos = 3f;
-        }
+        float minX = pos.x * 0.3f;
+        float maxX = pos.x * -0.7f;
+        float minY = pos.y * 0.3f;
+        float maxY = pos.y * -0.7f;
+        var targetPos = new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        myRigidbody.AddForce((targetPos - transform.position) * moveSpeed, ForceMode2D.Impulse);
     }
 
     public void BlackholeDied()
     {
         alive = false;
         Destroy(particle);
-    }
-
-    void CheckIfCollidingWithSupernova()
-    {
-        if (FindObjectOfType<Supernova>())
-        {
-            foreach (Supernova supernova in FindObjectsOfType<Supernova>())
-            {
-                float extraDistance = supernova.GetRadius() + circleCollider.radius;
-                if (Vector2.Distance(transform.position, supernova.transform.position) - extraDistance  < 0)
-                {
-                    GetNewTargetPosFromSupernova(supernova.transform.position);
-                }
-            }
-        }
-    }
-
-    void GetNewTargetPosFromSupernova(Vector3 supernovaPos)
-    {
-        if (waitForNewPos <= 0)
-        {
-            targetPos = new Vector2(-supernovaPos.x, -supernovaPos.y);
-            waitForNewPos = 3f;
-        }
     }
 
     public void SetAlive(bool set)
@@ -196,6 +165,18 @@ public class BlackHole : MonoBehaviour
             case (6):
                 mainParticle.startColor = new Color(0f, 1f, 0.5f);
                 break;
+        }
+    }
+
+    bool checkIfoutOfBounds()
+    {
+        if (transform.position.x < pos.x * 0.3f || transform.position.x > pos.x * -0.7f || transform.position.y < pos.y * 0.3f || transform.position.y > pos.y * -0.7f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

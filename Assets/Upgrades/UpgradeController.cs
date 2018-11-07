@@ -8,6 +8,8 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] float fadeSpeed = 1f;
     [SerializeField] float growthSpeed = 1f;
     [SerializeField] GameObject upgradeDeathParticles;
+    [SerializeField] AudioClip upgradeClip;
+    [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
 
     bool alive = true;
     bool fading = true;
@@ -74,13 +76,13 @@ public class UpgradeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayParticles();
+        PlayParticlesAndSound();
         Destroy(gameObject);
     }
 
     public void tapped()
     {
-        PlayParticles();
+        PlayParticlesAndSound();
         GiveBonus();
         Destroy(gameObject);
     }
@@ -108,8 +110,9 @@ public class UpgradeController : MonoBehaviour
         this.extraTaps = extraTaps;
     }
 
-    void PlayParticles()
+    void PlayParticlesAndSound()
     {
+        AudioSource.PlayClipAtPoint(upgradeClip, Camera.main.transform.position, soundVolume);
         var particles = Instantiate(upgradeDeathParticles, transform.position, Quaternion.identity, transform.parent);
         Destroy(particles, particles.GetComponent<ParticleSystem>().main.duration);
     }

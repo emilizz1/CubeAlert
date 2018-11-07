@@ -14,6 +14,7 @@ public class Supernova : MonoBehaviour
     [SerializeField] ParticleSystem clashWithStar;
     [SerializeField] AudioClip[] supernovaHit;
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
+    [SerializeField] AudioClip supernovaClip;
 
     bool playing = true;
     bool fullyExpanded = false;
@@ -27,7 +28,8 @@ public class Supernova : MonoBehaviour
         supernovaPS = GetComponentInChildren<ParticleSystem>();
         collider = GetComponent<CircleCollider2D>();
         myRadius = Random.Range(minRadius, maxRadius);
-	}
+        AudioSource.PlayClipAtPoint(supernovaClip, Camera.main.transform.position, soundVolume);
+    }
 	
 	void Update ()
     {

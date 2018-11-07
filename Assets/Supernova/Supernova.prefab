@@ -111,6 +111,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1ce1186770d7c2d4c905597b709f91f9, type: 3}
   - {fileID: 8300000, guid: 98e18b9b664383f479ba32becce72a1c, type: 3}
   soundVolume: 0.5
+  supernovaClip: {fileID: 8300000, guid: 62ce7b23dbfc4be41a15945f9daade91, type: 3}
 --- !u!198 &198399320209678140
 ParticleSystem:
   m_ObjectHideFlags: 1

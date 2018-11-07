@@ -13,7 +13,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] ParticleSystem clashWithComet;
     [SerializeField] bool tutorial = false;
     [SerializeField] AudioClip[] cometImpact;
-    [SerializeField] AudioClip[] starEaten;
+    [SerializeField] AudioClip starEaten;
     [SerializeField] GameObject particle;
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
 
@@ -70,7 +70,7 @@ public class BlackHole : MonoBehaviour
 
     private void StarCollided(Collision2D collision)
     {
-        AudioSource.PlayClipAtPoint(starEaten[Random.Range(0, starEaten.Length)], Camera.main.transform.position, soundVolume);
+        AudioSource.PlayClipAtPoint(starEaten, Camera.main.transform.position, soundVolume);
         Instantiate(absorbingStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
         var figure = collision.gameObject.GetComponent<Star>();
         StartCoroutine(AbsorbingFigure(figure));

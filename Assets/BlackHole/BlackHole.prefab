@@ -193,15 +193,7 @@ MonoBehaviour:
   cometImpact:
   - {fileID: 8300000, guid: 344e75d8d5ce895448eff31f055a0884, type: 3}
   - {fileID: 8300000, guid: 7f2d8b5986e2891489ffa0f3aca51dfe, type: 3}
-  starEaten:
-  - {fileID: 8300000, guid: 3acb26546c231e048b1c71430d17fa52, type: 3}
-  - {fileID: 8300000, guid: 62e48005e6397ef4cbbc6665057d36b0, type: 3}
-  - {fileID: 8300000, guid: cbcebab7f6398344d98d6f490998c8ec, type: 3}
-  - {fileID: 8300000, guid: c6b9e4884f836404a872283933e14a13, type: 3}
-  - {fileID: 8300000, guid: 3278f4c1c34849342aad1ea70dbaecaa, type: 3}
-  - {fileID: 8300000, guid: 14b33093708a016418f1a514bf9c3bb1, type: 3}
-  - {fileID: 8300000, guid: 252a34eb943b7cc4cb88b3b66926bff1, type: 3}
-  - {fileID: 8300000, guid: d61a3a134a1f7ed4396324f64afe8230, type: 3}
+  starEaten: {fileID: 8300000, guid: 86b4da521429cd547918bc218dcc5e65, type: 3}
   particle: {fileID: 1807584651181774, guid: ce592682909a8f64bb1eedf1c7d476be, type: 2}
   soundVolume: 0.5
 --- !u!114 &114553398902333090

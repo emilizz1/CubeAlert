@@ -74,13 +74,13 @@ public class UpgradeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var particles = Instantiate(upgradeDeathParticles, transform.position, Quaternion.identity, transform.parent);
-        Destroy(particles, particles.GetComponent<ParticleSystem>().main.duration);
+        PlayParticles();
         Destroy(gameObject);
     }
 
     public void tapped()
     {
+        PlayParticles();
         GiveBonus();
         Destroy(gameObject);
     }
@@ -106,5 +106,11 @@ public class UpgradeController : MonoBehaviour
         this.extraTime = extraTime;
         this.extraDamage = extraDamage;
         this.extraTaps = extraTaps;
+    }
+
+    void PlayParticles()
+    {
+        var particles = Instantiate(upgradeDeathParticles, transform.position, Quaternion.identity, transform.parent);
+        Destroy(particles, particles.GetComponent<ParticleSystem>().main.duration);
     }
 }

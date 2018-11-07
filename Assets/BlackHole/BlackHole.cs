@@ -142,7 +142,7 @@ public class BlackHole : MonoBehaviour
     void SetNewParticleColor()
     {
         var mainParticle = particle.GetComponent<ParticleSystem>().main;
-        switch (Random.Range(0, 6))
+        switch (Random.Range(0, 7))
         {
             case (0):
                 mainParticle.startColor = Color.blue;

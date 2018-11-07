@@ -49,7 +49,7 @@ public class Background : MonoBehaviour
 
     Color GetRandomColor()
     {
-        switch (Random.Range(0, 6))
+        switch (Random.Range(0, 7))
         {
             case (0):
                 return Color.blue;

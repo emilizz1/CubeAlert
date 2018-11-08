@@ -10,6 +10,8 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] GameObject upgradeDeathParticles;
     [SerializeField] AudioClip upgradeClip;
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
+    [SerializeField] float transitionMinValue = 0.5f;
+    [SerializeField] float transitionMaxValue = 2f;
 
     bool alive = true;
     bool fading = true;

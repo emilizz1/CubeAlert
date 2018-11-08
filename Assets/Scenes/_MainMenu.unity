@@ -239,7 +239,6 @@ MonoBehaviour:
   themeSFX:
   - {fileID: 8300000, guid: c529abcbef25d0f499f677843f3e6992, type: 3}
   - {fileID: 8300000, guid: cd23e372f833ca549a47edd698cfbaca, type: 3}
-  - {fileID: 8300000, guid: 950524774d682b74f9bc38d802cb7e1c, type: 3}
 --- !u!82 &1020957804
 AudioSource:
   m_ObjectHideFlags: 0

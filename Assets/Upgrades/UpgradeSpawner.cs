@@ -76,17 +76,14 @@ public class UpgradeSpawner : MonoBehaviour
         switch (Random.Range(0, 3))
         {
             case (0):
-                print("case 0");
                 upgrade.GetComponent<SpriteRenderer>().sprite = timeUpgradeSprites[Random.Range(0, timeUpgradeSprites.Length)];
                 upgrade.GetComponent<UpgradeController>().AssignBonuses(bonusAmount, 0, 0);
                 break;
             case (1):
-                print("case 1");
                 upgrade.GetComponent<SpriteRenderer>().sprite = damageUpgradeSprites[Random.Range(0, damageUpgradeSprites.Length)];
                 upgrade.GetComponent<UpgradeController>().AssignBonuses(0, bonusAmount, 0);
                 break;
             case (2):
-                print("case 2");
                 upgrade.GetComponent<SpriteRenderer>().sprite = tapUpgradeSprites[Random.Range(0, tapUpgradeSprites.Length)];
                 upgrade.GetComponent<UpgradeController>().AssignBonuses(0, 0, bonusAmount - 1);
                 break;

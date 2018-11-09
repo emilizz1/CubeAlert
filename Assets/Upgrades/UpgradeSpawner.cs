@@ -14,7 +14,6 @@ public class UpgradeSpawner : MonoBehaviour
     [SerializeField] float spawnY = 40f;
     [SerializeField] float force;
     [SerializeField] int bonusAmount = 2;
-    [SerializeField] float startingAlpha = 0.6f;
 
     bool playing = true;
 
@@ -70,23 +69,23 @@ public class UpgradeSpawner : MonoBehaviour
             return new Vector3(Random.Range(-spawnX, spawnX), spawnY, 0f);
         }
     }
-
-    void AddSpriteAndType(GameObject upgrade)
-    {
-        switch (Random.Range(0, 3))
-        {
-            case (0):
-                upgrade.GetComponent<SpriteRenderer>().sprite = timeUpgradeSprites[Random.Range(0, timeUpgradeSprites.Length)];
-                upgrade.GetComponent<UpgradeController>().AssignBonuses(bonusAmount, 0, 0);
-                break;
-            case (1):
-                upgrade.GetComponent<SpriteRenderer>().sprite = damageUpgradeSprites[Random.Range(0, damageUpgradeSprites.Length)];
-                upgrade.GetComponent<UpgradeController>().AssignBonuses(0, bonusAmount, 0);
-                break;
-            case (2):
-                upgrade.GetComponent<SpriteRenderer>().sprite = tapUpgradeSprites[Random.Range(0, tapUpgradeSprites.Length)];
-                upgrade.GetComponent<UpgradeController>().AssignBonuses(0, 0, bonusAmount - 1);
-                break;
-        }
-    }
+    // TODO renew
+    //void AddSpriteAndType(GameObject upgrade)
+    //{
+    //    switch (Random.Range(0, 3))
+    //    {
+    //        case (0):
+    //            upgrade.GetComponent<SpriteRenderer>().sprite = timeUpgradeSprites[Random.Range(0, timeUpgradeSprites.Length)];
+    //            upgrade.GetComponent<UpgradeController>().AssignBonuses(bonusAmount, 0, 0);
+    //            break;
+    //        case (1):
+    //            upgrade.GetComponent<SpriteRenderer>().sprite = damageUpgradeSprites[Random.Range(0, damageUpgradeSprites.Length)];
+    //            upgrade.GetComponent<UpgradeController>().AssignBonuses(0, bonusAmount, 0);
+    //            break;
+    //        case (2):
+    //            upgrade.GetComponent<SpriteRenderer>().sprite = tapUpgradeSprites[Random.Range(0, tapUpgradeSprites.Length)];
+    //            upgrade.GetComponent<UpgradeController>().AssignBonuses(0, 0, bonusAmount - 1);
+    //            break;
+    //    }
+    //}
 }

@@ -26,8 +26,8 @@ public class LostCondition : MonoBehaviour
         fadeIn.color = new Color(1f, 1f, 1f, 0f);
         while (fadeIn.color.a < 1)
         {
-            fadeIn.color = new Color(1f, 1f, 1f, fadeIn.color.a + Time.deltaTime);
-            yield return new WaitForEndOfFrame();
+            fadeIn.color = new Color(1f, 1f, 1f, fadeIn.color.a + 0.015f);
+            yield return new WaitForSecondsRealtime(0.01f);
         }
     }
 }

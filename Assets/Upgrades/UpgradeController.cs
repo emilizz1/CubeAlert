@@ -7,9 +7,9 @@ public class UpgradeController : MonoBehaviour
     [SerializeField] GameObject upgradeDeathParticles;
     [SerializeField] AudioClip upgradeClip;
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
-
-
-    int extraTime, extraDamage, extraTaps;
+    [SerializeField] int extraTime;
+    [SerializeField] int extraDamage;
+    [SerializeField] int extraTaps;
 
     void Start()
     {
@@ -43,13 +43,6 @@ public class UpgradeController : MonoBehaviour
         {
             FindObjectOfType<TapNumber>().AddTaps(extraTaps);
         }
-    }
-
-    public void AssignBonuses(int extraTime, int extraDamage, int extraTaps)
-    {
-        this.extraTime = extraTime;
-        this.extraDamage = extraDamage;
-        this.extraTaps = extraTaps;
     }
 
     void PlayParticlesAndSound()

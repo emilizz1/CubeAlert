@@ -6,6 +6,7 @@ public class UpgradeLookManager : MonoBehaviour
 {
     [SerializeField] Sprite[] frames;
     [SerializeField] float maxAlpha = 0.7f;
+    [SerializeField] float minAlpha = 0.25f;
     [SerializeField] float rotationSpeed = 55f;
     [SerializeField] float fadeSpeed = 0.3f;
     [SerializeField] float growthSpeed = 0.65f;
@@ -23,6 +24,8 @@ public class UpgradeLookManager : MonoBehaviour
     void Start ()
     {
         mySpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        mySpriteRenderers[mainSR].color = new Color(1f, 1f, 1f, maxAlpha);
+        mySpriteRenderers[sideSR].color = new Color(1f, 1f, 1f, minAlpha);
         mainSR = 0;
         sideSR = 1;
         rotation = Random.Range(-rotationSpeed, rotationSpeed);
@@ -40,7 +43,7 @@ public class UpgradeLookManager : MonoBehaviour
     {
         while (alive)
         {
-            yield return new WaitForSeconds(Random.Range(1f, 2.5f));
+            yield return new WaitForSeconds(Random.Range(transitionMinValue, transitionMaxValue));
             growing = !growing;
         }
     }
@@ -67,6 +70,10 @@ public class UpgradeLookManager : MonoBehaviour
     void ChangeFrame()
     {
         mySpriteRenderers[sideSR].sprite = frames[currentFrame++];
+        if(currentFrame == frames.Length)
+        {
+            currentFrame = 0;
+        }
         if(mainSR == 0)
         {
             mainSR = 1;
@@ -77,7 +84,7 @@ public class UpgradeLookManager : MonoBehaviour
             mainSR = 0;
             sideSR = 1;
         }
-        ChangingFrame();
+        StartCoroutine(ChangingFrame());
     }
 
     IEnumerator ChangingFrame()

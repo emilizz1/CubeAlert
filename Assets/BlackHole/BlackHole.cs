@@ -36,7 +36,10 @@ public class BlackHole : MonoBehaviour
         damageNumber = FindObjectOfType<BlackholeDamageNumber>();
         particle = Instantiate(particle, transform.position, Quaternion.identity, transform);
         SetNewParticleColor();
-        GetNewTargetPos();
+        if (!tutorial)
+        {
+            GetNewTargetPos();
+        }
     }
 
     void Update()

@@ -1362,7 +1362,7 @@ MonoBehaviour:
   maxStartingPosY: -25
   minBulletAmount: 3
   maxBulletAmount: 12
-  starMaxCap: 8
+  starMaxCap: 7
 --- !u!4 &859568285
 Transform:
   m_ObjectHideFlags: 0
@@ -2546,7 +2546,7 @@ MonoBehaviour:
   maxStartingPosY: 25
   minBulletAmount: 3
   maxBulletAmount: 12
-  starMaxCap: 8
+  starMaxCap: 7
 --- !u!4 &1731902270
 Transform:
   m_ObjectHideFlags: 0
@@ -2772,7 +2772,7 @@ MonoBehaviour:
   maxStartingPosY: 40
   minBulletAmount: 3
   maxBulletAmount: 12
-  starMaxCap: 8
+  starMaxCap: 7
 --- !u!4 &1763076469
 Transform:
   m_ObjectHideFlags: 0

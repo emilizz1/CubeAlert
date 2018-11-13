@@ -3044,7 +3044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playing: 1
-  playingTime: 80
+  playingTime: 100
   levelModificator: 5
 --- !u!114 &2073440412
 MonoBehaviour:

@@ -43,6 +43,7 @@ public class TutorialGuide : MonoBehaviour
         {
             arrow.SetActive(false);
             FindObjectOfType<EndLevelFlash>().EndLevel();
+            FindObjectOfType<TutorialCompleted>().TutorialFinished();
             Invoke("StartLoadingScene", 2f);
         }
     }

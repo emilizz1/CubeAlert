@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuLoadScene : MonoBehaviour
 {
@@ -12,11 +11,11 @@ public class MainMenuLoadScene : MonoBehaviour
     {
         if (FindObjectOfType<TutorialCompleted>().GetIsTutorialCompleted())
         {
-            SceneManager.LoadScene(mainGameSceneNumber);
+            FindObjectOfType<LoadScene>().mLoadScene(mainGameSceneNumber);
         }
         else
         {
-            SceneManager.LoadScene(tutorialSceneNumber);
+            FindObjectOfType<LoadScene>().mLoadScene(tutorialSceneNumber);
         }
     }
 }

@@ -16,7 +16,7 @@ public class MainMenuLoadScene : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(mainGameSceneNumber);
+            SceneManager.LoadScene(tutorialSceneNumber);
         }
     }
 }

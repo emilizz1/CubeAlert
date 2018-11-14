@@ -39,5 +39,12 @@ public class Timer : MonoBehaviour
     public void AddTime(int amount)
     {
         playingTime += amount;
+        GetComponentInChildren<Text>().text = " Time +" + amount.ToString();
+        Invoke("RemoveAddedText", 1f);
+    }
+
+    void RemoveAddedText()
+    {
+        GetComponentInChildren<Text>().text = " Time";
     }
 }

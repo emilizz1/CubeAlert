@@ -44,5 +44,12 @@ public class Ammo : MonoBehaviour
     public void DamageDealt(int damage)
     {
         damageToLose -= damage;
+        GetComponentInChildren<Text>().text = " Damage +" + damage.ToString();
+        Invoke("RemoveAddedText", 1f);
+    }
+
+    void RemoveAddedText()
+    {
+        GetComponentInChildren<Text>().text = " Damage";
     }
 }

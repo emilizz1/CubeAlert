@@ -9,6 +9,11 @@ public class LostCondition : MonoBehaviour
     [SerializeField] Text lostConditionText;
     [SerializeField] Image fadeIn;
 
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void GiveLostCondition(string condition)
     {
         canvas.SetActive(true);

@@ -13,10 +13,14 @@ public class StartEndLevelCanvas : MonoBehaviour {
         whiteCanvas.SetActive(true);
         while (whiteCanvas.GetComponent<Image>().color.a < 1)
         {
-            whiteCanvas.GetComponent<Image>().color = new Color(1f, 1f, 1f, whiteCanvas.GetComponent<Image>().color.a + Time.deltaTime);
+            whiteCanvas.GetComponent<Image>().color = new Color(1f, 1f, 1f, whiteCanvas.GetComponent<Image>().color.a + Time.unscaledDeltaTime);
+            print("before end of frame");
             yield return new WaitForEndOfFrame();
+            print("after end of frame");
         }
+        print("before realtime");
         yield return new WaitForSecondsRealtime(0.1f);
+        print("after realtime");
         SceneManager.LoadScene(scene);
     }
 
@@ -25,7 +29,7 @@ public class StartEndLevelCanvas : MonoBehaviour {
         yield return new WaitForSecondsRealtime(0.1f);
         while (whiteCanvas.GetComponent<Image>().color.a > 0)
         {
-            whiteCanvas.GetComponent<Image>().color = new Color(1f, 1f, 1f, whiteCanvas.GetComponent<Image>().color.a - Time.deltaTime);
+            whiteCanvas.GetComponent<Image>().color = new Color(1f, 1f, 1f, whiteCanvas.GetComponent<Image>().color.a - Time.unscaledDeltaTime);
             yield return new WaitForEndOfFrame();
         }
         whiteCanvas.SetActive(false);

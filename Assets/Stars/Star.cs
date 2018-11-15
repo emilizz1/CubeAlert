@@ -23,7 +23,7 @@ public class Star : MonoBehaviour
     {
         rotationSpeed = Random.Range(-40, 40f);
         myCollider = GetComponent<CircleCollider2D>();
-        myCentralParticles = Instantiate(centerParticles[Random.Range(0, centerParticles.Length)], transform.position, Quaternion.identity, transform);
+        //myCentralParticles = Instantiate(centerParticles[Random.Range(0, centerParticles.Length)], transform.position, Quaternion.identity, transform);
         AddSizeToCenterParticles(bulletAmount);
     }
 
@@ -78,8 +78,8 @@ public class Star : MonoBehaviour
     {
         startedExploding = true;
         Destroy(gameObject.GetComponent<Rigidbody2D>());
-        var myPsEmission = myCentralParticles.GetComponent<ParticleSystem>().emission;
-        myPsEmission.enabled = false;
+        // var myPsEmission = myCentralParticles.GetComponent<ParticleSystem>().emission;
+        // myPsEmission.enabled = false;
         Destroy(myCollider);
         if (quick)
         {

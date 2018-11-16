@@ -14,13 +14,10 @@ public class StartEndLevelCanvas : MonoBehaviour {
         while (whiteCanvas.GetComponent<Image>().color.a < 1)
         {
             whiteCanvas.GetComponent<Image>().color = new Color(1f, 1f, 1f, whiteCanvas.GetComponent<Image>().color.a + Time.unscaledDeltaTime);
-            print("before end of frame");
             yield return new WaitForEndOfFrame();
-            print("after end of frame");
         }
-        print("before realtime");
         yield return new WaitForSecondsRealtime(0.1f);
-        print("after realtime");
+        System.GC.Collect();
         SceneManager.LoadScene(scene);
     }
 

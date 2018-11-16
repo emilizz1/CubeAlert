@@ -21,11 +21,15 @@ namespace DreamStarGen
         public float Change_D = 0;
         public float Change_E = 0;
 
-        private int frame = 0;
+        private int frame;
 
         void Start()
         {
-            if (!Generator) Generator = GetComponent<DreamStarGenerator>();
+            frame = Random.Range(0, FrameSkip);
+            if (!Generator)
+            {
+                Generator = GetComponent<DreamStarGenerator>();
+            }
         }
 
         void OnDrawGizmosSelected()

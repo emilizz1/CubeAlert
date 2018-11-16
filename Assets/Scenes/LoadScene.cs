@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
+    bool levelCompleted = false;
+
     int currentScene;
 
     void Awake()
     {
-        var numOfBackgroundThemes = FindObjectsOfType<LoadScene>().Length;
-        if (numOfBackgroundThemes > 1)
+        var numOfLoadScene = FindObjectsOfType<LoadScene>().Length;
+        if (numOfLoadScene > 1)
         {
             Destroy(gameObject);
         }
@@ -23,10 +25,11 @@ public class LoadScene : MonoBehaviour
 
     void Update()
     {
-        if(currentScene != SceneManager.GetActiveScene().buildIndex)
+        if(currentScene != SceneManager.GetActiveScene().buildIndex || levelCompleted)
         {
             StartCoroutine(GetComponent<StartEndLevelCanvas>().CanvasDisapearring());
             currentScene = SceneManager.GetActiveScene().buildIndex;
+            levelCompleted = false;
         }
     }
 
@@ -35,5 +38,10 @@ public class LoadScene : MonoBehaviour
         //preparing to load a scene
         print("loading started");
         StartCoroutine(GetComponent<StartEndLevelCanvas>().CanvasApearring(scene));
+    }
+
+    public void LevelCompleted()
+    {
+        levelCompleted = true;
     }
 }

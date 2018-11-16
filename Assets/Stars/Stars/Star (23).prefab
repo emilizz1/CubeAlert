@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Generator: {fileID: 114371014651191334}
-  Speed: 0.3
+  Speed: 0.225
   FrameSkip: 5
   Change_A: 0.001
   Change_B: 0

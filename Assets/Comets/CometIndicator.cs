@@ -15,10 +15,6 @@ public class CometIndicator : MonoBehaviour
     Camera mainCamera;
     RectTransform m_icon;
     Image m_iconImage;
-    Vector3 m_cameraOffsetUp;
-    Vector3 m_cameraOffsetRight;
-    Vector3 m_cameraOffsetForward;
-    
 
     void Start()
     {

@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whiteCanvas: {fileID: 1031421515386936}
+  loadingSpeed: 0.75
 --- !u!114 &114966223284179146
 MonoBehaviour:
   m_ObjectHideFlags: 1

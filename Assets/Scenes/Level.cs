@@ -32,14 +32,19 @@ public class Level : MonoBehaviour
             FindObjectOfType<LoadScene>().LevelCompleted();
             if (!nextLevel)
             {
-                FindObjectOfType<Timer>().playing = false;
-                FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
-                AudioSource.PlayClipAtPoint(levelCompleted, Camera.main.transform.position, soundVolume);
-                Invoke("startLoadingNextScene", 3f);
-                levelHolder.currentLevel++;
-                nextLevel = true;
+                PrepareForNextLevel();
             }
         }
+    }
+
+    private void PrepareForNextLevel()
+    {
+        FindObjectOfType<Timer>().playing = false;
+        FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
+        AudioSource.PlayClipAtPoint(levelCompleted, Camera.main.transform.position, soundVolume);
+        Invoke("startLoadingNextScene", 3f);
+        levelHolder.currentLevel++;
+        nextLevel = true;
     }
 
     void startLoadingNextScene()

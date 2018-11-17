@@ -37,7 +37,6 @@ public class Ammo : MonoBehaviour
         {
             float fillAmount = 1 - damageToLose / maxDamageToLose;
             image.fillAmount = Mathf.Lerp(0, 1, fillAmount);
-            //image.color = Color.Lerp(Color.green, Color.red, image.fillAmount);
         }
     }
 

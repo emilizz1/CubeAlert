@@ -9,8 +9,7 @@ public class Comet : MonoBehaviour
     [SerializeField] GameObject explosionOnHit;
     [SerializeField] float loopingTimer = 0.5f;
     [SerializeField] int healingToBlackhole = 1; 
-
-    bool working = true;
+    
     bool itPassed = false;
 
     Rigidbody2D rb;
@@ -24,12 +23,9 @@ public class Comet : MonoBehaviour
 
     void Update()
     {
-        if (working)
-        {
-            rb.AddForce(transform.up * Time.deltaTime * flightSpeed, ForceMode2D.Impulse);
-            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -flightSpeedMax, flightSpeedMax), Mathf.Clamp(rb.velocity.y, -flightSpeedMax, flightSpeedMax));
-            transform.rotation = startRotation;
-        }
+        rb.AddForce(transform.up * Time.deltaTime * flightSpeed, ForceMode2D.Impulse);
+        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -flightSpeedMax, flightSpeedMax), Mathf.Clamp(rb.velocity.y, -flightSpeedMax, flightSpeedMax));
+        transform.rotation = startRotation;
     }
 
     public void CometHit()
@@ -73,10 +69,9 @@ public class Comet : MonoBehaviour
 
     IEnumerator ResetTrails()
     {
-        var trail = GetComponentInChildren<TrailRenderer>();
-        trail.enabled = false;
+        GetComponentInChildren<TrailRenderer>().enabled = false;
         yield return new WaitForSecondsRealtime(0.15f);
-        trail.enabled = true;
+        GetComponentInChildren<TrailRenderer>().enabled = true;
     }
 
     public int GetHealing()

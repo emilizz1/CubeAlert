@@ -5,9 +5,7 @@ using UnityEngine;
 public class BackgroundTheme : MonoBehaviour
 {
     [SerializeField] AudioClip[] themeSFX;
-
-    bool sameTheme = false;
-
+    
     AudioSource audioSource;
     float maxVolume;
 
@@ -33,6 +31,7 @@ public class BackgroundTheme : MonoBehaviour
 
     IEnumerator PlayTheme(AudioClip theme)
     {
+        bool sameTheme = false;
         float startTime = Time.time;
         audioSource.clip = theme;
         audioSource.Play();
@@ -46,14 +45,7 @@ public class BackgroundTheme : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
         }
-        if(nextTheme == theme)
-        {
-            sameTheme = true;
-        }
-        else
-        {
-            sameTheme = false;
-        }
+        sameTheme = nextTheme == theme ? true : false;
         if (sameTheme)
         {
             while (Time.time - startTime < audioSource.clip.length)

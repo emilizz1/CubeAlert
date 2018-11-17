@@ -13,11 +13,16 @@ public class Background : MonoBehaviour
 
 	void Start ()
     {
+        SetupBackground();
+    }
+
+    private void SetupBackground()
+    {
         transform.eulerAngles = new Vector3(0f, 0f, Random.Range(0f, 360f));
         StartCoroutine(ChangingColors());
         mainCamera.backgroundColor = new Color(Random.Range(0.15f, 0.2f), Random.Range(0.15f, 0.2f), Random.Range(0.15f, 0.2f));
         SetRandomSpeed();
-	}
+    }
 
     IEnumerator ChangingColors()
     {

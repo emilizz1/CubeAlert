@@ -21,7 +21,6 @@ public class LifePoints : MonoBehaviour
     void Start()
     {
         currentLife = Random.Range(minLifePoints, maxLifePoints);
-        //currentLife = Random.Range(minLifePoints, maxLifePoints) + 10 * FindObjectOfType<LevelHolder>().currentLevel;
         lifeNumber = FindObjectOfType<BlackholeNumber>().GetNumber();
         lifeNumberText = lifeNumber.GetComponent<Text>();
     }
@@ -59,12 +58,8 @@ public class LifePoints : MonoBehaviour
 
     IEnumerator BlackHoleDeath()
     {
-        var clipToPlay = blackholeCompleted[Random.Range(0, blackholeCompleted.Length)];
-        AudioSource.PlayClipAtPoint(clipToPlay, Camera.main.transform.position, soundVolume);
-        float deathTime = clipToPlay.length;
-        GetComponent<BlackHole>().BlackholeDied();
-        Destroy(GetComponent<CircleCollider2D>());
-        FindObjectOfType<ScreenClickRipple>().AddRipple(transform.position);
+        float deathTime = PlayDeathSounds();
+        KillBlackhole();
         foreach (ParticleSystem particle in blackHoleDeath)
         {
             particle.Play();
@@ -76,5 +71,20 @@ public class LifePoints : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         Destroy(gameObject);
+    }
+
+    private float PlayDeathSounds()
+    {
+        var clipToPlay = blackholeCompleted[Random.Range(0, blackholeCompleted.Length)];
+        AudioSource.PlayClipAtPoint(clipToPlay, Camera.main.transform.position, soundVolume);
+        float deathTime = clipToPlay.length;
+        return deathTime;
+    }
+
+    private void KillBlackhole()
+    {
+        GetComponent<BlackHole>().BlackholeDied();
+        Destroy(GetComponent<CircleCollider2D>());
+        FindObjectOfType<ScreenClickRipple>().AddRipple(transform.position);
     }
 }

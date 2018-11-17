@@ -36,7 +36,7 @@ public class Star : MonoBehaviour
         }
         else if (bulletAmount <= 0 && !startedExploding)
         {
-            DestroyFigure(true);
+            DestroyStar(true);
         }
         if (!startedExploding && gameObject != null)
         {
@@ -74,7 +74,7 @@ public class Star : MonoBehaviour
         }
     }
 
-    public void DestroyFigure(bool quick)
+    public void DestroyStar(bool quick)
     {
         startedExploding = true;
         Destroy(gameObject.GetComponent<Rigidbody2D>());

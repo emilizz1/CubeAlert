@@ -13,9 +13,7 @@ public class Wall : MonoBehaviour
             
             if (other.gameObject.GetComponent<Star>().ShouldItLoop())
             {
-                var pos = other.gameObject.transform.position;
-                pos = pos * multipliyier;
-                other.gameObject.transform.position = pos;
+                LoopObject(other);
             }
         }
         else
@@ -24,11 +22,16 @@ public class Wall : MonoBehaviour
             {
                 if (other.gameObject.GetComponent<Comet>().ShouldItLoop() || other.gameObject.GetComponent<Comet>().DidItPass())
                 {
-                    var pos = other.gameObject.transform.position;
-                    pos = pos * multipliyier;
-                    other.gameObject.transform.position = pos;
+                    LoopObject(other);
                 }
             }
         }
+    }
+
+    private void LoopObject(Collider2D other)
+    {
+        var pos = other.gameObject.transform.position;
+        pos = pos * multipliyier;
+        other.gameObject.transform.position = pos;
     }
 }

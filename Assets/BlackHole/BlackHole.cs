@@ -46,7 +46,7 @@ public class BlackHole : MonoBehaviour
     {
         if (alive)
         {
-            if (!tutorial && checkIfoutOfBounds() || !tutorial && myRigidbody.velocity.magnitude< minSpeed)
+            if (!tutorial && checkIfOutOfBounds() || !tutorial && myRigidbody.velocity.magnitude< minSpeed)
             {
                 GetNewTargetPos();
             }
@@ -75,9 +75,9 @@ public class BlackHole : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(starEaten, Camera.main.transform.position, soundVolume);
         Instantiate(absorbingStar, collision.GetContact(0).point, Quaternion.identity, collision.gameObject.transform);
-        var figure = collision.gameObject.GetComponent<Star>();
-        StartCoroutine(AbsorbingFigure(figure));
-        figure.DestroyFigure(false);
+        var star = collision.gameObject.GetComponent<Star>();
+        StartCoroutine(AbsorbingStar(star));
+        star.DestroyStar(false);
         SetNewParticleColor();
     }
 
@@ -99,7 +99,7 @@ public class BlackHole : MonoBehaviour
         FindObjectOfType<Ammo>().DamageDealt(healing);
     }
 
-    IEnumerator AbsorbingFigure(Star figure)
+    IEnumerator AbsorbingStar(Star figure)
     {
         int absorbedBullets = figure.GetBulletAmount();
         while (figure)
@@ -168,10 +168,12 @@ public class BlackHole : MonoBehaviour
             case (6):
                 mainParticle.startColor = new Color(0f, 1f, 0.5f);
                 break;
+            default:
+                break;
         }
     }
 
-    bool checkIfoutOfBounds()
+    bool checkIfOutOfBounds()
     {
         if (transform.position.x < pos.x * 0.3f || transform.position.x > pos.x * -0.7f || transform.position.y < pos.y * 0.3f || transform.position.y > pos.y * -0.7f)
         {

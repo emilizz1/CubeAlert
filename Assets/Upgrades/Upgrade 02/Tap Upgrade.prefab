@@ -217,8 +217,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 188c8881d9fd0084caada1226ba79581, type: 3}
   - {fileID: 21300000, guid: 61313f4a850cedf49b837e2089316f82, type: 3}
   - {fileID: 21300000, guid: d451d9fd8e684cf40b9ac380ef569eaa, type: 3}
-  maxAlpha: 0.55
-  minAlpha: 0.25
+  maxAlpha: 0.6
+  minAlpha: 0.35
   rotationSpeed: 55
   fadeSpeed: 1
   growthSpeed: 0.65

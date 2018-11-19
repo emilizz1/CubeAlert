@@ -9,13 +9,11 @@ public class Level : MonoBehaviour
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
 
     BlackHoleSpawner portalSpawner;
-    LevelHolder levelHolder;
     bool nextLevel = false;
 
     void Start ()
     {
         portalSpawner = FindObjectOfType<BlackHoleSpawner>();
-        levelHolder = FindObjectOfType<LevelHolder>();
         UpdateText();
     }
 
@@ -43,7 +41,7 @@ public class Level : MonoBehaviour
         FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
         AudioSource.PlayClipAtPoint(levelCompleted, Camera.main.transform.position, soundVolume);
         Invoke("startLoadingNextScene", 3f);
-        levelHolder.currentLevel++;
+        FindObjectOfType<LevelHolder>().currentLevel++;
         nextLevel = true;
     }
 
@@ -54,6 +52,6 @@ public class Level : MonoBehaviour
 
     void UpdateText()
     {
-        GetComponent<Text>().text = levelHolder.currentLevel.ToString();
+        GetComponent<Text>().text = FindObjectOfType<LevelHolder>().currentLevel.ToString();
     }
 }

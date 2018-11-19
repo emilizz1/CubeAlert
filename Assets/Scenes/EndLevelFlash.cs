@@ -28,7 +28,7 @@ public class EndLevelFlash : MonoBehaviour
         triangle.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
         while(triangle.transform.localScale.x < triangleMaxSize)
         {
-            camera.fieldOfView -= Time.deltaTime * cameraZoomSpeed;
+            //camera.fieldOfView -= Time.deltaTime * cameraZoomSpeed;
             triangle.transform.localScale += new Vector3((Time.deltaTime * transitionSpeed), (Time.deltaTime * transitionSpeed), (Time.deltaTime * transitionSpeed));
             yield return new WaitForEndOfFrame();
         }

@@ -177,7 +177,10 @@ public class BlackHole : MonoBehaviour
 
     bool checkIfOutOfBounds()
     {
-        if (transform.position.x < pos.x * 0.3f || transform.position.x > pos.x * -0.7f || transform.position.y < pos.y * 0.3f || transform.position.y > pos.y * -0.7f)
+        if (transform.position.x < pos.x * 0.3f ||
+            transform.position.x > pos.x * -0.7f || 
+            transform.position.y < pos.y * 0.3f || 
+            transform.position.y > pos.y * -0.7f)
         {
             return true;
         }

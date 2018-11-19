@@ -26,7 +26,7 @@ public class CometSpawner : MonoBehaviour
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
             Vector2 cometSpawnPos = GetCometSpawnPos();
             GameObject myObject = Instantiate(comets[Random.Range(0, comets.Length)], cometSpawnPos, Quaternion.identity, transform);
-            myObject.GetComponent<Comet>().GiveStartingRotation(LookAtPortal(cometSpawnPos));
+            myObject.GetComponent<Comet>().GiveStartingRotation(FaceThePortal(cometSpawnPos));
         }
     }
 
@@ -45,7 +45,7 @@ public class CometSpawner : MonoBehaviour
         return cometPos;
     }
 
-    Quaternion LookAtPortal(Vector2 myObject)
+    Quaternion FaceThePortal(Vector2 myObject)
     {
         if (FindObjectOfType<BlackHole>() == null)
         {

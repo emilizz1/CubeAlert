@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 114908186252914070}
   - component: {fileID: 225909665535222152}
   - component: {fileID: 114738333595948418}
-  - component: {fileID: 114640395622320454}
   m_Layer: 0
   m_Name: End Level Canvas
   m_TagString: Untagged
@@ -59,13 +58,30 @@ GameObject:
   - component: {fileID: 224462938085940466}
   - component: {fileID: 222032977627546278}
   - component: {fileID: 114481050074507156}
+  - component: {fileID: 114342920096659200}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &114342920096659200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914048532278942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198ada6227b2f4c419bd5cbefdf722f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blendMode: 6
+  _renderMode: 0
+  _selectiveBlending: 0
+  _texture: {fileID: 0}
+  _tintColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114433098431231360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,17 +157,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114640395622320454
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1691896058377206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a02a8e07ed698469b576937ee024d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114738333595948418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,10 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2599a11eabd8a48a4a8cdcefe5352d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 1.2
+  transitionSpeed: 3.5
   triangle: {fileID: 1914048532278942}
-  triangleMaxSize: 1.3
-  whiteCanvas: {fileID: 1260367788424588}
+  triangleMaxSize: 10
   cameraZoomSpeed: 50
 --- !u!114 &114908186252914070
 MonoBehaviour:
@@ -246,7 +250,7 @@ RectTransform:
   m_GameObject: {fileID: 1914048532278942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224342809554889982}
   m_RootOrder: 0

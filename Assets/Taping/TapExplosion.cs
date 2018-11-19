@@ -35,7 +35,14 @@ public class TapExplosion : MonoBehaviour
         {
             FindObjectOfType<TutorialGuide>().Tapped();
         }
-        foreach (Star figure in GetFiguresInRange())
+        CheckForStarsInRange();
+        CheckForCometsInRange();
+        CheckForUpgradesInRange();
+    }
+
+    void CheckForStarsInRange()
+    {
+        foreach (Star figure in GetStarsInRange())
         {
             Rigidbody2D rb = figure.GetComponent<Rigidbody2D>();
             if (rb != null)
@@ -43,22 +50,9 @@ public class TapExplosion : MonoBehaviour
                 rb.AddForce((rb.transform.position - transform.position) * explosionForce, ForceMode2D.Impulse);
             }
         }
-        foreach (Comet rocket in GetRocketsInRange())
-        {
-            Rigidbody2D rb = rocket.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                AudioSource.PlayClipAtPoint(tapCometSFX[Random.Range(0, tapCometSFX.Length)], Camera.main.transform.position, soundVolume);
-                rocket.CometHit();
-            }
-        }
-        foreach(UpgradeController upgrade in GetUpgradesInRange())
-        {
-            upgrade.tapped();
-        }
     }
 
-    List<Star> GetFiguresInRange()
+    List<Star> GetStarsInRange()
     {
         List<Star> figures = new List<Star>();
         foreach(Star figure in FindObjectsOfType<Star>())
@@ -71,7 +65,20 @@ public class TapExplosion : MonoBehaviour
         return figures;
     }
 
-    List<Comet> GetRocketsInRange()
+    void CheckForCometsInRange()
+    {
+        foreach (Comet comet in GetCometsInRange())
+        {
+            Rigidbody2D rb = comet.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                AudioSource.PlayClipAtPoint(tapCometSFX[Random.Range(0, tapCometSFX.Length)], Camera.main.transform.position, soundVolume);
+                comet.CometHit();
+            }
+        }
+    }
+
+    List<Comet> GetCometsInRange()
     {
         List<Comet> comets = new List<Comet>();
         foreach (Comet comet in FindObjectsOfType<Comet>())
@@ -82,6 +89,14 @@ public class TapExplosion : MonoBehaviour
             }
         }
         return comets;
+    }
+
+    void CheckForUpgradesInRange()
+    {
+        foreach (UpgradeController upgrade in GetUpgradesInRange())
+        {
+            upgrade.tapped();
+        }
     }
 
     List<UpgradeController> GetUpgradesInRange()

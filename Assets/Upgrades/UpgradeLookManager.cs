@@ -10,10 +10,7 @@ public class UpgradeLookManager : MonoBehaviour
     [SerializeField] float rotationSpeed = 55f;
     [SerializeField] float fadeSpeed = 0.3f;
     [SerializeField] float growthSpeed = 0.65f;
-    [SerializeField] float transitionMinValue = 0.5f;
-    [SerializeField] float transitionMaxValue = 2f;
-
-    bool alive = true;
+    
     bool growing = false;
 
     int mainSR = 0;
@@ -48,7 +45,6 @@ public class UpgradeLookManager : MonoBehaviour
         }
     }
 
-
     void Rotate()
     {
         transform.Rotate(new Vector3(0f, 0f, Time.deltaTime * rotation));
@@ -64,10 +60,12 @@ public class UpgradeLookManager : MonoBehaviour
     void ChangeFrame()
     {
         mySpriteRenderers[sideSR].sprite = frames[currentFrame++];
+        // Resets frames to start over
         if(currentFrame == frames.Length)
         {
             currentFrame = 0;
         }
+        // Swaps main and side Sr
         if(mainSR == 0)
         {
             mainSR = 1;

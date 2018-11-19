@@ -16,36 +16,23 @@ public class UpgradeLookManager : MonoBehaviour
     bool alive = true;
     bool growing = false;
 
-    int mainSR, sideSR;
+    int mainSR = 0;
+    int sideSR = 1;
     float rotation;
     SpriteRenderer[] mySpriteRenderers;
     int currentFrame = 0;
 
     void Start ()
     {
-        mySpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        mySpriteRenderers[mainSR].color = new Color(1f, 1f, 1f, maxAlpha);
-        mySpriteRenderers[sideSR].color = new Color(1f, 1f, 1f, minAlpha);
-        mainSR = 0;
-        sideSR = 1;
         rotation = Random.Range(-rotationSpeed, rotationSpeed);
+        SetStartingAlphaValues();
         ChangeFrame();
     }
 	
 	void Update ()
     {
-        StartCoroutine(Timer());
         Rotate();
         Grow();
-    }
-
-    IEnumerator Timer()
-    {
-        while (alive)
-        {
-            yield return new WaitForSeconds(Random.Range(transitionMinValue, transitionMaxValue));
-            growing = !growing;
-        }
     }
 
     void Grow()
@@ -65,6 +52,13 @@ public class UpgradeLookManager : MonoBehaviour
     void Rotate()
     {
         transform.Rotate(new Vector3(0f, 0f, Time.deltaTime * rotation));
+    }
+
+    void SetStartingAlphaValues()
+    {
+        mySpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        mySpriteRenderers[mainSR].color = new Color(1f, 1f, 1f, maxAlpha);
+        mySpriteRenderers[sideSR].color = new Color(1f, 1f, 1f, minAlpha);
     }
 
     void ChangeFrame()
@@ -96,6 +90,7 @@ public class UpgradeLookManager : MonoBehaviour
             mySpriteRenderers[sideSR].color = new Color(1f, 1f, 1f, mySpriteRenderers[sideSR].color.a - alphaChange);
             yield return new WaitForEndOfFrame();
         }
+        growing = !growing;
         ChangeFrame();
     }
 }

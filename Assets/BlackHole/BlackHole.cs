@@ -35,7 +35,7 @@ public class BlackHole : MonoBehaviour
         cameraShaker = FindObjectOfType<CameraShaker>();
         damageNumber = FindObjectOfType<BlackholeDamageNumber>();
         particle = Instantiate(particle, transform.position, Quaternion.identity, transform);
-        SetNewParticleColor();
+        //SetNewParticleColor();
         if (!tutorial)
         {
             GetNewTargetPos();
@@ -78,7 +78,7 @@ public class BlackHole : MonoBehaviour
         var star = collision.gameObject.GetComponent<Star>();
         StartCoroutine(AbsorbingStar(star));
         star.DestroyStar(false);
-        SetNewParticleColor();
+        //SetNewParticleColor();
     }
 
     private void CometCollided(Collision2D collision)
@@ -137,11 +137,13 @@ public class BlackHole : MonoBehaviour
         Destroy(particle);
     }
 
+    // used for when finished to stop
     public void SetAlive(bool set)
     {
         alive = set;
     }
 
+    // currently not using
     void SetNewParticleColor()
     {
         var mainParticle = particle.GetComponent<ParticleSystem>().main;

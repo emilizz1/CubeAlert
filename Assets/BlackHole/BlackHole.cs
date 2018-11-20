@@ -35,7 +35,6 @@ public class BlackHole : MonoBehaviour
         cameraShaker = FindObjectOfType<CameraShaker>();
         damageNumber = FindObjectOfType<BlackholeDamageNumber>();
         particle = Instantiate(particle, transform.position, Quaternion.identity, transform);
-        //SetNewParticleColor();
         if (!tutorial)
         {
             GetNewTargetPos();
@@ -78,7 +77,6 @@ public class BlackHole : MonoBehaviour
         var star = collision.gameObject.GetComponent<Star>();
         StartCoroutine(AbsorbingStar(star));
         star.DestroyStar(false);
-        //SetNewParticleColor();
     }
 
     private void CometCollided(Collision2D collision)
@@ -141,38 +139,6 @@ public class BlackHole : MonoBehaviour
     public void SetAlive(bool set)
     {
         alive = set;
-    }
-
-    // currently not using
-    void SetNewParticleColor()
-    {
-        var mainParticle = particle.GetComponent<ParticleSystem>().main;
-        switch (Random.Range(0, 7))
-        {
-            case (0):
-                mainParticle.startColor = Color.blue;
-                break;
-            case (1):
-                mainParticle.startColor = Color.cyan;
-                break;
-            case (2):
-                mainParticle.startColor = Color.green;
-                break;
-            case (3):
-                mainParticle.startColor = Color.magenta;
-                break;
-            case (4):
-                mainParticle.startColor = new Color(0.5f, 0f, 1f);
-                break;
-            case (5):
-                mainParticle.startColor = new Color(0f, 0.5f, 1f);
-                break;
-            case (6):
-                mainParticle.startColor = new Color(0f, 1f, 0.5f);
-                break;
-            default:
-                break;
-        }
     }
 
     bool checkIfOutOfBounds()

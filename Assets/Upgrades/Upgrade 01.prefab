@@ -177,7 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58642e00bab7d0c4ea73dfbf4305aebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeDeathParticles: {fileID: 1115831520078274, guid: aa42a383e9f881f42a3a33bacddb20c4,
+  deathParticles: {fileID: 1515408387589620, guid: 2a3dc0909236a9e4f83c70b87dc78788,
+    type: 2}
+  tapedParticles: {fileID: 1115831520078274, guid: aa42a383e9f881f42a3a33bacddb20c4,
     type: 2}
   upgradeClip: {fileID: 8300000, guid: bc7ec0dd16754ce429cacbed7c183473, type: 3}
   soundVolume: 0.5
@@ -206,8 +208,6 @@ MonoBehaviour:
   rotationSpeed: 55
   fadeSpeed: 0.6
   growthSpeed: 0.65
-  transitionMinValue: 0.25
-  transitionMaxValue: 1
 --- !u!114 &114565210896973760
 MonoBehaviour:
   m_ObjectHideFlags: 1

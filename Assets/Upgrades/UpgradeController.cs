@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UpgradeController : MonoBehaviour
 {
-    [SerializeField] GameObject upgradeDeathParticles;
+    [SerializeField] GameObject deathParticles;
+    [SerializeField] GameObject tapedParticles;
     [SerializeField] AudioClip upgradeClip;
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
     [SerializeField] int extraTime;
@@ -18,13 +19,13 @@ public class UpgradeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayParticlesAndSound();
+        PlayParticlesAndSound(deathParticles);
         Destroy(gameObject);
     }
 
     public void tapped()
     {
-        PlayParticlesAndSound();
+        PlayParticlesAndSound(tapedParticles);
         GiveBonus();
         Destroy(gameObject);
     }
@@ -45,10 +46,10 @@ public class UpgradeController : MonoBehaviour
         }
     }
 
-    void PlayParticlesAndSound()
+    void PlayParticlesAndSound(GameObject particlesToPlay)
     {
         AudioSource.PlayClipAtPoint(upgradeClip, Camera.main.transform.position, soundVolume);
-        var particles = Instantiate(upgradeDeathParticles, transform.position, Quaternion.identity, transform.parent);
+        var particles = Instantiate(particlesToPlay, transform.position, Quaternion.identity, transform.parent);
         Destroy(particles, particles.GetComponent<ParticleSystem>().main.duration);
     }
 }

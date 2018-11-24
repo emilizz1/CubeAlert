@@ -9,7 +9,6 @@ public class EndLevelFlash : MonoBehaviour
     [SerializeField] GameObject center;
     [SerializeField] GameObject triangle;
     [SerializeField] float triangleMaxSize;
-    [SerializeField] float cameraZoomSpeed = 1f;
 
     bool once = true;
 

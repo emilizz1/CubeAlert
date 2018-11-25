@@ -827,6 +827,7 @@ MonoBehaviour:
   arrow: {fileID: 254222013}
   minArrowSize: 0.65
   maxArrowSize: 1.15
+  comet: {fileID: 1547856362}
 --- !u!212 &1064315581
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -880,7 +881,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1064315579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.58, y: -1.14, z: 0}
+  m_LocalPosition: {x: -16, y: 21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5638,11 +5639,76 @@ Prefab:
     - {fileID: 114865973836281918, guid: a8e2c9796f5a2a44a858b2e08c25fbed, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: a8e2c9796f5a2a44a858b2e08c25fbed, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1547856362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1472092697930226, guid: 79acfa1215337f4439ca6bd1de8a885c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1790615282}
 --- !u!20 &1611591330 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 20333074543329452, guid: a8e2c9796f5a2a44a858b2e08c25fbed,
     type: 2}
   m_PrefabInternal: {fileID: 1539726800}
+--- !u!1001 &1790615282
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4477133554042868, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -29.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477133554042868, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 36.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477133554042868, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477133554042868, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477133554042868, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477133554042868, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.9063079
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477133554042868, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.42261827
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477133554042868, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472092697930226, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_Name
+      value: Comet
+      objectReference: {fileID: 0}
+    - target: {fileID: 114979866196793268, guid: 79acfa1215337f4439ca6bd1de8a885c,
+        type: 2}
+      propertyPath: flightSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114979866196793268, guid: 79acfa1215337f4439ca6bd1de8a885c,
+        type: 2}
+      propertyPath: flightSpeedMax
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477133554042868, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -130
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 79acfa1215337f4439ca6bd1de8a885c, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &2141179866
 Prefab:
   m_ObjectHideFlags: 0
@@ -5750,6 +5816,11 @@ Prefab:
         type: 2}
       propertyPath: m_AngularDrag
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50072397490978858, guid: 707042c13f4f10245af1290291c3602e,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 707042c13f4f10245af1290291c3602e, type: 2}

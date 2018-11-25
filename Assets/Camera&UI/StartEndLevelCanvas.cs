@@ -24,7 +24,7 @@ public class StartEndLevelCanvas : MonoBehaviour {
 
     public IEnumerator CanvasDisapearring()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         while (whiteCanvas.GetComponent<Image>().color.a > 0)
         {
             whiteCanvas.GetComponent<Image>().color = new Color(1f, 1f, 1f, whiteCanvas.GetComponent<Image>().color.a - (Time.unscaledDeltaTime * loadingSpeed));

@@ -40,7 +40,7 @@ public class Level : MonoBehaviour
         FindObjectOfType<Timer>().playing = false;
         FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
         AudioSource.PlayClipAtPoint(levelCompleted, Camera.main.transform.position, soundVolume);
-        Invoke("startLoadingNextScene", 3f);
+        Invoke("startLoadingNextScene", 2f);
         FindObjectOfType<LevelHolder>().currentLevel++;
         nextLevel = true;
     }

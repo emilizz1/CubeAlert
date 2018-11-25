@@ -66,6 +66,10 @@ public class Supernova : MonoBehaviour
         var supernovaMain = supernovaPS.main;
         supernovaMain.startSizeMultiplier -= Time.deltaTime * expandRate;
         yield return new WaitForEndOfFrame();
+        if(supernovaMain.startSizeMultiplier <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator Explode()
@@ -73,7 +77,6 @@ public class Supernova : MonoBehaviour
         yield return new WaitForSeconds(waitBeforeExploding);
         playing = false;
         StartCoroutine(ShrinkSupernova());
-        Destroy(gameObject, waitBeforeExploding);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

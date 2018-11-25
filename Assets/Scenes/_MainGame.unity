@@ -730,7 +730,7 @@ MonoBehaviour:
   - {x: -17.5, y: -37.5}
   - {x: 0, y: -37.5}
   numberOfPortalsToSpawn: 2
-  timeBetweenSpawns: 1
+  timeBetweenSpawns: 12
 --- !u!4 &780696322
 Transform:
   m_ObjectHideFlags: 0

@@ -68,6 +68,10 @@ public class LifePoints : MonoBehaviour
         {
             deathTime -= Time.deltaTime;
             transform.localScale -= new Vector3(shrinkingSpeed * Time.deltaTime, shrinkingSpeed * Time.deltaTime, 0f);
+            if(transform.localScale.x <= 0)
+            {
+                deathTime = -1;
+            }
             yield return new WaitForEndOfFrame();
         }
         Destroy(gameObject);

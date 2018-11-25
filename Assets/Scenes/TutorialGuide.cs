@@ -31,7 +31,7 @@ public class TutorialGuide : MonoBehaviour
             arrow.SetActive(false);
             FindObjectOfType<EndLevelFlash>().EndLevel();
             FindObjectOfType<TutorialCompleted>().TutorialFinished();
-            StartLoadingScene();
+            Invoke("StartLoadingScene", 2f);
         }
     }
 
@@ -41,7 +41,7 @@ public class TutorialGuide : MonoBehaviour
         {
             transform.position = new Vector2(-11f, -1.5f);
         }
-        else if (comet.transform.position.x >= -16f && comet.transform.position.y <= 21f) 
+        else if (comet.transform.position.x >= -17f && comet.transform.position.y <= 22f) 
         {
             transform.position = comet.transform.position + new Vector3(0f, -2.5f, 0f);
         }

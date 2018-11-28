@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    bool levelCompleted = true;
+    bool levelCompleted = false;
 
     int currentScene;
 
@@ -25,7 +25,7 @@ public class LoadScene : MonoBehaviour
 
     void Update()
     {
-        if(currentScene != SceneManager.GetActiveScene().buildIndex || !levelCompleted)
+        if(currentScene != SceneManager.GetActiveScene().buildIndex || levelCompleted)
         {
             StartCoroutine(GetComponent<StartEndLevelCanvas>().CanvasDisapearring());
             currentScene = SceneManager.GetActiveScene().buildIndex;

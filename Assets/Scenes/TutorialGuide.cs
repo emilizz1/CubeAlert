@@ -13,6 +13,7 @@ public class TutorialGuide : MonoBehaviour
     [SerializeField] GameObject comet;
 
     bool gettingBigger = true;
+    bool once = true;
 
     Transform currentlyMoving;
 
@@ -26,12 +27,16 @@ public class TutorialGuide : MonoBehaviour
     {
         Pulsating();
         FollowingComet();
-        if (FindObjectOfType<BlackHole>() == null)
+        if (FindObjectsOfType<BlackHole>().Length == 0)
         {
-            arrow.SetActive(false);
-            FindObjectOfType<EndLevelFlash>().EndLevel();
-            FindObjectOfType<TutorialCompleted>().TutorialFinished();
-            Invoke("StartLoadingScene", 2f);
+            if (once)
+            {
+                arrow.SetActive(false);
+                FindObjectOfType<EndLevelFlash>().EndLevel();
+                FindObjectOfType<TutorialCompleted>().TutorialFinished();
+                StartLoadingScene();
+                once = false;
+            }
         }
     }
 

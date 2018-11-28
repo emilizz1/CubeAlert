@@ -19,7 +19,9 @@ public class StartEndLevelCanvas : MonoBehaviour {
         }
         yield return new WaitForSecondsRealtime(0.1f);
         System.GC.Collect();
+        FindObjectOfType<LoadScene>().LevelCompleted();
         SceneManager.LoadScene(scene);
+        StopAllCoroutines();
     }
 
     public IEnumerator CanvasDisapearring()
@@ -31,5 +33,6 @@ public class StartEndLevelCanvas : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         whiteCanvas.SetActive(false);
+        StopAllCoroutines();
     }
 }

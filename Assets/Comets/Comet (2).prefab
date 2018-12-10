@@ -444,7 +444,7 @@ MonoBehaviour:
   explosionOnHit: {fileID: 1365048418318128, guid: 2392026d3dc16e44ba8192a11fc45209,
     type: 2}
   loopingTimer: 0.35
-  healingToBlackhole: 4
+  healingToBlackhole: 5
 --- !u!198 &198041313952875392
 ParticleSystem:
   m_ObjectHideFlags: 1

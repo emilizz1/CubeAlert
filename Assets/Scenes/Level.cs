@@ -7,6 +7,7 @@ public class Level : MonoBehaviour
 {
     [SerializeField] AudioClip levelCompleted;
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
+    [SerializeField] int levelToLoadOnWin;
 
     BlackHoleSpawner portalSpawner;
     bool nextLevel = false;
@@ -37,7 +38,10 @@ public class Level : MonoBehaviour
     private void PrepareForNextLevel()
     {
         FindObjectOfType<Timer>().playing = false;
-        FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
+        if (FindObjectOfType<CometSpawner>())
+        {
+            FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
+        }
         AudioSource.PlayClipAtPoint(levelCompleted, Camera.main.transform.position, soundVolume);
         Invoke("startLoadingNextScene", 2f);
         FindObjectOfType<LevelHolder>().currentLevel++;
@@ -46,7 +50,7 @@ public class Level : MonoBehaviour
 
     void startLoadingNextScene()
     {
-        FindObjectOfType<LoadScene>().mLoadScene(1);
+        FindObjectOfType<LoadScene>().mLoadScene(levelToLoadOnWin);
     }
 
     void UpdateText()

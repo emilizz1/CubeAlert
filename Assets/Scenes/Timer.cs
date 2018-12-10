@@ -8,14 +8,14 @@ public class Timer : MonoBehaviour
     public bool playing = true;
 
     [SerializeField] float playingTime;
-    [SerializeField] float levelModificator;
+    //[SerializeField] float levelModificator;
 
     float currentTime;
     Image image;
 
     void Start()
     {
-        playingTime -= levelModificator * FindObjectOfType<LevelHolder>().currentLevel;
+        //playingTime -= levelModificator * FindObjectOfType<LevelHolder>().currentLevel;
         currentTime = 0f;
         image = GetComponent<Image>();
         image.fillAmount = 0f;

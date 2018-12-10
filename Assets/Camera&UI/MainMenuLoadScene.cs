@@ -5,13 +5,13 @@ using UnityEngine;
 public class MainMenuLoadScene : MonoBehaviour
 {
     [SerializeField] int tutorialSceneNumber = 2;
-    [SerializeField] int mainGameSceneNumber = 1;
+    [SerializeField] int firstLevelNumber = 1;
 
     public void mLoadScene()
     {
         if (FindObjectOfType<TutorialCompleted>().GetIsTutorialCompleted())
         {
-            FindObjectOfType<LoadScene>().mLoadScene(mainGameSceneNumber);
+            FindObjectOfType<LoadScene>().mLoadScene(firstLevelNumber);
         }
         else
         {

@@ -1,29 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject[] upgrades;
+    [SerializeField] GameObject timeUpgrade;
+    [SerializeField] GameObject tapUpgrade;
+    [SerializeField] GameObject damageUpgrade;
     [SerializeField] float minSpawnTime;
     [SerializeField] float maxSpawnTime;
     [SerializeField] float spawnX = 26f;
     [SerializeField] float spawnY = 40f;
     [SerializeField] float force;
 
-    bool playing = true;
+    float spawningMinValue = .5f;
+    float spawningMaxValue = .8f;
+    List<GameObject> activeUpgrades = new List<GameObject>();
+    bool playing;
+    float currentSpawningTime = 0;
+    float currentlyLowestStat = 0;
+    bool spawning = false;
 
-    void Start ()
+    void Update()
     {
-        StartCoroutine(SpawnUpgrades());		
-	}
+        CheckTimeUpgrade();
+        CheckTapUpgrade();
+        CheckDamageUpgrade();
+        if(currentSpawningTime == 0)
+        {
+            playing = false;
+        }
+        else
+        {
+            if (playing == false)
+            {
+                StartSpawning();
+            }
+            playing = true;
+        }
+    }
+
+    void StartSpawning()
+    {
+        StopCoroutine(SpawnUpgrades());
+        StartCoroutine(SpawnUpgrades());
+    }
 
     IEnumerator SpawnUpgrades()
     {
         while (playing)
         {
-            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
-            var myUpgrade = Instantiate(upgrades[Random.Range(0, upgrades.Length)], SpawnPos(Random.Range(0, 2)), Quaternion.identity, transform);
+            yield return new WaitForSeconds(currentSpawningTime);
+            var myUpgrade = Instantiate(activeUpgrades[Random.Range(0, activeUpgrades.Count)], SpawnPos(Random.Range(0, 2)), Quaternion.identity, transform);
             myUpgrade.GetComponent<Rigidbody2D>().AddForce((Vector3.zero - myUpgrade.transform.position) * force, ForceMode2D.Impulse);
         }
     }
@@ -61,6 +90,76 @@ public class UpgradeSpawner : MonoBehaviour
         else
         {
             return new Vector3(Random.Range(-spawnX, spawnX), spawnY, 0f);
+        }
+    }
+
+    void CheckTimeUpgrade()
+    {
+        float timeFillAmount = FindObjectOfType<Timer>().GetComponent<Image>().fillAmount;
+        CheckLowestStat(timeFillAmount);
+        if (timeFillAmount > spawningMinValue)
+        {
+            if (!activeUpgrades.Contains(timeUpgrade))
+            {
+                activeUpgrades.Add(timeUpgrade);
+            }
+        }
+        else
+        {
+            if (activeUpgrades.Contains(timeUpgrade))
+            {
+                activeUpgrades.Remove(timeUpgrade);
+            }
+        }
+    }
+
+    void CheckTapUpgrade()
+    {
+        float tapFillAmount = FindObjectOfType<TapNumber>().GetComponent<Image>().fillAmount;
+        CheckLowestStat(tapFillAmount);
+        if (tapFillAmount > spawningMinValue)
+        {
+            if (!activeUpgrades.Contains(tapUpgrade))
+            {
+                activeUpgrades.Add(tapUpgrade);
+            }
+        }
+        else
+        {
+            if (activeUpgrades.Contains(tapUpgrade))
+            {
+                activeUpgrades.Remove(tapUpgrade);
+            }
+        }
+    }
+
+    void CheckDamageUpgrade()
+    {
+        float damageFillAmount = FindObjectOfType<Ammo>().GetComponent<Image>().fillAmount;
+        CheckLowestStat(damageFillAmount);
+        if (damageFillAmount > spawningMinValue)
+        {
+            if (!activeUpgrades.Contains(damageUpgrade))
+            {
+                activeUpgrades.Add(damageUpgrade);
+            }
+        }
+        else
+        {
+            if (activeUpgrades.Contains(damageUpgrade))
+            {
+                activeUpgrades.Remove(damageUpgrade);
+            }
+        }
+    }
+
+    void CheckLowestStat(float stat)
+    {
+        if(currentlyLowestStat < stat)
+        {
+            float spawningProc = ((stat - spawningMinValue) * 100) / (spawningMaxValue - spawningMinValue);
+            float spawnRateValue = ((maxSpawnTime - minSpawnTime) * spawningProc) / 100;
+            currentSpawningTime = spawnRateValue + minSpawnTime;
         }
     }
 }

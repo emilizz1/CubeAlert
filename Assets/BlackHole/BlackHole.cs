@@ -155,4 +155,9 @@ public class BlackHole : MonoBehaviour
             return false;
         }
     }
+
+    public bool IsAlive()
+    {
+        return alive;
+    }
 }

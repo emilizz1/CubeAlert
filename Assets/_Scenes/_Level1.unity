@@ -852,7 +852,7 @@ MonoBehaviour:
   - {x: 17.5, y: -37.5}
   - {x: -17.5, y: -37.5}
   - {x: 0, y: -37.5}
-  numberOfPortalsToSpawn: 0
+  numberOfBHToSpawn: 0
   timeBetweenSpawns: 0
 --- !u!4 &780696322
 Transform:
@@ -1921,7 +1921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompleted: {fileID: 8300000, guid: 8d80ce748897f374ab71f298a5af52d7, type: 3}
   soundVolume: 0.5
-  levelToLoadOnWin: 0
+  levelToLoadOnWin: 3
 --- !u!114 &1384802362
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1568,9 +1568,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1196399834716060, guid: 15590adee6a33fe46b6ef05ad19ad929, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 114412254208801970, guid: 15590adee6a33fe46b6ef05ad19ad929,
+        type: 2}
+      propertyPath: minSpawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114412254208801970, guid: 15590adee6a33fe46b6ef05ad19ad929,
+        type: 2}
+      propertyPath: maxSpawnTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15590adee6a33fe46b6ef05ad19ad929, type: 2}

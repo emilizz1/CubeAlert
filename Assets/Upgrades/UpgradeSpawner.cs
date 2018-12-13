@@ -17,7 +17,7 @@ public class UpgradeSpawner : MonoBehaviour
     float spawningMinValue = .5f;
     float spawningMaxValue = .8f;
     List<GameObject> activeUpgrades = new List<GameObject>();
-    bool playing;
+    bool playing = false;
     float currentSpawningTime = 0;
     float currentlyLowestStat = 0;
     bool spawning = false;
@@ -27,24 +27,11 @@ public class UpgradeSpawner : MonoBehaviour
         CheckTimeUpgrade();
         CheckTapUpgrade();
         CheckDamageUpgrade();
-        if(currentSpawningTime == 0)
+        if (playing == false && currentlyLowestStat >= spawningMinValue)
         {
-            playing = false;
-        }
-        else
-        {
-            if (playing == false)
-            {
-                StartSpawning();
-            }
             playing = true;
+            StartCoroutine(SpawnUpgrades());
         }
-    }
-
-    void StartSpawning()
-    {
-        StopCoroutine(SpawnUpgrades());
-        StartCoroutine(SpawnUpgrades());
     }
 
     IEnumerator SpawnUpgrades()
@@ -52,8 +39,11 @@ public class UpgradeSpawner : MonoBehaviour
         while (playing)
         {
             yield return new WaitForSeconds(currentSpawningTime);
-            var myUpgrade = Instantiate(activeUpgrades[Random.Range(0, activeUpgrades.Count)], SpawnPos(Random.Range(0, 2)), Quaternion.identity, transform);
-            myUpgrade.GetComponent<Rigidbody2D>().AddForce((Vector3.zero - myUpgrade.transform.position) * force, ForceMode2D.Impulse);
+            if (activeUpgrades.Count > 0)
+            {
+                var myUpgrade = Instantiate(activeUpgrades[Random.Range(0, activeUpgrades.Count)], SpawnPos(Random.Range(0, 2)), Quaternion.identity, transform);
+                myUpgrade.GetComponent<Rigidbody2D>().AddForce((Vector3.zero - myUpgrade.transform.position) * force, ForceMode2D.Impulse);
+            }
         }
     }
 
@@ -160,6 +150,7 @@ public class UpgradeSpawner : MonoBehaviour
             float spawningProc = ((stat - spawningMinValue) * 100) / (spawningMaxValue - spawningMinValue);
             float spawnRateValue = ((maxSpawnTime - minSpawnTime) * spawningProc) / 100;
             currentSpawningTime = spawnRateValue + minSpawnTime;
+            currentlyLowestStat = stat;
         }
     }
 }

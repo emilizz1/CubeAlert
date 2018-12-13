@@ -2189,7 +2189,7 @@ Prefab:
     - target: {fileID: 114183849872657122, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 2}
       propertyPath: maxNumberOfTaps
-      value: 50
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 114008096623759050, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 2}

@@ -934,7 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialSceneNumber: 1
-  firstLevelNumber: 1
+  firstLevelNumber: 2
 --- !u!1 &1927316928
 GameObject:
   m_ObjectHideFlags: 0

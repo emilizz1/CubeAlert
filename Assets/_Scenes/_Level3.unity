@@ -1538,11 +1538,39 @@ Prefab:
     - target: {fileID: 114412254208801970, guid: 15590adee6a33fe46b6ef05ad19ad929,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1196399834716060, guid: 15590adee6a33fe46b6ef05ad19ad929, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114412254208801970, guid: 15590adee6a33fe46b6ef05ad19ad929,
+        type: 2}
+      propertyPath: timeUpgrade
+      value: 
+      objectReference: {fileID: 1540066543755812, guid: d23d7dd08604bcb47ab1fdc4fc379256,
+        type: 2}
+    - target: {fileID: 114412254208801970, guid: 15590adee6a33fe46b6ef05ad19ad929,
+        type: 2}
+      propertyPath: tapUpgrade
+      value: 
+      objectReference: {fileID: 1540066543755812, guid: f2b72ceb887089e4688dfc2f64505442,
+        type: 2}
+    - target: {fileID: 114412254208801970, guid: 15590adee6a33fe46b6ef05ad19ad929,
+        type: 2}
+      propertyPath: damageUpgrade
+      value: 
+      objectReference: {fileID: 1540066543755812, guid: b381675d6119d95489d1b8396e88b3f0,
+        type: 2}
+    - target: {fileID: 114412254208801970, guid: 15590adee6a33fe46b6ef05ad19ad929,
+        type: 2}
+      propertyPath: minSpawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114412254208801970, guid: 15590adee6a33fe46b6ef05ad19ad929,
+        type: 2}
+      propertyPath: maxSpawnTime
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15590adee6a33fe46b6ef05ad19ad929, type: 2}
@@ -2260,6 +2288,11 @@ Prefab:
     - target: {fileID: 1450216732395990, guid: d62644f4eb1791843b72ce3b3ca6bf50, type: 2}
       propertyPath: m_Name
       value: Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122131374436852, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 2}
+      propertyPath: m_FillAmount
+      value: 0.554
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62644f4eb1791843b72ce3b3ca6bf50, type: 2}

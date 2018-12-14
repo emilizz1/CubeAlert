@@ -2273,12 +2273,12 @@ Prefab:
     - target: {fileID: 114183849872657122, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 2}
       propertyPath: maxNumberOfTaps
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 114008096623759050, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 2}
       propertyPath: playingTime
-      value: 50
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 114046796487601610, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 2}

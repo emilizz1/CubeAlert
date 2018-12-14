@@ -39,6 +39,7 @@ public class TapNumber : MonoBehaviour
     {
         numberOfTaps += amount;
         GetComponentInChildren<Text>().text = " Taps +" + amount.ToString();
+        UpdateImage();
         Invoke("RemoveAddedText", 1f);
     }
 

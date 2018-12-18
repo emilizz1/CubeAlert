@@ -6,7 +6,8 @@ public class UpgradeController : MonoBehaviour
 {
     [SerializeField] GameObject deathParticles;
     [SerializeField] GameObject tapedParticles;
-    [SerializeField] AudioClip upgradeClip;
+    [SerializeField] AudioClip upgradeDestroyed;
+    [SerializeField] AudioClip upgradeTaken;
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
     [SerializeField] int extraTime;
     [SerializeField] int extraDamage;
@@ -19,13 +20,13 @@ public class UpgradeController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayParticlesAndSound(deathParticles);
+        PlayParticlesAndSound(deathParticles, upgradeDestroyed);
         Destroy(gameObject);
     }
 
     public void tapped()
     {
-        PlayParticlesAndSound(tapedParticles);
+        PlayParticlesAndSound(tapedParticles, upgradeTaken);
         GiveBonus();
         Destroy(gameObject);
     }
@@ -46,9 +47,9 @@ public class UpgradeController : MonoBehaviour
         }
     }
 
-    void PlayParticlesAndSound(GameObject particlesToPlay)
+    void PlayParticlesAndSound(GameObject particlesToPlay, AudioClip audioToPlay)
     {
-        AudioSource.PlayClipAtPoint(upgradeClip, Camera.main.transform.position, soundVolume);
+        AudioSource.PlayClipAtPoint(audioToPlay, Camera.main.transform.position, soundVolume);
         var particles = Instantiate(particlesToPlay, transform.position, Quaternion.identity, transform.parent);
         Destroy(particles, particles.GetComponent<ParticleSystem>().main.duration);
     }

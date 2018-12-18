@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2443ceefb30daa4f841eff44aa5c436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 1.5
+  explosionForce: 1.8
   explosionRadius: 7
   explosions:
   - {fileID: 1600119894177758, guid: 0f0685102eedba3478e87c62fb6fe082, type: 2}

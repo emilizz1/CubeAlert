@@ -181,7 +181,8 @@ MonoBehaviour:
     type: 2}
   tapedParticles: {fileID: 1115831520078274, guid: aa42a383e9f881f42a3a33bacddb20c4,
     type: 2}
-  upgradeClip: {fileID: 8300000, guid: bc7ec0dd16754ce429cacbed7c183473, type: 3}
+  upgradeDestroyed: {fileID: 8300000, guid: bc7ec0dd16754ce429cacbed7c183473, type: 3}
+  upgradeTaken: {fileID: 8300000, guid: f359d271665323947b3376cacdf5fb4c, type: 3}
   soundVolume: 0.5
   extraTime: 2
   extraDamage: 0

@@ -213,12 +213,7 @@ MonoBehaviour:
   blackHoleDeath:
   - {fileID: 198015279655718028}
   - {fileID: 198771568065941562}
-  blackholeCompleted:
-  - {fileID: 8300000, guid: 7a8c00973acd35f4bab060c81e4a236d, type: 3}
-  - {fileID: 8300000, guid: 5c9e368686521b44bb1854db76790578, type: 3}
-  - {fileID: 8300000, guid: 5c22f69388fa83b449c46da25634819b, type: 3}
-  - {fileID: 8300000, guid: ff4be5e8f20d9134eb8788cec57261ed, type: 3}
-  - {fileID: 8300000, guid: 3ff08befab8ea724f9adcfd2ea73a9bc, type: 3}
+  blackholeCompleted: {fileID: 8300000, guid: 27909fd682f215d40989e6f1d90e9b85, type: 3}
   soundVolume: 0.5
 --- !u!198 &198015279655718028
 ParticleSystem:

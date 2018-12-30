@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4239585150800934}
-  - component: {fileID: 114993459177560762}
   - component: {fileID: 70863197952281990}
   m_Layer: 0
   m_Name: Beam Electro
@@ -120,7 +119,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4536432822619170}
-  - component: {fileID: 114719421544885870}
   - component: {fileID: 70530166581994988}
   m_Layer: 0
   m_Name: Beam Electro (1)
@@ -391,50 +389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3cae8f705a59d4dbb84627130f009c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114719421544885870
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1697694530168128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94303be109385e74496e9340133670d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startDelay: 0
-  pauseDelay: 2
-  beamDuration: 3
-  animationSpeed: 3
-  xMultiplier: 0
-  yMultiplier: 1
-  particles:
-  - {fileID: 198832349933827164}
-  - {fileID: 198705544624543580}
-  - {fileID: 198988128795186820}
-  - {fileID: 198044371474651150}
---- !u!114 &114993459177560762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1068052160865498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94303be109385e74496e9340133670d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startDelay: 0
-  pauseDelay: 2
-  beamDuration: 3
-  animationSpeed: 3
-  xMultiplier: 0
-  yMultiplier: 1
-  particles:
-  - {fileID: 198851907438744700}
-  - {fileID: 198407157214327570}
-  - {fileID: 198143610807639674}
-  - {fileID: 198802213915614114}
 --- !u!198 &198044371474651150
 ParticleSystem:
   m_ObjectHideFlags: 1

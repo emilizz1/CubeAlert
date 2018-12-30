@@ -87,7 +87,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4341179701084312}
-  - component: {fileID: 114311677393159538}
   - component: {fileID: 114635312289831854}
   - component: {fileID: 70663752585581162}
   m_Layer: 0
@@ -181,28 +180,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
---- !u!114 &114311677393159538
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1798459210930364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94303be109385e74496e9340133670d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startDelay: 0
-  pauseDelay: 2
-  beamDuration: 3
-  animationSpeed: 1
-  xMultiplier: 0
-  yMultiplier: 1
-  particles:
-  - {fileID: 198425136818089826}
-  - {fileID: 198141500206568922}
-  - {fileID: 198409181813098928}
-  - {fileID: 198026830052626224}
 --- !u!114 &114635312289831854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,6 +191,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e042143787dc8844c83f59128ae317db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 1
+  endPos: {x: 0, y: 10}
+  starLivesToRemove: 3
+  clashWithStar: {fileID: 0}
+  supernovaHit: []
+  soundVolume: 0.5
 --- !u!198 &198026830052626224
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -10,6 +10,7 @@ public class BeamLine : MonoBehaviour
     [SerializeField] ParticleSystem clashWithStar;
     [SerializeField] AudioClip[] supernovaHit;
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
+    [SerializeField] bool rotating = true;
     
     float rotationSpeed;
     Vector2 startPos;
@@ -25,7 +26,10 @@ public class BeamLine : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, currentlyMovingTo, moveSpeed);
-        transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        if (rotating)
+        {
+            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        }
         if (transform.position == new Vector3(endPos.x, endPos.y, 0f))
         {
             currentlyMovingTo = startPos;

@@ -39,8 +39,6 @@ public class CometSpawner : MonoBehaviour
         {
             cometPos = cometPos * 1.1f;
             currentDistanceToCenter = Vector2.Distance(cometPos, new Vector2(0f, 0f));
-            
-            
         }
         return cometPos;
     }

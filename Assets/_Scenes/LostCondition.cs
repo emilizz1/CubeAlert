@@ -8,10 +8,33 @@ public class LostCondition : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] Text lostConditionText;
     [SerializeField] Image fadeIn;
+    [SerializeField] bool puzzleLevel = false;
 
     private void Awake()
     {
         Time.timeScale = 1f;
+    }
+
+    void Update()
+    {
+        if (puzzleLevel)
+        {
+            if(!CheckIfPossibleToWin())
+            {
+                GiveLostCondition("Out of Stars");
+            }
+        }
+    }
+
+    bool CheckIfPossibleToWin()
+    {
+        int blackHoleLife = FindObjectOfType<LifePoints>().GetCurrentLifePoints();
+        int starsLife = 0;
+        foreach(Star star in FindObjectsOfType<Star>())
+        {
+            starsLife += star.GetBulletAmount();
+        }
+        return blackHoleLife <= starsLife;
     }
 
     public void GiveLostCondition(string condition)

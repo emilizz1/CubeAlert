@@ -679,6 +679,7 @@ MonoBehaviour:
   canvas: {fileID: 1400240223}
   lostConditionText: {fileID: 547095273}
   fadeIn: {fileID: 1554032278}
+  puzzleLevel: 1
 --- !u!4 &541242889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4341179701084312, guid: e6999674bab17c0428327bc60f1b9e1f,
@@ -3041,7 +3042,7 @@ Prefab:
     - target: {fileID: 114357702891456568, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 2}
       propertyPath: levelToLoadOnWin
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114008096623759050, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 2}
@@ -3061,6 +3062,10 @@ Prefab:
         type: 2}
       propertyPath: damageToLose
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450216732395990, guid: d62644f4eb1791843b72ce3b3ca6bf50, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62644f4eb1791843b72ce3b3ca6bf50, type: 2}
@@ -3297,7 +3302,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1985887756}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 38.22, z: 0}
+  m_LocalPosition: {x: 0, y: 37.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1129185391}

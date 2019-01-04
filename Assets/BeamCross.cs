@@ -43,7 +43,6 @@ public class BeamCross : MonoBehaviour
         Destroy(Instantiate(clashWithStar, collision.GetContact(0).point, Quaternion.identity, transform), clashWithStar.main.duration);
         AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
         StartCoroutine(RemoveStarLife(collision.gameObject.GetComponent<Star>()));
-        FindObjectOfType<Ammo>().DamageDealt(starLivesToRemove);
     }
 
     IEnumerator RemoveStarLife(Star star)

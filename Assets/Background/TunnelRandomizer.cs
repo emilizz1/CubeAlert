@@ -9,6 +9,7 @@ public class TunnelRandomizer : MonoBehaviour
 
     TunnelFX2 myTunnel;
     float minColor, maxColor;
+    bool changeColor = true;
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class TunnelRandomizer : MonoBehaviour
 
     void RandomizeTunnel()
     {
-        switch (Random.Range(0, 2))
+        switch (Random.Range(0, 3))
         {
             case (0):
                 myTunnel.preset = TUNNEL_PRESET.SpaceTravel;
@@ -34,6 +35,12 @@ public class TunnelRandomizer : MonoBehaviour
                 minColor = 0.6f;
                 maxColor = 1f;
                 break;
+            case (2):
+                myTunnel.preset = TUNNEL_PRESET.MetalStructure;
+                myTunnel.sides = Random.Range(4, 12);
+                myTunnel.hyperSpeed = Random.Range(0f, 0.6f);
+                changeColor = false;
+                break;
         }
         myTunnel.animationAmplitude = 0.1f;
         myTunnel.globalAlpha = Random.Range(0.5f, 0.8f);
@@ -42,16 +49,19 @@ public class TunnelRandomizer : MonoBehaviour
 
     Color GetBackgroundColor()
     {
-        switch (Random.Range(0, 3))
+        if (changeColor)
         {
-            case (0):
-                return new Color(1f, Random.Range(minColor, maxColor), Random.Range(minColor, maxColor));
-            case (1):
-                return new Color(Random.Range(minColor, maxColor), 1f, Random.Range(minColor, maxColor));
-            case (2):
-                return new Color(Random.Range(minColor, maxColor), Random.Range(minColor, maxColor), 1f);
-            case (3):
-                break;
+            switch (Random.Range(0, 3))
+            {
+                case (0):
+                    return new Color(1f, Random.Range(minColor, maxColor), Random.Range(minColor, maxColor));
+                case (1):
+                    return new Color(Random.Range(minColor, maxColor), 1f, Random.Range(minColor, maxColor));
+                case (2):
+                    return new Color(Random.Range(minColor, maxColor), Random.Range(minColor, maxColor), 1f);
+                case (3):
+                    break;
+            }
         }
         return Color.white;
     }

@@ -13,12 +13,29 @@ public class BeamCross : MonoBehaviour
 
     private void Start()
     {
-        rotationSpeed = Random.Range(-40, 40f);
+        SetRandomRotation();
+    }
+
+    void SetRandomRotation()
+    {
+        rotationSpeed = Random.Range(-50, 50f);
+        if(Mathf.Abs(rotationSpeed) < 20f)
+        {
+            SetRandomRotation();
+        }
     }
 
     void Update()
     {
         transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Star>())
+        {
+            StarCollided(collision);
+        }
     }
 
     private void StarCollided(Collision2D collision)

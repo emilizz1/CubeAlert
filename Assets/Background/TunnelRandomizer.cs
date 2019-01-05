@@ -21,7 +21,7 @@ public class TunnelRandomizer : MonoBehaviour
 
     void RandomizeTunnel()
     {
-        switch (Random.Range(0, 3))
+        switch (Random.Range(0, 5))
         {
             case (0):
                 myTunnel.preset = TUNNEL_PRESET.SpaceTravel;
@@ -41,6 +41,17 @@ public class TunnelRandomizer : MonoBehaviour
                 myTunnel.hyperSpeed = Random.Range(0f, 0.6f);
                 changeColor = false;
                 break;
+            case (3):
+                myTunnel.preset = TUNNEL_PRESET.WaterTunnel;
+                myTunnel.hyperSpeed = 0f;
+                changeColor = false;
+                break;
+            case (4):
+                myTunnel.preset = TUNNEL_PRESET.Stripes;
+                myTunnel.hyperSpeed = Random.Range(0f, 0.85f);
+                minColor = 0.85f;
+                maxColor = 1f;
+                break;
         }
         myTunnel.animationAmplitude = 0.1f;
         myTunnel.globalAlpha = Random.Range(0.5f, 0.8f);
@@ -59,8 +70,6 @@ public class TunnelRandomizer : MonoBehaviour
                     return new Color(Random.Range(minColor, maxColor), 1f, Random.Range(minColor, maxColor));
                 case (2):
                     return new Color(Random.Range(minColor, maxColor), Random.Range(minColor, maxColor), 1f);
-                case (3):
-                    break;
             }
         }
         return Color.white;

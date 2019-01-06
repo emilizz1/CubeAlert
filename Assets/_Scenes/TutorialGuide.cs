@@ -19,6 +19,7 @@ public class TutorialGuide : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         currentlyMoving = transform;
         comet.GetComponent<Comet>().GiveStartingRotation(FaceThePortal(comet.transform.position));
     }

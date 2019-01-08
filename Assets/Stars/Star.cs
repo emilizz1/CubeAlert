@@ -9,6 +9,9 @@ public class Star : MonoBehaviour
     [Range(0.1f, 1f)] [SerializeField] float starRadiusIncrease = 0.3f;
     [SerializeField] float loopingTimer = 1f;
     [SerializeField] GameObject[] centerParticles;
+    [SerializeField] ParticleSystem clashWithComet;
+    [SerializeField] AudioClip[] cometHitStarClip;
+    [SerializeField] float soundVolume;
 
     bool startedExploding = false;
     bool beenHit = false;
@@ -49,7 +52,7 @@ public class Star : MonoBehaviour
         return bulletAmount;
     }
 
-    public void RemoveAmmo()
+    void RemoveAmmo()
     {
         beenHit = true;
         AddSizeToCenterParticles(-1);
@@ -122,6 +125,27 @@ public class Star : MonoBehaviour
                 var particles = particle.main;
                 particles.startSizeMultiplier = particles.startSize.constantMax * 0.1f * times;
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Comet>())
+        {
+            Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, transform), clashWithComet.main.duration);
+            AudioSource.PlayClipAtPoint(cometHitStarClip[Random.Range(0, cometHitStarClip.Length)], Camera.main.transform.position, soundVolume);
+            StartCoroutine(RemoveStarLife(collision.gameObject.GetComponent<Comet>().GetDamageDone()));
+            print(collision.gameObject.GetComponent<Comet>().GetDamageDone());
+            collision.gameObject.GetComponent<Comet>().CometHit();
+        }
+    }
+
+    public IEnumerator RemoveStarLife(int starLivesToRemove)
+    {
+        for (int i = 0; i < starLivesToRemove; i++)
+        {
+            RemoveAmmo();
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

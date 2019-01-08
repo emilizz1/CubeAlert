@@ -22,22 +22,22 @@ public class Supernova : MonoBehaviour
     ParticleSystem supernovaPS;
     CircleCollider2D collider;
     float myRadius;
-     
-	void Start ()
+
+    void Start()
     {
         supernovaPS = GetComponentInChildren<ParticleSystem>();
         collider = GetComponent<CircleCollider2D>();
         myRadius = Random.Range(minRadius, maxRadius);
         AudioSource.PlayClipAtPoint(supernovaClip, Camera.main.transform.position, soundVolume);
     }
-	
-	void Update ()
+
+    void Update()
     {
         if (playing)
         {
             ExpandSupernova();
         }
-	}
+    }
 
     void ExpandSupernova()
     {
@@ -59,14 +59,14 @@ public class Supernova : MonoBehaviour
 
     IEnumerator ShrinkSupernova()
     {
-        if(collider.radius > 0)
+        if (collider.radius > 0)
         {
             collider.radius -= expandRate * Time.deltaTime;
         }
         var supernovaMain = supernovaPS.main;
         supernovaMain.startSizeMultiplier -= Time.deltaTime * expandRate;
         yield return new WaitForEndOfFrame();
-        if(supernovaMain.startSizeMultiplier <= 0)
+        if (supernovaMain.startSizeMultiplier <= 0)
         {
             Destroy(gameObject);
         }
@@ -90,9 +90,7 @@ public class Supernova : MonoBehaviour
         }
         else if (collision.gameObject.GetComponent<Comet>())
         {
-
             CometCollided(collision);
-
         }
     }
 
@@ -108,7 +106,7 @@ public class Supernova : MonoBehaviour
         ShowDamage(collision);
         Destroy(Instantiate(clashWithStar, collision.GetContact(0).point, Quaternion.identity, transform), clashWithStar.main.duration);
         AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
-        StartCoroutine(RemoveStarLife(collision.gameObject.GetComponent<Star>()));
+        StartCoroutine(collision.gameObject.GetComponent<Star>().RemoveStarLife(starLivesToRemove));
         FindObjectOfType<Ammo>().DamageDealt(starLivesToRemove);
     }
 
@@ -117,15 +115,6 @@ public class Supernova : MonoBehaviour
         var damageNumber = FindObjectOfType<BlackholeDamageNumber>();
         var numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
         numberInstance.GetComponent<Text>().text = "-" + starLivesToRemove.ToString();
-    }
-
-    IEnumerator RemoveStarLife(Star star)
-    {
-        for (int i = 0; i < starLivesToRemove; i++)
-        {
-            star.RemoveAmmo();
-            yield return new WaitForSeconds(0.1f);
-        }
     }
 
     public float GetRadius()

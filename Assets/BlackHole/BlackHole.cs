@@ -91,7 +91,7 @@ public class BlackHole : MonoBehaviour
     private void GetHealed(Collision2D collision)
     {
         GameObject numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
-        int healing = collision.gameObject.GetComponent<Comet>().GetHealing();
+        int healing = collision.gameObject.GetComponent<Comet>().GetDamageDone();
         numberInstance.GetComponent<Text>().text = "+" + healing.ToString();
         lifePoints.RemoveLife(-healing);
         FindObjectOfType<Ammo>().DamageDealt(healing);

@@ -8,8 +8,8 @@ public class Comet : MonoBehaviour
     [SerializeField] float flightSpeed;
     [SerializeField] GameObject explosionOnHit;
     [SerializeField] float loopingTimer = 0.5f;
-    [SerializeField] int healingToBlackhole = 1; 
-    
+    [SerializeField] int damage = 1;
+
     bool itPassed = false;
 
     Rigidbody2D rb;
@@ -73,8 +73,8 @@ public class Comet : MonoBehaviour
         GetComponentInChildren<TrailRenderer>().enabled = true;
     }
 
-    public int GetHealing()
+    public int GetDamageDone()
     {
-        return healingToBlackhole;
+        return damage;
     }
 }

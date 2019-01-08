@@ -224,6 +224,12 @@ MonoBehaviour:
   - {fileID: 1773289960377032, guid: cd8f4b74ff691d44c954d90be974a85e, type: 2}
   - {fileID: 1773289960377032, guid: 68eab6a2ed07dd643b38e8a408506da7, type: 2}
   - {fileID: 1773289960377032, guid: 59cf2e86ceaa0e6409c7bc927b66fe46, type: 2}
+  clashWithComet: {fileID: 198301411790792142, guid: d8ed3db2098190848a2528441b988082,
+    type: 2}
+  cometHitStarClip:
+  - {fileID: 8300000, guid: 1ce1186770d7c2d4c905597b709f91f9, type: 3}
+  - {fileID: 8300000, guid: 98e18b9b664383f479ba32becce72a1c, type: 3}
+  soundVolume: 0.5
 --- !u!114 &114494353685339016
 MonoBehaviour:
   m_ObjectHideFlags: 1

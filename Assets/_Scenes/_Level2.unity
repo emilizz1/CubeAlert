@@ -489,6 +489,7 @@ MonoBehaviour:
   canvas: {fileID: 1400240223}
   lostConditionText: {fileID: 547095273}
   fadeIn: {fileID: 1554032278}
+  puzzleLevel: 0
 --- !u!1 &547095270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,7 +1738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4654472414606812, guid: 4254d4073f5bb4249ade21ed98ee0a99, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4654472414606812, guid: 4254d4073f5bb4249ade21ed98ee0a99, type: 2}
       propertyPath: m_LocalRotation.x

@@ -167,7 +167,7 @@ MonoBehaviour:
   minSpawnTime: 5
   maxSpawnTime: 10
   maxSupernovas: 2
-  specifiedSpawnLocation: {x: 0, y: 5}
+  specifiedSpawnLocation: {x: 0, y: 3}
 --- !u!4 &158276316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4145788507595874, guid: ebb081539d49d7a45b983c713fd7ad49,
@@ -860,6 +860,11 @@ Prefab:
       propertyPath: m_Name
       value: Beam Lava (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6999674bab17c0428327bc60f1b9e1f, type: 2}
   m_IsPrefabAsset: 0
@@ -1313,6 +1318,21 @@ Prefab:
       propertyPath: m_Size.y
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: endPos.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: endPos.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6999674bab17c0428327bc60f1b9e1f, type: 2}
   m_IsPrefabAsset: 0
@@ -1474,7 +1494,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234202233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.199999, y: -15, z: 0}
+  m_LocalPosition: {x: 24.5, y: -16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1129185391}
@@ -1503,7 +1523,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 48}
+  m_Size: {x: 1, y: 45.5}
   m_EdgeRadius: 0
 --- !u!1 &1284398144
 GameObject:
@@ -1732,6 +1752,26 @@ Prefab:
       propertyPath: InitialModule.startLifetime.scalar
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: endPos.y
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: endPos.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: rotating
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6999674bab17c0428327bc60f1b9e1f, type: 2}
   m_IsPrefabAsset: 0
@@ -1826,7 +1866,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1361780192}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.2, y: 26, z: 0}
+  m_LocalPosition: {x: 25.5, y: 24.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1129185391}
@@ -1855,7 +1895,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 25}
+  m_Size: {x: 1, y: 28}
   m_EdgeRadius: 0
 --- !u!1001 &1366332470
 Prefab:
@@ -2142,6 +2182,21 @@ Prefab:
         type: 2}
       propertyPath: m_Size.y
       value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: endPos.y
+      value: -21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: endPos.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6999674bab17c0428327bc60f1b9e1f, type: 2}
@@ -2757,7 +2812,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1958407882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.58, y: 25, z: 0}
+  m_LocalPosition: {x: -24.5, y: 24.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1129185391}
@@ -2968,6 +3023,26 @@ Prefab:
       propertyPath: InitialModule.startLifetime.scalar
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: endPos.y
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: endPos.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: rotating
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114635312289831854, guid: e6999674bab17c0428327bc60f1b9e1f,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6999674bab17c0428327bc60f1b9e1f, type: 2}
   m_IsPrefabAsset: 0
@@ -3046,7 +3121,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2132011027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.58, y: -16, z: 0}
+  m_LocalPosition: {x: -24.5, y: -16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1129185391}

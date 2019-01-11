@@ -20,7 +20,6 @@ public class UpgradeSpawner : MonoBehaviour
     bool playing = false;
     float currentSpawningTime = 0;
     float currentlyLowestStat = 0;
-    bool spawning = false;
 
     void Update()
     {

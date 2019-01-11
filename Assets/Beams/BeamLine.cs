@@ -6,11 +6,9 @@ public class BeamLine : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] Vector2 endPos;
-    [SerializeField] int starLivesToRemove = 3;
     [SerializeField] ParticleSystem clashWithStar;
     [SerializeField] AudioClip[] supernovaHit;
-    [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
-    [SerializeField] bool rotating = true;
+    [SerializeField] bool rotating = true; 
     
     float rotationSpeed;
     Vector2 startPos;

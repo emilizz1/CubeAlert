@@ -48,7 +48,7 @@ public class Comet : MonoBehaviour
     public void DestroyComet()
     {
         Instantiate(explosionOnHit, transform.position, Quaternion.identity, gameObject.transform.parent);
-        Destroy(gameObject);
+        Destroy(gameObject); 
     }
 
     void DisplayDamageNumber(bool fullDamage, Collision2D collision)

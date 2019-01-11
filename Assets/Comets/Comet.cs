@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Comet : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class Comet : MonoBehaviour
     Quaternion startRotation;
     float lastTimeLooped = 0f;
 
-	void Start ()
+    void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -28,10 +29,40 @@ public class Comet : MonoBehaviour
         transform.rotation = startRotation;
     }
 
-    public void CometHit()
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.GetComponent<UpgradeController>()) // destroys itself when colliding with everything except Upgrade
+        {
+            if (collision.gameObject.GetComponent<BlackHole>())
+            {
+                DisplayDamageNumber(true, collision);
+            }
+            else if (collision.gameObject.GetComponent<Star>())
+            {
+                DisplayDamageNumber(false, collision);
+            }
+            DestroyComet();
+        }
+    }
+
+    public void DestroyComet()
     {
         Instantiate(explosionOnHit, transform.position, Quaternion.identity, gameObject.transform.parent);
         Destroy(gameObject);
+    }
+
+    void DisplayDamageNumber(bool fullDamage, Collision2D collision)
+    {
+        BlackholeDamageNumber damageNumber = FindObjectOfType<BlackholeDamageNumber>();
+        GameObject numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
+        if (fullDamage)
+        {
+            numberInstance.GetComponent<Text>().text = "+" + damage.ToString();
+        }
+        else
+        {
+            numberInstance.GetComponent<Text>().text = "-" + (damage/2).ToString();
+        }
     }
 
     public bool ShouldItLoop()

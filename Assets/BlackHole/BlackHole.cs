@@ -24,7 +24,6 @@ public class BlackHole : MonoBehaviour
     LifePoints lifePoints;
     CircleCollider2D circleCollider;
     Rigidbody2D myRigidbody;
-    BlackholeDamageNumber damageNumber;
 
     void Start()
     {
@@ -33,7 +32,6 @@ public class BlackHole : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
         cameraShaker = FindObjectOfType<CameraShaker>();
-        damageNumber = FindObjectOfType<BlackholeDamageNumber>();
         particle = Instantiate(particle, transform.position, Quaternion.identity, transform);
         if (!tutorial)
         {
@@ -55,7 +53,6 @@ public class BlackHole : MonoBehaviour
                 myRigidbody.velocity = Vector3.ClampMagnitude(myRigidbody.velocity, maxSpeed);
             }
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -85,14 +82,11 @@ public class BlackHole : MonoBehaviour
         Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity), clashWithComet.main.duration);
         GetHealed(collision);
         cameraShaker.AddShakeDuration(0.2f);
-        collision.gameObject.GetComponent<Comet>().CometHit();
     }
 
     private void GetHealed(Collision2D collision)
     {
-        GameObject numberInstance = Instantiate(damageNumber.GetNumber(), collision.GetContact(0).point, Quaternion.identity, damageNumber.transform);
         int healing = collision.gameObject.GetComponent<Comet>().GetDamageDone();
-        numberInstance.GetComponent<Text>().text = "+" + healing.ToString();
         lifePoints.RemoveLife(-healing);
         FindObjectOfType<Ammo>().DamageDealt(healing);
     }

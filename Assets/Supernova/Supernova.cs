@@ -98,7 +98,6 @@ public class Supernova : MonoBehaviour
     {
         Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, transform), clashWithComet.main.duration);
         AudioSource.PlayClipAtPoint(supernovaHit[Random.Range(0, supernovaHit.Length)], Camera.main.transform.position, soundVolume);
-        collision.gameObject.GetComponent<Comet>().CometHit();
     }
 
     private void StarCollided(Collision2D collision)

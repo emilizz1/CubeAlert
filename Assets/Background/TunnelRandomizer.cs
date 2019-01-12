@@ -84,6 +84,7 @@ public class TunnelRandomizer : MonoBehaviour
                 maxColor = 1f;
                 break;
         }
+        myTunnel.layersSpeed = myTunnel.layersSpeed * 0.85f;
         myTunnel.animationAmplitude = 0.1f;
         myTunnel.globalAlpha = Random.Range(0.5f, 0.8f);
         myTunnel.fallOff = Random.Range(0.3f, 1f);

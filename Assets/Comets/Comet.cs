@@ -11,6 +11,7 @@ public class Comet : MonoBehaviour
     [SerializeField] float loopingTimer = 0.5f;
     [SerializeField] int damage = 1;
     [SerializeField] float damageDelay = 2f;
+    [SerializeField] ParticleSystem bigGlow;
 
     bool puzzle = false;
     bool itPassed = false;
@@ -24,10 +25,21 @@ public class Comet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         timeCreated = Time.time;
+        if (!puzzle)
+        {
+            var mainParticles = bigGlow.main;
+            mainParticles.startColor = new Color(0.5f, 0f, 1f);
+        }
     }
 
     void Update()
     {
+        if(bigGlow != null && IsItDestructable())
+        {
+            var mainParticles = bigGlow.main;
+            mainParticles.startColor = Color.red;
+            bigGlow = null;
+        }
         rb.AddForce(transform.up * Time.deltaTime * flightSpeed, ForceMode2D.Impulse);
         rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -flightSpeedMax, flightSpeedMax), Mathf.Clamp(rb.velocity.y, -flightSpeedMax, flightSpeedMax));
         transform.rotation = startRotation;

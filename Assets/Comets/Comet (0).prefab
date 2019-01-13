@@ -296,6 +296,8 @@ MonoBehaviour:
     type: 2}
   loopingTimer: 0.35
   damage: 3
+  damageDelay: 2
+  bigGlow: {fileID: 198203638191182706}
 --- !u!114 &114956738680608360
 MonoBehaviour:
   m_ObjectHideFlags: 1

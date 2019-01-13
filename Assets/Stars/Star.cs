@@ -130,7 +130,7 @@ public class Star : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Comet>())
+        if (collision.gameObject.GetComponent<Comet>() && collision.gameObject.GetComponent<Comet>().IsItDestructable())
         {
             Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, transform), clashWithComet.main.duration);
             AudioSource.PlayClipAtPoint(cometHitStarClip[Random.Range(0, cometHitStarClip.Length)], Camera.main.transform.position, soundVolume);

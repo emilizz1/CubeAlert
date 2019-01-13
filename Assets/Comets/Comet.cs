@@ -10,16 +10,20 @@ public class Comet : MonoBehaviour
     [SerializeField] GameObject explosionOnHit;
     [SerializeField] float loopingTimer = 0.5f;
     [SerializeField] int damage = 1;
+    [SerializeField] float damageDelay = 2f;
 
+    bool puzzle = false;
     bool itPassed = false;
 
     Rigidbody2D rb;
     Quaternion startRotation;
     float lastTimeLooped = 0f;
+    float timeCreated;
 
     void Start ()
     {
         rb = GetComponent<Rigidbody2D>();
+        timeCreated = Time.time;
     }
 
     void Update()
@@ -31,7 +35,7 @@ public class Comet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.GetComponent<UpgradeController>()) // destroys itself when colliding with everything except Upgrade
+        if (!collision.gameObject.GetComponent<UpgradeController>() && IsItDestructable()) // destroys itself when colliding with everything except Upgrade
         {
             if (collision.gameObject.GetComponent<BlackHole>())
             {
@@ -99,5 +103,22 @@ public class Comet : MonoBehaviour
     public int GetDamageDone()
     {
         return damage;
+    }
+
+    public bool IsItDestructable()
+    {
+        if (!puzzle)
+        {
+            return Time.time - damageDelay >= timeCreated;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public void PlayingPuzzleLevel()
+    {
+        puzzle = true;
     }
 }

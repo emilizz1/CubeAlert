@@ -61,7 +61,7 @@ public class BlackHole : MonoBehaviour
         {
             StarCollided(collision);
         }
-        else if (collision.gameObject.GetComponent<Comet>())
+        else if (collision.gameObject.GetComponent<Comet>() && collision.gameObject.GetComponent<Comet>().IsItDestructable())
         {
             CometCollided(collision);
         }

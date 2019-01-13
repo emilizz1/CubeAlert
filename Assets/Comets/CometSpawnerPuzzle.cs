@@ -28,6 +28,7 @@ public class CometSpawnerPuzzle : MonoBehaviour
             GameObject myObject = Instantiate(comet, transform.position, Quaternion.identity, transform);
             myObject.GetComponent<Comet>().GiveStartingRotation(Quaternion.Euler(0f,0f,rotation));
             myObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+            myObject.GetComponent<Comet>().PlayingPuzzleLevel();
         }
     }
 }

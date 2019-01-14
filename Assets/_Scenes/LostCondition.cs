@@ -10,6 +10,8 @@ public class LostCondition : MonoBehaviour
     [SerializeField] Image fadeIn;
     [SerializeField] bool puzzleLevel = false;
 
+    bool fullyShowing = false;
+
     private void Awake()
     {
         Time.timeScale = 1f;
@@ -51,11 +53,20 @@ public class LostCondition : MonoBehaviour
 
     IEnumerator FadeInBackground()
     {
-        fadeIn.color = new Color(1f, 1f, 1f, 0f);
-        while (fadeIn.color.a < 1)
+        if (!fullyShowing)
         {
-            fadeIn.color = new Color(1f, 1f, 1f, fadeIn.color.a + 0.015f);
-            yield return new WaitForSecondsRealtime(0.01f);
+            fadeIn.color = new Color(1f, 1f, 1f, 0f);
+            while (fadeIn.color.a < 1)
+            {
+                fadeIn.color = new Color(1f, 1f, 1f, fadeIn.color.a + 0.015f);
+                yield return new WaitForSecondsRealtime(0.01f);
+            }
+            fullyShowing = true;
         }
+    }
+
+    public bool GetFullyShowing()
+    {
+        return fullyShowing;
     }
 }

@@ -34,10 +34,10 @@ Material:
     - _Progress: 0.7599996
     - _Spread: 0.25
     - _Strength: 0.020400016
-    - _Velocity: 14
+    - _Velocity: 16
     m_Colors:
     - _Center: {r: 0.7294398, g: 0.1602434, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Ripple1: {r: 0.5, g: 0.5, b: 8.250094, a: 0}
-    - _Ripple2: {r: 0.5, g: 0.5, b: 8.250094, a: 0}
-    - _Ripple3: {r: 0.5, g: 0.5, b: 8.250094, a: 0}
+    - _Ripple1: {r: 0.5, g: 0.5, b: 2.059999, a: 0}
+    - _Ripple2: {r: 0.5, g: 0.5, b: 2.059999, a: 0}
+    - _Ripple3: {r: 0.5, g: 0.5, b: 2.059999, a: 0}

@@ -26,8 +26,11 @@ public class EndLevelFlash : MonoBehaviour
     {
         myObject.SetActive(true);
         myObject.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        ScreenClickRipple ripple = FindObjectOfType<ScreenClickRipple>();
+        ripple.ChangeEndLevelRipple();
         while(myObject.transform.localScale.x < triangleMaxSize)
         {
+            ripple.AddRipple(Vector3.zero);
             myObject.transform.localScale += new Vector3((Time.deltaTime * transitionSpeed), (Time.deltaTime * transitionSpeed), (Time.deltaTime * transitionSpeed));
             yield return new WaitForEndOfFrame();
         }

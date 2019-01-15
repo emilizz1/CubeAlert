@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 124408884280364380}
   - component: {fileID: 81372347368739184}
   - component: {fileID: 114624600421526314}
-  - component: {fileID: 114865973836281918}
+  - component: {fileID: 114429196489237488}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -99,21 +99,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1106095913365746}
   m_Enabled: 1
---- !u!114 &114624600421526314
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1106095913365746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04981e411fbd534abd7f7c77ff54cce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeDuration: 0
-  shakeAmount: 0.7
-  decreaseFactor: 1
---- !u!114 &114865973836281918
+--- !u!114 &114429196489237488
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,7 +115,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8fcf9505bb88fe14caf39bb504923891, type: 2}
   - {fileID: 2100000, guid: b9678ac539f819441bd9564440935801, type: 2}
   m_Camera: {fileID: 0}
-  m_RippleType: 2
+  m_RippleType: 1
   m_RippleMaskName: TransparentFX
   m_SdrRippleMask: {fileID: 4800000, guid: 686d6989f875f4e49a4085a2a3d2ea62, type: 3}
   m_EnableMaskObjects: 0
@@ -140,17 +126,31 @@ MonoBehaviour:
     Amplitude: 0.8
     Gap: 0.03
   m_Ripple2:
-    StrengthInit: 0.03
+    StrengthInit: 0.022
     StrengthDecay: 0.0002
-    Spread: 0.3
+    Spread: 0.25
     Frequence: 24
     Velocity: 16
   m_Ripple3:
     Frequence: 100
     Speed: 30
-    Strength: 3
+    Strength: 1
     WaveWidth: 0.12
     Spread: 0.9
+--- !u!114 &114624600421526314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1106095913365746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04981e411fbd534abd7f7c77ff54cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0
+  shakeAmount: 0.7
+  decreaseFactor: 1
 --- !u!124 &124408884280364380
 Behaviour:
   m_ObjectHideFlags: 1

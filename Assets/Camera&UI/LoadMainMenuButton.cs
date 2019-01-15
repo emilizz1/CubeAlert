@@ -7,6 +7,11 @@ public class LoadMainMenuButton : MonoBehaviour
 {
     public void LoadMainMenu()
     {
+        FindObjectOfType<LoadScene>().mLoadScene(0);
+    }
+
+    public void LoadMainMenuLostScreen()
+    {
         if (FindObjectOfType<LostCondition>().GetFullyShowing())
         {
             FindObjectOfType<LoadScene>().mLoadScene(0);

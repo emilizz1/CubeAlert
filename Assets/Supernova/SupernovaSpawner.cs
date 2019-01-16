@@ -8,7 +8,8 @@ public class SupernovaSpawner : MonoBehaviour
     [SerializeField] float minSpawnTime;
     [SerializeField] float maxSpawnTime;
     [SerializeField] float maxSupernovas = 2;
-    [SerializeField] Vector2 specifiedSpawnLocation;
+    [SerializeField] Vector2 randomSpawnLocationA;
+    [SerializeField] Vector2 randomSpawnLocationB;
 
     bool playing = true;
 
@@ -27,13 +28,14 @@ public class SupernovaSpawner : MonoBehaviour
             yield return new WaitForSecondsRealtime(Random.Range(minSpawnTime, maxSpawnTime));
             if (FindObjectsOfType<Supernova>().Length < maxSupernovas)
             {
-                if (specifiedSpawnLocation == Vector2.zero)
+                if (randomSpawnLocationA == Vector2.zero)
                 {
                     Instantiate(supernova, GetNewTargetPos(), Quaternion.identity, transform);
                 }
                 else
                 {
-                    Instantiate(supernova, specifiedSpawnLocation, Quaternion.identity, transform);
+                    var spawnLocation = new Vector2(Random.Range(randomSpawnLocationA.x, randomSpawnLocationB.x), Random.Range(randomSpawnLocationA.y, randomSpawnLocationB.y));
+                    Instantiate(supernova, spawnLocation, Quaternion.identity, transform);
                 }
             }
         }

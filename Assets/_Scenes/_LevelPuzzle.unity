@@ -168,11 +168,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6dbb5b31e7ca342afda8c396dd590d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  supernova: {fileID: 1593636621143004, guid: a5c71503c4fdaaf4bbed699defa19994, type: 2}
+  supernova: {fileID: 1593636621143004, guid: 00a9ffc7dff1e0041985ec0539fa191c, type: 2}
   minSpawnTime: 5
   maxSpawnTime: 10
   maxSupernovas: 2
-  specifiedSpawnLocation: {x: 0, y: 3}
+  randomSpawnLocationA: {x: -8, y: 4}
+  randomSpawnLocationB: {x: 8, y: 4}
 --- !u!4 &158276316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4145788507595874, guid: ebb081539d49d7a45b983c713fd7ad49,

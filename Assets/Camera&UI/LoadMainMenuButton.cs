@@ -10,11 +10,13 @@ public class LoadMainMenuButton : MonoBehaviour
         FindObjectOfType<LoadScene>().mLoadScene(0);
     }
 
-    public void LoadMainMenuLostScreen()
+    public void LoadLostScene()
     {
+        print("prepare");
         if (FindObjectOfType<LostCondition>().GetFullyShowing())
         {
-            FindObjectOfType<LoadScene>().mLoadScene(0);
+            print("loading");
+            FindObjectOfType<LoadScene>().mLoadSameScene();
         }
     }
 }

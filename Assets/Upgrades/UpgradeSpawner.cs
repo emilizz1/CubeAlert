@@ -5,21 +5,12 @@ using UnityEngine.UI;
 
 public class UpgradeSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject timeUpgrade;
-    [SerializeField] GameObject tapUpgrade;
-    [SerializeField] GameObject damageUpgrade;
-    [SerializeField] float minSpawnTime;
-    [SerializeField] float maxSpawnTime;
-    [SerializeField] float spawnX = 26f;
-    [SerializeField] float spawnY = 40f;
-    [SerializeField] float force;
+    [SerializeField] GameObject timeUpgrade, tapUpgrade, damageUpgrade;
+    [SerializeField] float minSpawnTime, maxSpawnTime, spawnX = 26f, spawnY = 40f, force;
 
-    float spawningMinValue = .5f;
-    float spawningMaxValue = .8f;
+    float spawningMinValue = .5f, spawningMaxValue = .8f, currentSpawningTime = 0, currentlyLowestStat = 0;
     List<GameObject> activeUpgrades = new List<GameObject>();
-    bool playing = false;
-    float currentSpawningTime = 0;
-    float currentlyLowestStat = 0;
+    bool playing = false, hasTimeUpgrade = false, hasTapUpgrade = false, hasDamageUpgrade = false;
 
     void Update()
     {
@@ -88,16 +79,18 @@ public class UpgradeSpawner : MonoBehaviour
         CheckLowestStat(timeFillAmount);
         if (timeFillAmount > spawningMinValue)
         {
-            if (!activeUpgrades.Contains(timeUpgrade))
+            if (!hasTimeUpgrade)
             {
                 activeUpgrades.Add(timeUpgrade);
+                hasTimeUpgrade = true;
             }
         }
         else
         {
-            if (activeUpgrades.Contains(timeUpgrade))
+            if (hasTimeUpgrade)
             {
                 activeUpgrades.Remove(timeUpgrade);
+                hasTimeUpgrade = false;
             }
         }
     }
@@ -108,16 +101,18 @@ public class UpgradeSpawner : MonoBehaviour
         CheckLowestStat(tapFillAmount);
         if (tapFillAmount > spawningMinValue)
         {
-            if (!activeUpgrades.Contains(tapUpgrade))
+            if (!hasTapUpgrade)
             {
                 activeUpgrades.Add(tapUpgrade);
+                hasTapUpgrade = true;
             }
         }
         else
         {
-            if (activeUpgrades.Contains(tapUpgrade))
+            if (hasTapUpgrade)
             {
                 activeUpgrades.Remove(tapUpgrade);
+                hasTapUpgrade = false;
             }
         }
     }
@@ -128,16 +123,18 @@ public class UpgradeSpawner : MonoBehaviour
         CheckLowestStat(damageFillAmount);
         if (damageFillAmount > spawningMinValue)
         {
-            if (!activeUpgrades.Contains(damageUpgrade))
+            if (!hasDamageUpgrade)
             {
                 activeUpgrades.Add(damageUpgrade);
+                hasDamageUpgrade = true;
             }
         }
         else
         {
-            if (activeUpgrades.Contains(damageUpgrade))
+            if (hasDamageUpgrade)
             {
                 activeUpgrades.Remove(damageUpgrade);
+                hasDamageUpgrade = false;
             }
         }
     }

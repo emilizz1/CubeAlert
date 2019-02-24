@@ -9,8 +9,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float minSpeed = 1f;
     [SerializeField] float maxSpeed = 5f;
-    [SerializeField] ParticleSystem absorbingStar;
-    [SerializeField] ParticleSystem clashWithComet;
+    [SerializeField] GameObject absorbingStar, clashWithComet;
     [SerializeField] bool tutorial = false;
     [SerializeField] AudioClip[] cometImpact;
     [SerializeField] AudioClip starEaten;
@@ -79,7 +78,7 @@ public class BlackHole : MonoBehaviour
     private void CometCollided(Collision2D collision)
     {
         AudioSource.PlayClipAtPoint(cometImpact[Random.Range(0, cometImpact.Length)], Camera.main.transform.position, soundVolume);
-        Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity), clashWithComet.main.duration);
+        Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity), clashWithComet.GetComponent<ParticleSystem>().main.duration);
         GetHealed(collision);
         cameraShaker.AddShakeDuration(0.2f);
     }
@@ -96,7 +95,7 @@ public class BlackHole : MonoBehaviour
         int absorbedBullets = figure.GetBulletAmount();
         while (figure)
         {
-            figure.transform.localPosition = Vector2.MoveTowards(figure.transform.localPosition, transform.position, 0.5f);
+            figure.transform.position = Vector2.MoveTowards(figure.transform.position, transform.position, 0.5f);
             if (absorbedBullets > 0)
             {
                 lifePoints.RemoveLife();

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +31,10 @@ public class LostCondition : MonoBehaviour
     {
         int blackHoleLife = FindObjectOfType<LifePoints>().GetCurrentLifePoints();
         int starsLife = 0;
+        if (FindObjectOfType<StarSpawnerPuzzle>())
+        {
+            starsLife += FindObjectOfType<StarSpawnerPuzzle>().GetLifeLeftToSpawn();
+        }
         foreach(Star star in FindObjectsOfType<Star>())
         {
             starsLife += star.GetBulletAmount();

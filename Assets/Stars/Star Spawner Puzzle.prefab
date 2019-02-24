@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6908255789624711698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4317329823276617504}
+  - component: {fileID: 4148569143051234765}
+  m_Layer: 0
+  m_Name: Star Spawner Puzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4317329823276617504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6908255789624711698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4148569143051234765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6908255789624711698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4122d0543eaabf646bbda1feb5ab9821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeAmount: 7
+  stars:
+  - {fileID: 1706184202059882, guid: db48d825b78125b468b72aa1a7b6a379, type: 3}
+  - {fileID: 1376426520516068, guid: 0589a64091d457e49b7db1bf52a5cee7, type: 3}
+  - {fileID: 1612712740367856, guid: 710375e02d33a68478a88db966ac343f, type: 3}
+  - {fileID: 1893943824678992, guid: d66f786ddc7e76c4a905e236a4c0be41, type: 3}
+  - {fileID: 1235838226374262, guid: 17d0704723822fb45aa8e14770636c97, type: 3}
+  - {fileID: 1098038935605238, guid: 158b2666632aa0943bc2df7ee5fcdced, type: 3}
+  - {fileID: 1162960009409956, guid: 695cf37183f543d43b7eee8a022b8b54, type: 3}
+  - {fileID: 1000226916467950, guid: 4874d407fe15ef846ba794d9ca78d7e9, type: 3}
+  - {fileID: 1692056827994638, guid: c86b2fd23e448634a8abca31a1cbb841, type: 3}
+  - {fileID: 1265374280372870, guid: ec8c987b3d5376c43b4709a8828fdfd1, type: 3}
+  - {fileID: 1455380037265188, guid: 296dfd5069799c44594669884b4b1f9c, type: 3}
+  - {fileID: 1179465344928260, guid: 9636ac712e572f0488e540be5da83794, type: 3}
+  - {fileID: 1000156186881610, guid: a86fd7125da009444981370ebb34fdf4, type: 3}
+  - {fileID: 1583824051704670, guid: dcb80f6405f51a94c864ab3b65d169da, type: 3}
+  - {fileID: 1422612453149666, guid: 96f9988962bb8a94a8798bec4293ae74, type: 3}
+  - {fileID: 1583228204790756, guid: 1f47fc41ea1863b4eb4f4b2dd39b2274, type: 3}
+  - {fileID: 1148238308663014, guid: f0393f0ce75e419459c8847cc4489486, type: 3}
+  - {fileID: 1796887409454446, guid: 1872292a45c7d0242aab422abec8fab3, type: 3}
+  - {fileID: 1681351888567606, guid: 7c12468d8903b8244b573efb0ac232d3, type: 3}
+  - {fileID: 1282489435913002, guid: ec482bbbb40bcaa4b8435199b9c5087c, type: 3}
+  - {fileID: 1244351693744224, guid: 87dcde53f52bf9b4594a665b82de7c58, type: 3}
+  - {fileID: 1047977393087596, guid: e6b8496b44fc46a41b10c70e7ce90a11, type: 3}
+  - {fileID: 1860595777835368, guid: fb9b16c47a78ad04b92a4fcc86590709, type: 3}
+  - {fileID: 1631441481792086, guid: f44fc827335724348a9f37e8b357c1d2, type: 3}
+  - {fileID: 1572612375919506, guid: 2f4391784d565c74d932bac99a559c82, type: 3}
+  - {fileID: 1427027921472820, guid: e916c41a9dafd904b8800cfa8454f1f3, type: 3}
+  - {fileID: 1848561562338736, guid: 1879d33131893d44fb01f642db7aa4d8, type: 3}
+  materials:
+  - {fileID: 2100000, guid: 76cc7eb3b760f8746b3ce8819a79e6d7, type: 2}
+  - {fileID: 2100000, guid: a84861d91477d4646a9ccb48ae41f54c, type: 2}
+  - {fileID: 2100000, guid: 7e266694f560add4a86fb2f8f4f5346e, type: 2}
+  - {fileID: 2100000, guid: dece830cf7f3ea14f8469a5c0f1a98c2, type: 2}
+  - {fileID: 2100000, guid: 751282d806bbc7140826086bfcefeb9f, type: 2}

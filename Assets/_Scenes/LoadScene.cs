@@ -36,6 +36,7 @@ public class LoadScene : MonoBehaviour
     public void mLoadScene(int scene)
     {
         //preparing to load a scene
+        print("loading scene: " + scene);
         StartCoroutine(GetComponent<StartEndLevelCanvas>().CanvasApearring(scene));
     }
 

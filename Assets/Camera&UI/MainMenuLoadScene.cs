@@ -6,6 +6,7 @@ public class MainMenuLoadScene : MonoBehaviour
 {
     [SerializeField] int tutorialSceneNumber = 2;
     [SerializeField] int firstLevelNumber = 1;
+    [SerializeField] int firstPuzzleNumber;
 
     void Start()
     {
@@ -25,5 +26,10 @@ public class MainMenuLoadScene : MonoBehaviour
         {
             FindObjectOfType<LoadScene>().mLoadScene(tutorialSceneNumber);
         }
+    }
+
+    public void LoadPuzzleScene()
+    {
+        FindObjectOfType<LoadScene>().mLoadScene(firstPuzzleNumber);
     }
 }

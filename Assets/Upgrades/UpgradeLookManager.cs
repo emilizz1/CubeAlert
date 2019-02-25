@@ -5,8 +5,7 @@ using UnityEngine;
 public class UpgradeLookManager : MonoBehaviour
 {
     [SerializeField] Sprite[] mask;
-    [SerializeField] float rotationSpeed = 55f;
-    [SerializeField] float growthSpeed = 0.65f;
+    [SerializeField] float rotationSpeed = 55f, growthDif = 0.5f, growthSpeed = 0.65f, startingSize = 2f;
     
     bool growing = false;
     
@@ -14,6 +13,7 @@ public class UpgradeLookManager : MonoBehaviour
 
     void Start ()
     {
+        transform.localScale = new Vector3(startingSize, startingSize, startingSize);
         rotation = Random.Range(-rotationSpeed, rotationSpeed);
         GetComponent<SpriteRenderer>().sprite = mask[Random.Range(0, mask.Length)];
         gameObject.AddComponent<BoxCollider2D>();
@@ -31,10 +31,18 @@ public class UpgradeLookManager : MonoBehaviour
         if (growing)
         {
             transform.localScale += new Vector3(growthAmount, growthAmount, growthAmount);
+            if(transform.localScale.x > startingSize + growthDif)
+            {
+                growing = false;
+            }
         }
         else
         {
             transform.localScale -= new Vector3(growthAmount, growthAmount, growthAmount);
+            if (transform.localScale.x < startingSize - growthDif)
+            {
+                growing = true;
+            }
         }
     }
 

@@ -95,7 +95,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0baa2c2c786d65d4287c81834c2524a5, type: 3}
   - {fileID: 21300000, guid: ec6943faa9ab52d4aa526d1500a656c6, type: 3}
   rotationSpeed: 55
-  growthSpeed: 0.65
+  growthDif: 0.35
+  growthSpeed: 0.55
+  startingSize: 1.5
 --- !u!212 &6641667167317626363
 SpriteRenderer:
   m_ObjectHideFlags: 0

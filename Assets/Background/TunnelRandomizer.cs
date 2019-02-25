@@ -5,6 +5,8 @@ using TunnelEffect;
 
 public class TunnelRandomizer : MonoBehaviour
 {
+    [SerializeField] Texture2D[] texture2Ds;
+
     bool playing = true;
 
     TunnelFX2 myTunnel;
@@ -84,6 +86,10 @@ public class TunnelRandomizer : MonoBehaviour
                 maxColor = 1f;
                 break;
         }
+        var myTexture = texture2Ds[Random.Range(0, texture2Ds.Length)];
+        myTunnel.layerCount = 1;
+        myTunnel.SetTexture(0, myTexture);
+        myTunnel.SetExposure(0, 0.7f);
         myTunnel.layersSpeed = myTunnel.layersSpeed * 0.85f;
         myTunnel.animationAmplitude = 0.1f;
         myTunnel.globalAlpha = Random.Range(0.5f, 0.8f);

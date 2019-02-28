@@ -1213,6 +1213,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 114561958296886606, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 114820202823708126, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 224289646696396188, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 3}
       propertyPath: m_LocalPosition.x

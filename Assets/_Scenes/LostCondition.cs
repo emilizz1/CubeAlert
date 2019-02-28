@@ -18,7 +18,7 @@ public class LostCondition : MonoBehaviour
 
     void Update()
     {
-        if (puzzleLevel)
+        if (!puzzleLevel)
         {
             if(!CheckIfPossibleToWin())
             {

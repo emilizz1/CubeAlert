@@ -12,24 +12,20 @@ public class StarSpawnerPuzzle : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnObjects());
+        SpawnStar();
     }
 
-    IEnumerator SpawnObjects()
+    public void SpawnStar()
     {
-        while (starsToSpawn > 0)
+        if (FindObjectsOfType<Star>().Length == 0)
         {
-            if (FindObjectsOfType<Star>().Length == 0)
-            {
-                GameObject myObject = Instantiate(stars[Random.Range(0, stars.Length)]) as GameObject;
-                myObject.GetComponentInChildren<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
-                myObject.GetComponentInChildren<DreamStarGen.DreamStarGenerator>()._GenerateStar();
-                myObject.transform.parent = transform;
-                myObject.transform.position = transform.position;
-                myObject.GetComponent<Star>().GiveBulletsAmount(lifeAmount);
-                starsToSpawn--;
-            }
-            yield return new WaitForSecondsRealtime(0.5f);
+            GameObject myObject = Instantiate(stars[Random.Range(0, stars.Length)]) as GameObject;
+            myObject.GetComponentInChildren<MeshRenderer>().material = materials[Random.Range(0, materials.Length)];
+            myObject.GetComponentInChildren<DreamStarGen.DreamStarGenerator>()._GenerateStar();
+            myObject.transform.parent = transform;
+            myObject.transform.position = transform.position;
+            myObject.GetComponent<Star>().GiveBulletsAmount(lifeAmount);
+            starsToSpawn--;
         }
     }
 

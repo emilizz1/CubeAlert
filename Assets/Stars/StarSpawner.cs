@@ -7,19 +7,9 @@ public class StarSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] stars;
     [SerializeField] Material[] materials;
-    [SerializeField] [Range(-100, 100)] float minThrowForce_x =0f;
-    [SerializeField] [Range(-100, 100)] float maxThrowForce_x =0f;
-    [SerializeField] [Range(-100, 100)] float minThrowForce_y=0f;
-    [SerializeField] [Range(-100, 100)] float maxThrowForce_y=0f; 
-    [SerializeField] float minSpawnTime = 0.8f;
-    [SerializeField] float maxSpawnTime = 1.6f;
-    [SerializeField] float minStartingPosX;
-    [SerializeField] float maxStartingPosX;
-    [SerializeField] float minStartingPosY;
-    [SerializeField] float maxStartingPosY;
-    [SerializeField] int minBulletAmount = 3;
-    [SerializeField] int maxBulletAmount = 12;
-    [SerializeField] int starMaxCap = 7;
+    [SerializeField] [Range(-100, 100)] float minThrowForce_x =0f, maxThrowForce_x = 0f, minThrowForce_y = 0f, maxThrowForce_y = 0f;
+    [SerializeField] float minSpawnTime = 0.8f, maxSpawnTime = 1.6f, minStartingPosX, maxStartingPosX, minStartingPosY, maxStartingPosY;
+    [SerializeField] int minBulletAmount = 3, maxBulletAmount = 12, starMaxCap = 7;
 
     bool playing = true;
 

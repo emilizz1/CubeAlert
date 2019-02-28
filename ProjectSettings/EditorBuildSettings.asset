@@ -28,8 +28,8 @@ EditorBuildSettings:
     guid: fcf48e5061512a84e8fcc13e02d1b5b7
   - enabled: 1
     path: Assets/_Scenes/_LevelPuzzle 1.unity
-    guid: 9d4a184bed1dcb94d8c633a96b541ac7
+    guid: b9d272a7854806b4d93fd1964c770ad1
   - enabled: 1
     path: Assets/_Scenes/_LevelPuzzle 2.unity
-    guid: 054c3d3c8ff77a84ab7030784bdb3500
+    guid: 81dca661020bf2f49ad2263472daf20f
   m_configObjects: {}

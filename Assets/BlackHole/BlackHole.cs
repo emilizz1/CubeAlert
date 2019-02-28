@@ -10,7 +10,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float minSpeed = 1f;
     [SerializeField] float maxSpeed = 5f;
     [SerializeField] GameObject absorbingStar, clashWithComet;
-    [SerializeField] bool tutorial = false;
+    [SerializeField] bool tutorial = false, puzzle = false;
     [SerializeField] AudioClip[] cometImpact;
     [SerializeField] AudioClip starEaten;
     [SerializeField] GameObject particle;
@@ -73,6 +73,10 @@ public class BlackHole : MonoBehaviour
         var star = collision.gameObject.GetComponent<Star>();
         StartCoroutine(AbsorbingStar(star));
         star.DestroyStar(false);
+        if (puzzle)
+        {
+            FindObjectOfType<StarSpawnerPuzzle>().SpawnStar();
+        }
     }
 
     private void CometCollided(Collision2D collision)

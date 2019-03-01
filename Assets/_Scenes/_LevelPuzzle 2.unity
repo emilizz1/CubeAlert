@@ -1378,6 +1378,11 @@ PrefabInstance:
       propertyPath: tutorial
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114350877670385160, guid: 707042c13f4f10245af1290291c3602e,
+        type: 3}
+      propertyPath: puzzle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
         type: 3}
       propertyPath: maxLifePoints

@@ -695,6 +695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 780696322}
+  - component: {fileID: 780696321}
   m_Layer: 0
   m_Name: BlackHole Spawner
   m_TagString: Untagged
@@ -702,6 +703,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &780696321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780696320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1720e134be0e04a8b1550321dff6ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalPrefab: {fileID: 0}
+  spawnPositions: []
+  numberOfBHToSpawn: 0
+  timeBetweenSpawns: 0
 --- !u!4 &780696322
 Transform:
   m_ObjectHideFlags: 0
@@ -1186,6 +1203,11 @@ PrefabInstance:
     - target: {fileID: 114350877670385160, guid: 707042c13f4f10245af1290291c3602e,
         type: 3}
       propertyPath: tutorial
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350877670385160, guid: 707042c13f4f10245af1290291c3602e,
+        type: 3}
+      propertyPath: puzzle
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,

@@ -75,6 +75,7 @@ public class BlackHole : MonoBehaviour
         star.DestroyStar(false);
         if (puzzle)
         {
+            print("called");
             FindObjectOfType<StarSpawnerPuzzle>().SpawnStar();
         }
     }

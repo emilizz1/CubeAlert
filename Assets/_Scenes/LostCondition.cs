@@ -20,7 +20,7 @@ public class LostCondition : MonoBehaviour
     {
         if (puzzleLevel)
         {
-            if(!CheckIfPossibleToWin())
+            if(FindObjectOfType<BlackHole>() && !CheckIfPossibleToWin())
             {
                 GiveLostCondition("Out of Stars");
             }

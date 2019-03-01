@@ -89,7 +89,8 @@ public class TunnelRandomizer : MonoBehaviour
         var myTexture = texture2Ds[Random.Range(0, texture2Ds.Length)];
         myTunnel.layerCount = 1;
         myTunnel.SetTexture(0, myTexture);
-        myTunnel.SetExposure(0, 0.7f);
+        myTunnel.positionAnimated = true;
+        myTunnel.SetExposure(0, 0.825f);
         myTunnel.layersSpeed = myTunnel.layersSpeed * 0.85f;
         myTunnel.animationAmplitude = 0.1f;
         myTunnel.globalAlpha = Random.Range(0.5f, 0.8f);

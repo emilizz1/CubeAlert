@@ -17,7 +17,6 @@ public class StarSpawnerPuzzle : MonoBehaviour
 
     public void SpawnStar()
     {
-        print("Spawning");
         if (starsToSpawn != 0)
         {
             GameObject myObject = Instantiate(stars[Random.Range(0, stars.Length)]) as GameObject;

@@ -12,13 +12,16 @@ public class TunnelRandomizer : MonoBehaviour
     TunnelFX2 myTunnel;
     float minColor, maxColor;
     bool changeColor = true;
+    Timer timer;
 
     void Start()
     {
+        timer = FindObjectOfType<Timer>();
         myTunnel = GetComponent<TunnelFX2>();
         RandomizeTunnel();
         StartCoroutine(ChangingBackgroundColors());
         StartCoroutine(ChangingTintColors());
+        StartCoroutine(ScalingBackground());
     }
 
     void RandomizeTunnel()
@@ -149,6 +152,34 @@ public class TunnelRandomizer : MonoBehaviour
             myTunnel.tintColor = Color.Lerp(startingColor, endingColor, combining);
             combining += 0.03f;
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    IEnumerator ScalingBackground()
+    {
+        float currentScale = 1f, movingFromPoint = 1f, changeMaxInterval = 1f, changeInterval = 0.025f;
+        bool growing = true;
+        while (playing && timer != null)
+        {
+            if (growing)
+            {
+                currentScale = Mathf.Clamp(currentScale - changeInterval, 0.3f, 1f);
+                if (currentScale <= Mathf.Clamp(movingFromPoint - changeMaxInterval, 0.3f, 1f))
+                {
+                    growing = false;
+                }
+            }
+            else
+            {
+                currentScale = Mathf.Clamp(currentScale + changeInterval, 0.3f, 1f);
+                if (currentScale >= Mathf.Clamp(movingFromPoint + changeMaxInterval, 0.3f, 1f))
+                {
+                    growing = true;
+                }
+            }
+            myTunnel.fallOff = currentScale;
+            yield return new WaitForSeconds(0.1f);
+            movingFromPoint -= 0.09f / timer.GetMaxTime();
         }
     }
 }

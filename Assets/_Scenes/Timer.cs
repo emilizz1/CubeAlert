@@ -46,4 +46,9 @@ public class Timer : MonoBehaviour
     {
         GetComponentInChildren<Text>().text = " Time";
     }
+
+    public float GetMaxTime()
+    {
+        return playingTime;
+    }
 }

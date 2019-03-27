@@ -5,6 +5,7 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     [SerializeField] Vector2 multipliyier;
+    [SerializeField] bool ignoreComets = false;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,7 +19,7 @@ public class Wall : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.GetComponent<Comet>())
+            if (other.gameObject.GetComponent<Comet>() && !ignoreComets)
             {
                 if (other.gameObject.GetComponent<Comet>().ShouldItLoop() || other.gameObject.GetComponent<Comet>().DidItPass())
                 {

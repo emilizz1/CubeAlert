@@ -133,8 +133,8 @@ public class Star : MonoBehaviour
         if (collision.gameObject.GetComponent<Comet>() && collision.gameObject.GetComponent<Comet>().IsItDestructable())
         {
             Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, transform), clashWithComet.main.duration);
-            AudioSource.PlayClipAtPoint(cometHitStarClip[Random.Range(0, cometHitStarClip.Length)], Camera.main.transform.position, soundVolume);
             int damageDealtByComet = collision.gameObject.GetComponent<Comet>().GetDamageDone() / 2;//deals only half damage to stars
+            AudioSource.PlayClipAtPoint(cometHitStarClip[Random.Range(0, cometHitStarClip.Length)], Camera.main.transform.position, soundVolume);
             StartCoroutine(RemoveStarLife(damageDealtByComet));
             if (FindObjectOfType<Ammo>())
             {
@@ -143,8 +143,12 @@ public class Star : MonoBehaviour
         }
     }
 
-    public IEnumerator RemoveStarLife(int starLivesToRemove)
+    public IEnumerator RemoveStarLife(int starLivesToRemove, bool shouldPlaySound = false)
     {
+        if (shouldPlaySound)
+        {
+            AudioSource.PlayClipAtPoint(cometHitStarClip[Random.Range(0, cometHitStarClip.Length)], Camera.main.transform.position, soundVolume);
+        }
         for (int i = 0; i < starLivesToRemove; i++)
         {
             RemoveAmmo();

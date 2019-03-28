@@ -8,7 +8,7 @@ public class StarDamager : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Star>())
         {
-            collision.gameObject.GetComponent<Star>().RemoveStarLife(1);
+            StartCoroutine(collision.gameObject.GetComponent<Star>().RemoveStarLife(1, true));
         }
     }
 }

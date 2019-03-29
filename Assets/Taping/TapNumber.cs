@@ -32,7 +32,6 @@ public class TapNumber : MonoBehaviour
     {
         float fillAmount = 1 - numberOfTaps / maxNumberOfTaps;
         image.fillAmount = Mathf.Lerp(0, 1, fillAmount);
-        //image.color = Color.Lerp(Color.green, Color.red , image.fillAmount);
     }
 
     public void AddTaps(int amount)

@@ -26,6 +26,10 @@ public class StarSpawnerPuzzle : MonoBehaviour
             myObject.transform.position = transform.position;
             myObject.GetComponent<Star>().GiveBulletsAmount(lifeAmount);
             starsToSpawn--;
+            if (FindObjectOfType<UpgradeRespawner>())
+            {
+                FindObjectOfType<UpgradeRespawner>().SpawnUpgrade();
+            }
         }
     }
 

@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multipliyier: {x: -1, y: 1}
+  ignoreComets: 0
 --- !u!61 &426589624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -864,8 +865,8 @@ MonoBehaviour:
   maxThrowForce_y: 0
   minSpawnTime: 4
   maxSpawnTime: 4.5
-  minStartingPosX: 30
-  maxStartingPosX: 30
+  minStartingPosX: 25
+  maxStartingPosX: 25
   minStartingPosY: 25
   maxStartingPosY: -25
   minBulletAmount: 3
@@ -1001,6 +1002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multipliyier: {x: -1, y: 1}
+  ignoreComets: 0
 --- !u!61 &1029998385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1328,6 +1330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multipliyier: {x: 1, y: -1}
+  ignoreComets: 0
 --- !u!61 &1255678511
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1690,8 +1693,8 @@ MonoBehaviour:
   maxThrowForce_y: 0
   minSpawnTime: 4
   maxSpawnTime: 4.5
-  minStartingPosX: -30
-  maxStartingPosX: -30
+  minStartingPosX: -25
+  maxStartingPosX: -25
   minStartingPosY: -25
   maxStartingPosY: 25
   minBulletAmount: 3
@@ -1785,8 +1788,8 @@ MonoBehaviour:
   maxSpawnTime: 3.5
   minStartingPosX: -15
   maxStartingPosX: 15
-  minStartingPosY: 40
-  maxStartingPosY: 40
+  minStartingPosY: 37
+  maxStartingPosY: 37
   minBulletAmount: 3
   maxBulletAmount: 9
   starMaxCap: 5
@@ -1826,21 +1829,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114183849872657122, guid: d62644f4eb1791843b72ce3b3ca6bf50,
-        type: 3}
-      propertyPath: maxNumberOfTaps
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 114008096623759050, guid: d62644f4eb1791843b72ce3b3ca6bf50,
-        type: 3}
-      propertyPath: playingTime
-      value: 58
-      objectReference: {fileID: 0}
-    - target: {fileID: 114357702891456568, guid: d62644f4eb1791843b72ce3b3ca6bf50,
-        type: 3}
-      propertyPath: levelToLoadOnWin
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114820202823708126, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 3}
@@ -1947,6 +1935,31 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4163026870045081184, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 3}
+      propertyPath: damageToLose
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 114183849872657122, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 3}
+      propertyPath: maxNumberOfTaps
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 114357702891456568, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 3}
+      propertyPath: levelToLoadOnWin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122131374436852, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.554
+      objectReference: {fileID: 0}
+    - target: {fileID: 114008096623759050, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 3}
+      propertyPath: playingTime
+      value: 58
+      objectReference: {fileID: 0}
     - target: {fileID: 1450216732395990, guid: d62644f4eb1791843b72ce3b3ca6bf50, type: 3}
       propertyPath: m_Name
       value: Damage
@@ -1970,16 +1983,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114122131374436852, guid: d62644f4eb1791843b72ce3b3ca6bf50,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0.554
-      objectReference: {fileID: 0}
-    - target: {fileID: 4163026870045081184, guid: d62644f4eb1791843b72ce3b3ca6bf50,
-        type: 3}
-      propertyPath: damageToLose
-      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62644f4eb1791843b72ce3b3ca6bf50, type: 3}
@@ -2040,6 +2043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multipliyier: {x: 1, y: -1}
+  ignoreComets: 0
 --- !u!61 &2021941156
 BoxCollider2D:
   m_ObjectHideFlags: 0

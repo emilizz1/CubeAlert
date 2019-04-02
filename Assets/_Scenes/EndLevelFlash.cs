@@ -23,7 +23,7 @@ public class EndLevelFlash : MonoBehaviour
             centerObject.GetComponent<Image>().sprite = centerSprites[Random.Range(0, centerSprites.Length)];
             StartCoroutine(GrowObject(centerObject));
             StartCoroutine(GrowObject(center));
-            StartCoroutine(RotateObject(centerObject, Random.Range(-rotation, rotation)));
+            StartCoroutine(RotateObject(centerObject, Random.Range(-rotation, -5)));
             GetComponentInChildren<BlendModeEffect>().BlendMode = BlendModes[Random.Range(0, BlendModes.Length)];
             once = false;
         }
@@ -49,6 +49,7 @@ public class EndLevelFlash : MonoBehaviour
         {
             myObject.transform.Rotate(new Vector3(0f, 0f, rotate));
             yield return new WaitForEndOfFrame();
+            print(rotate);
         }
     }
 

@@ -73,10 +73,6 @@ public class BlackHole : MonoBehaviour
         var star = collision.gameObject.GetComponent<Star>();
         StartCoroutine(AbsorbingStar(star));
         star.DestroyStar(false);
-        if (puzzle)
-        {
-            FindObjectOfType<StarSpawnerPuzzle>().SpawnStar();
-        }
     }
 
     private void CometCollided(Collision2D collision)

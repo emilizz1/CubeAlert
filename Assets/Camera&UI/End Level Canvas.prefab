@@ -4944,7 +4944,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7fc3702b8dc75ae488a23ee6cd531526, type: 3}
   - {fileID: 21300000, guid: 07938d91381b8c946ae7741026106ac5, type: 3}
   BlendModes: 1200000013000000060000001600000018000000
-  rotation: 1
+  rotation: 15
 --- !u!1 &1914048532278942
 GameObject:
   m_ObjectHideFlags: 0

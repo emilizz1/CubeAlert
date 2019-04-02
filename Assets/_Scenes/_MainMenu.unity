@@ -440,10 +440,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224238666313133240, guid: 3e35d24349fd7054b88977f6ca0e36e1,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
+    - target: {fileID: 1750397569033044, guid: 3e35d24349fd7054b88977f6ca0e36e1, type: 3}
+      propertyPath: m_Name
+      value: Start End Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 224238666313133240, guid: 3e35d24349fd7054b88977f6ca0e36e1,
         type: 3}
@@ -484,6 +483,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224238666313133240, guid: 3e35d24349fd7054b88977f6ca0e36e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224238666313133240, guid: 3e35d24349fd7054b88977f6ca0e36e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224238666313133240, guid: 3e35d24349fd7054b88977f6ca0e36e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224238666313133240, guid: 3e35d24349fd7054b88977f6ca0e36e1,
         type: 3}
@@ -537,13 +551,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 223358196236370208, guid: 3e35d24349fd7054b88977f6ca0e36e1,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1031421515386936, guid: 3e35d24349fd7054b88977f6ca0e36e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2131785073}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e35d24349fd7054b88977f6ca0e36e1, type: 3}
 --- !u!1 &1650014257

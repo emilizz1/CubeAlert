@@ -8,7 +8,7 @@ public class BeamSpawner : MonoBehaviour
     [SerializeField] GameObject simpleBeam;
     [SerializeField] GameObject crossBeam;
 
-    Vector3[] usedPositions;
+    Vector3[] usedPositions = new Vector3[4];
     int usedPositionCount = 0;
 
     void Start()
@@ -30,6 +30,8 @@ public class BeamSpawner : MonoBehaviour
                 return;
             }
         }
+        usedPositions[usedPositionCount] = spawnLocation;
+        usedPositionCount++;
         switch (beamToSpawn)
         {
             case (0):

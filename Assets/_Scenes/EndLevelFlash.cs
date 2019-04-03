@@ -49,7 +49,6 @@ public class EndLevelFlash : MonoBehaviour
         {
             myObject.transform.Rotate(new Vector3(0f, 0f, rotate));
             yield return new WaitForEndOfFrame();
-            print(rotate);
         }
     }
 

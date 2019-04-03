@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ImportedAssets/FX Mega Pack/Scenes/Fx Mega Pack Scene.unity
+- path: Assets/_Scenes/_MainMenu.unity
   isLoaded: 1
   isActive: 1

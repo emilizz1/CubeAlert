@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BeamCross : MonoBehaviour
 {
-    [SerializeField] ParticleSystem clashWithStar;
-    [SerializeField] AudioClip[] supernovaHit;
     float rotationSpeed;
 
     private void Start()

@@ -134,7 +134,6 @@ public class Star : MonoBehaviour
         {
             Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity, transform), clashWithComet.main.duration);
             int damageDealtByComet = collision.gameObject.GetComponent<Comet>().GetDamageDone() / 2;//deals only half damage to stars
-            AudioSource.PlayClipAtPoint(cometHitStarClip[Random.Range(0, cometHitStarClip.Length)], Camera.main.transform.position, soundVolume);
             StartCoroutine(RemoveStarLife(damageDealtByComet));
             if (FindObjectOfType<Ammo>())
             {

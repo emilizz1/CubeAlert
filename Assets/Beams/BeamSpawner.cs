@@ -13,7 +13,7 @@ public class BeamSpawner : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < objectsToSpawn; i++)
+        while(usedPositionCount < objectsToSpawn)
         {
             SpawnBeam(Random.Range(0, 4));
         }
@@ -26,7 +26,6 @@ public class BeamSpawner : MonoBehaviour
         {
             if(vector == spawnLocation)
             {
-                SpawnBeam(Random.Range(0, 4));
                 return;
             }
         }

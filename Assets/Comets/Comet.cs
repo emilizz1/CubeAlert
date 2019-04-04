@@ -12,6 +12,9 @@ public class Comet : MonoBehaviour
     [SerializeField] int damage = 1;
     [SerializeField] float damageDelay = 2f;
     [SerializeField] ParticleSystem bigGlow;
+    [SerializeField] AudioClip[] cometStoppedSound;
+    [SerializeField] AudioClip[] cometHitSound;
+    [SerializeField] float soundVolume;
 
     bool puzzle = false;
     bool itPassed = false;
@@ -52,17 +55,27 @@ public class Comet : MonoBehaviour
             if (collision.gameObject.GetComponent<BlackHole>())
             {
                 DisplayDamageNumber(true, collision);
+                AudioSource.PlayClipAtPoint(cometHitSound[Random.Range(0, cometHitSound.Length)], Camera.main.transform.position, soundVolume);
             }
             else if (collision.gameObject.GetComponent<Star>())
             {
                 DisplayDamageNumber(false, collision);
+                AudioSource.PlayClipAtPoint(cometHitSound[Random.Range(0, cometHitSound.Length)], Camera.main.transform.position, soundVolume);
             }
-            DestroyComet();
+            else
+            {
+                AudioSource.PlayClipAtPoint(cometStoppedSound[Random.Range(0, cometStoppedSound.Length)], Camera.main.transform.position, soundVolume);
+            }
+            DestroyComet(false);
         }
     }
 
-    public void DestroyComet()
+    public void DestroyComet(bool tap)
     {
+        if(tap)
+        {
+            AudioSource.PlayClipAtPoint(cometStoppedSound[Random.Range(0, cometStoppedSound.Length)], Camera.main.transform.position, soundVolume);
+        }
         Instantiate(explosionOnHit, transform.position, Quaternion.identity, gameObject.transform.parent);
         Destroy(gameObject); 
     }

@@ -73,7 +73,7 @@ public class TapExplosion : MonoBehaviour
             if (rb != null)
             {
                 AudioSource.PlayClipAtPoint(tapCometSFX[Random.Range(0, tapCometSFX.Length)], Camera.main.transform.position, soundVolume);
-                comet.DestroyComet();
+                comet.DestroyComet(true);
             }
         }
     }

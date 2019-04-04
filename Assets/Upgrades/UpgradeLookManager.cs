@@ -16,7 +16,8 @@ public class UpgradeLookManager : MonoBehaviour
         transform.localScale = new Vector3(startingSize, startingSize, startingSize);
         rotation = Random.Range(-rotationSpeed, rotationSpeed);
         GetComponent<SpriteRenderer>().sprite = mask[Random.Range(0, mask.Length)];
-        gameObject.AddComponent<BoxCollider2D>();
+        var boxCollider = gameObject.AddComponent<BoxCollider2D>();
+        boxCollider.isTrigger = true;
     }
 	
 	void Update ()

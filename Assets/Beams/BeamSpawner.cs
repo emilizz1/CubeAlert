@@ -18,32 +18,36 @@ public class BeamSpawner : MonoBehaviour
             SpawnBeam(Random.Range(0, 4));
         }
     }
-    
+
     void SpawnBeam(int beamToSpawn)
     {
+        bool locationTaken = false;
         Vector3 spawnLocation = GetSpawnLocation();
-        foreach(Vector3 vector in usedPositions)
+        foreach (Vector3 vector in usedPositions)
         {
-            if(vector == spawnLocation)
+            if (vector.x == spawnLocation.x && vector.y == spawnLocation.y)
             {
-                return;
+                locationTaken = true;
             }
         }
-        usedPositions[usedPositionCount] = spawnLocation;
-        usedPositionCount++;
-        switch (beamToSpawn)
+        if (!locationTaken)
         {
-            case (0):
-                var spawnedBeam = Instantiate(simpleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
-                spawnedBeam.GetComponent<BeamLine>().Rotate(false);
-                break;
-            case (1):
-                var spawnedRotatingBeam = Instantiate(simpleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
-                spawnedRotatingBeam.GetComponent<BeamLine>().Rotate(true);
-                break;
-            case (2):
-                Instantiate(crossBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
-                break;
+            usedPositions[usedPositionCount] = spawnLocation;
+            usedPositionCount++;
+            switch (beamToSpawn)
+            {
+                case (0):
+                    var spawnedBeam = Instantiate(simpleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
+                    spawnedBeam.GetComponent<BeamLine>().Rotate(false);
+                    break;
+                case (1):
+                    var spawnedRotatingBeam = Instantiate(simpleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
+                    spawnedRotatingBeam.GetComponent<BeamLine>().Rotate(true);
+                    break;
+                case (2):
+                    Instantiate(crossBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
+                    break;
+            }
         }
     }
 

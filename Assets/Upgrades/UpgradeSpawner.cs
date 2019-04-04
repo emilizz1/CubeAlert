@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UpgradeSpawner : MonoBehaviour
 {
     [SerializeField] GameObject timeUpgrade, tapUpgrade, damageUpgrade;
-    [SerializeField] float minSpawnTime, maxSpawnTime, spawnX = 26f, spawnY = 40f, force;
+    [SerializeField] float minSpawnTime = 2f, maxSpawnTime = 3.5f, spawnX = 26f, spawnY = 40f, force = 0.25f;
 
     float spawningMinValue = .5f, spawningMaxValue = .8f, currentSpawningTime = 0, currentlyLowestStat = 0;
     List<GameObject> activeUpgrades = new List<GameObject>();
@@ -20,7 +20,7 @@ public class UpgradeSpawner : MonoBehaviour
         if (playing == false && currentlyLowestStat >= spawningMinValue)
         {
             playing = true;
-            StartCoroutine(SpawnUpgrades());
+            StartCoroutine(SpawnUpgrades()); 
         }
     }
 

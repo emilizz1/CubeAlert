@@ -10,7 +10,7 @@ public class BlackHole : MonoBehaviour
     [SerializeField] float minSpeed = 1f;
     [SerializeField] float maxSpeed = 5f;
     [SerializeField] GameObject absorbingStar, clashWithComet;
-    [SerializeField] bool tutorial = false, puzzle = false;
+    [SerializeField] bool tutorial = false;
     [SerializeField] AudioClip[] cometImpact;
     [SerializeField] AudioClip starEaten;
     [SerializeField] GameObject particle;

@@ -14,7 +14,7 @@ public class Comet : MonoBehaviour
     [SerializeField] ParticleSystem bigGlow;
     [SerializeField] AudioClip[] cometStoppedSound;
     [SerializeField] AudioClip[] cometHitSound;
-    [SerializeField] float soundVolume;
+    [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
 
     bool puzzle = false;
     bool itPassed = false;

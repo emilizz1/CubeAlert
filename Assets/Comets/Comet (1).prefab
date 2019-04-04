@@ -13881,6 +13881,13 @@ MonoBehaviour:
   damage: 5
   damageDelay: 1.4
   bigGlow: {fileID: 198177170828674350}
+  cometStoppedSound:
+  - {fileID: 8300000, guid: 85aeacecf3e2025478379e9af7a61cc3, type: 3}
+  - {fileID: 8300000, guid: 7049bc0c731e60c4ebb5eda45223456c, type: 3}
+  cometHitSound:
+  - {fileID: 8300000, guid: 1ce1186770d7c2d4c905597b709f91f9, type: 3}
+  - {fileID: 8300000, guid: 98e18b9b664383f479ba32becce72a1c, type: 3}
+  soundVolume: 0.5
 --- !u!1 &1569833284901100
 GameObject:
   m_ObjectHideFlags: 0

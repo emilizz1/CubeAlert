@@ -25,7 +25,7 @@ public class BeamSpawner : MonoBehaviour
         Vector3 spawnLocation = GetSpawnLocation();
         foreach (Vector3 vector in usedPositions)
         {
-            if (vector.x == spawnLocation.x && vector.y == spawnLocation.y)
+            if ((vector.x == spawnLocation.x && vector.y == spawnLocation.y) || vector == Vector3.zero )
             {
                 locationTaken = true;
             }

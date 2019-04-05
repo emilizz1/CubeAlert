@@ -8,12 +8,11 @@ public class BeamSpawner : MonoBehaviour
     [SerializeField] GameObject simpleBeam;
     [SerializeField] GameObject crossBeam;
 
-    Vector3[] usedPositions = new Vector3[4];
-    int usedPositionCount = 0;
+    List< Vector3> usedPositions = new List<Vector3>();
 
     void Start()
     {
-        while(usedPositionCount < objectsToSpawn)
+        while(usedPositions.Count <= objectsToSpawn)
         {
             SpawnBeam(Random.Range(0, 4));
         }
@@ -21,19 +20,10 @@ public class BeamSpawner : MonoBehaviour
 
     void SpawnBeam(int beamToSpawn)
     {
-        bool locationTaken = false;
         Vector3 spawnLocation = GetSpawnLocation();
-        foreach (Vector3 vector in usedPositions)
+        if (!usedPositions.Contains(spawnLocation))
         {
-            if ((vector.x == spawnLocation.x && vector.y == spawnLocation.y) || vector == Vector3.zero )
-            {
-                locationTaken = true;
-            }
-        }
-        if (!locationTaken)
-        {
-            usedPositions[usedPositionCount] = spawnLocation;
-            usedPositionCount++;
+            usedPositions.Add(spawnLocation);
             switch (beamToSpawn)
             {
                 case (0):

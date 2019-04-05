@@ -15,7 +15,7 @@ public class StartEndLevelCanvas : MonoBehaviour {
         while (whiteCanvas.GetComponent<Image>().color.a < 1)
         {
             whiteCanvas.GetComponent<Image>().color = new Color(1f, 1f, 1f, whiteCanvas.GetComponent<Image>().color.a + (Time.unscaledDeltaTime * loadingSpeed));
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForFixedUpdate();
         }
         yield return new WaitForSecondsRealtime(0.1f);
         System.GC.Collect();

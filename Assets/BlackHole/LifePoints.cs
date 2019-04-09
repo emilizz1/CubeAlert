@@ -17,10 +17,12 @@ public class LifePoints : MonoBehaviour
     int currentLife;
     GameObject lifeNumber;
     Text lifeNumberText;
+    int score;
 
     void Start()
     {
         currentLife = Random.Range(minLifePoints, maxLifePoints);
+        score = currentLife;
         lifeNumber = FindObjectOfType<BlackholeNumber>().GetNumber();
         lifeNumberText = lifeNumber.GetComponent<Text>();
     }
@@ -34,6 +36,10 @@ public class LifePoints : MonoBehaviour
     {
         currentLife -= amount;
         UpdateLife();
+        if(amount > 0)
+        {
+            score += 5;
+        }
         if (currentLife <= 0)
         {
             alive = false;
@@ -74,6 +80,7 @@ public class LifePoints : MonoBehaviour
             }
             yield return new WaitForEndOfFrame();
         }
+        FindObjectOfType<ScoreCounter>().AddPoints(score * 2);
         Destroy(gameObject);
     }
 

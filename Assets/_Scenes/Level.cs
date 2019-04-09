@@ -51,7 +51,7 @@ public class Level : MonoBehaviour
         {
             FindObjectOfType<CometSpawner>().gameObject.SetActive(false);
         }
-        FindObjectOfType<ScoreCounter>().AddPoints(10 * FindObjectOfType<LevelHolder>().currentLevel);
+        FindObjectOfType<ScoreCounter>().LevelCompleted();
         AudioSource.PlayClipAtPoint(levelCompleted, Camera.main.transform.position, soundVolume);
         Invoke("startLoadingNextScene", 2f);
         FindObjectOfType<LevelHolder>().currentLevel++;

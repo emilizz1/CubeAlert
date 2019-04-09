@@ -7,6 +7,7 @@ public class LostCondition : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] Text lostConditionText;
     [SerializeField] Image fadeIn;
+    [SerializeField] Text levelsCompleted;
     [SerializeField] Text score;
 
     bool fullyShowing = false;
@@ -32,6 +33,7 @@ public class LostCondition : MonoBehaviour
         canvas.SetActive(true);
         Time.timeScale = 0.01f;
         lostConditionText.text = condition;
+        levelsCompleted.text = "Levels completed: " + FindObjectOfType<ScoreCounter>().GetLevelsCompleted().ToString();
         score.text = "Score: " + FindObjectOfType<ScoreCounter>().GetScore().ToString();
         StartCoroutine(FadeInBackground());
         foreach(BlackHole bh in FindObjectsOfType<BlackHole>())

@@ -18768,7 +18768,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e042143787dc8844c83f59128ae317db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotating: 0
+  topParts:
+  - {fileID: 1742498588966014}
+  - {fileID: 1017944188838704}
+  bottomParts:
+  - {fileID: 1598852155626838}
+  - {fileID: 1335352312039556}
 --- !u!70 &70663752585581162
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

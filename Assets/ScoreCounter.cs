@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreCounter : MonoBehaviour
 {
     int score = 0;
+    int levelsCompleted = 0;
 
     void Awake()
     {
@@ -27,5 +28,16 @@ public class ScoreCounter : MonoBehaviour
     public void AddPoints(int amount)
     {
         score += amount;
+    }
+
+    public int GetLevelsCompleted()
+    {
+        return levelsCompleted;
+    }
+
+    public void LevelCompleted()
+    {
+        levelsCompleted++;
+        AddPoints(10 * FindObjectOfType<LevelHolder>().currentLevel);
     }
 }

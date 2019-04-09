@@ -12,16 +12,16 @@ public class BeamSpawner : MonoBehaviour
 
     void Start()
     {
-        while(usedPositions.Count <= objectsToSpawn)
+        while(usedPositions.Count < objectsToSpawn)
         {
-            SpawnBeam(Random.Range(0, 4));
+            SpawnBeam(Random.Range(0, 3));
         }
     }
 
     void SpawnBeam(int beamToSpawn)
     {
         Vector3 spawnLocation = GetSpawnLocation();
-        if (!usedPositions.Contains(spawnLocation))
+        if (IsSpawnLocationAllowed(spawnLocation))
         {
             usedPositions.Add(spawnLocation);
             switch (beamToSpawn)
@@ -39,6 +39,19 @@ public class BeamSpawner : MonoBehaviour
                     break;
             }
         }
+    }
+
+    bool IsSpawnLocationAllowed(Vector3 spawnLoc)
+    {
+        foreach(Vector3 pos in usedPositions)
+        {
+            if((spawnLoc.x == pos.x && spawnLoc.y == pos.y) || (spawnLoc.x + 15.3f == pos.x && spawnLoc.y == pos.y) || (spawnLoc.x - 15.3f == pos.x && spawnLoc.y == pos.y) ||
+                (spawnLoc.x == pos.x && spawnLoc.y + 11.5f == pos.y) || (spawnLoc.x == pos.x && spawnLoc.y - 11.5f == pos.y))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     Vector3 GetSpawnLocation()

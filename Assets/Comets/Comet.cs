@@ -74,6 +74,7 @@ public class Comet : MonoBehaviour
     {
         if(tap)
         {
+            FindObjectOfType<ScoreCounter>().AddPoints(5 * FindObjectOfType<LevelHolder>().currentLevel);
             AudioSource.PlayClipAtPoint(cometStoppedSound[Random.Range(0, cometStoppedSound.Length)], Camera.main.transform.position, soundVolume);
         }
         Instantiate(explosionOnHit, transform.position, Quaternion.identity, gameObject.transform.parent);

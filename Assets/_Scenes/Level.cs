@@ -37,12 +37,9 @@ public class Level : MonoBehaviour
 
     bool IsAnyBlackholeAlive()
     {
-        foreach(BlackHole blackHole in FindObjectsOfType<BlackHole>())
+        foreach (BlackHole blackHole in FindObjectsOfType<BlackHole>())
         {
-            if (blackHole.IsAlive())
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

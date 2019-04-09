@@ -12,8 +12,10 @@ public class LoadMainMenuButton : MonoBehaviour
 
     public void LoadLostScene()
     {
+        print("Trying");
         if (FindObjectOfType<LostCondition>().GetFullyShowing())
         {
+            print("loading");
             FindObjectOfType<LoadScene>().mLoadSameScene();
         }
     }

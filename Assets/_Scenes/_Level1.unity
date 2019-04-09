@@ -1134,6 +1134,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadLostScene
       objectReference: {fileID: 0}
+    - target: {fileID: 223351460867965382, guid: 8e14c63d8c7f59c48862368155e006a1,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e14c63d8c7f59c48862368155e006a1, type: 3}
 --- !u!1001 &1841722206

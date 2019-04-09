@@ -7,24 +7,12 @@ public class LostCondition : MonoBehaviour
     [SerializeField] GameObject canvas;
     [SerializeField] Text lostConditionText;
     [SerializeField] Image fadeIn;
-    [SerializeField] bool puzzleLevel = false;
 
     bool fullyShowing = false;
 
     private void Awake()
     {
         Time.timeScale = 1f;
-    }
-
-    void Update()
-    {
-        if (puzzleLevel)
-        {
-            if(FindObjectOfType<BlackHole>() && !CheckIfPossibleToWin())
-            {
-                GiveLostCondition("Out of Stars");
-            }
-        }
     }
 
     bool CheckIfPossibleToWin()
@@ -41,7 +29,7 @@ public class LostCondition : MonoBehaviour
     public void GiveLostCondition(string condition)
     {
         canvas.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 0.01f;
         lostConditionText.text = condition;
         StartCoroutine(FadeInBackground());
         foreach(BlackHole bh in FindObjectsOfType<BlackHole>())
@@ -54,10 +42,10 @@ public class LostCondition : MonoBehaviour
     {
         if (!fullyShowing)
         {
-            fadeIn.color = new Color(1f, 1f, 1f, 0f);
-            while (fadeIn.color.a < 1)
+            fadeIn.color = new Color(0f, 0f, 0f, 0f);
+            while (fadeIn.color.a < 0.75f)
             {
-                fadeIn.color = new Color(1f, 1f, 1f, fadeIn.color.a + 0.015f);
+                fadeIn.color = new Color(0f, 0f, 0f, fadeIn.color.a + 0.015f);
                 yield return new WaitForSecondsRealtime(0.01f);
             }
             fullyShowing = true;

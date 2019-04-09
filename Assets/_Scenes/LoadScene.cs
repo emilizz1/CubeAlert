@@ -41,8 +41,9 @@ public class LoadScene : MonoBehaviour
 
     public void mLoadSameScene()
     {
+        print("Same");
         //preparing to load a scene
-        StartCoroutine(GetComponent<StartEndLevelCanvas>().CanvasApearring(SceneManager.GetActiveScene().buildIndex));
+        StartCoroutine(FindObjectOfType<StartEndLevelCanvas>().CanvasApearring(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void LevelCompleted()

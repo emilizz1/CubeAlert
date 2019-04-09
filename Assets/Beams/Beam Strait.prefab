@@ -203,8 +203,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.5882353, g: 0.88235295, b: 0.98039216, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      minColor: {r: 0.33333334, g: 0.8627451, b: 1, a: 1}
+      maxColor: {r: 0.5882353, g: 0.9019608, b: 0.98039216, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4901,8 +4901,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.5882353, g: 0.88235295, b: 0.98039216, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      minColor: {r: 0.33333334, g: 0.8627451, b: 1, a: 1}
+      maxColor: {r: 0.5882353, g: 0.9019608, b: 0.98039216, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9600,7 +9600,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5882353, g: 0.88235295, b: 0.98039216, a: 1}
+      maxColor: {r: 0.5882353, g: 0.9019608, b: 0.98039216, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14262,7 +14262,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5882353, g: 0.88235295, b: 0.98039216, a: 1}
+      maxColor: {r: 0.5882353, g: 0.9019608, b: 0.98039216, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -18732,7 +18732,7 @@ GameObject:
   - component: {fileID: 114635312289831854}
   - component: {fileID: 70663752585581162}
   m_Layer: 0
-  m_Name: Beam Lava
+  m_Name: Beam Strait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18768,13 +18768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e042143787dc8844c83f59128ae317db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.19
-  endPos: {x: 13, y: -18}
-  clashWithStar: {fileID: 198816119215528010, guid: 7e6e0e7f0c970b14dbea250183582036,
-    type: 3}
-  supernovaHit:
-  - {fileID: 8300000, guid: 1ce1186770d7c2d4c905597b709f91f9, type: 3}
-  - {fileID: 8300000, guid: 98e18b9b664383f479ba32becce72a1c, type: 3}
   rotating: 0
 --- !u!70 &70663752585581162
 CapsuleCollider2D:

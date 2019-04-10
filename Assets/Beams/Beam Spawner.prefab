@@ -46,3 +46,5 @@ MonoBehaviour:
   objectsToSpawn: 4
   simpleBeam: {fileID: 1798459210930364, guid: e6999674bab17c0428327bc60f1b9e1f, type: 3}
   crossBeam: {fileID: 1605993554371722, guid: ebb081539d49d7a45b983c713fd7ad49, type: 3}
+  circleBeam: {fileID: 3524383430330178198, guid: 08e1e0f087eeeb54dae66a1db47c34c3,
+    type: 3}

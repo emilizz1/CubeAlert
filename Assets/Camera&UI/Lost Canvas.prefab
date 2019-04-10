@@ -335,7 +335,7 @@ MonoBehaviour:
   canvas: {fileID: 1463791971782402}
   lostConditionText: {fileID: 114043773230165430}
   fadeIn: {fileID: 114499922904561642}
-  levelsCompleted: {fileID: 0}
+  levelsCompleted: {fileID: 8003263119449232668}
   score: {fileID: 2830864086845556397}
 --- !u!1 &1463791971782402
 GameObject:

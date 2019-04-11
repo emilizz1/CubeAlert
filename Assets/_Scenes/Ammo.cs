@@ -7,13 +7,13 @@ public class Ammo : MonoBehaviour
 {
     [SerializeField] int damageToLose = 100;
     [SerializeField] bool tutorial = false;
+    [SerializeField] GameObject fill;
 
-    Image image;
     float maxDamageToLose;
 
     void Start()
     {
-        image = GetComponent<Image>();
+        fill.transform.localPosition = new Vector3(-680f, 0f, 0f);
         maxDamageToLose = damageToLose;
     }
 
@@ -36,7 +36,7 @@ public class Ammo : MonoBehaviour
         if (!tutorial)
         {
             float fillAmount = 1 - damageToLose / maxDamageToLose;
-            image.fillAmount = Mathf.Lerp(0, 1, fillAmount);
+            fill.transform.localPosition = new Vector3(Mathf.Lerp(0, 1, fillAmount) * 680f - 680f, 0f, 0f);
         }
     }
 

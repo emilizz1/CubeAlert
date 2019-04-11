@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class TapNumber : MonoBehaviour
 {
     [SerializeField] int maxNumberOfTaps = 100;
-
-    Image image;
+    [SerializeField] GameObject fill;
+    
     float numberOfTaps;
 
     void Start()
     {
-        image = GetComponent<Image>();
+        fill.transform.localPosition = new Vector3(-680f, 0f, 0f);
         numberOfTaps = maxNumberOfTaps;
         UpdateImage();
         
@@ -31,7 +31,7 @@ public class TapNumber : MonoBehaviour
     void UpdateImage()
     {
         float fillAmount = 1 - numberOfTaps / maxNumberOfTaps;
-        image.fillAmount = Mathf.Lerp(0, 1, fillAmount);
+        fill.transform.localPosition = new Vector3(Mathf.Lerp(0, 1, fillAmount) * 680f - 680f, 0f, 0f);
     }
 
     public void AddTaps(int amount)

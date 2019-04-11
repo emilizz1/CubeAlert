@@ -13,7 +13,8 @@ public class BeamCross : MonoBehaviour
 
     void SetRandomRotation()
     {
-        if(Mathf.Abs(rotationSpeed) < 20f)
+        rotationSpeed = Random.Range(-50, 50f);
+        if (Mathf.Abs(rotationSpeed) < 20f)
         {
             SetRandomRotation();
         }

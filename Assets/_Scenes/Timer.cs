@@ -8,15 +8,14 @@ public class Timer : MonoBehaviour
     public bool playing = true;
 
     [SerializeField] float playingTime;
+    [SerializeField] GameObject fill;
 
     float currentTime;
-    Image image;
 
     void Start()
     {
         currentTime = 0f;
-        image = GetComponent<Image>();
-        image.fillAmount = 0f;
+        fill.transform.localPosition = new Vector3(-680f,0f,0f);
     }
 
     void Update()
@@ -25,7 +24,7 @@ public class Timer : MonoBehaviour
         {
             currentTime += Time.deltaTime;
             float fillingNeeded = currentTime / playingTime;
-            image.fillAmount = Mathf.Lerp(0, 1, fillingNeeded);
+            fill.transform.localPosition = new Vector3( Mathf.Lerp(0, 1, fillingNeeded) * 680f -680f, 0f, 0f);
             if (currentTime >= playingTime && playing)
             {
                 FindObjectOfType<LostCondition>().GiveLostCondition("Out of Time");

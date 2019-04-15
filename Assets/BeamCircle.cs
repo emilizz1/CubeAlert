@@ -18,7 +18,7 @@ public class BeamCircle : MonoBehaviour
         if (shrinking)
         {
             transform.localScale = new Vector3(transform.localScale.x + shrinkingSpeed, transform.localScale.y + shrinkingSpeed, transform.localScale.z + shrinkingSpeed);
-            if(transform.localScale.x >= 2.5f || transform.localScale.x <= 1f)
+            if(transform.localScale.x >= 3f || transform.localScale.x <= 1f)
             {
                 shrinkingSpeed = shrinkingSpeed * -1;
             }

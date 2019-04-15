@@ -22,7 +22,7 @@ public class BeamSpawner : MonoBehaviour
         AddGrid();
         for (int i = 0; i < objectsToSpawn; i++)
         {
-            SpawnBeam(Random.Range(0, 3));
+            SpawnBeam(Random.Range(0, 6));
         }
     }
 
@@ -47,16 +47,25 @@ public class BeamSpawner : MonoBehaviour
         switch (beamToSpawn)
         {
             case (0):
-                var spawnedBeam = Instantiate(simpleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
-                spawnedBeam.GetComponent<BeamLine>().Rotate(Random.value < 0.5f);
-                spawnedBeam.GetComponent<BeamLine>().Shrinking(Random.value < 0.5f);
-                spawnedBeam.GetComponent<BeamLine>().Moving(Random.value < 0.5f, GetMovedPosition(spawnedBeam.transform.position));
+                Instantiate(simpleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
                 break;
             case (1):
                 Instantiate(circleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
                 break;
             case (2):
                 Instantiate(crossBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
+                break;
+            case (3):
+                var rotatingBeam = Instantiate(simpleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
+                rotatingBeam.GetComponent<BeamLine>().Rotate(true);
+                break;
+            case (4):
+                var shrinkingBeam = Instantiate(simpleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
+                shrinkingBeam.GetComponent<BeamLine>().Shrinking(true);
+                break;
+            case (5):
+                var spawnedBeam = Instantiate(simpleBeam, spawnLocation, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)), transform);
+                spawnedBeam.GetComponent<BeamLine>().Moving(true, GetMovedPosition(spawnedBeam.transform.position));
                 break;
         }
     }

@@ -1464,6 +1464,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beam Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8677642599963571561, guid: f8e59ce7f23747e4f871de701f1576cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3809433673757738134, guid: f8e59ce7f23747e4f871de701f1576cd,
         type: 3}
       propertyPath: m_LocalPosition.x

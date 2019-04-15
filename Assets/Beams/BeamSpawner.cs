@@ -20,7 +20,7 @@ public class BeamSpawner : MonoBehaviour
     {
         gridType = Random.Range(0, 2);
         AddGrid();
-        while(usedPositions.Count < objectsToSpawn)
+        for (int i = 0; i < objectsToSpawn; i++)
         {
             SpawnBeam(Random.Range(0, 3));
         }

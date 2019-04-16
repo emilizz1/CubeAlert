@@ -22,10 +22,7 @@ public class BeamLine : MonoBehaviour
     private void Start()
     {
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-        rotationSpeed = Random.Range(-40, 40f);
-        shrinkSpeed = Random.Range(0.005f, 0.006f);
         transform.Rotate(new Vector3(0f, 0f, 45 * Random.Range(0, 3)));
-        moveSpeed = Random.Range(0.01f, 0.02f);
     }
 
     void Update()
@@ -79,16 +76,19 @@ public class BeamLine : MonoBehaviour
 
     public void Rotate(bool shouldItRotate)
     {
+        rotationSpeed = Random.Range(-40, 40f);
         rotating = shouldItRotate;
     }
 
     public void Shrinking(bool shouldItShrink)
     {
+        shrinkSpeed = Random.Range(0.005f, 0.006f);
         shrinking = shouldItShrink;
     }
 
     public void Moving(bool shouldItMove, Vector2 target)
     {
+        moveSpeed = Random.Range(0.025f, 0.045f);
         moving = shouldItMove;
         targetPos = target;
         startingPos = transform.position;

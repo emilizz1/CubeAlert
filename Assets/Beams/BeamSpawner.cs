@@ -22,7 +22,7 @@ public class BeamSpawner : MonoBehaviour
         AddGrid();
         for (int i = 0; i < objectsToSpawn; i++)
         {
-            SpawnBeam(Random.Range(0, 6));
+            SpawnBeam(5);
         }
     }
 

@@ -13,7 +13,10 @@ public class Ammo : MonoBehaviour
 
     void Start()
     {
-        fill.transform.localPosition = new Vector3(-680f, 0f, 0f);
+        if (!tutorial)
+        {
+            fill.transform.localPosition = new Vector3(-680f, 0f, 0f);
+        }
         maxDamageToLose = damageToLose;
     }
 

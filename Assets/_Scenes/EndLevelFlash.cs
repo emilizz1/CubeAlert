@@ -21,21 +21,21 @@ public class EndLevelFlash : MonoBehaviour
         if (once)
         {
             centerObject.GetComponent<Image>().sprite = centerSprites[Random.Range(0, centerSprites.Length)];
-            StartCoroutine(GrowObject(centerObject));
-            StartCoroutine(GrowObject(center));
+            StartCoroutine(GrowObject(centerObject, 0.1f));
+            StartCoroutine(GrowObject(center, 1f));
             StartCoroutine(RotateObject(centerObject, Random.Range(-rotation, -5)));
             GetComponentInChildren<BlendModeEffect>().BlendMode = BlendModes[Random.Range(0, BlendModes.Length)];
             once = false;
         }
     }
 
-    IEnumerator GrowObject(GameObject myObject)
+    IEnumerator GrowObject(GameObject myObject, float sizeMultiplier)
     {
         myObject.SetActive(true);
         myObject.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-        while(myObject.transform.localScale.x < objectMaxSize)
+        while(myObject.transform.localScale.x < objectMaxSize * sizeMultiplier)
         {
-            myObject.transform.localScale += new Vector3((Time.deltaTime * transitionSpeed), (Time.deltaTime * transitionSpeed), (Time.deltaTime * transitionSpeed));
+            myObject.transform.localScale += new Vector3((Time.deltaTime * transitionSpeed * sizeMultiplier), (Time.deltaTime * transitionSpeed * sizeMultiplier), (Time.deltaTime * transitionSpeed * sizeMultiplier));
             yield return new WaitForEndOfFrame();
         }
     }

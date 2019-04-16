@@ -1435,12 +1435,12 @@ PrefabInstance:
     - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
         type: 3}
       propertyPath: maxLifePoints
-      value: 98
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
         type: 3}
       propertyPath: minLifePoints
-      value: 85
+      value: 68
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 707042c13f4f10245af1290291c3602e, type: 3}

@@ -1475,12 +1475,12 @@ PrefabInstance:
     - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
         type: 3}
       propertyPath: maxLifePoints
-      value: 60
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 114553398902333090, guid: 707042c13f4f10245af1290291c3602e,
         type: 3}
       propertyPath: minLifePoints
-      value: 55
+      value: 44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 707042c13f4f10245af1290291c3602e, type: 3}
@@ -2016,11 +2016,6 @@ PrefabInstance:
       propertyPath: maxNumberOfTaps
       value: 70
       objectReference: {fileID: 0}
-    - target: {fileID: 114122131374436852, guid: d62644f4eb1791843b72ce3b3ca6bf50,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 0.554
-      objectReference: {fileID: 0}
     - target: {fileID: 114008096623759050, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 3}
       propertyPath: playingTime
@@ -2059,6 +2054,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122131374436852, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.554
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62644f4eb1791843b72ce3b3ca6bf50, type: 3}

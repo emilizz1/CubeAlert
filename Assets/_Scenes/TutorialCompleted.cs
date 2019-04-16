@@ -6,6 +6,8 @@ public class TutorialCompleted : MonoBehaviour
 {
     bool isCompleted = false;
 
+    const string TUTORIAL_COMPLETIONS = "TutorialCompletions";
+
     void Awake()
     {
         var numOfBackgroundThemes = FindObjectsOfType<TutorialCompleted>().Length;
@@ -19,6 +21,15 @@ public class TutorialCompleted : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        if( FindObjectOfType<SaveLoad>().LoadInt(TUTORIAL_COMPLETIONS) >= 2)
+        {
+            isCompleted = true;
+        }
+{}
+    }
+
     public bool GetIsTutorialCompleted()
     {
         return isCompleted;
@@ -27,5 +38,6 @@ public class TutorialCompleted : MonoBehaviour
     public void TutorialFinished()
     {
         isCompleted = true;
+        FindObjectOfType<SaveLoad>().SaveInt(TUTORIAL_COMPLETIONS, FindObjectOfType<SaveLoad>().LoadInt(TUTORIAL_COMPLETIONS) + 1);
     }
 }

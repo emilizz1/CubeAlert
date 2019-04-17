@@ -54,4 +54,9 @@ public class Ammo : MonoBehaviour
     {
         GetComponentInChildren<Text>().text = " Damage";
     }
+
+    public float GetDamageProc()
+    {
+        return 1 - damageToLose / maxDamageToLose;
+    }
 }

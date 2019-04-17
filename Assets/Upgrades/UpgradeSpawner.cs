@@ -75,7 +75,7 @@ public class UpgradeSpawner : MonoBehaviour
 
     void CheckTimeUpgrade()
     {
-        float timeFillAmount = FindObjectOfType<Timer>().GetComponent<Image>().fillAmount;
+        float timeFillAmount = FindObjectOfType<Timer>().GetTimeProc();
         CheckLowestStat(timeFillAmount);
         if (timeFillAmount > spawningMinValue)
         {
@@ -97,7 +97,7 @@ public class UpgradeSpawner : MonoBehaviour
 
     void CheckTapUpgrade()
     {
-        float tapFillAmount = FindObjectOfType<TapNumber>().GetComponent<Image>().fillAmount;
+        float tapFillAmount = FindObjectOfType<TapNumber>().GetTapProc();
         CheckLowestStat(tapFillAmount);
         if (tapFillAmount > spawningMinValue)
         {
@@ -119,7 +119,7 @@ public class UpgradeSpawner : MonoBehaviour
 
     void CheckDamageUpgrade()
     {
-        float damageFillAmount = FindObjectOfType<Ammo>().GetComponent<Image>().fillAmount;
+        float damageFillAmount = FindObjectOfType<Ammo>().GetDamageProc();
         CheckLowestStat(damageFillAmount);
         if (damageFillAmount > spawningMinValue)
         {

@@ -48,4 +48,9 @@ public class Timer : MonoBehaviour
     {
         return playingTime;
     }
+
+    public float GetTimeProc()
+    {
+        return currentTime / playingTime;
+    }
 }

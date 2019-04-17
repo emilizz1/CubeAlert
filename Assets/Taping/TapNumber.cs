@@ -46,4 +46,9 @@ public class TapNumber : MonoBehaviour
     {
         GetComponentInChildren<Text>().text = " Taps";
     }
+
+    public float GetTapProc()
+    {
+        return 1 - numberOfTaps / maxNumberOfTaps;
+    }
 }

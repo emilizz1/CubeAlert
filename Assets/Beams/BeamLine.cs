@@ -67,7 +67,7 @@ public class BeamLine : MonoBehaviour
         foreach (GameObject part in topParts)
         {
             part.transform.position = Vector3.MoveTowards(part.transform.position, gameObject.transform.localPosition, shrinkSpeed);
-            if (part.transform.localPosition.y <= 0.14f || part.transform.localPosition.y >= 0.31f)
+            if (part.transform.localPosition.y <= 0.135f || part.transform.localPosition.y >= 0.37f)
             {
                 shrinkSpeed = shrinkSpeed * -1;
             }
@@ -82,7 +82,7 @@ public class BeamLine : MonoBehaviour
 
     public void Shrinking(bool shouldItShrink)
     {
-        shrinkSpeed = Random.Range(0.005f, 0.006f);
+        shrinkSpeed = Random.Range(0.0055f, 0.0065f);
         shrinking = shouldItShrink;
     }
 

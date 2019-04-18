@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3524383430330178198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.574004, y: -21.99, z: 0.140168}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8063146893317493516}
   m_Father: {fileID: 0}
@@ -53,7 +53,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3524383430330178198}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -852,7 +852,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
     arc:
-      value: 210
+      value: 250
       mode: 0
       spread: 0
       speed:
@@ -4826,7 +4826,7 @@ EdgeCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6929126133746439923}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -4835,7 +4835,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.82702255, y: -0.51664543}
+  - {x: -0.3423373, y: -0.940108}
+  - {x: -0.7548193, y: -0.6827978}
   - {x: -0.9653597, y: -0.25989342}
   - {x: -0.99987316, y: 0.11917305}
   - {x: -0.92057705, y: 0.4007759}

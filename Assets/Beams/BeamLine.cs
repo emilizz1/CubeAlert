@@ -6,10 +6,6 @@ public class BeamLine : MonoBehaviour
 {
     [SerializeField] GameObject[] topParts;
     [SerializeField] GameObject[] bottomParts;
-
-    bool rotating = false;
-    bool shrinking = false;
-    bool moving = false;
     
     float rotationSpeed;
     float shrinkSpeed;
@@ -21,21 +17,18 @@ public class BeamLine : MonoBehaviour
 
     private void Start()
     {
+        moveSpeed = Random.Range(0.025f, 0.045f);
+        shrinkSpeed = Random.Range(0.0055f, 0.0065f);
+        rotationSpeed = Random.Range(-40, 40f);
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         transform.Rotate(new Vector3(0f, 0f, 45 * Random.Range(0, 3)));
     }
 
     void Update()
     {
-        if (rotating)
-        {
-            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
-        }
-        if (shrinking)
-        {
-            Shrink();
-        }
-        if (moving)
+        transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        Shrink();
+        if (currentTarget != null)
         {
             Move();
         }
@@ -74,22 +67,8 @@ public class BeamLine : MonoBehaviour
         }
     }
 
-    public void Rotate(bool shouldItRotate)
+    public void GiveTarget(Vector2 target)
     {
-        rotationSpeed = Random.Range(-40, 40f);
-        rotating = shouldItRotate;
-    }
-
-    public void Shrinking(bool shouldItShrink)
-    {
-        shrinkSpeed = Random.Range(0.0055f, 0.0065f);
-        shrinking = shouldItShrink;
-    }
-
-    public void Moving(bool shouldItMove, Vector2 target)
-    {
-        moveSpeed = Random.Range(0.025f, 0.045f);
-        moving = shouldItMove;
         targetPos = target;
         startingPos = transform.position;
         currentTarget = targetPos;

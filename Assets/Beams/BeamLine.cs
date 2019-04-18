@@ -18,8 +18,8 @@ public class BeamLine : MonoBehaviour
     private void Start()
     {
         transform.GetChild(0).localPosition = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0f);
-        moveSpeed = Random.Range(0.025f, 0.055f);
-        shrinkSpeed = Random.Range(0.0055f, 0.0085f);
+        moveSpeed = Random.Range(1.5f, 4.5f);
+        shrinkSpeed = Random.Range(0.55f, 0.85f);
         rotationSpeed = Random.Range(-40, 40f);
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         transform.Rotate(new Vector3(0f, 0f, 45 * Random.Range(0, 3)));
@@ -37,7 +37,7 @@ public class BeamLine : MonoBehaviour
 
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, currentTarget, moveSpeed);
+        transform.position = Vector2.MoveTowards(transform.position, currentTarget, moveSpeed * Time.deltaTime);
         if (Mathf.Abs(transform.position.x - currentTarget.x) < 0.05f && Mathf.Abs(transform.position.y - currentTarget.y) < 0.05f)
         {
             if (currentTarget == targetPos)
@@ -56,11 +56,11 @@ public class BeamLine : MonoBehaviour
         capsuleCollider.size = new Vector2(capsuleCollider.size.x, ((topParts[0].transform.localPosition.y - 0.15f) * 2f) + 0.45f);
         foreach (GameObject part in bottomParts)
         {
-            part.transform.position = Vector3.MoveTowards(part.transform.position, gameObject.transform.localPosition, shrinkSpeed);
+            part.transform.position = Vector3.MoveTowards(part.transform.position, gameObject.transform.localPosition, shrinkSpeed * Time.deltaTime);
         }
         foreach (GameObject part in topParts)
         {
-            part.transform.position = Vector3.MoveTowards(part.transform.position, gameObject.transform.localPosition, shrinkSpeed);
+            part.transform.position = Vector3.MoveTowards(part.transform.position, gameObject.transform.localPosition, shrinkSpeed * Time.deltaTime);
             if (part.transform.localPosition.y <= 0.135f || part.transform.localPosition.y >= 0.37f)
             {
                 shrinkSpeed = shrinkSpeed * -1;

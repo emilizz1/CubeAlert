@@ -20,13 +20,13 @@ public class Supernova : MonoBehaviour
     bool fullyExpanded = false;
 
     ParticleSystem supernovaPS;
-    CircleCollider2D collider;
+    CircleCollider2D myCollider;
     float myRadius;
 
     void Start()
     {
         supernovaPS = GetComponentInChildren<ParticleSystem>();
-        collider = GetComponent<CircleCollider2D>();
+        myCollider = GetComponent<CircleCollider2D>();
         myRadius = Random.Range(minRadius, maxRadius);
         AudioSource.PlayClipAtPoint(supernovaClip, Camera.main.transform.position, soundVolume);
     }
@@ -41,9 +41,9 @@ public class Supernova : MonoBehaviour
 
     void ExpandSupernova()
     {
-        if (collider.radius < myRadius)
+        if (myCollider.radius < myRadius)
         {
-            collider.radius += expandRate * Time.deltaTime;
+            myCollider.radius += expandRate * Time.deltaTime;
         }
         else
         {
@@ -51,7 +51,7 @@ public class Supernova : MonoBehaviour
             StartCoroutine(Explode());
         }
         var supernovaMain = supernovaPS.main;
-        if (supernovaMain.startSize.constantMax <= (collider.radius * 1.5f))
+        if (supernovaMain.startSize.constantMax <= (myCollider.radius * 1.5f))
         {
             supernovaMain.startSizeMultiplier += Time.deltaTime * expandRate;
         }
@@ -59,9 +59,9 @@ public class Supernova : MonoBehaviour
 
     IEnumerator ShrinkSupernova()
     {
-        if (collider.radius > 0)
+        if (myCollider.radius > 0)
         {
-            collider.radius -= expandRate * Time.deltaTime;
+            myCollider.radius -= expandRate * Time.deltaTime;
         }
         var supernovaMain = supernovaPS.main;
         supernovaMain.startSizeMultiplier -= Time.deltaTime * expandRate;

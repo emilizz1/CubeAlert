@@ -66,6 +66,7 @@ public class LifePoints : MonoBehaviour
     {
         float deathTime = PlayDeathSounds();
         KillBlackhole();
+        CheckIfItsthelast();
         foreach (ParticleSystem particle in blackHoleDeath)
         {
             particle.Play();
@@ -97,5 +98,18 @@ public class LifePoints : MonoBehaviour
         GetComponent<BlackHole>().BlackholeDied();
         Destroy(GetComponent<CircleCollider2D>());
         FindObjectOfType<ScreenClickRipple>().AddRipple(transform.position);
+    }
+
+    public bool IsItAlive()
+    {
+        return alive;
+    }
+
+    void CheckIfItsthelast()
+    {
+        if (FindObjectsOfType<BlackHole>().Length <= 1 && FindObjectOfType<BlackHoleSpawner>().GetSpawningFinished())
+        {
+            FindObjectOfType<Timer>().StopCounting();
+        }
     }
 }

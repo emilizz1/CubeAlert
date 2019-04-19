@@ -25,7 +25,7 @@ public class Level : MonoBehaviour
 
     void CheckIfLevelEnded()
     {
-        if (portalSpawner.GetSpawningFinished() && !IsAnyBlackholeAlive())
+        if (portalSpawner.GetSpawningFinished() && !IsBlackHoleAlive())
         {
             FindObjectOfType<EndLevelFlash>().EndLevel();
             if (!nextLevel)
@@ -35,11 +35,14 @@ public class Level : MonoBehaviour
         }
     }
 
-    bool IsAnyBlackholeAlive()
+    bool IsBlackHoleAlive()
     {
-        foreach (BlackHole blackHole in FindObjectsOfType<BlackHole>())
+        foreach(BlackHole blackHole in FindObjectsOfType<BlackHole>())
         {
-            return true;
+            if (blackHole.IsAlive())
+            {
+                return true;
+            }
         }
         return false;
     }

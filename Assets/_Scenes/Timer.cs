@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
             currentTime += Time.deltaTime;
             float fillingNeeded = currentTime / playingTime;
             fill.transform.localPosition = new Vector3( Mathf.Lerp(0, 1, fillingNeeded) * 680f -680f, 0f, 0f);
-            if (currentTime >= playingTime && playing)
+            if (currentTime >= playingTime)
             {
                 FindObjectOfType<LostCondition>().GiveLostCondition("Out of Time");
             }
@@ -52,5 +52,10 @@ public class Timer : MonoBehaviour
     public float GetTimeProc()
     {
         return currentTime / playingTime;
+    }
+
+    public void StopCounting()
+    {
+        playing = false;
     }
 }

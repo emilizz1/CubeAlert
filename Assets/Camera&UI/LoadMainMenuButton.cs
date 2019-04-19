@@ -12,9 +12,6 @@ public class LoadMainMenuButton : MonoBehaviour
 
     public void LoadLostScene()
     {
-        if (FindObjectOfType<LostCondition>().GetFullyShowing())
-        {
             FindObjectOfType<LoadScene>().mLoadSameScene();
-        }
     }
 }

@@ -77,7 +77,7 @@ MonoBehaviour:
   soundVolume: 0.5
   extraTime: 0
   extraDamage: 0
-  extraTaps: 4
+  extraTaps: 6
 --- !u!114 &114386690813659320
 MonoBehaviour:
   m_ObjectHideFlags: 0

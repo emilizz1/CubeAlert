@@ -867,6 +867,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1691896058377206, guid: 65a175d984cf0e44fa093f12044bff18, type: 3}
+      propertyPath: m_Name
+      value: End Level Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 4686215745731204, guid: 65a175d984cf0e44fa093f12044bff18, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -898,6 +902,18 @@ PrefabInstance:
     - target: {fileID: 4686215745731204, guid: 65a175d984cf0e44fa093f12044bff18, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686215745731204, guid: 65a175d984cf0e44fa093f12044bff18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686215745731204, guid: 65a175d984cf0e44fa093f12044bff18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686215745731204, guid: 65a175d984cf0e44fa093f12044bff18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a175d984cf0e44fa093f12044bff18, type: 3}

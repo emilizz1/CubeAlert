@@ -12,6 +12,9 @@ public class LostCondition : MonoBehaviour
 
     bool fullyShowing = false;
 
+    const string HIGH_SCORE = "HighScore";
+    const string LEVELS_FINISHED = "LevelsFinished";
+
     private void Awake()
     {
         Time.timeScale = 1f;
@@ -35,10 +38,20 @@ public class LostCondition : MonoBehaviour
         lostConditionText.text = condition;
         levelsCompleted.text = "Levels completed: " + FindObjectOfType<ScoreCounter>().GetLevelsCompleted().ToString();
         score.text = "Score: " + FindObjectOfType<ScoreCounter>().GetScore().ToString();
+        CheckForHighScore();
         StartCoroutine(FadeInBackground());
         foreach(BlackHole bh in FindObjectsOfType<BlackHole>())
         {
             bh.SetAlive(false);
+        }
+    }
+
+    void CheckForHighScore()
+    {
+        if(FindObjectOfType<SaveLoad>().LoadInt(HIGH_SCORE) < FindObjectOfType<ScoreCounter>().GetScore())
+        {
+            FindObjectOfType<SaveLoad>().SaveInt(HIGH_SCORE, FindObjectOfType<ScoreCounter>().GetScore());
+            FindObjectOfType<SaveLoad>().SaveInt(LEVELS_FINISHED, FindObjectOfType<ScoreCounter>().GetLevelsCompleted());
         }
     }
 
@@ -54,10 +67,5 @@ public class LostCondition : MonoBehaviour
             }
             fullyShowing = true;
         }
-    }
-
-    public bool GetFullyShowing()
-    {
-        return fullyShowing;
     }
 }

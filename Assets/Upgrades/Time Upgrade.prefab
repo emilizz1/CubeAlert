@@ -75,7 +75,7 @@ MonoBehaviour:
   upgradeDestroyed: {fileID: 8300000, guid: bc7ec0dd16754ce429cacbed7c183473, type: 3}
   upgradeTaken: {fileID: 8300000, guid: f359d271665323947b3376cacdf5fb4c, type: 3}
   soundVolume: 0.5
-  extraTime: 2
+  extraTime: 5
   extraDamage: 0
   extraTaps: 0
 --- !u!114 &114257296755241658

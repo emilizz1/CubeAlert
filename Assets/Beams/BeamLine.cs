@@ -21,7 +21,7 @@ public class BeamLine : MonoBehaviour
         moveSpeed = Random.Range(1.5f, 4.5f);
         shrinkSpeed = Random.Range(0.55f, 0.85f);
         rotationSpeed = Random.Range(-40, 40f);
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        capsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
         transform.Rotate(new Vector3(0f, 0f, 45 * Random.Range(0, 3)));
     }
 
@@ -53,7 +53,7 @@ public class BeamLine : MonoBehaviour
 
     private void Shrink()
     {
-        capsuleCollider.size = new Vector2(capsuleCollider.size.x, ((topParts[0].transform.localPosition.y - 0.15f) * 2f) + 0.45f);
+        capsuleCollider.size = new Vector2(capsuleCollider.size.x, (topParts[0].transform.localPosition.y * 2) + 0.15f);
         foreach (GameObject part in bottomParts)
         {
             part.transform.position = Vector3.MoveTowards(part.transform.position, gameObject.transform.localPosition, shrinkSpeed * Time.deltaTime);

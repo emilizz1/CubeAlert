@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017944188838704}
   m_LocalRotation: {x: 0.00000017881392, y: -0.7071068, z: 0.7071068, w: 0.00000017881392}
-  m_LocalPosition: {x: 0, y: 0.30000004, z: 0}
+  m_LocalPosition: {x: 0, y: 0.37, z: 0}
   m_LocalScale: {x: 1, y: 0.48921424, z: 1.8179116}
   m_Children: []
   m_Father: {fileID: 8800222116970403222}
@@ -4778,7 +4778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335352312039556}
   m_LocalRotation: {x: -0.7071068, y: 0.000000029802322, z: 0.000000029802322, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.30000004, z: 0}
+  m_LocalPosition: {x: 0, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8800222116970403222}
@@ -9530,7 +9530,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598852155626838}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.30000004, z: 0}
+  m_LocalPosition: {x: 0, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 0.48921463, z: 1.8179109}
   m_Children: []
   m_Father: {fileID: 8800222116970403222}
@@ -14246,7 +14246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742498588966014}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.30000004, z: 0}
+  m_LocalPosition: {x: 0, y: 0.37, z: 0}
   m_LocalScale: {x: 1, y: 0.48921436, z: 1.8179116}
   m_Children: []
   m_Father: {fileID: 8800222116970403222}
@@ -18946,7 +18946,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4341179701084312}
   - component: {fileID: 114635312289831854}
-  - component: {fileID: 70663752585581162}
   - component: {fileID: 1306970957274509776}
   m_Layer: 0
   m_Name: Beam Strait
@@ -18988,22 +18987,6 @@ MonoBehaviour:
   bottomParts:
   - {fileID: 1598852155626838}
   - {fileID: 1335352312039556}
---- !u!70 &70663752585581162
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798459210930364}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.49999726, y: 0.75}
-  m_Direction: 0
 --- !u!50 &1306970957274509776
 Rigidbody2D:
   serializedVersion: 4
@@ -19034,6 +19017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8800222116970403222}
+  - component: {fileID: 7037769084853968697}
   m_Layer: 0
   m_Name: Beam
   m_TagString: Untagged
@@ -19059,3 +19043,19 @@ Transform:
   m_Father: {fileID: 4341179701084312}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &7037769084853968697
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8328231947699149810}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.49999726, y: 0.89}
+  m_Direction: 0

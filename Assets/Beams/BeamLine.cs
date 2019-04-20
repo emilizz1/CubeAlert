@@ -18,8 +18,8 @@ public class BeamLine : MonoBehaviour
     private void Start()
     {
         transform.GetChild(0).localPosition = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0f);
-        moveSpeed = Random.Range(1.5f, 4.5f);
-        shrinkSpeed = Random.Range(0.55f, 0.85f);
+        moveSpeed = Random.Range(0.5f, 0.8f);
+        shrinkSpeed = Random.Range(0.1f, 0.2f);
         rotationSpeed = Random.Range(-40, 40f);
         capsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
         transform.Rotate(new Vector3(0f, 0f, 45 * Random.Range(0, 3)));
@@ -56,15 +56,15 @@ public class BeamLine : MonoBehaviour
         capsuleCollider.size = new Vector2(capsuleCollider.size.x, (topParts[0].transform.localPosition.y * 2) + 0.15f);
         foreach (GameObject part in bottomParts)
         {
-            part.transform.position = Vector3.MoveTowards(part.transform.position, gameObject.transform.localPosition, shrinkSpeed * Time.deltaTime);
+            part.transform.localPosition = new Vector3(0f, part.transform.localPosition.y - (shrinkSpeed * Time.deltaTime), 0f);
         }
         foreach (GameObject part in topParts)
         {
-            part.transform.position = Vector3.MoveTowards(part.transform.position, gameObject.transform.localPosition, shrinkSpeed * Time.deltaTime);
-            if (part.transform.localPosition.y <= 0.135f || part.transform.localPosition.y >= 0.37f)
-            {
-                shrinkSpeed = shrinkSpeed * -1;
-            }
+            part.transform.localPosition = new Vector3(0f, part.transform.localPosition.y + (shrinkSpeed * Time.deltaTime), 0f);
+        }
+        if (topParts[0].transform.localPosition.y <= 0.135f || topParts[0].transform.localPosition.y >= 0.37f)
+        {
+            shrinkSpeed = shrinkSpeed * -1;
         }
     }
 

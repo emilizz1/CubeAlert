@@ -7,6 +7,7 @@ using BlendModes;
 public class EndLevelFlash : MonoBehaviour
 {
     [SerializeField] float transitionSpeed = 1f;
+    [SerializeField] GameObject[] stars;
     [SerializeField] GameObject center;
     [SerializeField] GameObject centerObject;
     [SerializeField] float objectMaxSize;
@@ -20,6 +21,10 @@ public class EndLevelFlash : MonoBehaviour
     {
         if (once)
         {
+            var myStar = stars[Random.Range(0, stars.Length)];
+            myStar.SetActive(true);
+            StartCoroutine(GrowObject(myStar, 1f));
+            //StartCoroutine(RotateObject(myStar, Random.Range(5, rotation)));
             centerObject.GetComponent<Image>().sprite = centerSprites[Random.Range(0, centerSprites.Length)];
             StartCoroutine(GrowObject(centerObject, 0.1f));
             StartCoroutine(GrowObject(center, 1f));

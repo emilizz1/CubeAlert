@@ -12,8 +12,8 @@ public class ScoreDisplay : MonoBehaviour
     {
         if(FindObjectOfType<SaveLoad>().LoadInt(HIGH_SCORE) > 0)
         {
-            GetComponent<Text>().text = "BEST SCORE - " + FindObjectOfType<SaveLoad>().LoadInt(HIGH_SCORE) +
-                " LEVEL " + FindObjectOfType<SaveLoad>().LoadInt(LEVELS_FINISHED);
+            GetComponent<Text>().text = "HIGH SCORE - " + FindObjectOfType<SaveLoad>().LoadInt(HIGH_SCORE) +
+                "\n LEVEL " + FindObjectOfType<SaveLoad>().LoadInt(LEVELS_FINISHED);
         }
         else
         {

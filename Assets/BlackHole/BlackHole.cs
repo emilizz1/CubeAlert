@@ -153,4 +153,9 @@ public class BlackHole : MonoBehaviour
     {
         return alive;
     }
+
+    public bool GetIsItTutorial()
+    {
+        return tutorial;
+    }
 }

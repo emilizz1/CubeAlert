@@ -107,9 +107,12 @@ public class LifePoints : MonoBehaviour
 
     void CheckIfItsthelast()
     {
-        if (FindObjectsOfType<BlackHole>().Length <= 1 && FindObjectOfType<BlackHoleSpawner>().GetSpawningFinished())
+        if (!GetComponent<BlackHole>().GetIsItTutorial())
         {
-            FindObjectOfType<Timer>().StopCounting();
+            if (FindObjectsOfType<BlackHole>().Length <= 1 && FindObjectOfType<BlackHoleSpawner>().GetSpawningFinished())
+            {
+                FindObjectOfType<Timer>().StopCounting();
+            }
         }
     }
 }

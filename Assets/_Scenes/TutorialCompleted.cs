@@ -23,10 +23,10 @@ public class TutorialCompleted : MonoBehaviour
 
     void Start()
     {
-        if( FindObjectOfType<SaveLoad>().LoadInt(TUTORIAL_COMPLETIONS) >= 2)
-        {
-            isCompleted = true;
-        }
+        //if( FindObjectOfType<SaveLoad>().LoadInt(TUTORIAL_COMPLETIONS) >= 2)
+        //{
+        //    isCompleted = true;
+        //}
 {}
     }
 

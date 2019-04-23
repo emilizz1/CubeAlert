@@ -18,10 +18,11 @@ public class BlackHoleSpawner : MonoBehaviour
 
     IEnumerator SpawnPortal()
     {
-        while(numberOfBHToSpawn > 0)
+        BlackHole myPortal = portalPrefab;
+        while (numberOfBHToSpawn > 0)
         {
             yield return new WaitForSecondsRealtime(timeBetweenSpawns);
-            Instantiate(portalPrefab, spawnPositions[Random.Range(0, spawnPositions.Length)], Quaternion.identity, transform);
+            Instantiate(myPortal, spawnPositions[Random.Range(0, spawnPositions.Length)], Quaternion.identity, transform);
             numberOfBHToSpawn--;
         }
         spawningFinished = true;

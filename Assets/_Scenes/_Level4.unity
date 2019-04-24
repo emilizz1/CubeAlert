@@ -2039,7 +2039,12 @@ PrefabInstance:
     - target: {fileID: 114008096623759050, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 3}
       propertyPath: playingTime
-      value: 65
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114008096623759050, guid: d62644f4eb1791843b72ce3b3ca6bf50,
+        type: 3}
+      propertyPath: playing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4163026870045081184, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 3}
@@ -2049,7 +2054,7 @@ PrefabInstance:
     - target: {fileID: 114357702891456568, guid: d62644f4eb1791843b72ce3b3ca6bf50,
         type: 3}
       propertyPath: levelToLoadOnWin
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1450216732395990, guid: d62644f4eb1791843b72ce3b3ca6bf50, type: 3}
       propertyPath: m_Name

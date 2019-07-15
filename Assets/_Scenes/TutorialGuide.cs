@@ -11,9 +11,20 @@ public class TutorialGuide : MonoBehaviour
     [SerializeField] float minArrowSize = 0.65f;
     [SerializeField] float maxArrowSize = 1.15f;
     [SerializeField] GameObject comet;
+    [SerializeField] GameObject upgrade;
 
     bool gettingBigger = true;
     bool once = true;
+
+    Stage currentStage = Stage.followingComet;
+
+    enum Stage
+    {
+        followingComet, 
+        followingUpgrade,
+        starTap,
+        bhArrow
+    }
 
     Transform currentlyMoving;
 
@@ -26,32 +37,61 @@ public class TutorialGuide : MonoBehaviour
 
     void Update()
     {
-        Pulsating();
-        FollowingComet();
-        if (FindObjectsOfType<BlackHole>().Length == 0)
+        switch (currentStage)
         {
-            if (once)
-            {
-                arrow.SetActive(false);
-                FindObjectOfType<EndLevelFlash>().EndLevel();
-                FindObjectOfType<TutorialCompleted>().TutorialFinished();
-                StartLoadingScene();
-                once = false;
-            }
+            case (Stage.followingComet):
+                if (comet == null)
+                {
+                    currentStage = Stage.followingUpgrade;
+                    upgrade.GetComponent<Rigidbody2D>().AddForce(new Vector2(-200f, -200f));
+                }
+                else
+                {
+                    FollowingObj(comet.transform.position);
+                }
+                break;
+            case (Stage.followingUpgrade):
+                if(upgrade == null)
+                {
+                    transform.position = new Vector2(-11f, -1.5f);
+                    currentStage = Stage.starTap;
+                }
+                else
+                {
+                    FollowingObj(upgrade.transform.position);
+                }
+                break;
+            case (Stage.starTap):
+                if (Input.GetMouseButtonDown(0))
+                {
+                    currentStage = Stage.bhArrow;
+                    arrow.SetActive(true);
+                    Destroy(GetComponent<SpriteRenderer>());
+                    currentlyMoving = arrow.transform;
+                    minSize = minArrowSize;
+                    maxSize = maxArrowSize;
+                }
+                break;
+            case (Stage.bhArrow):
+                if (FindObjectsOfType<BlackHole>().Length == 0)
+                {
+                    if (once)
+                    {
+                        arrow.SetActive(false);
+                        FindObjectOfType<EndLevelFlash>().EndLevel();
+                        FindObjectOfType<TutorialCompleted>().TutorialFinished();
+                        StartLoadingScene();
+                        once = false;
+                    }
+                }
+                break;
         }
+        Pulsating();
     }
 
-    void FollowingComet()
+    void FollowingObj(Vector3 objToFollow)
     {
-        if (comet == null)
-        {
-            transform.position = new Vector2(-11f, -1.5f);
-        }
-        else if (comet.transform.position.x >= -17f && comet.transform.position.y <= 22f) 
-        {
-            transform.position = comet.transform.position + new Vector3(0f, -2.5f, 0f);
-        }
-        else { return; }
+        transform.position = objToFollow + new Vector3(0f, -2.5f, 0f);
     }
 
     private void Pulsating()
@@ -77,18 +117,6 @@ public class TutorialGuide : MonoBehaviour
     void StartLoadingScene()
     {
         FindObjectOfType<LoadScene>().mLoadScene(2);
-    }
-
-    public void Tapped()
-    {
-        if (comet == null)
-        {
-            arrow.SetActive(true);
-            Destroy(GetComponent<SpriteRenderer>());
-            currentlyMoving = arrow.transform;
-            minSize = minArrowSize;
-            maxSize = maxArrowSize;
-        }
     }
 
     Quaternion FaceThePortal(Vector2 myObject)

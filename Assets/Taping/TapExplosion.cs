@@ -7,7 +7,6 @@ public class TapExplosion : MonoBehaviour
     [SerializeField] float explosionForce = 10f;
     [SerializeField] float explosionRadius = 5f;
     [SerializeField] GameObject[] explosions;
-    [SerializeField] bool tutorial = false;
     [SerializeField] AudioClip tapSFX;
     [SerializeField] AudioClip[] tapCometSFX;
     [Range(0f, 1f)] [SerializeField] float soundVolume = 0.5f;
@@ -27,14 +26,7 @@ public class TapExplosion : MonoBehaviour
     {
         GameObject explosion = Instantiate(explosions[Random.Range(0, explosions.Length)], transform.position, Quaternion.identity);
         Destroy(explosion, 1f);
-        if (!tutorial)
-        {
-            FindObjectOfType<TapNumber>().RemoveATap();
-        }
-        else
-        {
-            FindObjectOfType<TutorialGuide>().Tapped();
-        }
+        FindObjectOfType<TapNumber>().RemoveATap();
         CheckForStarsInRange();
         CheckForCometsInRange();
         CheckForUpgradesInRange();

@@ -80,7 +80,7 @@ public class BlackHole : MonoBehaviour
         AudioSource.PlayClipAtPoint(cometImpact[Random.Range(0, cometImpact.Length)], Camera.main.transform.position, soundVolume);
         Destroy(Instantiate(clashWithComet, collision.GetContact(0).point, Quaternion.identity), clashWithComet.GetComponent<ParticleSystem>().main.duration);
         GetHealed(collision);
-        cameraShaker.AddShakeDuration(0.2f);
+        cameraShaker.AddShakeDuration(0.4f);
     }
 
     private void GetHealed(Collision2D collision)
